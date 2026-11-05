@@ -206,6 +206,7 @@ textarea.inp{min-height:70px;resize:vertical}
 .myprog{margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:16px}
 .myprog .step{padding:10px 12px;border-radius:12px;background:var(--gold-soft);color:var(--ink);line-height:1.5}
 .myprog .step.Platinum{background:var(--wine-soft)}
+.langbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:99px;border:1px solid var(--line);background:var(--surface);font-size:15px;font-weight:700;color:var(--wine)}
 .stat-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .stat-tiles>div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column}
 .bars{display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:2px;height:150px;align-items:end}
@@ -346,9 +347,53 @@ const DEFAULT_TERMS=`积分只能用来兑换礼物，不能兑换现金。 Poin
 如果礼物缺货或停产，我们会以同等价值的产品代替。 If a gift is out of stock, it will be replaced with a product of equal value.
 产品款式可能调整，图片仅供参考，以实际交付为准。 Product designs may change; images are for reference only.
 一切最终决定权归店长所有。 The store manager reserves the right of final decision.`;
-const termsText=()=>((S.settings&&S.settings.terms)||DEFAULT_TERMS).trim();
-const termsHtml=()=>`<ol>${termsText().split(/\n+/).filter(Boolean).map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`;
+const TERMS_I18N={en:`Points can only be used to redeem gifts and cannot be exchanged for cash.
+If a gift is out of stock, it will be replaced with a product of equal value.
+Product designs may change; images are for reference only.
+The store manager reserves the right of final decision.`,ms:`Mata ganjaran hanya boleh ditebus untuk hadiah dan tidak boleh ditukar kepada wang tunai.
+Jika hadiah kehabisan stok, ia akan diganti dengan produk yang sama nilai.
+Reka bentuk produk mungkin berubah; gambar hanya untuk rujukan.
+Keputusan muktamad adalah hak pengurus kedai.`};
+const termsText=()=>{ const own=S.settings&&S.settings.terms; if(own) return own.trim(); return (LANG!=='zh'&&TERMS_I18N[LANG])||DEFAULT_TERMS.trim(); };
+const termsHtml=()=>`<ol translate="${S.settings&&S.settings.terms?'yes':'no'}">${termsText().split(/\n+/).filter(Boolean).map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`;
 const BRAND=__BRAND__;
+/* ---------- languages ---------- */
+const I18N=__I18N__;
+const LANGS=[['zh','中文'],['en','English'],['ms','Bahasa Melayu']];
+let LANG=(()=>{try{return localStorage.getItem('vw_lang')||'zh'}catch(e){return 'zh'}})();
+const L=()=>LANG;
+const CJK=/[\u3400-\u9fff\uff01-\uff5e\u3000-\u303f]/;
+const NUMRE=/10\+1|\d{4}-\d{2}-\d{2}|\d{1,2}:\d{2}|\d[\d,]*(?:\.\d+)?/g;
+window._miss=new Set();
+let FRAGS=null;
+function frags(){ if(FRAGS) return FRAGS; const i=LANG==='en'?0:1; FRAGS=Object.keys(I18N).filter(k=>k.length>=2&&!k.includes('{')).sort((a,b)=>b.length-a.length).map(k=>[k,I18N[k][i]]); return FRAGS; }
+function trText(str){
+  if(LANG==='zh'||!str||!CJK.test(str)) return str;
+  const lead=str.match(/^\s*/)[0], tail=str.match(/\s*$/)[0], core=str.trim(), nums=[];
+  const key=core.replace(NUMRE,m=>{ if(m==='10+1') return m; nums.push(m);return '{'+(nums.length-1)+'}';});
+  const hit=I18N[key]; let out;
+  if(hit) out=hit[LANG==='en'?0:1];
+  else { window._miss.add(key); out=key; for(const [k,v] of frags()){ if(out.includes(k)) out=out.split(k).join(v); if(!CJK.test(out)) break; } }
+  out=out.replace(/\{(\d+)\}/g,(_,i)=>nums[+i]??'');
+  return (/^[,.;:)!?]/.test(out)?'':lead)+out+tail;
+}
+const SKIP={SCRIPT:1,STYLE:1,TEXTAREA:1,INPUT:1};
+function trNode(root){
+  if(LANG==='zh'||!root) return;
+  if(root.nodeType===3){ const p=root.parentElement; if(p&&!SKIP[p.tagName]&&!p.closest('[translate="no"]')){ const v=trText(root.nodeValue); if(v!==root.nodeValue) root.nodeValue=v; } return; }
+  if(root.nodeType!==1||SKIP[root.tagName]||root.closest('[translate="no"]')) return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT,{acceptNode:n=>n.nodeType===1?((SKIP[n.tagName]||n.getAttribute('translate')==='no')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_SKIP):NodeFilter.FILTER_ACCEPT});
+  const list=[]; let n; while((n=w.nextNode())) list.push(n);
+  list.forEach(t=>{ const v=trText(t.nodeValue); if(v!==t.nodeValue) t.nodeValue=v; });
+  [root,...root.querySelectorAll('[placeholder],[title],[aria-label]')].forEach(el=>{ if(el.closest('[translate="no"]')) return; ['placeholder','title','aria-label'].forEach(a=>{ const v=el.getAttribute&&el.getAttribute(a); if(v&&CJK.test(v)) el.setAttribute(a,trText(v)); }); });
+}
+const trObs=new MutationObserver(ms=>{ if(LANG==='zh') return; trObs.disconnect(); ms.forEach(m=>{ if(m.type==='characterData') trNode(m.target); else m.addedNodes.forEach(trNode); }); trWatch(); });
+function trWatch(){ trObs.observe(document.body,{childList:true,subtree:true,characterData:true}); }
+function setLang(l){ LANG=l; FRAGS=null; try{localStorage.setItem('vw_lang',l)}catch(e){} document.documentElement.lang=l==='zh'?'zh':l; closeSheet(); render(); }
+const nt=x=>`<span translate="no">${esc(x)}</span>`;
+const nameOf=x=>LANG==='zh'?x.name:(x.en||x.name);
+const subOf=x=>LANG==='zh'?(x.en||''):(x.en?x.name:'');
+const heroOf=(st,f)=>(LANG!=='zh'&&st[f+'_'+LANG])||st[f]||'';
 const brand=()=>{const st=S.settings||{}; return {name:st.brandName||BRAND.name, sub:st.brandSub||BRAND.sub, short:st.brandShort||BRAND.short};};
 const fileTag=()=>(brand().short||'Club').replace(/[\\/:*?"<>|\s]+/g,'');
 const imgSrc=o=>o&&o.photo?('/img/'+o.photo):null;
@@ -464,7 +509,7 @@ function rewardCard(r){
   const k=CATK[catOf(r.cat).id];
   return `<button class="rw ${out?'out':''}" data-act="reward" data-id="${esc(r.id)}" style="--c:var(--${k});--cs:var(--${k}s)">
     ${ph(r).replace('</div>',`<span class="tag">${esc(catOf(r.cat).zh)}</span></div>`)}
-    <div class="body"><div class="nm">${esc(r.name)}</div><div class="en">${esc(r.en)}</div>
+    <div class="body"><div class="nm">${nt(nameOf(r))}</div><div class="en">${nt(subOf(r))}</div>
     <div class="cost"><span class="pill ${can?'':'soft'} num">${fmt(r.points)}</span><span class="stock">${out?'已兑完':r.stock!=null?'剩 '+r.stock:''}</span></div></div></button>`;
 }
 
@@ -477,16 +522,16 @@ function vHome(){
   return `
   <section class="hero center ${src?'has-img':''}" ${src?`style="background-image:url('${esc(src)}')"`:''}>
     <div class="eyebrow">${esc(st.eyebrow||'NC Loyalty Program')}</div>
-    <h1>${esc(st.title||'俱乐部积分奖励').replace(/\n/g,'<br>')}<svg class="giftbox" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="26" width="48" height="32" rx="4" fill="#E8B35A"/><rect x="5" y="18" width="54" height="12" rx="3" fill="#F3C978"/><rect x="28" y="18" width="8" height="40" fill="#FFF7F2"/><rect x="8" y="34" width="48" height="5" fill="#D9962B" opacity=".35"/><path d="M32 18c-4-10-16-12-16-4 0 5 9 5 16 4zM32 18c4-10 16-12 16-4 0 5-9 5-16 4z" fill="#FFF7F2" stroke="#E8B35A" stroke-width="2"/><circle cx="32" cy="18" r="4" fill="#F3C978"/></svg></h1>
-    <p>${esc(st.sub||'')}</p>
+    <h1>${(st['title_'+LANG]&&LANG!=='zh'?nt(heroOf(st,'title')):esc(heroOf(st,'title')||'俱乐部积分奖励')).replace(/\n/g,'<br>')}<svg class="giftbox" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="26" width="48" height="32" rx="4" fill="#E8B35A"/><rect x="5" y="18" width="54" height="12" rx="3" fill="#F3C978"/><rect x="28" y="18" width="8" height="40" fill="#FFF7F2"/><rect x="8" y="34" width="48" height="5" fill="#D9962B" opacity=".35"/><path d="M32 18c-4-10-16-12-16-4 0 5 9 5 16 4zM32 18c4-10 16-12 16-4 0 5-9 5-16 4z" fill="#FFF7F2" stroke="#E8B35A" stroke-width="2"/><circle cx="32" cy="18" r="4" fill="#F3C978"/></svg></h1>
+    <p>${st['sub_'+LANG]&&LANG!=='zh'?nt(heroOf(st,'sub')):esc(st.sub||'')}</p>
     <svg class="coins" viewBox="0 0 150 150" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="2"><circle cx="90" cy="90" r="56"/><circle cx="90" cy="90" r="40"/><circle cx="34" cy="40" r="16"/></g><text x="90" y="104" text-anchor="middle" font-family="Sora,sans-serif" font-weight="800" font-size="40" fill="currentColor" fill-opacity=".3">P</text></svg>
   </section>
   <div class="card mcard">
-  ${m?`<div class="mrow"><div><div class="mname">${esc(m.name)} <span class="tier ${esc(m.tier)}">${esc(m.tier)} · ${TIERS[m.tier]?.zh||''}</span></div>
+  ${m?`<div class="mrow"><div><div class="mname">${nt(m.name)} <span class="tier ${esc(m.tier)}">${esc(m.tier)} · ${TIERS[m.tier]?.zh||''}</span></div>
       <div class="sub">可用积分 Available points</div>${tierProgress(m)?`<div class="sub" style="color:var(--gold);margin-top:4px">${tierProgress(m)}</div>`:''}</div>
       <div class="pts num">${fmt(avail(m))}<small>pts</small></div></div>
       <div class="bar"><i style="width:${pct}%"></i></div>
-      <div class="sub" style="margin-top:6px">${near?`再累积 <b class="num">${fmt(near.points-avail(m))}</b> 分即可兑换「${esc(near.name)}」`:'所有礼物都可以兑换了！'}</div>`
+      <div class="sub" style="margin-top:6px">${near?`再累积 <b class="num">${fmt(near.points-avail(m))}</b> 分即可兑换「${nt(nameOf(near))}」`:'所有礼物都可以兑换了！'}</div>`
    :`<div class="mrow"><div><div class="mname">欢迎来到 NC 俱乐部</div><div class="sub">用手机号码免费注册，开始累积积分</div></div>
       <button class="btn sm" data-act="go" data-v="me">登入 / 注册</button></div>`}
   </div>
@@ -498,15 +543,15 @@ function vHome(){
     <button class="q" data-act="go" data-v="me"><span class="ic">${ic('user')}</span>会员卡</button>
     <button class="q" data-act="history"><span class="ic">${ic('history')}</span>积分记录</button>
   </div>
-  ${promo?`<div class="sec promo"><div class="burst">${fmt(promo.points)}<small>POINTS</small></div><div style="min-width:0"><b>${esc(promo.name)}</b><span class="sub">${esc(promo.en)}${promo.note?' · '+esc(promo.note):''}</span></div></div>`:''}
+  ${promo?`<div class="sec promo"><div class="burst">${fmt(promo.points)}<small>POINTS</small></div><div style="min-width:0"><b>${nt(nameOf(promo))}</b><span class="sub">${nt(subOf(promo))}${promo.note?' · '+esc(promo.note):''}</span></div></div>`:''}
   <div class="sec"><div class="sec-h"><h2>热门好礼</h2><button class="link" data-act="go" data-v="shop">全部礼物 →</button></div>
     ${activeRewards().length?`<div class="hscroll">${activeRewards().slice(0,8).map(rewardCard).join('')}</div>`:`<div class="empty">还没有礼物。管理员可以在「管理」里添加。</div>`}</div>
   <div class="sec"><div class="sec-h"><h2>积分获取攻略</h2><button class="link" data-act="go" data-v="earn">更多 →</button></div>
     <div class="list">${activeTasks().slice(0,3).map(taskRow).join('')||'<div class="empty">还没有赚分任务。</div>'}</div></div>
-  <div class="sec" style="text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center"><span class="sub">© ${esc(brand().name)} · ${esc(brand().sub)}</span>${isAdmin?'':'<button class="link sub" data-act="adminLogin">店家登入</button>'}</div>`;
+  <div class="sec" style="text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center"><span class="sub">© ${nt(brand().name)} · ${esc(brand().sub)}</span>${isAdmin?'':'<button class="link sub" data-act="adminLogin">店家登入</button>'}</div>`;
 }
 function taskRow(t,i){
-  return `<div class="task" data-k="${((i||0)%6)+1}"><span class="ic">${ic(t.icon||'star',22)}</span><div class="tx"><b>${esc(t.name)}${t.promo?'<span class="flag">限时</span>':''}</b><span>${esc(t.en)}${t.note?' · '+esc(t.note):''}</span></div>
+  return `<div class="task" data-k="${((i||0)%6)+1}"><span class="ic">${ic(t.icon||'star',22)}</span><div class="tx"><b>${nt(nameOf(t))}${t.promo?'<span class="flag">限时</span>':''}</b><span>${nt(subOf(t))}${t.note?' · '+esc(t.note):''}</span></div>
   <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><span class="plus num">+${t.auto&&me()?fmt(ckPts(myPhone)):fmt(t.points)}</span>${t.auto?'<span class="badge approved" style="white-space:nowrap">自动加分</span>':`<button class="btn sm ghost" data-act="claim" data-id="${esc(t.id)}">申请</button>`}</div></div>`;
 }
 function tierRulesCard(m){
@@ -538,7 +583,7 @@ function loginView(){
       <button class="btn block" type="submit">登入</button></form>
       <p class="sub" style="margin-top:12px">忘记密码？请联系教练帮你重设。</p>
       <button class="link" data-act="loginBack" style="margin-top:6px">换一个号码</button>`;
-  else if(loginStep==='register') body=`<form id="regForm"><p style="margin:0 0 12px">欢迎加入 ${esc(brand().name)}！这个号码（${esc(loginPhone)}）还没注册，填写以下资料就可以开始累积积分。</p>
+  else if(loginStep==='register') body=`<form id="regForm"><p style="margin:0 0 12px">欢迎加入 ${nt(brand().name)}！这个号码（${esc(loginPhone)}）还没注册，填写以下资料就可以开始累积积分。</p>
       <div class="field"><label for="rname">你的名字</label><input class="inp" id="rname" autocomplete="name" placeholder="例如 李美玲"></div>
       ${pinField('pin1','设定 4 位数密码')}${pinField('pin2','再输入一次')}
       <button class="btn block" type="submit">注册并登入</button></form>
@@ -557,14 +602,14 @@ function vMe(){
   if(!m) return loginView();
   const reqs=S.requests.filter(r=>r.phone===m.phone).sort((a,b)=>b.ts-a.ts);
   const led=S.ledger.filter(l=>l.phone===m.phone).concat(S.checkins.filter(x=>x.phone===m.phone&&+x.points).map(x=>({delta:+x.points,reason:'每日消费 Daily Order（打卡）',ts:x.ts}))).sort((a,b)=>b.ts-a.ts);
-  return `<div class="hero" style="min-height:0"><div class="eyebrow">NC Member · ${esc(m.phone)}</div><h1 style="margin-bottom:2px">${esc(m.name)}</h1>
+  return `<div class="hero" style="min-height:0"><div class="eyebrow">NC Member · ${esc(m.phone)}</div><h1 style="margin-bottom:2px">${nt(m.name)}</h1>
      <span class="tier ${esc(m.tier)}" style="background:rgba(255,255,255,.18);color:var(--on-wine)">${esc(m.tier)} · ${TIERS[m.tier]?.zh||''}</span>
      <div style="display:flex;gap:24px;margin-top:16px"><div><div class="num" style="font-size:40px;font-weight:800;line-height:1">${fmt(avail(m))}</div><div style="font-size:16px;opacity:.8">可用积分</div></div>
      <div><div class="num" style="font-size:40px;font-weight:800;line-height:1;opacity:.75">${fmt(pendingRedeem(m.phone))}</div><div style="font-size:16px;opacity:.8">兑换审核中</div></div></div></div>
   <div class="sec">${tierRulesCard(m)}</div>
   <div class="sec"><div class="sec-h"><h2>我的 NCP 卡</h2></div>${cardsOf(m.phone).map(c=>cardBlock(c)).join('')||'<div class="empty">还没有 NCP 卡。请联系教练开卡。</div>'}</div>
   <div class="sec"><div class="sec-h"><h2>我的申请</h2></div>
-    ${reqs.length?`<div class="card" style="padding:4px 14px">${reqs.slice(0,12).map(r=>`<div class="hist"><div style="min-width:0"><b style="font-size:18px">${({redeem:'兑换',earn:'赚分',renew:'续卡'})[r.type]} ${esc(r.title)}</b><div class="sub">${dt(r.ts)}</div></div><div style="text-align:right">${r.type==='renew'?'':`<div class="num ${r.type==='redeem'?'d-minus':'d-plus'}">${r.type==='redeem'?'−':'+'}${fmt(r.points)}</div>`}<span class="badge ${r.status}">${({pending:'审核中',approved:'已通过',rejected:'未通过'})[r.status]}</span></div></div>`).join('')}</div>`:'<div class="empty">还没有申请记录。</div>'}</div>
+    ${reqs.length?`<div class="card" style="padding:4px 14px">${reqs.slice(0,12).map(r=>`<div class="hist"><div style="min-width:0"><b style="font-size:18px">${({redeem:'兑换',earn:'赚分',renew:'续卡'})[r.type]} ${nt(r.title)}</b><div class="sub">${dt(r.ts)}</div></div><div style="text-align:right">${r.type==='renew'?'':`<div class="num ${r.type==='redeem'?'d-minus':'d-plus'}">${r.type==='redeem'?'−':'+'}${fmt(r.points)}</div>`}<span class="badge ${r.status}">${({pending:'审核中',approved:'已通过',rejected:'未通过'})[r.status]}</span></div></div>`).join('')}</div>`:'<div class="empty">还没有申请记录。</div>'}</div>
   <div class="sec" id="ledgerSec"><div class="sec-h"><h2>积分记录</h2></div>
     ${led.length?`<div class="card" style="padding:4px 14px">${led.slice(0,30).map(l=>`<div class="hist"><div style="min-width:0"><b style="font-size:18px">${esc(l.reason)}</b><div class="sub">${dt(l.ts)}</div></div><div class="num ${l.delta<0?'d-minus':'d-plus'}">${l.delta<0?'−':'+'}${fmt(Math.abs(l.delta))}</div></div>`).join('')}</div>`:'<div class="empty">还没有积分记录。</div>'}</div>
   <div class="sec"><button class="btn ghost block" data-act="logout">登出</button></div>`;
@@ -579,7 +624,7 @@ function vScan(){
   if(!m) return `<div class="scan-ok"><h2 style="font-family:var(--f-display);font-size:30px">到店打卡</h2><p class="sub">先登入你的会员账号</p></div>`+loginView();
   const cs=cardsOf(m.phone).filter(c=>{const k=cardInfo(c);return k.status==='active'&&!k.notStarted;});
   if(!cs.length) return `<div class="scan-ok scan-bad"><div class="big-ic">${ic('ticket',40)}</div><h2 style="font-family:var(--f-display);font-size:30px">你的 NCP 卡已经用完了</h2><p class="sub">申请续卡后，教练确认就可以继续打卡。</p></div>${renewBtn(m.phone)}<div class="sec"><button class="btn ghost block" data-act="go" data-v="home">回到首页</button></div>`;
-  return `<div class="scan-ok"><h2 style="font-family:var(--f-display);font-size:30px">${esc(m.name)}，欢迎来到俱乐部</h2><p class="sub">${dt(Date.now())}</p></div>${cs.map(c=>cardBlock(c)).join('')}`;
+  return `<div class="scan-ok"><h2 style="font-family:var(--f-display);font-size:30px">${nt(m.name)}，欢迎来到俱乐部</h2><p class="sub">${dt(Date.now())}</p></div>${cs.map(c=>cardBlock(c)).join('')}`;
 }
 let scanBusy=false;
 async function doCheckin(c,force){
@@ -605,22 +650,22 @@ function vAdmin(){
   let body='';
   if(adminTab==='requests'){
     const list=S.requests.slice().sort((a,b)=>(a.status==='pending'?0:1)-(b.status==='pending'?0:1)||b.ts-a.ts).slice(0,40);
-    body=list.length?`<div class="list">${list.map(r=>`<div class="arow"><div class="tx"><b>${({redeem:'兑换',earn:'赚分',renew:'续卡'})[r.type]} · ${esc(r.title)}</b><span>${esc(r.name)} · ${esc(r.phone)} · ${dt(r.ts)}${r.note?' · '+esc(r.note):''}</span></div>
+    body=list.length?`<div class="list">${list.map(r=>`<div class="arow"><div class="tx"><b>${({redeem:'兑换',earn:'赚分',renew:'续卡'})[r.type]} · ${nt(r.title)}</b><span>${nt(r.name)} · ${esc(r.phone)} · ${dt(r.ts)}${r.note?' · '+esc(r.note):''}</span></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">${r.type==='renew'?`<span class="sub">${r.total} 次</span>`:`<span class="num ${r.type==='redeem'?'d-minus':'d-plus'}">${r.type==='redeem'?'−':'+'}${fmt(r.points)}</span>`}
       ${r.status==='pending'?`<div style="display:flex;gap:6px"><button class="btn sm danger" data-act="reject" data-id="${esc(r.id)}">拒绝</button><button class="btn sm ok" data-act="approve" data-id="${esc(r.id)}">通过</button></div>`:`<span class="badge ${r.status}">${r.status==='approved'?'已通过':'未通过'}</span>`}</div></div>`).join('')}</div>`:'<div class="empty">目前没有待审核的申请。</div>';
   } else if(adminTab==='rewards'){
     const list=S.rewards.slice().sort((a,b)=>a.points-b.points);
     body=`<button class="btn block" data-act="editReward" style="margin-bottom:12px">${ic('plus',18)} 新增礼物</button>
-      ${list.length?`<div class="list">${list.map(r=>`<button class="arow" data-act="editReward" data-id="${esc(r.id)}" style="text-align:left">${ph(r)}<div class="tx"><b>${esc(r.name)}</b><span>${esc(catOf(r.cat).zh)} · <span class="num">${fmt(r.points)}</span> pts${r.stock!=null?' · 库存 '+r.stock:''}${r.active===false?' · 已下架':''}</span></div>${ic('cog',18)}</button>`).join('')}</div>`:'<div class="empty">还没有礼物。按上方按钮添加第一个礼物。</div>'}`;
+      ${list.length?`<div class="list">${list.map(r=>`<button class="arow" data-act="editReward" data-id="${esc(r.id)}" style="text-align:left">${ph(r)}<div class="tx"><b>${nt(r.name)}</b><span>${esc(catOf(r.cat).zh)} · <span class="num">${fmt(r.points)}</span> pts${r.stock!=null?' · 库存 '+r.stock:''}${r.active===false?' · 已下架':''}</span></div>${ic('cog',18)}</button>`).join('')}</div>`:'<div class="empty">还没有礼物。按上方按钮添加第一个礼物。</div>'}`;
   } else if(adminTab==='tasks'){
     body=`<button class="btn block" data-act="editTask" style="margin-bottom:12px">${ic('plus',18)} 新增赚分任务</button>
-      ${S.tasks.length?`<div class="list">${activeTasksAll().map(t=>`<button class="arow" data-act="editTask" data-id="${esc(t.id)}" style="text-align:left"><span class="ph" style="background:var(--wine-soft);color:var(--wine);display:grid;place-items:center">${ic(t.icon||'star',22)}</span><div class="tx"><b>${esc(t.name)}</b><span><span class="num">+${fmt(t.points)}</span> · ${esc(t.en)}${t.active===false?' · 已停用':''}</span></div>${ic('cog',18)}</button>`).join('')}</div>`:'<div class="empty">还没有任务。</div>'}`;
+      ${S.tasks.length?`<div class="list">${activeTasksAll().map(t=>`<button class="arow" data-act="editTask" data-id="${esc(t.id)}" style="text-align:left"><span class="ph" style="background:var(--wine-soft);color:var(--wine);display:grid;place-items:center">${ic(t.icon||'star',22)}</span><div class="tx"><b>${nt(nameOf(t))}</b><span><span class="num">+${fmt(t.points)}</span> · ${nt(subOf(t))}${t.active===false?' · 已停用':''}</span></div>${ic('cog',18)}</button>`).join('')}</div>`:'<div class="empty">还没有任务。</div>'}`;
   } else if(adminTab==='members'){
     const q=memberQ.trim().toLowerCase();
     const list=S.members.filter(m=>!q||m.name.toLowerCase().includes(q)||m.phone.includes(q)).sort((a,b)=>totalPts(b)-totalPts(a));
     body=`<div class="btnrow" style="justify-content:flex-start;margin-bottom:12px"><button class="btn sm" data-act="exportPdf">导出 PDF 报表</button><button class="btn sm ghost" data-act="exportCsv">导出 Excel</button></div>
     <div style="display:flex;gap:8px;margin-bottom:12px"><input class="inp" id="mq" placeholder="搜索名字或电话" value="${esc(memberQ)}"><button class="btn" data-act="editMember">${ic('plus',18)}</button></div>
-      ${list.length?`<div class="list">${list.map(m=>`<div class="arow mem"><div class="tx"><b>${esc(m.name)} <span class="tier ${esc(m.tier)}">${esc(m.tier)}</span>${tierInfo(m).manual?' <span class="badge pending">手动</span>':''}</b><span>${esc(m.phone)} · <span class="num">${fmt(totalPts(m))}</span> pts</span>${(st=>`<span style="display:block">共 ${st.nCards} 张卡 · 累计打卡 ${st.nCheckins} 次${st.last?' · 最近 '+st.last:''}${st.curInfo&&st.curInfo.status==='active'?` · 目前第 ${st.nCards?cardNo(st.cur):0} 张剩 ${st.curInfo.left} 次`:''}${unpaidOf(m.phone)?` · <b style="color:var(--warn)">未付款 ${unpaidOf(m.phone)} 张</b>`:''}</span>`)(memberStats(m))}</div>
+      ${list.length?`<div class="list">${list.map(m=>`<div class="arow mem"><div class="tx"><b>${nt(m.name)} <span class="tier ${esc(m.tier)}">${esc(m.tier)}</span>${tierInfo(m).manual?' <span class="badge pending">手动</span>':''}</b><span>${esc(m.phone)} · <span class="num">${fmt(totalPts(m))}</span> pts</span>${(st=>`<span style="display:block">共 ${st.nCards} 张卡 · 累计打卡 ${st.nCheckins} 次${st.last?' · 最近 '+st.last:''}${st.curInfo&&st.curInfo.status==='active'?` · 目前第 ${st.nCards?cardNo(st.cur):0} 张剩 ${st.curInfo.left} 次`:''}${unpaidOf(m.phone)?` · <b style="color:var(--warn)">未付款 ${unpaidOf(m.phone)} 张</b>`:''}</span>`)(memberStats(m))}</div>
         <div class="btnrow"><button class="btn sm ghost" data-act="editMember" data-id="${esc(m.id)}">编辑</button><button class="btn sm ghost" data-act="ncp" data-id="${esc(m.id)}">NCP卡</button><button class="btn sm" data-act="addPts" data-id="${esc(m.id)}">加/减分</button></div></div>`).join('')}</div>`:'<div class="empty">还没有会员。按 + 新增会员。</div>'}`;
   } else if(adminTab==='stats'){
     const days=dailyStats(), t=dailyStats(today(),today())[0];
@@ -654,7 +699,7 @@ function vAdmin(){
     </div>`;
     body=qrPanel+`<p class="sub" style="margin:-4px 0 12px">今天共有 <b class="num">${todayN}</b> 人次打卡。开新卡请到「会员」按「NCP卡」。</p>
     <div class="chips"><button class="chip ${cardFilter==='all'?'on':''}" data-act="cardFilter" data-v="all">全部卡 ${S.cards.length}</button><button class="chip ${cardFilter==='unpaid'?'on':''}" data-act="cardFilter" data-v="unpaid">未付款 ${unpaidN}</button></div>
-    ${rows.length?`<div class="list">${rows.map(({c,k,m})=>`<button class="arow" data-act="ncp" data-id="${esc(m?m.id:'')}" style="text-align:left"><div class="tx"><b>${esc(m?m.name:c.phone)} · 第 ${cardNo(c)} 张 · ${esc(c.name)}</b><span style="display:block;margin:2px 0">${payTag(c)}</span><span>剩 <span class="num">${k.left}</span> / ${+c.total||0} 次${k.daysLeft!=null?' · 剩 '+k.daysLeft+' 天':''}${k.todayN?' · 今天打了 '+k.todayN+' 次':''}</span></div><span class="badge ${{active:'approved',done:'pending',expired:'rejected'}[k.status]}">${{active:'进行中',done:'已用完',expired:'已过期'}[k.status]}</span></button>`).join('')}</div>`:'<div class="empty">还没有 NCP 卡。到「会员」为会员开卡。</div>'}`;
+    ${rows.length?`<div class="list">${rows.map(({c,k,m})=>`<button class="arow" data-act="ncp" data-id="${esc(m?m.id:'')}" style="text-align:left"><div class="tx"><b>${nt(m?m.name:c.phone)} · 第 ${cardNo(c)} 张 · ${esc(c.name)}</b><span style="display:block;margin:2px 0">${payTag(c)}</span><span>剩 <span class="num">${k.left}</span> / ${+c.total||0} 次${k.daysLeft!=null?' · 剩 '+k.daysLeft+' 天':''}${k.todayN?' · 今天打了 '+k.todayN+' 次':''}</span></div><span class="badge ${{active:'approved',done:'pending',expired:'rejected'}[k.status]}">${{active:'进行中',done:'已用完',expired:'已过期'}[k.status]}</span></button>`).join('')}</div>`:'<div class="empty">还没有 NCP 卡。到「会员」为会员开卡。</div>'}`;
   } else {
     const st=S.settings||{};
     const B=brand();
@@ -670,6 +715,10 @@ function vAdmin(){
       <div class="field"><label for="h_e">小标题</label><input class="inp" id="h_e" value="${esc(st.eyebrow||'')}"></div>
       <div class="field"><label for="h_t">标题（按 Enter 换行）</label><textarea class="inp" id="h_t" rows="2" style="min-height:0">${esc(st.title||'')}</textarea></div>
       <div class="field"><label for="h_s">说明</label><textarea class="inp" id="h_s">${esc(st.sub||'')}</textarea></div>
+      <div class="row2"><div class="field"><label for="h_ten">标题（English）</label><textarea class="inp" id="h_ten" rows="2" style="min-height:0">${esc(st.title_en||'')}</textarea></div>
+      <div class="field"><label for="h_tms">标题（Bahasa Melayu）</label><textarea class="inp" id="h_tms" rows="2" style="min-height:0">${esc(st.title_ms||'')}</textarea></div></div>
+      <div class="row2"><div class="field"><label for="h_sen">说明（English）</label><input class="inp" id="h_sen" value="${esc(st.sub_en||'')}"></div>
+      <div class="field"><label for="h_sms">说明（Bahasa Melayu）</label><input class="inp" id="h_sms" value="${esc(st.sub_ms||'')}"></div></div>
       <div class="field"><label for="h_terms">兑换须知（一行一条）</label><textarea class="inp" id="h_terms" rows="6">${esc(termsText())}</textarea></div>
       <button class="btn block" type="submit">保存首页</button></form>`;
   }
@@ -681,7 +730,7 @@ const activeTasksAll=()=>S.tasks.slice().sort((a,b)=>(a.order??0)-(b.order??0));
 /* ---------- render ---------- */
 function render(){
   const app=document.getElementById('app');
-  const top=`<header class="top"><div class="brand"><img class="logo" src="/icon-192.png?v=${esc((S.settings&&S.settings.logo)||'d')}" alt="" width="40" height="40"><div><b>${esc(brand().name)}</b><small>${esc(brand().sub)}</small></div></div>${isAdmin?'<span class="demo">管理员</span>':''}</header>`;
+  const top=`<header class="top"><div class="brand"><img class="logo" src="/icon-192.png?v=${esc((S.settings&&S.settings.logo)||'d')}" alt="" width="40" height="40"><div><b>${nt(brand().name)}</b><small>${esc(brand().sub)}</small></div></div><div style="display:flex;gap:8px;align-items:center">${isAdmin?'<span class="demo">管理员</span>':''}<button class="langbtn" data-act="lang" aria-label="语言 Language"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span translate="no">${({zh:'中文',en:'EN',ms:'BM'})[LANG]}</span></button></div></header>`;
   if(!loaded) return;
   if(view==='admin'&&!isAdmin) view='home';
   const v=({home:vHome,earn:vEarn,shop:vShop,me:vMe,admin:vAdmin,scan:vScan}[view]||vHome)();
@@ -745,7 +794,7 @@ let tt; function toast(t){ let el=document.querySelector('.toast'); if(!el){el=d
 function rewardSheet(r){
   const m=me(); const out=r.stock!=null&&r.stock<=0; const a=avail(m);
   openSheet(`${ph(r,'','border-radius:16px;margin-bottom:14px;aspect-ratio:4/3')}
-    <h3 style="margin-bottom:2px">${esc(r.name)}</h3><div class="sub">${esc(r.en)} · ${esc(catOf(r.cat).zh)}</div>
+    <h3 style="margin-bottom:2px">${nt(nameOf(r))}</h3><div class="sub">${nt(subOf(r))} · ${esc(catOf(r.cat).zh)}</div>
     ${r.desc?`<p style="margin:10px 0 0">${esc(r.desc)}</p>`:''}
     <div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0"><span class="pill num" style="font-size:21px;padding:6px 14px">${fmt(r.points)} pts</span><span class="sub">${r.stock!=null?'库存 '+r.stock:''}</span></div>
     ${!m?`<button class="btn block" data-act="go" data-v="me">登入或注册会员</button>`
@@ -755,7 +804,7 @@ function rewardSheet(r){
 }
 function claimSheet(t){
   const m=me();
-  openSheet(`<h3>${esc(t.name)}</h3><p class="sub" style="margin-top:-6px">${esc(t.en)}${t.note?' · '+esc(t.note):''}</p>
+  openSheet(`<h3>${nt(nameOf(t))}</h3><p class="sub" style="margin-top:-6px">${nt(subOf(t))}${t.note?' · '+esc(t.note):''}</p>
     <div style="margin:14px 0"><span class="plus num" style="font-size:30px">+${fmt(t.points)}</span> <span class="sub">积分</span></div>
     ${!m?`<button class="btn block" data-act="go" data-v="me">登入或注册会员</button>`:
     `<div class="field"><label for="cn">备注（选填，例如活动名称或链接）</label><input class="inp" id="cn"></div>
@@ -763,7 +812,7 @@ function claimSheet(t){
 }
 function paySheet(c){
   const m=S.members.find(x=>x.phone===c.phone);
-  openSheet(`<h3>${c.paid?'修改付款记录':'确认已付款'}</h3><p class="sub" style="margin-top:-6px">${esc(m?m.name:c.phone)} · 第 ${cardNo(c)} 张 · ${esc(c.name)}</p>
+  openSheet(`<h3>${c.paid?'修改付款记录':'确认已付款'}</h3><p class="sub" style="margin-top:-6px">${nt(m?m.name:c.phone)} · 第 ${cardNo(c)} 张 · ${esc(c.name)}</p>
    <form id="payForm" data-id="${esc(c.id)}">
     <div class="field"><label for="pa_d">付款日期</label><input class="inp" type="date" id="pa_d" value="${esc(c.paidAt||today())}" max="${today()}"></div>
     <div class="row2"><div class="field"><label for="pa_a">金额 RM（选填）</label><input class="inp num" id="pa_a" inputmode="decimal" value="${esc(c.paidAmount||'')}"></div>
@@ -774,7 +823,7 @@ function paySheet(c){
 function ncpSheet(phone){
   const m=S.members.find(x=>x.phone===phone); if(!m) return;
   const cs=cardsOf(phone); const keep=document.getElementById('c_s')?{n:document.getElementById('c_n').value,t:document.getElementById('c_t').value,d:document.getElementById('c_d').value,s:document.getElementById('c_s').value}:null;
-  openSheet(`<h3>${esc(m.name)} · NCP 卡</h3>
+  openSheet(`<h3>${nt(m.name)} · NCP 卡</h3>
    ${cs.map(c=>{const k=cardInfo(c);return cardBlock(c,true)+(k.ins.length?`<details style="margin-top:8px"><summary class="sub" style="cursor:pointer">打卡记录（${k.ins.length} 次 · 自 ${k.ins.filter(x=>x.by!=='staff').length} · 帮 ${k.ins.filter(x=>x.by==='staff').length}）</summary><div class="card" style="padding:4px 12px;margin-top:6px"><div class="sub" style="font-size:14px;padding-top:6px">${HOW_LEGEND}</div>${k.ins.slice().reverse().map((x,i)=>{const d=new Date(x.ts);return `<div class="hist" style="font-size:15px"><span>第 ${k.ins.length-i} 次 · ${x.date} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}</span>${howTag(x.by)}</div>`}).join('')}</div></details>`:'')+`<div class="btnrow" style="margin:8px 0 16px">${c.paid?`<button class="btn sm ghost" data-act="payCard" data-id="${esc(c.id)}">修改付款</button>`:`<button class="btn sm ok" data-act="payCard" data-id="${esc(c.id)}">确认已付款</button>`}<button class="btn sm danger" data-act="delCard" data-id="${esc(c.id)}">删除这张卡</button><button class="btn sm ghost" data-act="undoCheckin" data-id="${esc(c.id)}" ${k.used?'':'disabled'}>撤销最后一次打卡</button><button class="btn sm" data-act="staffCheckin" data-id="${esc(c.id)}" ${k.status!=='active'||k.notStarted?'disabled':''}>帮他打卡</button></div>`}).join('')||'<div class="empty" style="margin-bottom:14px">这位会员还没有 NCP 卡。</div>'}
    <form id="cf" data-phone="${esc(phone)}" class="card"><b style="display:block;margin-bottom:10px">开新卡</b>
     <div class="field"><label for="c_ty">卡种</label><select class="inp" id="c_ty">${CARD_TYPES.map((t,i)=>`<option value="${i}">${t.n}（${t.total} 次）</option>`).join('')}<option value="x">自定义</option></select></div>
@@ -828,8 +877,8 @@ function memberForm(m){
    <div class="actions">${m.id?`<button type="button" class="btn danger" data-act="delMember" data-id="${esc(m.id)}">删除</button>`:'<button type="button" class="btn ghost" data-act="close">取消</button>'}<button class="btn" type="submit">保存</button></div></form>`);
 }
 function ptsForm(m){
-  openSheet(`<h3>${esc(m.name)} · 加/减分</h3><p class="sub" style="margin-top:-6px">目前 <b class="num">${fmt(totalPts(m))}</b> 分</p><form id="pf" data-id="${esc(m.id)}">
-   <div class="field"><label for="p_t">选择任务</label><select class="inp" id="p_t"><option value="">自定义</option>${activeTasks().map(t=>`<option value="${esc(t.id)}">${esc(t.name)} (+${t.points})</option>`).join('')}</select></div>
+  openSheet(`<h3>${nt(m.name)} · 加/减分</h3><p class="sub" style="margin-top:-6px">目前 <b class="num">${fmt(totalPts(m))}</b> 分</p><form id="pf" data-id="${esc(m.id)}">
+   <div class="field"><label for="p_t">选择任务</label><select class="inp" id="p_t"><option value="">自定义</option>${activeTasks().map(t=>`<option value="${esc(t.id)}">${nt(nameOf(t))} (+${t.points})</option>`).join('')}</select></div>
    <div class="row2"><div class="field"><label for="p_v">积分（扣分用负数）</label><input class="inp num" id="p_v" type="number" required></div>
    <div class="field"><label for="p_r">原因</label><input class="inp" id="p_r"></div></div>
    <div class="actions"><button type="button" class="btn ghost" data-act="close">取消</button><button class="btn" type="submit">确认</button></div></form>`);
@@ -847,6 +896,8 @@ document.addEventListener('click',async e=>{
   const a=b.dataset.act, id=b.dataset.id, v=b.dataset.v;
   if(a==='close'){ if(e.target===b||b.tagName==='BUTTON') closeSheet(); return; }
   if(a==='go'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } view=v; render(); window.scrollTo(0,0); return; }
+  if(a==='lang'){ openSheet(`<h3>语言 · Language · Bahasa</h3><div class="list">${LANGS.map(([k,l])=>`<button class="task" data-act="setLang" data-v="${k}" style="text-align:left"><div class="tx" translate="no"><b>${l}</b></div>${LANG===k?ic('check',20):''}</button>`).join('')}</div>`); return; }
+  if(a==='setLang'){ setLang(v); return; }
   if(a==='scanQR'){ openScanner(); return; }
   if(a==='cat'){ cat=v; render(); return; }
   if(a==='atab'){ adminTab=v; render(); return; }
@@ -943,7 +994,7 @@ document.addEventListener('submit',async e=>{
   if(f.id==='payForm'){ const c=S.cards.find(x=>x.id===f.dataset.id); if(!c) return; const d={paid:true,paidAt:g('pa_d')||today(),paidAmount:g('pa_a').replace(/[^0-9.]/g,'')||null,payMethod:g('pa_m'),paidNote:g('pa_n')||null};
     ncpSheet(c.phone); await run(()=>patch('cards',c.id,d),'已确认付款 '+d.paidAt); return; }
   if(f.id==='brandForm'){ const d={brandName:g('b_n')||null,brandSub:g('b_s')||null,brandShort:g('b_sh')||null}; await run(()=>putSettings({...S.settings,...d}),'俱乐部资料已更新'); return; }
-  if(f.id==='homeForm'){ await run(()=>putSettings({...S.settings,eyebrow:g('h_e'),title:g('h_t'),sub:g('h_s'),terms:g('h_terms')||null}),'首页已更新'); return; }
+  if(f.id==='homeForm'){ await run(()=>putSettings({...S.settings,eyebrow:g('h_e'),title:g('h_t'),sub:g('h_s'),title_en:g('h_ten')||null,title_ms:g('h_tms')||null,sub_en:g('h_sen')||null,sub_ms:g('h_sms')||null,terms:g('h_terms')||null}),'首页已更新'); return; }
 });
 
 async function saveQrPoster(){
@@ -987,19 +1038,19 @@ function checkinRows(){
 function exportDailyPdf(){
   const days=dailyStats().slice().reverse(); const sum=days.reduce((a,d)=>a+d.n,0);
   const pa=document.getElementById('printArea');
-  pa.innerHTML=`<h1>${esc(brand().name)} · 每日打卡统计</h1><div class="meta">${days[days.length-1].date} 至 ${days[0].date}（${days.length} 天）　·　共 ${sum} 人次　·　${new Set(S.checkins.filter(x=>x.date>=days[days.length-1].date&&x.date<=days[0].date).map(x=>x.phone)).size} 位不同会员　·　导出日期 ${today()}</div>
+  pa.innerHTML=`<h1>${nt(brand().name)} · 每日打卡统计</h1><div class="meta">${days[days.length-1].date} 至 ${days[0].date}（${days.length} 天）　·　共 ${sum} 人次　·　${new Set(S.checkins.filter(x=>x.date>=days[days.length-1].date&&x.date<=days[0].date).map(x=>x.phone)).size} 位不同会员　·　导出日期 ${today()}</div>
   <div class="meta">${HOW_LEGEND}</div><h2>每日汇总</h2><table><thead><tr><th>日期</th><th>星期</th><th>打卡人次</th><th>自</th><th>帮</th><th>打卡人数</th><th>自动加分</th></tr></thead><tbody>
   ${days.map(d=>`<tr><td>${d.date}</td><td>${'日一二三四五六'[new Date(parseD(d.date)).getDay()]}</td><td>${d.n}</td><td>${d.self}</td><td>${d.staff}</td><td>${d.u}</td><td>${d.pts}</td></tr>`).join('')}</tbody></table>
   <h2>打卡明细</h2><table><thead><tr><th>日期</th><th>时间</th><th>会员</th><th>电话</th><th>卡</th><th>自/帮</th><th>加分</th></tr></thead><tbody>
-  ${checkinRows().map(r=>`<tr><td>${r.date}</td><td>${r.time}</td><td>${esc(r.name)}</td><td>${esc(r.phone)}</td><td>${esc(r.card)}</td><td>${r.how==='帮'?'<b>帮</b>':r.how}</td><td>${r.pts}</td></tr>`).join('')||'<tr><td colspan="7">这段期间没有打卡记录</td></tr>'}</tbody></table>`;
+  ${checkinRows().map(r=>`<tr><td>${r.date}</td><td>${r.time}</td><td>${nt(r.name)}</td><td>${esc(r.phone)}</td><td>${esc(r.card)}</td><td>${r.how==='帮'?'<b>帮</b>':r.how}</td><td>${r.pts}</td></tr>`).join('')||'<tr><td colspan="7">这段期间没有打卡记录</td></tr>'}</tbody></table>`;
   pa.hidden=false; const done=()=>{ pa.hidden=true; pa.innerHTML=''; window.removeEventListener('afterprint',done); };
   window.addEventListener('afterprint',done); setTimeout(()=>window.print(),100); toast('在打印画面选择「另存为 PDF / Save as PDF」');
 }
 function exportDailyCsv(){
-  const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+  const qn=v=>'"'+String(v??'').replace(/"/g,'""')+'"', q=v=>qn(trText(String(v??'')));
   const rows=[['日期','星期','打卡人次','自','帮','打卡人数','自动加分'].map(q).join(',')].concat(dailyStats().slice().reverse().map(d=>[d.date,'星期'+'日一二三四五六'[new Date(parseD(d.date)).getDay()],d.n,d.self,d.staff,d.u,d.pts].map(q).join(',')));
   rows.push('',q(HOW_LEGEND),['日期','时间','会员','电话','卡','自/帮','加分'].map(q).join(','));
-  checkinRows().forEach(r=>rows.push([r.date,r.time,r.name,"'"+r.phone,r.card,r.how,r.pts].map(q).join(',')));
+  checkinRows().forEach(r=>rows.push([q(r.date),q(r.time),qn(r.name),qn("'"+r.phone),q(r.card),q(r.how),q(r.pts)].join(',')));
   const blob=new Blob(['\ufeff'+rows.join('\r\n')],{type:'text/csv;charset=utf-8'});
   const u=URL.createObjectURL(blob), a=document.createElement('a'); a.href=u; a.download=fileTag()+'-每日打卡-'+rangeOf().from+'至'+rangeOf().to+'.csv'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),5000);
   toast('Excel 已下载');
@@ -1012,11 +1063,11 @@ function reportRows(){
 function exportPdf(){
   const rows=reportRows(), d=dt(Date.now());
   const st=k=>({active:'进行中',done:'已用完',expired:'已过期'})[k]||'';
-  const html=`<h1>${esc(brand().name)} · 会员报表</h1><div class="meta">导出日期：${d}　·　会员 ${rows.length} 人　·　NCP 卡 ${S.cards.length} 张（未付款 ${S.cards.filter(c=>!c.paid).length} 张）　·　累计打卡 ${S.checkins.length} 次</div>
+  const html=`<h1>${nt(brand().name)} · 会员报表</h1><div class="meta">导出日期：${d}　·　会员 ${rows.length} 人　·　NCP 卡 ${S.cards.length} 张（未付款 ${S.cards.filter(c=>!c.paid).length} 张）　·　累计打卡 ${S.checkins.length} 次</div>
   <h2>会员总表</h2><table><thead><tr><th>#</th><th>名字</th><th>电话</th><th>等级</th><th>积分</th><th>买过几张卡</th><th>未付款</th><th>目前的卡</th><th>剩余次数</th><th>累计打卡</th><th>最近打卡</th><th>加入日期</th></tr></thead><tbody>
-  ${rows.map(({m,st:x},i)=>`<tr><td>${i+1}</td><td>${esc(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.tier)}</td><td>${fmt(x.pts)}</td><td>${x.nCards}</td><td>${unpaidOf(m.phone)||'—'}</td><td>${x.cur?'第 '+cardNo(x.cur)+' 张 · '+esc(x.cur.name)+'（'+st(x.curInfo.status)+'）':'—'}</td><td>${x.curInfo?x.curInfo.left:'—'}</td><td>${x.nCheckins}</td><td>${x.last||'—'}</td><td>${esc(m.joined||'')}</td></tr>`).join('')}</tbody></table>
+  ${rows.map(({m,st:x},i)=>`<tr><td>${i+1}</td><td>${nt(m.name)}</td><td>${esc(m.phone)}</td><td>${esc(m.tier)}</td><td>${fmt(x.pts)}</td><td>${x.nCards}</td><td>${unpaidOf(m.phone)||'—'}</td><td>${x.cur?'第 '+cardNo(x.cur)+' 张 · '+esc(x.cur.name)+'（'+st(x.curInfo.status)+'）':'—'}</td><td>${x.curInfo?x.curInfo.left:'—'}</td><td>${x.nCheckins}</td><td>${x.last||'—'}</td><td>${esc(m.joined||'')}</td></tr>`).join('')}</tbody></table>
   <h2>每位会员的卡记录</h2>
-  ${rows.filter(r=>r.st.nCards).map(({m,st:x})=>`<div class="mb"><b>${esc(m.name)}（${esc(m.phone)}）</b><table><thead><tr><th>第几张</th><th>配套</th><th>开卡日期</th><th>总次数</th><th>已打卡</th><th>剩余</th><th>状态</th><th>付款</th><th>付款日期</th><th>金额</th><th>最后一次打卡</th></tr></thead><tbody>
+  ${rows.filter(r=>r.st.nCards).map(({m,st:x})=>`<div class="mb"><b>${nt(m.name)}（${esc(m.phone)}）</b><table><thead><tr><th>第几张</th><th>配套</th><th>开卡日期</th><th>总次数</th><th>已打卡</th><th>剩余</th><th>状态</th><th>付款</th><th>付款日期</th><th>金额</th><th>最后一次打卡</th></tr></thead><tbody>
     ${x.cards.map((c,i)=>{const k=cardInfo(c);const last=k.ins[k.ins.length-1];return `<tr><td>第 ${i+1} 张</td><td>${esc(c.name)}</td><td>${esc(c.start)}</td><td>${+c.total||0}</td><td>${k.used}</td><td>${k.left}</td><td>${st(k.status)}</td><td>${c.paid?'已付款':'<b>未付款</b>'}</td><td>${c.paid?esc(c.paidAt||''):'—'}</td><td>${c.paidAmount?'RM'+esc(c.paidAmount):'—'}</td><td>${last?last.date:'—'}</td></tr>`}).join('')}</tbody></table></div>`).join('')||'<p>还没有任何 NCP 卡记录。</p>'}`;
   const pa=document.getElementById('printArea'); pa.innerHTML=html; pa.hidden=false;
   const done=()=>{ pa.hidden=true; pa.innerHTML=''; window.removeEventListener('afterprint',done); };
@@ -1025,23 +1076,24 @@ function exportPdf(){
   toast('在打印画面选择「另存为 PDF / Save as PDF」');
 }
 function exportCsv(){
-  const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+  const qn=v=>'"'+String(v??'').replace(/"/g,'""')+'"', q=v=>qn(trText(String(v??'')));
   const head=['名字','电话','等级','积分','买过几张卡','未付款卡','目前第几张','目前配套','剩余次数','累计打卡','最近打卡','加入日期'];
-  const lines=[head.map(q).join(',')].concat(reportRows().map(({m,st:x})=>[m.name,"'"+m.phone,m.tier,x.pts,x.nCards,unpaidOf(m.phone),x.cur?cardNo(x.cur):'',x.cur?x.cur.name:'',x.curInfo?x.curInfo.left:'',x.nCheckins,x.last,m.joined||''].map(q).join(',')));
+  const lines=[head.map(q).join(',')].concat(reportRows().map(({m,st:x})=>[qn(m.name),qn("'"+m.phone)].concat([m.tier,x.pts,x.nCards,unpaidOf(m.phone),x.cur?cardNo(x.cur):'',x.cur?x.cur.name:'',x.curInfo?x.curInfo.left:'',x.nCheckins,x.last,m.joined||''].map(q)).join(',')));
   const card=['电话','名字','第几张','配套','开卡日期','总次数','已打卡','剩余','状态','付款','付款日期','金额 RM','付款方式','备注'];
   const cl=[card.map(q).join(',')];
-  reportRows().forEach(({m,st:x})=>x.cards.forEach((c,i)=>{const k=cardInfo(c); cl.push(["'"+m.phone,m.name,i+1,c.name,c.start,+c.total||0,k.used,k.left,({active:'进行中',done:'已用完',expired:'已过期'})[k.status],c.paid?'已付款':'未付款',c.paid?c.paidAt:'',c.paidAmount||'',c.payMethod||'',c.paidNote||''].map(q).join(','));}));
+  reportRows().forEach(({m,st:x})=>x.cards.forEach((c,i)=>{const k=cardInfo(c); cl.push([qn("'"+m.phone),qn(m.name)].concat([i+1,c.name,c.start,+c.total||0,k.used,k.left,({active:'进行中',done:'已用完',expired:'已过期'})[k.status],c.paid?'已付款':'未付款',c.paid?c.paidAt:'',c.paidAmount||'',c.payMethod||'',c.paidNote||''].map(q)).join(','));}));
   const blob=new Blob(['\ufeff'+lines.join('\r\n')+'\r\n\r\n'+cl.join('\r\n')],{type:'text/csv;charset=utf-8'});
   const u=URL.createObjectURL(blob), a=document.createElement('a'); a.href=u; a.download=fileTag()+'-会员报表-'+dt(Date.now())+'.csv'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),5000);
   toast('Excel 报表已下载');
 }
 
 /* ---------- boot ---------- */
-readHash(); window.addEventListener('hashchange',()=>{readHash(); render();});
+document.documentElement.lang=LANG; trWatch();
+readHash(); window.addEventListener('hashchange',()=>{readHash(); render(); if(location.hash==='#admin'){ if(isAdmin){ view='admin'; render(); } else document.querySelector('[data-act="adminLogin"]')?.click(); }});
 async function boot(){
   try{ await refresh();
     if(location.hash==='#admin'){ if(isAdmin){ view='admin'; render(); } else document.querySelector('[data-act="adminLogin"]')?.click(); } }
-  catch(e){ document.getElementById('app').innerHTML=`<div class="load"><div style="font-family:var(--f-display);font-size:26px;color:var(--wine)">${esc(brand().name)}</div><div>${esc(e.message)}</div><button class="btn" onclick="boot()">再试一次</button></div>`; }
+  catch(e){ document.getElementById('app').innerHTML=`<div class="load"><div style="font-family:var(--f-display);font-size:26px;color:var(--wine)">${nt(brand().name)}</div><div>${esc(e.message)}</div><button class="btn" onclick="boot()">再试一次</button></div>`; }
 }
 boot();
 setInterval(()=>{ if(document.visibilityState==='visible'&&!document.getElementById('layer').innerHTML&&!document.activeElement?.matches('input,textarea,select')) refresh().catch(()=>{}); },30000);
