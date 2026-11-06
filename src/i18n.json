@@ -2050,5 +2050,161 @@
 "{0}-{1} 六": [
 "{0}-{1} Sat",
 "{0}-{1} Sab"
+],
+"通知": [
+"Notifications",
+"Notifikasi"
+],
+"手机通知已开启": [
+"Phone notifications are on",
+"Notifikasi telefon dihidupkan"
+],
+"兑换结果、卡快用完、俱乐部公告会直接通知你。": [
+"We'll notify you about redemptions, cards running low and club news.",
+"Kami akan maklumkan tentang penebusan, kad hampir habis dan berita kelab."
+],
+"关闭": [
+"Turn off",
+"Matikan"
+],
+"通知已被关闭": [
+"Notifications are blocked",
+"Notifikasi disekat"
+],
+"请到手机的「设定 → 通知」，允许这个 App 发通知。": [
+"Go to your phone's Settings → Notifications and allow this app.",
+"Pergi ke Tetapan → Notifikasi pada telefon dan benarkan app ini."
+],
+"想在 iPhone 收到通知？": [
+"Want notifications on iPhone?",
+"Mahu notifikasi di iPhone?"
+],
+"先按 Safari 下方的分享按钮 → 「加入主画面」，再从主画面打开 App，就会看到「开启手机通知」的按钮。": [
+"Tap Safari's Share button → “Add to Home Screen”, then open the app from your home screen to see the “Turn on phone notifications” button.",
+"Tekan butang Kongsi Safari → “Tambah ke Skrin Utama”, kemudian buka app dari skrin utama untuk melihat butang “Hidupkan notifikasi telefon”."
+],
+"开启手机通知": [
+"Turn on phone notifications",
+"Hidupkan notifikasi telefon"
+],
+"开启": [
+"Turn on",
+"Hidupkan"
+],
+"没有开启通知。你之后可以在手机设定里允许。": [
+"Notifications not turned on. You can allow them later in your phone settings.",
+"Notifikasi tidak dihidupkan. Anda boleh benarkan kemudian dalam tetapan telefon."
+],
+"通知还没准备好": [
+"Notifications are not ready yet",
+"Notifikasi belum sedia"
+],
+"开启通知失败：": [
+"Could not turn on notifications: ",
+"Gagal hidupkan notifikasi: "
+],
+"手机通知已关闭": [
+"Phone notifications turned off",
+"Notifikasi telefon dimatikan"
+],
+"还没有通知。": [
+"No notifications yet.",
+"Belum ada notifikasi."
+],
+"你有 {0} 则新通知": [
+"You have {0} new notifications",
+"Anda ada {0} notifikasi baharu"
+],
+"已拒绝，已通知会员": [
+"Rejected. Member notified.",
+"Ditolak. Ahli dimaklumkan."
+],
+"已通过，已通知会员": [
+"Approved. Member notified.",
+"Diluluskan. Ahli dimaklumkan."
+],
+"已通过，新卡已开通，已通知会员": [
+"Approved. New card opened. Member notified.",
+"Diluluskan. Kad baharu dibuka. Ahli dimaklumkan."
+],
+"公告已删除": [
+"Announcement deleted",
+"Pengumuman dipadam"
+],
+"发公告给全部会员": [
+"Send an announcement to all members",
+"Hantar pengumuman kepada semua ahli"
+],
+"位会员（{0} 部手机）开启了手机通知，会马上收到；其他会员打开 App 时，会在右上角的 🔔 看到。": [
+" members ({0} phones) have notifications on and get it right away; other members see it under 🔔 at the top right when they open the app.",
+" ahli ({0} telefon) menghidupkan notifikasi dan terima serta-merta; ahli lain akan melihatnya di 🔔 kanan atas apabila membuka app."
+],
+"标题": [
+"Title",
+"Tajuk"
+],
+"内容": [
+"Message",
+"Mesej"
+],
+"例如：本周六 Mega 活动": [
+"e.g. Mega event this Saturday",
+"cth. Acara Mega Sabtu ini"
+],
+"English / Bahasa Melayu（选填）": [
+"English / Bahasa Melayu (optional)",
+"English / Bahasa Melayu (pilihan)"
+],
+"内容（English）": [
+"Message (English)",
+"Mesej (English)"
+],
+"内容（Bahasa Melayu）": [
+"Message (Bahasa Melayu)",
+"Mesej (Bahasa Melayu)"
+],
+"选了英文或马来文的会员会收到对应的版本；没填就收到中文。": [
+"Members using English or Malay get that version; if blank they get the Chinese one.",
+"Ahli yang guna English atau Bahasa Melayu terima versi itu; jika kosong mereka terima versi Cina."
+],
+"发送给全部会员": [
+"Send to all members",
+"Hantar kepada semua ahli"
+],
+"另外，申请通过或被拒绝、NCP 卡只剩 {0} 次和用完的时候，系统会自动通知那位会员。": [
+"The app also notifies a member automatically when a request is approved or rejected, and when their NCP card has {0} visits left or is used up.",
+"App juga memaklumkan ahli secara automatik apabila permohonan diluluskan atau ditolak, dan apabila kad NCP tinggal {0} lawatan atau sudah habis."
+],
+"已发的公告": [
+"Sent announcements",
+"Pengumuman dihantar"
+],
+"还没有发过公告。": [
+"No announcements sent yet.",
+"Belum ada pengumuman dihantar."
+],
+"请输入公告内容": [
+"Please enter the announcement",
+"Sila masukkan pengumuman"
+],
+"正在发送… {0}/{1}": [
+"Sending… {0}/{1}",
+"Menghantar… {0}/{1}"
+],
+"公告已发出，{0} 部手机收到通知": [
+"Announcement sent. {0} phones notified.",
+"Pengumuman dihantar. {0} telefon dimaklumkan."
+],
+"公告已发出，会员打开 App 就会看到": [
+"Announcement sent. Members will see it when they open the app.",
+"Pengumuman dihantar. Ahli akan melihatnya apabila membuka app."
+],
+"找不到这则公告": [
+"Announcement not found",
+"Pengumuman tidak dijumpai"
+],
+"通知设定不正确": [
+"Notification settings are not valid",
+"Tetapan notifikasi tidak sah"
 ]
 }

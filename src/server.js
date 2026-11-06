@@ -30,7 +30,7 @@ async function tierOf(s, m) {
   const score = (+m.prior10 || 0) + cs.filter(c => kindOf(c) === '10+1').length + 3 * ((+m.prior30 || 0) + cs.filter(c => kindOf(c) === '30').length);
   return score > TIER_RULE.platinum ? 'Platinum' : score > TIER_RULE.gold ? 'Gold' : 'Silver';
 }
-const ADMIN_COLS = ['rewards', 'tasks', 'members', 'cards', 'checkins', 'requests', 'ledger'];
+const ADMIN_COLS = ['rewards', 'tasks', 'members', 'cards', 'checkins', 'requests', 'ledger', 'notices'];
 const CUSTOMER_DAYS = 365, ADMIN_DAYS = 365; // stays signed in; renewed on every visit
 
 /* ---------------- helpers ---------------- */
@@ -91,6 +91,62 @@ async function init(env) {
     stmts.push(s.putStmt('meta', 'seed', { at: Date.now() }));
     for (let i = 0; i < stmts.length; i += 40) await env.DB.batch(stmts.slice(i, i + 40));
   }
+  if (!(await s.get('meta', 'vapid'))) await s.put('meta', 'vapid', await makeVapidKeys());
+}
+
+/* ---------------- notifications ---------------- */
+__PUSHLIB__
+const PUSH_BATCH = 10;
+const cardLabel = (c, lang) => {
+  const k = kindOf(c);
+  if (k === '30') return { zh: '30 天 Program', en: '30-Day Program', ms: 'Program 30 Hari' }[lang];
+  if (k === '10+1') return '10+1 Program';
+  if (k === 'daily') return 'Daily Pass';
+  return c.name || 'NCP';
+};
+// Text for automatic notices in the three languages.
+function noticeText(kind, v) {
+  v = { title: '', points: 0, left: 0, ...v, card: { zh: '', en: '', ms: '', ...(v && v.card) } };
+  const T = {
+    redeem: { zh: ['兑换已通过 🎁', `你的「${v.title}」兑换已通过，请到店领取礼物。`], en: ['Redemption approved 🎁', `Your “${v.title}” redemption is approved. Please collect your gift at the club.`], ms: ['Penebusan diluluskan 🎁', `Penebusan “${v.title}” anda telah diluluskan. Sila ambil hadiah di kelab.`] },
+    earn: { zh: ['积分已到账 ⭐', `「${v.title}」+${v.points} 分已加入你的账户。`], en: ['Points added ⭐', `“${v.title}” +${v.points} points have been added to your account.`], ms: ['Mata ditambah ⭐', `“${v.title}” +${v.points} mata telah ditambah ke akaun anda.`] },
+    renew: { zh: ['新卡已开通 ✅', `你的 ${v.card.zh} 已开通，可以继续扫码打卡了。`], en: ['New card opened ✅', `Your ${v.card.en} is ready. You can check in again.`], ms: ['Kad baharu dibuka ✅', `${v.card.ms} anda sudah dibuka. Anda boleh daftar masuk semula.`] },
+    reject: { zh: ['申请未通过', `你的「${v.title}」申请未通过，有疑问请联系教练。`], en: ['Request not approved', `Your request for “${v.title}” was not approved. Please ask your coach if you have questions.`], ms: ['Permohonan tidak diluluskan', `Permohonan “${v.title}” anda tidak diluluskan. Sila tanya jurulatih jika ada soalan.`] },
+    low: { zh: ['NCP 卡快用完了', `你的 ${v.card.zh} 只剩 ${v.left} 次，记得续卡哦！`], en: ['Your NCP card is running low', `Your ${v.card.en} has only ${v.left} visits left. Remember to renew!`], ms: ['Kad NCP hampir habis', `${v.card.ms} anda tinggal ${v.left} lawatan sahaja. Jangan lupa perbaharui!`] },
+    used: { zh: ['NCP 卡已用完', `你的 ${v.card.zh} 已经用完，打开 App 申请续卡。`], en: ['Your NCP card is used up', `Your ${v.card.en} is used up. Open the app to renew.`], ms: ['Kad NCP sudah habis', `${v.card.ms} anda sudah habis. Buka app untuk perbaharui.`] }
+  }[kind];
+  const pick = l => ({ title: T[l][0], body: T[l][1] });
+  return { zh: pick('zh'), en: pick('en'), ms: pick('ms') };
+}
+const msgFor = (n, lang) => {
+  const t = (lang !== 'zh' && n[lang] && (n[lang].title || n[lang].body)) ? n[lang] : n;
+  return { title: t.title || n.title, body: t.body || n.body, url: '/#notices', tag: 'n-' + n.id };
+};
+async function pushTo(s, subs, notice) {
+  if (!subs.length) return { sent: 0, failed: 0, gone: 0 };
+  const vapid = await s.get('meta', 'vapid'); if (!vapid) return { sent: 0, failed: subs.length, gone: 0 };
+  const sender = await makeSenderKey(), cache = {};
+  let sent = 0, failed = 0, gone = 0;
+  for (const sub of subs) {
+    const r = await sendPush(sub, msgFor(notice, sub.lang || 'zh'), vapid, s.origin, sender, cache);
+    if (r === 'ok') sent++; else { failed++; if (r === 'gone') { gone++; await s.del('pushsubs', sub.id); } }
+  }
+  return { sent, failed, gone };
+}
+// Saves an in-app notice for one member and sends it to their phones. Never throws.
+async function notifyMember(s, phone, kind, vars) {
+  try {
+    const t = noticeText(kind, vars), id = uid();
+    const notice = { id, phone, kind, title: t.zh.title, body: t.zh.body, en: t.en, ms: t.ms, ts: Date.now() };
+    await s.put('notices', id, notice);
+    await pushTo(s, (await s.where('pushsubs', 'phone', phone)).slice(0, 5), notice);
+  } catch (e) { /* a failed notification must not undo the action */ }
+}
+const later = (s, p) => { if (s.ctx && s.ctx.waitUntil) s.ctx.waitUntil(p); else return p; };
+async function noticesFor(s, phone) {
+  const all = await s.where('notices', 'phone', '*');
+  const mine = phone ? await s.where('notices', 'phone', phone) : [];
+  return all.concat(mine).sort((a, b) => b.ts - a.ts).slice(0, 40);
 }
 
 /* ---------------- domain helpers ---------------- */
@@ -132,8 +188,8 @@ async function newSession(env, phone, admin) {
 }
 
 /* ---------------- routes ---------------- */
-async function handleApi(req, env, path) {
-  const s = new Store(env.DB); s.env = env;
+async function handleApi(req, env, path, ctx) {
+  const s = new Store(env.DB); s.env = env; s.ctx = ctx; s.origin = new URL(req.url).origin;
   const body = req.method === 'POST' ? await req.json().catch(() => ({})) : {};
   const who = await session(env, req);
 
@@ -145,8 +201,11 @@ async function handleApi(req, env, path) {
       for (const c of ['members', 'cards', 'checkins', 'requests', 'ledger']) data[c] = await s.all(c);
       const pins = new Set((await s.all('pins')).map(p => p.id));
       data.members = data.members.map(m => ({ ...m, hasPin: pins.has(m.id) }));
+      data.notices = (await s.where('notices', 'phone', '*')).sort((a, b) => b.ts - a.ts).slice(0, 60);
+      const pc = await env.DB.prepare("SELECT COUNT(*) AS n, COUNT(DISTINCT json_extract(data, '$.phone')) AS m FROM docs WHERE col = 'pushsubs'").first();
+      data.push = { devices: pc ? pc.n : 0, members: pc ? pc.m : 0 };
       let me = null;
-      if (who.phone) me = who.phone;
+      if (who.phone) { me = who.phone; data.myNotices = await noticesFor(s, who.phone); }
       return json({ data, admin: true, me });
     }
     const { qrKey, ...publicSettings } = settings;
@@ -159,7 +218,25 @@ async function handleApi(req, env, path) {
         for (const c of ['cards', 'checkins', 'requests', 'ledger']) data[c] = await s.where(c, 'phone', who.phone);
       }
     }
+    data.notices = await noticesFor(s, me);
     return json({ data, admin: false, me });
+  }
+
+  if (path === 'push/key') {
+    const v = await s.get('meta', 'vapid');
+    return json({ key: v ? v.pub : null });
+  }
+  if (path === 'push/subscribe') {
+    if (!who.phone) return fail('请先登入', 'no_login', 401);
+    const ep = String(body.endpoint || ''), k = body.keys || {};
+    if (!/^https:\/\//.test(ep) || ep.length > 1000 || !k.p256dh || !k.auth) return fail('通知设定不正确', 'bad_sub');
+    const id = (await sha(ep)).slice(0, 32);
+    await s.put('pushsubs', id, { phone: who.phone, endpoint: ep, p256dh: String(k.p256dh).slice(0, 200), auth: String(k.auth).slice(0, 100), lang: ['zh', 'en', 'ms'].includes(body.lang) ? body.lang : 'zh', ts: Date.now() });
+    return json({ ok: true });
+  }
+  if (path === 'push/unsubscribe') {
+    const ep = String(body.endpoint || ''); if (ep) await s.del('pushsubs', (await sha(ep)).slice(0, 32));
+    return json({ ok: true });
   }
 
   if (path === 'login/check') {
@@ -309,7 +386,33 @@ async function handleApi(req, env, path) {
         await addLedger(s, r.phone, +r.points, r.title);
       }
       await s.put('requests', r.id, { ...r, status: 'approved', doneAt: Date.now() });
+      const card = { zh: cardLabel({ kind: r.kind, name: r.cardName }, 'zh'), en: cardLabel({ kind: r.kind, name: r.cardName }, 'en'), ms: cardLabel({ kind: r.kind, name: r.cardName }, 'ms') };
+      await later(s, notifyMember(s, r.phone, r.type === 'renew' ? 'renew' : r.type === 'redeem' ? 'redeem' : 'earn', { title: r.title, points: r.points, card }));
       return json({ ok: true });
+    }
+    if (act === 'reject') {
+      const r = await s.get('requests', body.id);
+      if (!r || r.status !== 'pending') return fail('这个申请已经处理过了');
+      await s.put('requests', r.id, { ...r, status: 'rejected', doneAt: Date.now() });
+      await later(s, notifyMember(s, r.phone, 'reject', { title: r.type === 'renew' ? (r.cardName || r.title) : r.title }));
+      return json({ ok: true });
+    }
+    if (act === 'notice') {
+      const clip = (x, n) => String(x || '').trim().slice(0, n);
+      const n = { phone: '*', kind: 'broadcast', title: clip(body.title, 80), body: clip(body.body, 600), en: { title: clip(body.en_title, 80), body: clip(body.en_body, 600) }, ms: { title: clip(body.ms_title, 80), body: clip(body.ms_body, 600) }, ts: Date.now() };
+      if (!n.title && !n.body) return fail('请输入公告内容');
+      if (!n.title) n.title = n.body.slice(0, 30);
+      const id = uid(); await s.put('notices', id, n);
+      const c = await env.DB.prepare("SELECT COUNT(*) AS n FROM docs WHERE col = 'pushsubs'").first();
+      return json({ ok: true, id, total: c ? c.n : 0 });
+    }
+    if (act === 'pushbatch') {
+      const n = await s.get('notices', body.id); if (!n) return fail('找不到这则公告');
+      const off = Math.max(0, parseInt(body.offset, 10) || 0);
+      const rows = await env.DB.prepare("SELECT id, data FROM docs WHERE col = 'pushsubs' ORDER BY id LIMIT ? OFFSET ?").bind(PUSH_BATCH, off).all();
+      const subs = rows.results.map(x => ({ id: x.id, ...JSON.parse(x.data) }));
+      const r = await pushTo(s, subs, n);
+      return json({ ok: true, ...r, next: off + subs.length - r.gone, done: subs.length < PUSH_BATCH });
     }
     return fail('未知的操作');
   }
@@ -328,13 +431,35 @@ async function doCheckin(s, card, force, by) {
   const m = await s.get('members', card.phone);
   const points = DAILY_PTS[await tierOf(s, m)] || 10;
   await s.put('checkins', `${card.id}_${today()}_${uid()}`, { cardId: card.id, phone: card.phone, date: today(), ts: Date.now(), by, points });
-  return json({ ok: true, points, left: left - 1 });
+  const nowLeft = left - 1;
+  if (nowLeft === 2 || nowLeft === 0) {
+    const lab = { zh: cardLabel(card, 'zh'), en: cardLabel(card, 'en'), ms: cardLabel(card, 'ms') };
+    await later(s, notifyMember(s, card.phone, nowLeft ? 'low' : 'used', { card: lab, left: nowLeft }));
+  }
+  return json({ ok: true, points, left: nowLeft });
 }
+
+// Service worker: shows push notifications and opens the app when one is tapped.
+const SW_JS = `self.addEventListener('install', e => self.skipWaiting());
+self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
+self.addEventListener('push', e => {
+  let d = {};
+  try { d = e.data ? e.data.json() : {}; } catch (_) { d = { title: e.data ? e.data.text() : '' }; }
+  e.waitUntil(self.registration.showNotification(d.title || '🔔', { body: d.body || '', icon: '/icon-192.png', badge: '/icon-192.png', tag: d.tag, data: { url: d.url || '/#notices' } }));
+});
+self.addEventListener('notificationclick', e => {
+  e.notification.close();
+  const url = (e.notification.data && e.notification.data.url) || '/#notices';
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
+    for (const c of list) { if ('focus' in c) { c.postMessage({ type: 'open-notices' }); return c.focus(); } }
+    return self.clients.openWindow(url);
+  }));
+});`;
 
 function b64ToBytes(b64) { const bin = atob(b64); const u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; }
 
 export default {
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
     const url = new URL(req.url);
     try {
       if (!ready) ready = init(env).catch(e => { ready = null; throw e; });
@@ -359,7 +484,8 @@ export default {
         if (!r) return new Response('Not found', { status: 404 });
         return new Response(b64ToBytes(r.data), { headers: { 'content-type': r.type, 'cache-control': 'public, max-age=31536000, immutable' } });
       }
-      if (url.pathname.startsWith('/api/')) return await handleApi(req, env, url.pathname.slice(5));
+      if (url.pathname.startsWith('/api/')) return await handleApi(req, env, url.pathname.slice(5), ctx);
+      if (url.pathname === '/sw.js') return new Response(SW_JS, { headers: { 'content-type': 'application/javascript; charset=utf-8', 'cache-control': 'no-cache' } });
       const b = brandOf((await new Store(env.DB).get('settings', 'home')) || {});
       const page = HTML.replaceAll('{{NAME}}', escHtml(b.name)).replaceAll('{{SUB}}', escHtml(b.sub)).replaceAll('{{SHORT}}', escHtml(b.short));
       return new Response(page, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-cache' } });
