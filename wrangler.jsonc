@@ -6,5 +6,7 @@
   "d1_databases": [
     { "binding": "DB", "database_name": "nc-loyalty-db", "database_id": "7c1e2b3a-4d5f-4a6b-9c8d-0e1f2a3b4c5d" }
   ],
+  // 21 天课程（course/index.html + fig/*.jpg）
+  "assets": { "directory": "./public" },
   "observability": { "enabled": true }
 }
