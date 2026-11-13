@@ -4,6 +4,10 @@
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/qinanteoh/nc-loyalty-template)
 
+## 📘 教学
+- **还没有 App 的新伙伴**：[新伙伴设定教学](SETUP-GUIDE.md)，一步一步建立你自己的 App
+- **已经有 App 的伙伴**：[老伙伴更新教学](UPDATE-GUIDE.md)，一步一步更新到最新版本（资料不会动）
+
 ## 你需要准备
 - 一个 **GitHub** 账号（免费）：github.com
 - 一个 **Cloudflare** 账号（免费）：dash.cloudflare.com
