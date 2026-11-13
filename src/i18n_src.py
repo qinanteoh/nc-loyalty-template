@@ -385,4 +385,5 @@ T = [
 ("请等店里核准你的会员资料，教练帮你开卡后，就可以扫码打卡累积积分。", "Please wait for the shop to approve you. Once your coach opens a card for you, you can scan to check in and collect points.", "Sila tunggu kedai meluluskan anda. Selepas jurulatih membuka kad untuk anda, anda boleh imbas untuk daftar masuk dan kumpul mata."),
 ("{0}，欢迎！", "Welcome, {0}!", "Selamat datang, {0}!"),
 ("你还没有 NCP 卡。请找教练帮你开卡，开卡后就可以扫码打卡累积积分。", "You don't have an NCP card yet. Ask your coach to open one, then you can scan to check in and collect points.", "Anda belum ada kad NCP. Minta jurulatih buka kad, kemudian anda boleh imbas untuk daftar masuk dan kumpul mata."),
+("导出 PDF / 分享", "Export PDF / share", "Eksport PDF / kongsi"),
 ]
