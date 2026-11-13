@@ -1,0 +1,449 @@
+{
+ "day": 16,
+ "zh": {
+  "t": "补水与细胞健康",
+  "en": "Hydration & Cellular Health",
+  "tag": "营养",
+  "lead": "喝水不只是解渴，水分是细胞运作的环境。",
+  "intro": "第 2 天我们知道了要喝够水。今天更进一步：怎么判断自己喝得够不够，以及水分和细胞健康的关系。",
+  "points": [
+   {
+    "h": "补水三问：喝多少？为什么？喝什么？",
+    "p": "每个人的需要不同，但记住这三个重点：",
+    "list": [
+     "喝多少：建议每天 8–10 杯水（以 400 毫升一杯计算，约 3–4 公升），让身体保持最佳状态",
+     "为什么：缺水会引起疲倦、便秘、皮肤干燥、偏头痛和肌肉痉挛",
+     "喝什么：除了白开水，康宝莱的芦荟浓缩饮和洛神花草本茶，加水冲泡后也能帮助补充每天需要的水分"
+    ],
+    "after": "觉得白开水没味道、喝不下？冲一杯芦荟饮或草本茶，热量低、味道清爽，更容易喝够 8–10 杯。",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "帮你喝够水的好帮手",
+      "items": [
+       [
+        "aloe",
+        "芦荟浓缩饮",
+        "低卡路里",
+        "加水冲泡"
+       ],
+       [
+        "tea",
+        "洛神花草本茶",
+        "低卡路里",
+        "冷热都可以"
+       ],
+       [
+        "s_water",
+        "白开水",
+        "0 卡路里",
+        "每天 8–10 杯"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "每天 8–10 杯（3–4 公升）",
+    "p": "无论是平时活动还是运动时，水对身体都非常重要。",
+    "list": [
+     "每天 8–10 杯，约 3–4 公升",
+     "或每公斤体重 40–50 毫升",
+     "运动流汗时要喝更多"
+    ]
+   },
+   {
+    "h": "缺水的后果",
+    "p": "缺乏水分可能引起头痛、肌肉痉挛、肌肉疲劳、便秘、皮肤干燥，也会常常觉得疲倦。",
+    "viz": [
+     {
+      "type": "bubbles",
+      "title": "缺乏水分的后果",
+      "items": [
+       "头痛",
+       "肌肉痉挛",
+       "肌肉疲劳",
+       "便秘",
+       "皮肤干燥",
+       "常感疲倦"
+      ]
+     }
+    ]
+   },
+   {
+    "h": "细胞内外的平衡",
+    "p": "细胞内外的水分和电解质（钠、钾、镁）保持平衡，肌肉、神经和能量代谢才能正常运作。"
+   },
+   {
+    "h": "流汗多要补电解质",
+    "p": "运动或在炎热天气下大量流汗时，除了补水，也要补充电解质，避免抽筋和疲倦。"
+   },
+   {
+    "h": "用尿液颜色判断",
+    "p": "尿液接近淡黄色，代表水分大致充足；颜色越深，越需要喝水。（服用某些维他命可能让尿液变黄，属正常现象。）"
+   },
+   {
+    "h": "可以补水的饮品",
+    "p": "白开水最好，花草茶、无糖茶也可以帮助补水。含糖饮料不算，反而会多出热量。"
+   },
+   {
+    "h": "喝水的好时机",
+    "p": "起床后、每餐前、运动前后、觉得疲倦或想吃零食时，都是喝水的好时机。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "swatch",
+    "title": "用尿液颜色检查水分",
+    "items": [
+     [
+      "#f6f2c8",
+      "水分充足"
+     ],
+     [
+      "#f1e58f",
+      "水分充足"
+     ],
+     [
+      "#e9cf55",
+      "可以多喝一点"
+     ],
+     [
+      "#d9ad2d",
+      "需要喝水"
+     ],
+     [
+      "#b9831d",
+      "明显缺水，马上喝水"
+     ]
+    ],
+    "note": "仅供日常参考。颜色异常或持续偏深，请咨询医生。"
+   }
+  ],
+  "myth": {
+   "m": "冬天或在冷气房里不流汗，就不用喝那么多水。",
+   "f": "呼吸和皮肤每天都会流失水分，冷气房里空气干燥，同样需要补水。"
+  },
+  "fact": {
+   "num": "淡黄",
+   "unit": "",
+   "text": "尿液接近淡黄色，代表身体水分大致充足。"
+  },
+  "tips": [
+   "把水瓶放在看得见的地方",
+   "在水里加柠檬片或薄荷叶",
+   "每餐前先喝一杯水"
+  ],
+  "task": "今天把一杯含糖饮料换成白开水或无糖茶，并留意尿液颜色。",
+  "share": "你有认识谁常常觉得疲倦、头痛，却很少喝水的吗？",
+  "philo": "充足的水分，是均衡营养不可少的一部分："
+ },
+ "en": {
+  "t": "Hydration and cell health",
+  "en": "Hydration & Cellular Health",
+  "tag": "Nutrition",
+  "lead": "Drinking water isn't just about thirst — water is the environment your cells work in.",
+  "intro": "On Day 2 we learned to drink enough water. Today we go further: how to tell whether you're drinking enough, and how water relates to cell health.",
+  "points": [
+   {
+    "h": "Three hydration questions: how much? why? what?",
+    "p": "Everyone's needs differ, but remember these three points:",
+    "list": [
+     "How much: about 8–10 cups of water a day (at 400 ml a cup, about 3–4 litres) to keep your body at its best",
+     "Why: lack of water causes fatigue, constipation, dry skin, migraines and muscle cramps",
+     "What: besides plain water, Herbalife's aloe concentrate and hibiscus herbal tea, mixed with water, also help you get the water you need each day"
+    ],
+    "after": "Find plain water too bland to drink? Make an aloe drink or herbal tea — low in calories and refreshing, making 8–10 cups easier.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Helpers for drinking enough water",
+      "items": [
+       [
+        "aloe",
+        "Aloe concentrate",
+        "Low calorie",
+        "Mix with water"
+       ],
+       [
+        "tea",
+        "Hibiscus herbal tea",
+        "Low calorie",
+        "Hot or cold"
+       ],
+       [
+        "s_water",
+        "Plain water",
+        "0 calories",
+        "8–10 cups a day"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "8–10 cups a day (3–4 litres)",
+    "p": "Whether in daily activity or during exercise, water is vital for your body.",
+    "list": [
+     "8–10 cups a day, about 3–4 litres",
+     "Or 40–50 ml per kg of body weight",
+     "Drink more when you sweat during exercise"
+    ]
+   },
+   {
+    "h": "Effects of dehydration",
+    "p": "Lack of water can cause headaches, muscle cramps, muscle fatigue, constipation, dry skin and frequent tiredness.",
+    "viz": [
+     {
+      "type": "bubbles",
+      "title": "Effects of lack of water",
+      "items": [
+       "Headache",
+       "Muscle cramps",
+       "Muscle fatigue",
+       "Constipation",
+       "Dry skin",
+       "Often tired"
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Balance inside and outside cells",
+    "p": "Muscles, nerves and energy metabolism work properly only when water and electrolytes (sodium, potassium, magnesium) inside and outside cells are balanced."
+   },
+   {
+    "h": "Replace electrolytes when you sweat a lot",
+    "p": "When you sweat heavily during exercise or hot weather, replace electrolytes as well as water to avoid cramps and fatigue."
+   },
+   {
+    "h": "Check your urine colour",
+    "p": "Urine close to pale yellow means you're roughly well hydrated; the darker it is, the more you need to drink. (Some vitamins can turn urine yellow — this is normal.)"
+   },
+   {
+    "h": "Drinks that hydrate",
+    "p": "Plain water is best; herbal tea and unsweetened tea also help. Sugary drinks don't count — they add calories."
+   },
+   {
+    "h": "Good times to drink water",
+    "p": "After waking, before every meal, before and after exercise, and when you feel tired or want a snack are all good times to drink water."
+   }
+  ],
+  "viz": [
+   {
+    "type": "swatch",
+    "title": "Check hydration by urine colour",
+    "items": [
+     [
+      "#f6f2c8",
+      "Well hydrated"
+     ],
+     [
+      "#f1e58f",
+      "Well hydrated"
+     ],
+     [
+      "#e9cf55",
+      "Could drink a bit more"
+     ],
+     [
+      "#d9ad2d",
+      "Need to drink water"
+     ],
+     [
+      "#b9831d",
+      "Clearly dehydrated — drink water now"
+     ]
+    ],
+    "note": "For everyday reference only. If the colour is unusual or stays dark, consult a doctor."
+   }
+  ],
+  "myth": {
+   "m": "In winter or an air-conditioned room you don't sweat, so you don't need as much water.",
+   "f": "You lose water through breathing and skin every day, and air-conditioned air is dry — you still need to hydrate."
+  },
+  "fact": {
+   "num": "Pale yellow",
+   "unit": "",
+   "text": "Urine close to pale yellow means your body is roughly well hydrated."
+  },
+  "tips": [
+   "Keep your water bottle where you can see it",
+   "Add lemon slices or mint leaves to your water",
+   "Drink a glass of water before every meal"
+  ],
+  "task": "Today, swap one sugary drink for plain water or unsweetened tea, and check your urine colour.",
+  "share": "Do you know anyone who often feels tired or has headaches but rarely drinks water?",
+  "philo": "Enough water is an essential part of balanced nutrition:"
+ },
+ "ms": {
+  "t": "Hidrasi dan kesihatan sel",
+  "en": "Hydration & Cellular Health",
+  "tag": "Nutrisi",
+  "lead": "Minum air bukan sekadar hilangkan dahaga; air ialah persekitaran sel berfungsi.",
+  "intro": "Pada Hari 2 kita belajar perlu minum air yang cukup. Hari ini kita pergi lebih jauh: bagaimana menilai sama ada minum cukup, dan hubungan air dengan kesihatan sel.",
+  "points": [
+   {
+    "h": "Tiga soalan hidrasi: berapa banyak? kenapa? minum apa?",
+    "p": "Keperluan setiap orang berbeza, tetapi ingat tiga perkara ini:",
+    "list": [
+     "Berapa banyak: disyorkan 8–10 cawan air sehari (400 ml secawan, kira-kira 3–4 liter) supaya badan berada dalam keadaan terbaik",
+     "Kenapa: kekurangan air menyebabkan keletihan, sembelit, kulit kering, migrain dan kejang otot",
+     "Minum apa: selain air kosong, minuman pekat aloe dan teh herba rosel Herbalife yang dibancuh dengan air juga membantu mencukupkan keperluan air harian"
+    ],
+    "after": "Rasa air kosong tawar dan sukar diminum? Bancuh minuman aloe atau teh herba, rendah kalori dan menyegarkan, lebih mudah minum 8–10 cawan.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Pembantu untuk minum air yang cukup",
+      "items": [
+       [
+        "aloe",
+        "Minuman pekat aloe",
+        "Rendah kalori",
+        "Bancuh dengan air"
+       ],
+       [
+        "tea",
+        "Teh herba rosel",
+        "Rendah kalori",
+        "Panas atau sejuk"
+       ],
+       [
+        "s_water",
+        "Air kosong",
+        "0 kalori",
+        "8–10 cawan sehari"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "8–10 cawan sehari (3–4 liter)",
+    "p": "Sama ada semasa aktiviti harian atau bersenam, air sangat penting untuk badan.",
+    "list": [
+     "8–10 cawan sehari, kira-kira 3–4 liter",
+     "Atau 40–50 ml setiap kg berat badan",
+     "Minum lebih banyak apabila berpeluh semasa bersenam"
+    ]
+   },
+   {
+    "h": "Kesan kekurangan air",
+    "p": "Kekurangan air boleh menyebabkan sakit kepala, kejang otot, keletihan otot, sembelit, kulit kering, dan selalu rasa letih.",
+    "viz": [
+     {
+      "type": "bubbles",
+      "title": "Kesan kekurangan air",
+      "items": [
+       "Sakit kepala",
+       "Kejang otot",
+       "Keletihan otot",
+       "Sembelit",
+       "Kulit kering",
+       "Selalu letih"
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Keseimbangan di dalam dan di luar sel",
+    "p": "Otot, saraf dan metabolisme tenaga hanya dapat berfungsi dengan normal apabila air dan elektrolit (natrium, kalium, magnesium) di dalam dan di luar sel seimbang."
+   },
+   {
+    "h": "Gantikan elektrolit apabila banyak berpeluh",
+    "p": "Apabila banyak berpeluh semasa bersenam atau cuaca panas, selain minum air, gantikan juga elektrolit untuk mengelakkan kejang dan keletihan."
+   },
+   {
+    "h": "Nilai melalui warna air kencing",
+    "p": "Air kencing hampir kuning pucat bermakna badan cukup air; semakin gelap warnanya, semakin perlu minum air. (Sesetengah vitamin boleh menjadikan air kencing kuning, ini perkara biasa.)"
+   },
+   {
+    "h": "Minuman yang membantu hidrasi",
+    "p": "Air kosong paling baik; teh herba dan teh tanpa gula juga membantu hidrasi. Minuman bergula tidak dikira, malah menambah kalori."
+   },
+   {
+    "h": "Masa yang baik untuk minum air",
+    "p": "Selepas bangun tidur, sebelum setiap hidangan, sebelum dan selepas bersenam, ketika letih atau teringin snek, semuanya masa yang baik untuk minum air."
+   }
+  ],
+  "viz": [
+   {
+    "type": "swatch",
+    "title": "Semak hidrasi melalui warna air kencing",
+    "items": [
+     [
+      "#f6f2c8",
+      "Cukup air"
+     ],
+     [
+      "#f1e58f",
+      "Cukup air"
+     ],
+     [
+      "#e9cf55",
+      "Boleh minum lebih sedikit"
+     ],
+     [
+      "#d9ad2d",
+      "Perlu minum air"
+     ],
+     [
+      "#b9831d",
+      "Jelas kekurangan air, minum segera"
+     ]
+    ],
+    "note": "Untuk rujukan harian sahaja. Jika warna luar biasa atau sentiasa gelap, rujuk doktor."
+   }
+  ],
+  "myth": {
+   "m": "Pada musim sejuk atau dalam bilik berhawa dingin tidak berpeluh, jadi tidak perlu minum banyak air.",
+   "f": "Badan kehilangan air melalui pernafasan dan kulit setiap hari, dan udara dalam bilik berhawa dingin kering, jadi tetap perlu minum air."
+  },
+  "fact": {
+   "num": "Kuning pucat",
+   "unit": "",
+   "text": "Air kencing hampir kuning pucat bermakna badan cukup air."
+  },
+  "tips": [
+   "Letakkan botol air di tempat yang mudah dilihat",
+   "Tambah hirisan lemon atau daun pudina ke dalam air",
+   "Minum segelas air sebelum setiap hidangan"
+  ],
+  "task": "Hari ini, tukar segelas minuman bergula kepada air kosong atau teh tanpa gula, dan perhatikan warna air kencing.",
+  "share": "Adakah anda kenal sesiapa yang selalu letih dan sakit kepala tetapi jarang minum air?",
+  "philo": "Air yang mencukupi ialah bahagian penting nutrisi seimbang:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "怎样简单判断自己有没有喝够水？",
+   "opts": [
+    "看尿液颜色",
+    "看有没有出汗",
+    "看体重"
+   ],
+   "a": 0,
+   "why": "尿液接近淡黄色，代表水分大致充足；颜色越深，越需要喝水。"
+  },
+  "en": {
+   "q": "What's an easy way to tell if you're drinking enough water?",
+   "opts": [
+    "Check your urine colour",
+    "Check whether you sweat",
+    "Check your weight"
+   ],
+   "a": 0,
+   "why": "Urine close to pale yellow means you're roughly well hydrated; the darker it is, the more you need to drink."
+  },
+  "ms": {
+   "q": "Apakah cara mudah menilai sama ada anda cukup minum air?",
+   "opts": [
+    "Lihat warna air kencing",
+    "Lihat sama ada berpeluh",
+    "Lihat berat badan"
+   ],
+   "a": 0,
+   "why": "Air kencing hampir kuning pucat bermakna badan cukup air; semakin gelap warnanya, semakin perlu minum air."
+  }
+ }
+}

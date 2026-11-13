@@ -1,0 +1,689 @@
+{
+ "day": 4,
+ "zh": {
+  "t": "理想早餐",
+  "en": "Ideal Breakfast",
+  "tag": "餐单",
+  "lead": "以优质蛋白质为主、加上高纤维的早餐，可以帮你稳定一整天的血糖。",
+  "intro": "经过一整晚没有进食，早上身体最需要补充营养。早餐吃什么，会影响一整天的血糖、精神和食欲。",
+  "points": [
+   {
+    "h": "早餐打破一夜空腹",
+    "p": "睡眠时身体仍在消耗能量。早上补充营养，帮助身体启动、稳定血糖，让你上午更有精神。"
+   },
+   {
+    "h": "什么是理想早餐？",
+    "p": "理想早餐 = 优质蛋白质 + 高纤维食物 + 足够的水。",
+    "list": [
+     "优质蛋白质：鸡蛋、豆腐、鸡胸肉、营养奶昔",
+     "高纤维食物：蔬菜、水果、燕麦、全谷类",
+     "足够的水：起床先喝一杯"
+    ],
+    "after": "这样的早餐消化慢，血糖稳，不但饱到中午，还能帮你稳定一整天的血糖。",
+    "viz": [
+     {
+      "type": "portion",
+      "title": "理想早餐吃什么？",
+      "carb": {
+       "h": "高纤维食物",
+       "items": [
+        [
+         "蔬菜",
+         "vege"
+        ],
+        [
+         "水果",
+         "guava"
+        ],
+        [
+         "燕麦 / 全谷类",
+         "brownrice_k"
+        ]
+       ]
+      },
+      "pro": {
+       "h": "优质蛋白质",
+       "items": [
+        [
+         "鸡蛋",
+         "egg"
+        ],
+        [
+         "豆腐",
+         "tofu"
+        ],
+        [
+         "鸡胸肉",
+         "chicken"
+        ],
+        [
+         "营养奶昔",
+         "shake"
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "为什么蛋白质和纤维让你不容易饿？",
+    "p": "消化系统会和大脑沟通，告诉它「饱了没有」。不同的食物，传给大脑的信号不一样：",
+    "list": [
+     "甜食、淀粉、酒精：刺激大脑「还可以吃更多」，容易暴食",
+     "蛋白质：消化后会告诉大脑「已经饱了，不要再吃了」",
+     "纤维：增加肠胃里的体积，消化变慢，产生饱腹感"
+    ],
+    "after": "记住：要吃得够慢。吃太快的话，大脑还没收到「饱」的信号，你就已经吃太多了。",
+    "viz": [
+     {
+      "type": "split",
+      "title": "食物给大脑的信号",
+      "left": {
+       "h": "「饱了，不要再吃」",
+       "cls": "good",
+       "items": [
+        "蛋白质：鸡蛋、豆腐、鱼、鸡肉",
+        "纤维：蔬菜、水果、全谷类",
+        "饱足感更持久"
+       ]
+      },
+      "right": {
+       "h": "「还可以吃更多」",
+       "cls": "bad",
+       "items": [
+        "甜食",
+        "淀粉",
+        "酒精",
+        "容易越吃越多"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "血糖过山车",
+    "p": "谷类、面包、粥、面、饭这类高碳水化合物早餐，会让血糖像坐过山车一样：",
+    "list": [
+     "冲上去：吃完血糖急速升高",
+     "掉下来：身体分泌大量胰岛素，把血糖压下去，转成脂肪储存",
+     "掉到谷底：觉得疲倦、很快又饿",
+     "再上车：特别想吃糖和淀粉，又一次冲上去"
+    ],
+    "after": "一天坐好几次过山车，是糖尿病、高血压和超重的主要原因之一。换成以蛋白质为主的早餐，血糖就会平稳得多。",
+    "viz": [
+     {
+      "type": "sugar",
+      "mode": "spike",
+      "cap": "高碳水早餐：血糖过山车",
+      "title": "一天的血糖变化"
+     },
+     {
+      "type": "sugar",
+      "mode": "steady",
+      "cap": "以优质蛋白为主的早餐：血糖平稳",
+      "title": "一天的血糖变化"
+     }
+    ]
+   },
+   {
+    "h": "不吃早餐也一样",
+    "p": "不吃早餐，同样会掉进血糖循环：",
+    "list": [
+     "血糖降低，觉得饿、没力气",
+     "特别想吃简单碳水化合物来解饿",
+     "血糖又急升急降"
+    ]
+   },
+   {
+    "h": "少量多餐更稳定",
+    "p": "一天分 5 次进食：早餐、上午小点心、午餐、下午小点心、晚餐。避免饿过头，下一餐就不容易暴饮暴食。"
+   },
+   {
+    "h": "快速又营养",
+    "p": "早上时间紧，一份营养奶昔或简单的蛋白质早餐，几分钟就能准备好，比在外排队买早餐更省时。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "高碳水早餐的恶性循环",
+    "items": [
+     [
+      "吃高碳水早餐",
+      "面包、粥、面、饭、甜饮料"
+     ],
+     [
+      "血糖急速升高",
+      "胰脏分泌大量胰岛素"
+     ],
+     [
+      "糖分转成脂肪",
+      "血糖短时间内骤降"
+     ],
+     [
+      "又饿又想吃糖",
+      "再吃更多碳水化合物，循环重来"
+     ]
+    ]
+   },
+   {
+    "type": "timeline",
+    "title": "一天 5 餐参考时间表",
+    "items": [
+     [
+      "早餐",
+      "约 150 kcal",
+      "以蛋白质为主"
+     ],
+     [
+      "上午 9 点",
+      "约 100 kcal",
+      "一份水果"
+     ],
+     [
+      "午餐",
+      "约 500 kcal",
+      "蔬菜 + 蛋白质 + 复合碳水"
+     ],
+     [
+      "下午 4 点",
+      "约 150 kcal",
+      "蛋白质小点心"
+     ],
+     [
+      "晚餐",
+      "约 500 kcal",
+      "蔬菜 + 瘦肉 / 鱼"
+     ]
+    ],
+    "note": "总计约 1400 kcal 的参考示例。实际份量请教练按你的身高、体重和目标调整。"
+   }
+  ],
+  "myth": {
+   "m": "不吃早餐可以少吃一餐，更容易瘦。",
+   "f": "不吃早餐容易让午餐和晚餐吃得更多，也更想吃甜食和淀粉。规律进食更容易控制总热量。"
+  },
+  "fact": {
+   "num": "5",
+   "unit": "餐",
+   "text": "一天分 5 次进食（3 正餐 + 2 小点心），有助于稳定血糖和控制饥饿感。"
+  },
+  "tips": [
+   "前一晚先把早餐准备好",
+   "把甜咖啡换成黑咖啡或无糖茶",
+   "上午准备一份水果当点心"
+  ],
+  "task": "明天早餐加入一份蛋白质，比如鸡蛋、无糖豆浆，或在营养奶昔里加入 F3 蛋白粉，加强蛋白质。留意上午的饥饿感有没有不同。",
+  "share": "你有认识谁经常吃以碳水化合物为主的早餐，或者常常不吃早餐的吗？",
+  "leadHL": true,
+  "philo": "理想早餐，就是把这张图放进你的第一餐："
+ },
+ "en": {
+  "t": "The ideal breakfast",
+  "en": "Ideal Breakfast",
+  "tag": "Meal plan",
+  "lead": "A breakfast built on quality protein plus fibre helps keep your blood sugar steady all day.",
+  "intro": "After a whole night without food, your body needs nutrition most in the morning. What you eat for breakfast affects your blood sugar, energy and appetite all day.",
+  "points": [
+   {
+    "h": "Breakfast breaks the overnight fast",
+    "p": "Your body still uses energy while you sleep. Morning nutrition helps it start up, steadies blood sugar and gives you more energy in the morning."
+   },
+   {
+    "h": "What is an ideal breakfast?",
+    "p": "Ideal breakfast = quality protein + high-fibre food + enough water.",
+    "list": [
+     "Quality protein: eggs, tofu, chicken breast, nutrition shake",
+     "High-fibre food: vegetables, fruit, oats, whole grains",
+     "Enough water: drink a glass as soon as you get up"
+    ],
+    "after": "A breakfast like this digests slowly and keeps blood sugar steady — it keeps you full till lunch and helps steady your blood sugar all day.",
+    "viz": [
+     {
+      "type": "portion",
+      "title": "What to eat for an ideal breakfast?",
+      "carb": {
+       "h": "High-fibre foods",
+       "items": [
+        [
+         "Vegetables",
+         "vege"
+        ],
+        [
+         "Fruit",
+         "guava"
+        ],
+        [
+         "Oats / whole grains",
+         "brownrice_k"
+        ]
+       ]
+      },
+      "pro": {
+       "h": "Quality protein",
+       "items": [
+        [
+         "Egg",
+         "egg"
+        ],
+        [
+         "Tofu",
+         "tofu"
+        ],
+        [
+         "Chicken breast",
+         "chicken"
+        ],
+        [
+         "Nutrition shake",
+         "shake"
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "Why do protein and fibre keep you from getting hungry?",
+    "p": "Your digestive system talks to your brain and tells it whether you're full. Different foods send different signals:",
+    "list": [
+     "Sweets, starch, alcohol: tell the brain \"I can eat more\", leading to overeating",
+     "Protein: after digestion, tells the brain \"I'm full, stop eating\"",
+     "Fibre: adds volume in the gut and slows digestion, making you feel full"
+    ],
+    "after": "Remember: eat slowly. If you eat too fast, you've already overeaten before your brain gets the \"full\" signal.",
+    "viz": [
+     {
+      "type": "split",
+      "title": "Signals food sends to the brain",
+      "left": {
+       "h": "\"I'm full, stop eating\"",
+       "cls": "good",
+       "items": [
+        "Protein: eggs, tofu, fish, chicken",
+        "Fibre: vegetables, fruit, whole grains",
+        "Fullness lasts longer"
+       ]
+      },
+      "right": {
+       "h": "\"I can eat more\"",
+       "cls": "bad",
+       "items": [
+        "Sweets",
+        "Starch",
+        "Alcohol",
+        "Easy to keep eating more"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "The blood sugar roller coaster",
+    "p": "High-carb breakfasts like cereal, bread, porridge, noodles and rice send your blood sugar on a roller coaster:",
+    "list": [
+     "Up: blood sugar spikes after eating",
+     "Down: your body releases lots of insulin to push blood sugar down and store it as fat",
+     "Bottom: you feel tired and soon get hungry again",
+     "Back on the ride: you crave sugar and starch, and shoot up again"
+    ],
+    "after": "Riding this roller coaster several times a day is one of the main causes of diabetes, high blood pressure and excess weight. Switch to a protein-based breakfast and blood sugar becomes much steadier.",
+    "viz": [
+     {
+      "type": "sugar",
+      "mode": "spike",
+      "cap": "High-carb breakfast: blood sugar roller coaster",
+      "title": "Blood sugar through the day"
+     },
+     {
+      "type": "sugar",
+      "mode": "steady",
+      "cap": "Quality-protein breakfast: steady blood sugar",
+      "title": "Blood sugar through the day"
+     }
+    ]
+   },
+   {
+    "h": "Skipping breakfast does the same",
+    "p": "Skipping breakfast also traps you in the blood sugar cycle:",
+    "list": [
+     "Blood sugar drops; you feel hungry and weak",
+     "You crave simple carbs to fight the hunger",
+     "Blood sugar spikes and crashes again"
+    ]
+   },
+   {
+    "h": "Small, frequent meals are steadier",
+    "p": "Eat 5 times a day: breakfast, mid-morning snack, lunch, afternoon snack, dinner. Avoid getting too hungry so you don't overeat at the next meal."
+   },
+   {
+    "h": "Quick and nutritious",
+    "p": "Mornings are rushed. A nutrition shake or a simple protein breakfast takes just minutes — faster than queuing to buy breakfast outside."
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "The vicious cycle of a high-carb breakfast",
+    "items": [
+     [
+      "Eat a high-carb breakfast",
+      "Bread, porridge, noodles, rice, sweet drinks"
+     ],
+     [
+      "Blood sugar spikes",
+      "The pancreas releases lots of insulin"
+     ],
+     [
+      "Sugar is turned into fat",
+      "Blood sugar crashes quickly"
+     ],
+     [
+      "Hungry and craving sugar",
+      "Eat more carbs, and the cycle repeats"
+     ]
+    ]
+   },
+   {
+    "type": "timeline",
+    "title": "Sample 5-meal daily schedule",
+    "items": [
+     [
+      "Breakfast",
+      "About 150 kcal",
+      "Protein-based"
+     ],
+     [
+      "9 am",
+      "About 100 kcal",
+      "One serving of fruit"
+     ],
+     [
+      "Lunch",
+      "About 500 kcal",
+      "Vegetables + protein + complex carbs"
+     ],
+     [
+      "4 pm",
+      "About 150 kcal",
+      "Protein snack"
+     ],
+     [
+      "Dinner",
+      "About 500 kcal",
+      "Vegetables + lean meat / fish"
+     ]
+    ],
+    "note": "A sample totalling about 1400 kcal. Your coach will adjust actual portions to your height, weight and goal."
+   }
+  ],
+  "myth": {
+   "m": "Skipping breakfast means one less meal, so it's easier to lose weight.",
+   "f": "Skipping breakfast tends to make you eat more at lunch and dinner and crave sweets and starch. Regular meals make it easier to control total calories."
+  },
+  "fact": {
+   "num": "5",
+   "unit": " meals",
+   "text": "Eating 5 times a day (3 meals + 2 snacks) helps steady blood sugar and control hunger."
+  },
+  "tips": [
+   "Prepare breakfast the night before",
+   "Swap sweet coffee for black coffee or unsweetened tea",
+   "Pack a serving of fruit as a mid-morning snack"
+  ],
+  "task": "Add a portion of protein to tomorrow's breakfast, such as eggs, unsweetened soy milk, or F3 protein powder in your nutrition shake. Notice whether your mid-morning hunger is different.",
+  "share": "Do you know anyone whose breakfast is mostly carbohydrates, or who often skips breakfast?",
+  "leadHL": true,
+  "philo": "The ideal breakfast means putting this chart into your first meal:"
+ },
+ "ms": {
+  "t": "Sarapan ideal",
+  "en": "Ideal Breakfast",
+  "tag": "Pelan makan",
+  "lead": "Sarapan yang berasaskan protein berkualiti dan tinggi serat boleh membantu menstabilkan gula darah sepanjang hari.",
+  "intro": "Selepas semalaman tidak makan, badan paling memerlukan nutrisi pada waktu pagi. Apa yang dimakan semasa sarapan mempengaruhi gula darah, tenaga dan selera sepanjang hari.",
+  "points": [
+   {
+    "h": "Sarapan memecahkan puasa semalaman",
+    "p": "Badan masih menggunakan tenaga semasa tidur. Nutrisi pada waktu pagi membantu badan bermula, menstabilkan gula darah dan memberi lebih tenaga pada waktu pagi."
+   },
+   {
+    "h": "Apa itu sarapan ideal?",
+    "p": "Sarapan ideal = protein berkualiti + makanan tinggi serat + air yang cukup.",
+    "list": [
+     "Protein berkualiti: telur, tauhu, dada ayam, shake nutrisi",
+     "Makanan tinggi serat: sayur, buah, oat, bijirin penuh",
+     "Air yang cukup: minum segelas sebaik bangun"
+    ],
+    "after": "Sarapan seperti ini lambat dicerna dan gula darah stabil, bukan sahaja kenyang hingga tengah hari malah membantu menstabilkan gula darah sepanjang hari.",
+    "viz": [
+     {
+      "type": "portion",
+      "title": "Apa yang dimakan untuk sarapan ideal?",
+      "carb": {
+       "h": "Makanan tinggi serat",
+       "items": [
+        [
+         "Sayur-sayuran",
+         "vege"
+        ],
+        [
+         "Buah-buahan",
+         "guava"
+        ],
+        [
+         "Oat / bijirin penuh",
+         "brownrice_k"
+        ]
+       ]
+      },
+      "pro": {
+       "h": "Protein berkualiti",
+       "items": [
+        [
+         "Telur",
+         "egg"
+        ],
+        [
+         "Tauhu",
+         "tofu"
+        ],
+        [
+         "Dada ayam",
+         "chicken"
+        ],
+        [
+         "Shake nutrisi",
+         "shake"
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "Kenapa protein dan serat membuatkan anda tidak cepat lapar?",
+    "p": "Sistem pencernaan berkomunikasi dengan otak untuk memberitahu \"sudah kenyang atau belum\". Makanan berbeza menghantar isyarat berbeza:",
+    "list": [
+     "Makanan manis, kanji, alkohol: merangsang otak \"boleh makan lagi\", mudah makan berlebihan",
+     "Protein: selepas dicerna, memberitahu otak \"sudah kenyang, jangan makan lagi\"",
+     "Serat: menambah isi dalam usus, melambatkan pencernaan dan memberi rasa kenyang"
+    ],
+    "after": "Ingat: makan perlahan-lahan. Jika makan terlalu cepat, anda sudah makan terlalu banyak sebelum otak menerima isyarat \"kenyang\".",
+    "viz": [
+     {
+      "type": "split",
+      "title": "Isyarat makanan kepada otak",
+      "left": {
+       "h": "\"Sudah kenyang, jangan makan lagi\"",
+       "cls": "good",
+       "items": [
+        "Protein: telur, tauhu, ikan, ayam",
+        "Serat: sayur, buah, bijirin penuh",
+        "Rasa kenyang lebih lama"
+       ]
+      },
+      "right": {
+       "h": "\"Boleh makan lagi\"",
+       "cls": "bad",
+       "items": [
+        "Makanan manis",
+        "Kanji",
+        "Alkohol",
+        "Mudah makan semakin banyak"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "Roller coaster gula darah",
+    "p": "Sarapan tinggi karbohidrat seperti bijirin, roti, bubur, mi dan nasi membuatkan gula darah seperti menaiki roller coaster:",
+    "list": [
+     "Naik mendadak: gula darah melonjak selepas makan",
+     "Turun: badan merembeskan banyak insulin untuk menurunkan gula darah dan menyimpannya sebagai lemak",
+     "Jatuh ke bawah: terasa letih dan cepat lapar semula",
+     "Naik semula: teringin gula dan kanji, lalu melonjak sekali lagi"
+    ],
+    "after": "Menaiki roller coaster ini beberapa kali sehari ialah salah satu punca utama diabetes, darah tinggi dan berat badan berlebihan. Tukar kepada sarapan berasaskan protein, gula darah akan jauh lebih stabil.",
+    "viz": [
+     {
+      "type": "sugar",
+      "mode": "spike",
+      "cap": "Sarapan tinggi karbohidrat: roller coaster gula darah",
+      "title": "Perubahan gula darah sepanjang hari"
+     },
+     {
+      "type": "sugar",
+      "mode": "steady",
+      "cap": "Sarapan berasaskan protein berkualiti: gula darah stabil",
+      "title": "Perubahan gula darah sepanjang hari"
+     }
+    ]
+   },
+   {
+    "h": "Tidak bersarapan pun sama",
+    "p": "Tidak bersarapan juga membawa anda ke dalam kitaran gula darah:",
+    "list": [
+     "Gula darah turun, terasa lapar dan tidak bertenaga",
+     "Teringin karbohidrat ringkas untuk hilangkan lapar",
+     "Gula darah melonjak dan jatuh semula"
+    ]
+   },
+   {
+    "h": "Makan sedikit tetapi kerap lebih stabil",
+    "p": "Makan 5 kali sehari: sarapan, snek pagi, makan tengah hari, snek petang, makan malam. Elakkan terlalu lapar supaya tidak makan berlebihan pada hidangan seterusnya."
+   },
+   {
+    "h": "Cepat dan berkhasiat",
+    "p": "Waktu pagi selalunya kesuntukan masa. Satu shake nutrisi atau sarapan protein ringkas boleh disediakan dalam beberapa minit, lebih jimat masa daripada beratur membeli sarapan di luar."
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "Kitaran ganas sarapan tinggi karbohidrat",
+    "items": [
+     [
+      "Makan sarapan tinggi karbohidrat",
+      "Roti, bubur, mi, nasi, minuman manis"
+     ],
+     [
+      "Gula darah melonjak",
+      "Pankreas merembeskan banyak insulin"
+     ],
+     [
+      "Gula ditukar menjadi lemak",
+      "Gula darah jatuh mendadak dalam masa singkat"
+     ],
+     [
+      "Lapar dan teringin gula",
+      "Makan lebih banyak karbohidrat, kitaran berulang"
+     ]
+    ]
+   },
+   {
+    "type": "timeline",
+    "title": "Contoh jadual 5 hidangan sehari",
+    "items": [
+     [
+      "Sarapan",
+      "Kira-kira 150 kcal",
+      "Berasaskan protein"
+     ],
+     [
+      "9 pagi",
+      "Kira-kira 100 kcal",
+      "Satu hidangan buah"
+     ],
+     [
+      "Makan tengah hari",
+      "Kira-kira 500 kcal",
+      "Sayur + protein + karbohidrat kompleks"
+     ],
+     [
+      "4 petang",
+      "Kira-kira 150 kcal",
+      "Snek protein"
+     ],
+     [
+      "Makan malam",
+      "Kira-kira 500 kcal",
+      "Sayur + daging tanpa lemak / ikan"
+     ]
+    ],
+    "note": "Contoh dengan jumlah kira-kira 1400 kcal. Jurulatih akan menyesuaikan saiz hidangan sebenar mengikut ketinggian, berat dan matlamat anda."
+   }
+  ],
+  "myth": {
+   "m": "Tidak bersarapan bermakna kurang satu hidangan, jadi lebih mudah kurus.",
+   "f": "Tidak bersarapan mudah menyebabkan makan lebih banyak pada waktu tengah hari dan malam, serta lebih teringin makanan manis dan berkanji. Makan secara teratur lebih mudah mengawal jumlah kalori."
+  },
+  "fact": {
+   "num": "5",
+   "unit": " hidangan",
+   "text": "Makan 5 kali sehari (3 hidangan utama + 2 snek) membantu menstabilkan gula darah dan mengawal rasa lapar."
+  },
+  "tips": [
+   "Sediakan sarapan pada malam sebelumnya",
+   "Tukar kopi manis kepada kopi O kosong atau teh tanpa gula",
+   "Sediakan satu hidangan buah sebagai snek pagi"
+  ],
+  "task": "Tambah satu hidangan protein dalam sarapan esok, seperti telur, susu soya tanpa gula, atau serbuk protein F3 dalam shake nutrisi. Perhatikan sama ada rasa lapar pada waktu pagi berbeza.",
+  "share": "Adakah anda kenal sesiapa yang selalu makan sarapan berasaskan karbohidrat, atau kerap tidak bersarapan?",
+  "leadHL": true,
+  "philo": "Sarapan ideal bermakna meletakkan carta ini ke dalam hidangan pertama anda:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "下面哪一份早餐，最能让你撑到中午都不饿？",
+   "opts": [
+    "一份椰浆饭加一杯甜咖啡",
+    "两片白面包加果酱",
+    "有蛋白质和纤维的早餐，例如鸡蛋加全麦面包或营养奶昔"
+   ],
+   "a": 2,
+   "why": "蛋白质和纤维消化较慢，让血糖稳定，饱足感更持久。油、糖和精致淀粉多的早餐，很快又饿。"
+  },
+  "en": {
+   "q": "Which breakfast will best keep you full until lunch?",
+   "opts": [
+    "A plate of nasi lemak with a sweet coffee",
+    "Two slices of white bread with jam",
+    "A breakfast with protein and fibre, such as eggs with wholemeal bread or a nutrition shake"
+   ],
+   "a": 2,
+   "why": "Protein and fibre digest slowly, keeping blood sugar steady and fullness lasting longer. Breakfasts high in oil, sugar and refined starch leave you hungry again soon."
+  },
+  "ms": {
+   "q": "Sarapan yang mana paling dapat membuatkan anda tidak lapar hingga tengah hari?",
+   "opts": [
+    "Sepinggan nasi lemak dengan secawan kopi manis",
+    "Dua keping roti putih dengan jem",
+    "Sarapan yang ada protein dan serat, contohnya telur dengan roti gandum penuh atau shake nutrisi"
+   ],
+   "a": 2,
+   "why": "Protein dan serat lambat dicerna, menstabilkan gula darah dan rasa kenyang lebih lama. Sarapan yang tinggi minyak, gula dan kanji halus cepat membuatkan lapar semula."
+  }
+ }
+}

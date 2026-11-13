@@ -1,0 +1,635 @@
+{
+ "day": 8,
+ "zh": {
+  "t": "读懂营养标签",
+  "en": "Reading Nutrition Labels",
+  "tag": "餐单",
+  "lead": "包装正面是广告，背面的营养标签才是真相。",
+  "intro": "「低脂」「天然」「高纤」这些字眼印在包装正面，是为了吸引你购买。要知道食物到底健不健康，要翻到背面看营养标签和配料表。",
+  "points": [
+   {
+    "h": "快速掌握的三个原则",
+    "p": "一般人买包装食品时，看的多是价钱、包装和有效日期。要吃得健康，我们教你用简单的方法看营养标签，只要记住三个原则：",
+    "list": [
+     "低卡路里：注意每份的重量，要换算",
+     "高蛋白质",
+     "低脂肪：特别注意反式脂肪和饱和脂肪"
+    ],
+    "viz": [
+     {
+      "type": "split",
+      "title": "一般人看什么？我们看什么？",
+      "left": {
+       "h": "我们教你看：营养标签",
+       "cls": "good",
+       "items": [
+        "低卡路里",
+        "高蛋白质",
+        "低脂肪"
+       ]
+      },
+      "right": {
+       "h": "一般人只看：外表",
+       "cls": "bad",
+       "items": [
+        "价钱、品牌",
+        "包装图片",
+        "有效日期、净重",
+        "容器状况、出产国家"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "第一步：看份量",
+    "p": "营养标签上的数字通常是「每份」。",
+    "list": [
+     "先看一份是多少克",
+     "再看一包有几份",
+     "很多零食一包其实是 2–3 份，热量要乘上去"
+    ]
+   },
+   {
+    "h": "第二步：用每 100 克比较",
+    "p": "比较两种产品时，用「每 100 克」那一栏才公平，因为每家公司定义的一份大小不同。"
+   },
+   {
+    "h": "第三步：看重点营养",
+    "p": "热量、糖、钠、饱和脂肪、反式脂肪越低越好；蛋白质和膳食纤维越高越好。"
+   },
+   {
+    "h": "第四步：看配料表",
+    "p": "配料按含量从多到少排列。排在前三的是糖或油，就要小心。糖有很多别名：葡萄糖浆、果糖、麦芽糖、蔗糖。"
+   },
+   {
+    "h": "第五步：找出隐藏的反式脂肪",
+    "p": "配料表中出现「氢化植物油」「部分氢化油」「起酥油」，就代表可能含有反式脂肪。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "photos",
+    "title": "三种金枪鱼罐头的营养标签",
+    "items": [
+     [
+      "tuna_a",
+      "金枪鱼 A（油浸）：130 卡路里，8 克蛋白质，16% 脂肪"
+     ],
+     [
+      "tuna_b",
+      "金枪鱼 B：110 卡路里，18 克蛋白质，5% 脂肪"
+     ],
+     [
+      "tuna_c",
+      "金枪鱼 C（水浸）：80 卡路里，20 克蛋白质，0% 脂肪"
+     ]
+    ]
+   },
+   {
+    "type": "table",
+    "title": "同样是金枪鱼罐头，标签差很多（每份）",
+    "head": [
+     "",
+     "卡路里",
+     "蛋白质",
+     "脂肪"
+    ],
+    "rows": [
+     [
+      "金枪鱼 A（油浸）",
+      "130",
+      "8 克",
+      "16%"
+     ],
+     [
+      "金枪鱼 B",
+      "110",
+      "18 克",
+      "5%"
+     ],
+     [
+      "金枪鱼 C（水浸）",
+      "80",
+      "20 克",
+      "0%"
+     ]
+    ],
+    "best": 2,
+    "note": "金枪鱼 C 热量最低、蛋白质最高、脂肪最少，是最好的选择。资料来自课堂讲义。"
+   },
+   {
+    "type": "bars",
+    "title": "每天添加糖的建议上限 vs 一罐汽水",
+    "unit": "g",
+    "items": [
+     [
+      "理想上限（WHO）",
+      25
+     ],
+     [
+      "一罐 330ml 汽水",
+      35,
+      1
+     ],
+     [
+      "最高上限（WHO）",
+      50
+     ]
+    ],
+    "note": "世界卫生组织建议游离糖少于每日热量的 10%（约 50 克），最好少于 5%（约 25 克）。一茶匙糖约 4 克。"
+   },
+   {
+    "type": "table",
+    "title": "早餐谷物 vs 营养奶昔（单位：克）",
+    "head": [
+     "每 100 克",
+     "热量",
+     "蛋白质",
+     "碳水",
+     "纤维"
+    ],
+    "rows": [
+     [
+      "即食麦片",
+      "364",
+      "6.5",
+      "79",
+      "6.3"
+     ],
+     [
+      "燕麦片 A",
+      "403",
+      "8.8",
+      "76.5",
+      "1.6"
+     ],
+     [
+      "有机燕麦",
+      "379",
+      "13.2",
+      "67.7",
+      "10.1"
+     ],
+     [
+      "营养奶昔",
+      "378",
+      "35.8",
+      "26.9",
+      "18.1"
+     ]
+    ],
+    "best": 3,
+    "note": "热量差不多，但营养奶昔的蛋白质和纤维高很多，碳水化合物低很多，还含有 16 种维他命和矿物质（麦片 A 只有维他命 E）。资料整理自课堂讲义。"
+   }
+  ],
+  "myth": {
+   "m": "包装写「低脂」就代表健康。",
+   "f": "很多低脂产品会加更多糖来补回口感。一定要看营养标签上的糖和总热量。"
+  },
+  "fact": {
+   "num": "2000",
+   "unit": "mg",
+   "text": "世界卫生组织建议成人每天钠摄取少于 2000 毫克（约 5 克盐）。"
+  },
+  "tips": [
+   "买东西前花 10 秒看标签",
+   "饮料看糖，零食看钠和油",
+   "配料越短越简单通常越好"
+  ],
+  "task": "拿起家里一包零食或饮料，找出它每包的热量、糖和钠，拍照分享给教练。",
+  "share": "你有认识谁买食物时只看价钱，不看营养标签的吗？"
+ },
+ "en": {
+  "t": "Reading nutrition labels",
+  "en": "Reading Nutrition Labels",
+  "tag": "Meal plan",
+  "lead": "The front of the pack is advertising; the nutrition label on the back is the truth.",
+  "intro": "Words like \"low fat\", \"natural\" and \"high fibre\" are printed on the front to get you to buy. To know whether a food is really healthy, turn it over and read the nutrition label and ingredient list.",
+  "points": [
+   {
+    "h": "Three quick principles",
+    "p": "When buying packaged food, most people look at price, packaging and expiry date. To eat healthily, we'll teach you a simple way to read nutrition labels — just remember three principles:",
+    "list": [
+     "Low calorie: check the weight per serving and convert",
+     "High protein",
+     "Low fat: pay special attention to trans and saturated fat"
+    ],
+    "viz": [
+     {
+      "type": "split",
+      "title": "What do most people look at? What do we look at?",
+      "left": {
+       "h": "We teach you to read: the nutrition label",
+       "cls": "good",
+       "items": [
+        "Low calorie",
+        "High protein",
+        "Low fat"
+       ]
+      },
+      "right": {
+       "h": "Most people only look at: the outside",
+       "cls": "bad",
+       "items": [
+        "Price, brand",
+        "Package pictures",
+        "Expiry date, net weight",
+        "Container condition, country of origin"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "Step 1: check the serving size",
+    "p": "The numbers on a nutrition label are usually \"per serving\".",
+    "list": [
+     "First see how many grams one serving is",
+     "Then see how many servings are in a pack",
+     "Many snack packs actually hold 2–3 servings — multiply the calories"
+    ]
+   },
+   {
+    "h": "Step 2: compare per 100 g",
+    "p": "When comparing two products, use the \"per 100 g\" column to be fair, since each company defines a serving differently."
+   },
+   {
+    "h": "Step 3: check the key nutrients",
+    "p": "Calories, sugar, sodium, saturated fat and trans fat — the lower the better; protein and dietary fibre — the higher the better."
+   },
+   {
+    "h": "Step 4: read the ingredient list",
+    "p": "Ingredients are listed from most to least. If sugar or oil is in the top three, be careful. Sugar has many other names: glucose syrup, fructose, maltose, sucrose."
+   },
+   {
+    "h": "Step 5: find hidden trans fat",
+    "p": "If the ingredients include \"hydrogenated vegetable oil\", \"partially hydrogenated oil\" or \"shortening\", the product may contain trans fat."
+   }
+  ],
+  "viz": [
+   {
+    "type": "photos",
+    "title": "Nutrition labels of three canned tunas",
+    "items": [
+     [
+      "tuna_a",
+      "Tuna A (in oil): 130 calories, 8 g protein, 16% fat"
+     ],
+     [
+      "tuna_b",
+      "Tuna B: 110 calories, 18 g protein, 5% fat"
+     ],
+     [
+      "tuna_c",
+      "Tuna C (in water): 80 calories, 20 g protein, 0% fat"
+     ]
+    ]
+   },
+   {
+    "type": "table",
+    "title": "All canned tuna, but the labels differ a lot (per serving)",
+    "head": [
+     "",
+     "Calories",
+     "Protein",
+     "Fat"
+    ],
+    "rows": [
+     [
+      "Tuna A (in oil)",
+      "130",
+      "8 g",
+      "16%"
+     ],
+     [
+      "Tuna B",
+      "110",
+      "18 g",
+      "5%"
+     ],
+     [
+      "Tuna C (in water)",
+      "80",
+      "20 g",
+      "0%"
+     ]
+    ],
+    "best": 2,
+    "note": "Tuna C has the fewest calories, the most protein and the least fat — the best choice. From class handouts."
+   },
+   {
+    "type": "bars",
+    "title": "Daily added-sugar limit vs one can of soft drink",
+    "unit": "g",
+    "items": [
+     [
+      "Ideal limit (WHO)",
+      25
+     ],
+     [
+      "One 330 ml can of soft drink",
+      35,
+      1
+     ],
+     [
+      "Maximum limit (WHO)",
+      50
+     ]
+    ],
+    "note": "The World Health Organization recommends free sugars below 10% of daily calories (about 50 g), ideally below 5% (about 25 g). One teaspoon of sugar is about 4 g."
+   },
+   {
+    "type": "table",
+    "title": "Breakfast cereal vs nutrition shake (grams)",
+    "head": [
+     "Per 100 g",
+     "Calories",
+     "Protein",
+     "Carbs",
+     "Fibre"
+    ],
+    "rows": [
+     [
+      "Instant cereal",
+      "364",
+      "6.5",
+      "79",
+      "6.3"
+     ],
+     [
+      "Oatmeal A",
+      "403",
+      "8.8",
+      "76.5",
+      "1.6"
+     ],
+     [
+      "Organic oats",
+      "379",
+      "13.2",
+      "67.7",
+      "10.1"
+     ],
+     [
+      "Nutrition shake",
+      "378",
+      "35.8",
+      "26.9",
+      "18.1"
+     ]
+    ],
+    "best": 3,
+    "note": "Similar calories, but the nutrition shake has much more protein and fibre, far fewer carbs, and 16 vitamins and minerals (oatmeal A has only vitamin E). Compiled from class handouts."
+   }
+  ],
+  "myth": {
+   "m": "If the pack says \"low fat\", it's healthy.",
+   "f": "Many low-fat products add more sugar to make up for taste. Always check the sugar and total calories on the nutrition label."
+  },
+  "fact": {
+   "num": "2000",
+   "unit": "mg",
+   "text": "The World Health Organization recommends adults consume less than 2000 mg of sodium a day (about 5 g of salt)."
+  },
+  "tips": [
+   "Spend 10 seconds reading the label before you buy",
+   "For drinks check sugar; for snacks check sodium and oil",
+   "The shorter and simpler the ingredient list, the better"
+  ],
+  "task": "Pick up a snack or drink at home, find its calories, sugar and sodium per pack, and send a photo to your coach.",
+  "share": "Do you know anyone who only looks at the price when buying food, not the nutrition label?"
+ },
+ "ms": {
+  "t": "Membaca label nutrisi",
+  "en": "Reading Nutrition Labels",
+  "tag": "Pelan makan",
+  "lead": "Bahagian depan bungkusan ialah iklan, label nutrisi di belakang barulah kebenarannya.",
+  "intro": "Perkataan seperti \"rendah lemak\", \"semula jadi\" dan \"tinggi serat\" dicetak di depan untuk menarik anda membeli. Untuk tahu sama ada makanan itu benar-benar sihat, terbalikkan dan baca label nutrisi serta senarai bahan.",
+  "points": [
+   {
+    "h": "Tiga prinsip mudah",
+    "p": "Kebanyakan orang membeli makanan berbungkus dengan melihat harga, bungkusan dan tarikh luput. Untuk makan sihat, kami ajar cara mudah membaca label nutrisi; ingat tiga prinsip sahaja:",
+    "list": [
+     "Rendah kalori: perhatikan berat setiap hidangan dan buat kiraan",
+     "Tinggi protein",
+     "Rendah lemak: beri perhatian khas pada lemak trans dan lemak tepu"
+    ],
+    "viz": [
+     {
+      "type": "split",
+      "title": "Apa yang kebanyakan orang lihat? Apa yang kita lihat?",
+      "left": {
+       "h": "Kami ajar anda lihat: label nutrisi",
+       "cls": "good",
+       "items": [
+        "Rendah kalori",
+        "Tinggi protein",
+        "Rendah lemak"
+       ]
+      },
+      "right": {
+       "h": "Kebanyakan orang hanya lihat: luaran",
+       "cls": "bad",
+       "items": [
+        "Harga, jenama",
+        "Gambar bungkusan",
+        "Tarikh luput, berat bersih",
+        "Keadaan bekas, negara pengeluar"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "Langkah 1: lihat saiz hidangan",
+    "p": "Angka pada label nutrisi biasanya \"setiap hidangan\".",
+    "list": [
+     "Lihat dahulu berapa gram satu hidangan",
+     "Kemudian lihat berapa hidangan dalam satu bungkus",
+     "Banyak snek sebenarnya mengandungi 2–3 hidangan sebungkus, kalorinya perlu didarabkan"
+    ]
+   },
+   {
+    "h": "Langkah 2: bandingkan setiap 100 g",
+    "p": "Apabila membandingkan dua produk, gunakan lajur \"setiap 100 g\" supaya adil, kerana setiap syarikat menetapkan saiz hidangan berbeza."
+   },
+   {
+    "h": "Langkah 3: lihat nutrien utama",
+    "p": "Kalori, gula, natrium, lemak tepu dan lemak trans, semakin rendah semakin baik; protein dan serat diet, semakin tinggi semakin baik."
+   },
+   {
+    "h": "Langkah 4: baca senarai bahan",
+    "p": "Bahan disenaraikan mengikut kandungan dari paling banyak ke paling sedikit. Jika gula atau minyak berada di tiga teratas, berhati-hati. Gula ada banyak nama lain: sirap glukosa, fruktosa, maltosa, sukrosa."
+   },
+   {
+    "h": "Langkah 5: cari lemak trans tersembunyi",
+    "p": "Jika senarai bahan ada \"minyak sayuran terhidrogen\", \"minyak separa terhidrogen\" atau \"lemak sayuran (shortening)\", produk itu mungkin mengandungi lemak trans."
+   }
+  ],
+  "viz": [
+   {
+    "type": "photos",
+    "title": "Label nutrisi tiga tin tuna",
+    "items": [
+     [
+      "tuna_a",
+      "Tuna A (dalam minyak): 130 kalori, 8 g protein, 16% lemak"
+     ],
+     [
+      "tuna_b",
+      "Tuna B: 110 kalori, 18 g protein, 5% lemak"
+     ],
+     [
+      "tuna_c",
+      "Tuna C (dalam air): 80 kalori, 20 g protein, 0% lemak"
+     ]
+    ]
+   },
+   {
+    "type": "table",
+    "title": "Sama-sama tuna tin, tetapi labelnya sangat berbeza (setiap hidangan)",
+    "head": [
+     "",
+     "Kalori",
+     "Protein",
+     "Lemak"
+    ],
+    "rows": [
+     [
+      "Tuna A (dalam minyak)",
+      "130",
+      "8 g",
+      "16%"
+     ],
+     [
+      "Tuna B",
+      "110",
+      "18 g",
+      "5%"
+     ],
+     [
+      "Tuna C (dalam air)",
+      "80",
+      "20 g",
+      "0%"
+     ]
+    ],
+    "best": 2,
+    "note": "Tuna C paling rendah kalori, paling tinggi protein dan paling sedikit lemak, pilihan terbaik. Sumber: nota kelas."
+   },
+   {
+    "type": "bars",
+    "title": "Had harian gula tambahan vs satu tin minuman bergas",
+    "unit": "g",
+    "items": [
+     [
+      "Had ideal (WHO)",
+      25
+     ],
+     [
+      "Satu tin minuman bergas 330 ml",
+      35,
+      1
+     ],
+     [
+      "Had maksimum (WHO)",
+      50
+     ]
+    ],
+    "note": "Pertubuhan Kesihatan Sedunia mengesyorkan gula bebas kurang daripada 10% kalori harian (kira-kira 50 g), sebaik-baiknya kurang daripada 5% (kira-kira 25 g). Satu sudu teh gula kira-kira 4 g."
+   },
+   {
+    "type": "table",
+    "title": "Bijirin sarapan vs shake nutrisi (gram)",
+    "head": [
+     "Setiap 100 g",
+     "Kalori",
+     "Protein",
+     "Karbohidrat",
+     "Serat"
+    ],
+    "rows": [
+     [
+      "Bijirin segera",
+      "364",
+      "6.5",
+      "79",
+      "6.3"
+     ],
+     [
+      "Oat A",
+      "403",
+      "8.8",
+      "76.5",
+      "1.6"
+     ],
+     [
+      "Oat organik",
+      "379",
+      "13.2",
+      "67.7",
+      "10.1"
+     ],
+     [
+      "Shake nutrisi",
+      "378",
+      "35.8",
+      "26.9",
+      "18.1"
+     ]
+    ],
+    "best": 3,
+    "note": "Kalorinya hampir sama, tetapi shake nutrisi jauh lebih tinggi protein dan serat, jauh lebih rendah karbohidrat, serta mengandungi 16 jenis vitamin dan mineral (oat A hanya ada vitamin E). Disusun daripada nota kelas."
+   }
+  ],
+  "myth": {
+   "m": "Jika bungkusan tertulis \"rendah lemak\", maka ia sihat.",
+   "f": "Banyak produk rendah lemak menambah lebih banyak gula untuk menggantikan rasa. Pastikan anda melihat gula dan jumlah kalori pada label nutrisi."
+  },
+  "fact": {
+   "num": "2000",
+   "unit": "mg",
+   "text": "Pertubuhan Kesihatan Sedunia mengesyorkan orang dewasa mengambil kurang daripada 2000 mg natrium sehari (kira-kira 5 g garam)."
+  },
+  "tips": [
+   "Luangkan 10 saat membaca label sebelum membeli",
+   "Minuman lihat gula, snek lihat natrium dan minyak",
+   "Semakin pendek dan ringkas senarai bahan, biasanya semakin baik"
+  ],
+  "task": "Ambil sebungkus snek atau minuman di rumah, cari kalori, gula dan natrium setiap bungkus, ambil gambar dan kongsi dengan jurulatih.",
+  "share": "Adakah anda kenal sesiapa yang hanya melihat harga ketika membeli makanan, tanpa melihat label nutrisi?"
+ },
+ "quiz": {
+  "zh": {
+   "q": "一包零食的营养标签写「每份 150 kcal」，这包零食一共就是 150 kcal 吗？",
+   "opts": [
+    "是的",
+    "不一定，要看一包有几份",
+    "标签上的数字都不准"
+   ],
+   "a": 1,
+   "why": "很多零食一包有 2–3 份，热量要乘上份数。先看份量，再看数字。"
+  },
+  "en": {
+   "q": "A snack label says \"150 kcal per serving\". Does the whole pack have just 150 kcal?",
+   "opts": [
+    "Yes",
+    "Not necessarily — check how many servings are in the pack",
+    "The numbers on labels are all inaccurate"
+   ],
+   "a": 1,
+   "why": "Many snack packs hold 2–3 servings, so multiply the calories by the number of servings. Check the serving size first, then the numbers."
+  },
+  "ms": {
+   "q": "Label nutrisi sebungkus snek tertulis \"150 kcal setiap hidangan\". Adakah sebungkus itu hanya 150 kcal?",
+   "opts": [
+    "Ya",
+    "Belum tentu, lihat berapa hidangan dalam sebungkus",
+    "Angka pada label semuanya tidak tepat"
+   ],
+   "a": 1,
+   "why": "Banyak snek mengandungi 2–3 hidangan sebungkus, kalori perlu didarab dengan bilangan hidangan. Lihat saiz hidangan dahulu, kemudian angkanya."
+  }
+ }
+}

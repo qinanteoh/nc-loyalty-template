@@ -1,0 +1,428 @@
+{
+ "day": 3,
+ "zh": {
+  "t": "细胞营养",
+  "en": "Cellular Nutrition",
+  "tag": "营养",
+  "lead": "人只生一种病：细胞生病。吃饱肚子，不等于喂饱了细胞。",
+  "intro": "身体由数十万亿个细胞组成，每分钟都有大量细胞死亡和更新。新细胞健不健康，取决于你给它什么原料。",
+  "points": [
+   {
+    "h": "细胞是健康的基本单位",
+    "p": "皮肤、肌肉、器官、血液都由细胞组成。细胞得到足够营养，就能正常运作和修复；营养不够，细胞功能就会慢慢变差。"
+   },
+   {
+    "h": "细胞需要七大营养",
+    "p": "蛋白质、碳水化合物、脂肪、维他命、矿物质、膳食纤维和水，缺一不可。只吃饱而没吃对，细胞仍然会「饿」。"
+   },
+   {
+    "h": "营养在小肠被吸收",
+    "p": "小肠内壁布满细小的绒毛，大大增加了吸收面积。肠道健康，吃进去的营养才真正用得上。",
+    "viz": [
+     {
+      "type": "villi",
+      "title": "小肠绒毛：健康 vs 受损"
+     }
+    ]
+   },
+   {
+    "h": "什么会伤害小肠绒毛？",
+    "p": "以下这些都可能让小肠绒毛阻塞或受损，影响营养吸收：",
+    "list": [
+     "不健康的食物：饱和脂肪、反式脂肪、精制糖、精致淀粉、过多的盐",
+     "食品添加剂和防腐剂",
+     "压力",
+     "吸烟、喝酒",
+     "药物",
+     "污染、农药和空气中的有害物质"
+    ],
+    "after": "均衡营养有助于保护和修复肠道，让细胞得到充足的营养。"
+   },
+   {
+    "h": "蛋白质怎样喂饱细胞？",
+    "p": "食物里的蛋白质，是这样被身体利用的：",
+    "viz": [
+     {
+      "type": "flow",
+      "title": "蛋白质的旅程",
+      "steps": [
+       [
+        "食物里的蛋白质",
+        "鸡、鱼、蛋、豆腐、营养奶昔"
+       ],
+       [
+        "分解成氨基酸",
+        "在消化道被分解"
+       ],
+       [
+        "被小肠吸收",
+        "约 15 分钟内迅速吸收"
+       ]
+      ],
+      "targets": [
+       "脑细胞",
+       "皮肤细胞",
+       "肌肉细胞",
+       "其他器官的细胞"
+      ]
+     }
+    ]
+   },
+   {
+    "h": "热量过多，营养不足",
+    "p": "现代饮食常常是油、糖、精致淀粉多，蔬果、蛋白质和微量营养素少。很多人体重超标，细胞却营养不良。"
+   },
+   {
+    "h": "填补营养缺口",
+    "p": "先把饮食吃均衡，再按需要使用营养补充品，帮助填补日常饮食的营养缺口。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "细胞需要的七大营养素",
+    "items": [
+     [
+      "蛋白质",
+      "构成和修复细胞"
+     ],
+     [
+      "碳水化合物",
+      "主要能量来源"
+     ],
+     [
+      "脂肪",
+      "细胞膜、荷尔蒙原料"
+     ],
+     [
+      "维他命",
+      "调节身体机能"
+     ],
+     [
+      "矿物质",
+      "骨骼、神经、肌肉"
+     ],
+     [
+      "膳食纤维",
+      "肠道健康"
+     ],
+     [
+      "水",
+      "一切反应的环境"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "我吃得很饱，所以营养一定够。",
+   "f": "吃饱只代表热量够了。营养够不够，要看吃进去的食物种类是否均衡。"
+  },
+  "fact": {
+   "num": "90",
+   "unit": "%",
+   "text": "身体所需的营养，大约九成是通过小肠绒毛吸收的。"
+  },
+  "tips": [
+   "每餐都有一份蛋白质",
+   "每天吃不同颜色的蔬果",
+   "少吃加工食品，多吃原形食物"
+  ],
+  "task": "看看今天的餐盘，数一数七大营养素你吃到了几种，缺了哪几种。",
+  "share": "你有认识谁经常吃不健康的食物，生活方式又不太理想的吗？",
+  "philo": "细胞要健康，营养就要均衡。记住这张图："
+ },
+ "en": {
+  "t": "Cellular nutrition",
+  "en": "Cellular Nutrition",
+  "tag": "Nutrition",
+  "lead": "There's only one disease: sick cells. A full stomach doesn't mean well-fed cells.",
+  "intro": "Your body is made of tens of trillions of cells, and huge numbers die and renew every minute. How healthy new cells are depends on the raw materials you give them.",
+  "points": [
+   {
+    "h": "Cells are the basic unit of health",
+    "p": "Skin, muscles, organs and blood are all made of cells. With enough nutrition, cells work and repair normally; without it, cell function slowly declines."
+   },
+   {
+    "h": "Cells need seven key nutrients",
+    "p": "Protein, carbohydrates, fat, vitamins, minerals, dietary fibre and water — all essential. Eating your fill without eating right still leaves cells \"hungry\"."
+   },
+   {
+    "h": "Nutrients are absorbed in the small intestine",
+    "p": "The small intestine is lined with tiny villi that greatly increase the absorption area. Only with a healthy gut can you truly use the nutrients you eat.",
+    "viz": [
+     {
+      "type": "villi",
+      "title": "Intestinal villi: healthy vs damaged"
+     }
+    ]
+   },
+   {
+    "h": "What harms the intestinal villi?",
+    "p": "All of these can block or damage the villi and affect nutrient absorption:",
+    "list": [
+     "Unhealthy food: saturated fat, trans fat, refined sugar, refined starch, too much salt",
+     "Food additives and preservatives",
+     "Stress",
+     "Smoking and drinking alcohol",
+     "Medication",
+     "Pollution, pesticides and harmful substances in the air"
+    ],
+    "after": "Balanced nutrition helps protect and repair the gut so cells get enough nutrients."
+   },
+   {
+    "h": "How does protein feed your cells?",
+    "p": "This is how your body uses the protein in food:",
+    "viz": [
+     {
+      "type": "flow",
+      "title": "Protein's journey",
+      "steps": [
+       [
+        "Protein in food",
+        "Chicken, fish, eggs, tofu, nutrition shake"
+       ],
+       [
+        "Broken down into amino acids",
+        "Broken down in the digestive tract"
+       ],
+       [
+        "Absorbed by the small intestine",
+        "Rapidly absorbed within about 15 minutes"
+       ]
+      ],
+      "targets": [
+       "Brain cells",
+       "Skin cells",
+       "Muscle cells",
+       "Cells of other organs"
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Too many calories, too little nutrition",
+    "p": "Modern diets are often high in oil, sugar and refined starch, and low in vegetables, fruit, protein and micronutrients. Many people are overweight while their cells are malnourished."
+   },
+   {
+    "h": "Fill the nutrition gap",
+    "p": "First eat a balanced diet, then use supplements as needed to fill the gaps in your everyday diet."
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Seven nutrients your cells need",
+    "items": [
+     [
+      "Protein",
+      "Builds and repairs cells"
+     ],
+     [
+      "Carbohydrates",
+      "Main energy source"
+     ],
+     [
+      "Fat",
+      "Cell membranes, hormone building blocks"
+     ],
+     [
+      "Vitamins",
+      "Regulate body functions"
+     ],
+     [
+      "Minerals",
+      "Bones, nerves, muscles"
+     ],
+     [
+      "Dietary fibre",
+      "Gut health"
+     ],
+     [
+      "Water",
+      "The medium for every reaction"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "I eat until I'm full, so I must be getting enough nutrition.",
+   "f": "Being full only means you've had enough calories. Whether you have enough nutrition depends on whether the foods you eat are balanced."
+  },
+  "fact": {
+   "num": "90",
+   "unit": "%",
+   "text": "About 90% of the nutrients your body needs are absorbed through the intestinal villi."
+  },
+  "tips": [
+   "One portion of protein at every meal",
+   "Eat vegetables and fruit of different colours every day",
+   "Eat fewer processed foods and more whole foods"
+  ],
+  "task": "Look at today's plates and count how many of the seven nutrients you ate, and which ones you missed.",
+  "share": "Do you know anyone who often eats unhealthy food and doesn't have a very healthy lifestyle?",
+  "philo": "For healthy cells, nutrition must be balanced. Remember this chart:"
+ },
+ "ms": {
+  "t": "Nutrisi sel",
+  "en": "Cellular Nutrition",
+  "tag": "Nutrisi",
+  "lead": "Manusia hanya ada satu penyakit: sel yang sakit. Perut kenyang tidak bermakna sel juga kenyang.",
+  "intro": "Badan terdiri daripada puluhan trilion sel, dan setiap minit banyak sel mati dan diperbaharui. Sihat atau tidak sel baharu bergantung pada bahan mentah yang anda beri.",
+  "points": [
+   {
+    "h": "Sel ialah unit asas kesihatan",
+    "p": "Kulit, otot, organ dan darah semuanya terdiri daripada sel. Dengan nutrisi yang cukup, sel berfungsi dan membaiki diri dengan normal; jika kurang, fungsi sel akan merosot perlahan-lahan."
+   },
+   {
+    "h": "Sel memerlukan tujuh nutrien utama",
+    "p": "Protein, karbohidrat, lemak, vitamin, mineral, serat diet dan air, semuanya penting. Makan kenyang tetapi tidak betul, sel tetap \"lapar\"."
+   },
+   {
+    "h": "Nutrien diserap di usus kecil",
+    "p": "Dinding usus kecil dipenuhi vilus halus yang meningkatkan luas permukaan penyerapan. Hanya usus yang sihat dapat menggunakan nutrien yang dimakan dengan sepenuhnya.",
+    "viz": [
+     {
+      "type": "villi",
+      "title": "Vilus usus: sihat vs rosak"
+     }
+    ]
+   },
+   {
+    "h": "Apa yang merosakkan vilus usus?",
+    "p": "Semua ini boleh menyumbat atau merosakkan vilus usus dan menjejaskan penyerapan nutrien:",
+    "list": [
+     "Makanan tidak sihat: lemak tepu, lemak trans, gula halus, kanji halus, garam berlebihan",
+     "Bahan tambah makanan dan pengawet",
+     "Tekanan",
+     "Merokok dan minum alkohol",
+     "Ubat-ubatan",
+     "Pencemaran, racun perosak dan bahan berbahaya di udara"
+    ],
+    "after": "Nutrisi seimbang membantu melindungi dan membaiki usus supaya sel mendapat nutrien yang mencukupi."
+   },
+   {
+    "h": "Bagaimana protein memberi makan kepada sel?",
+    "p": "Begini badan menggunakan protein daripada makanan:",
+    "viz": [
+     {
+      "type": "flow",
+      "title": "Perjalanan protein",
+      "steps": [
+       [
+        "Protein dalam makanan",
+        "Ayam, ikan, telur, tauhu, shake nutrisi"
+       ],
+       [
+        "Dipecahkan kepada asid amino",
+        "Dipecahkan dalam saluran pencernaan"
+       ],
+       [
+        "Diserap oleh usus kecil",
+        "Diserap dengan cepat dalam kira-kira 15 minit"
+       ]
+      ],
+      "targets": [
+       "Sel otak",
+       "Sel kulit",
+       "Sel otot",
+       "Sel organ lain"
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Kalori berlebihan, nutrisi kurang",
+    "p": "Pemakanan moden selalunya tinggi minyak, gula dan kanji halus, tetapi rendah sayur, buah, protein dan mikronutrien. Ramai orang berlebihan berat badan tetapi selnya kekurangan nutrisi."
+   },
+   {
+    "h": "Isi jurang nutrisi",
+    "p": "Makan seimbang dahulu, kemudian gunakan suplemen mengikut keperluan untuk mengisi jurang nutrisi dalam pemakanan harian."
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Tujuh nutrien yang diperlukan sel",
+    "items": [
+     [
+      "Protein",
+      "Membina dan membaiki sel"
+     ],
+     [
+      "Karbohidrat",
+      "Sumber tenaga utama"
+     ],
+     [
+      "Lemak",
+      "Membran sel, bahan asas hormon"
+     ],
+     [
+      "Vitamin",
+      "Mengawal fungsi badan"
+     ],
+     [
+      "Mineral",
+      "Tulang, saraf, otot"
+     ],
+     [
+      "Serat diet",
+      "Kesihatan usus"
+     ],
+     [
+      "Air",
+      "Persekitaran bagi semua tindak balas"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Saya makan sampai kenyang, jadi nutrisi pasti cukup.",
+   "f": "Kenyang hanya bermakna kalori sudah cukup. Nutrisi cukup atau tidak bergantung pada sama ada jenis makanan yang dimakan seimbang."
+  },
+  "fact": {
+   "num": "90",
+   "unit": "%",
+   "text": "Kira-kira 90% nutrien yang diperlukan badan diserap melalui vilus usus kecil."
+  },
+  "tips": [
+   "Satu hidangan protein pada setiap kali makan",
+   "Makan sayur dan buah pelbagai warna setiap hari",
+   "Kurangkan makanan diproses, lebihkan makanan asli"
+  ],
+  "task": "Lihat pinggan anda hari ini, kira berapa daripada tujuh nutrien utama yang anda makan, dan yang mana tertinggal.",
+  "share": "Adakah anda kenal sesiapa yang selalu makan makanan tidak sihat dan gaya hidupnya kurang baik?",
+  "philo": "Untuk sel yang sihat, nutrisi mesti seimbang. Ingat carta ini:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "吃得很饱，是不是就代表身体的营养够了？",
+   "opts": [
+    "是，吃饱就够了",
+    "不一定，吃饱只代表热量够",
+    "只要吃很多肉就够"
+   ],
+   "a": 1,
+   "why": "吃饱和吃到营养是两回事。细胞需要七大营养素，种类均衡才算真正喂饱细胞。"
+  },
+  "en": {
+   "q": "Does feeling very full mean your body has enough nutrition?",
+   "opts": [
+    "Yes, being full is enough",
+    "Not necessarily — being full only means enough calories",
+    "Just eat lots of meat and that's enough"
+   ],
+   "a": 1,
+   "why": "Being full and being nourished are two different things. Cells need seven nutrients; only a balanced variety truly feeds them."
+  },
+  "ms": {
+   "q": "Adakah makan sampai kenyang bermakna nutrisi badan sudah cukup?",
+   "opts": [
+    "Ya, kenyang sudah cukup",
+    "Belum tentu, kenyang hanya bermakna kalori cukup",
+    "Asalkan makan banyak daging sudah cukup"
+   ],
+   "a": 1,
+   "why": "Kenyang dan mendapat nutrisi ialah dua perkara berbeza. Sel memerlukan tujuh nutrien utama; hanya kepelbagaian yang seimbang benar-benar memberi makan kepada sel."
+  }
+ }
+}

@@ -1,0 +1,299 @@
+{
+ "day": 21,
+ "zh": {
+  "t": "成为会员，继续前进",
+  "en": "Become a Member",
+  "tag": "会员",
+  "lead": "恭喜完成 21 天！这是新习惯的开始，不是结束。",
+  "intro": "21 天，你学会了热量、水分、细胞营养、早餐、升糖指数、蛋白质、脂肪、标签、运动和更多。接下来，要把这些知识变成一辈子的习惯。",
+  "points": [
+   {
+    "h": "回顾你的收获",
+    "p": "从第 1 天的热量观念，到第 18 天的减重阶段，你已经有了一套完整的健康饮食知识。"
+   },
+   {
+    "h": "会员的好处",
+    "p": "成为会员后，你可以：",
+    "list": [
+     "以至少 25% 的折扣订购所有产品",
+     "用自己的户口推荐新会员",
+     "累计点数，达成更高的优惠",
+     "成为活跃会员后，了解零售和批发收入的机会"
+    ]
+   },
+   {
+    "h": "成为会员只需 2 件事",
+    "p": "申请会员很简单：",
+    "list": [
+     "参加 75–90 分钟的康宝莱商机会议（NCOM）",
+     "购买会员资料袋（IBP），价格请向教练询问最新资料"
+    ]
+   },
+   {
+    "h": "持续的指导",
+    "p": "继续获得教练的个人化餐单、饮食指导和效果跟进，按你的进展调整计划。"
+   },
+   {
+    "h": "团队和活动",
+    "p": "参加营养俱乐部的课程和活动，和团队一起朝下一个目标前进。"
+   },
+   {
+    "h": "下一个目标",
+    "p": "设定接下来 3 个月的目标，一步一步实现更健康的自己。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "会员的好处",
+    "items": [
+     [
+      "至少 25% 折扣",
+      "订购所有产品"
+     ],
+     [
+      "推荐新会员",
+      "使用自己的个人户口"
+     ],
+     [
+      "累计点数",
+      "达成更高的优惠"
+     ],
+     [
+      "收入机会",
+      "活跃会员可了解零售与批发收入"
+     ]
+    ]
+   },
+   {
+    "type": "recap",
+    "title": "这 21 天你学会了"
+   }
+  ],
+  "myth": {
+   "m": "21 天结束，就可以回到以前的饮食了。",
+   "f": "21 天只是习惯的开始。持续下去，成果才会长久。"
+  },
+  "fact": {
+   "num": "21",
+   "unit": "天",
+   "text": "你已经完成全部课程。为自己鼓掌！"
+  },
+  "tips": [
+   "每天继续喝够水",
+   "每餐继续有蛋白质",
+   "每周至少运动 150 分钟"
+  ],
+  "task": "和教练约一个时间，回顾这 21 天的成果，订下接下来 3 个月的目标。",
+  "share": "你有认识谁也想开始这 21 天的健康旅程吗？",
+  "philo": "21 天学到的，都在这一张图里："
+ },
+ "en": {
+  "t": "Become a member and keep moving forward",
+  "en": "Become a Member",
+  "tag": "Member",
+  "lead": "Congratulations on completing 21 days! This is the start of new habits, not the end.",
+  "intro": "In 21 days you've learned about calories, water, cellular nutrition, breakfast, GI, protein, fat, labels, exercise and more. Next, turn this knowledge into lifelong habits.",
+  "points": [
+   {
+    "h": "Review what you've gained",
+    "p": "From calorie basics on Day 1 to weight-loss stages on Day 18, you now have a complete set of healthy eating knowledge."
+   },
+   {
+    "h": "Member benefits",
+    "p": "As a member, you can:",
+    "list": [
+     "Order all products at a discount of at least 25%",
+     "Refer new members with your own account",
+     "Accumulate points for bigger benefits",
+     "As an active member, learn about retail and wholesale income opportunities"
+    ]
+   },
+   {
+    "h": "Becoming a member takes just 2 things",
+    "p": "Applying is easy:",
+    "list": [
+     "Attend a 75–90 minute Herbalife business opportunity meeting (NCOM)",
+     "Purchase the member pack (IBP) — ask your coach for the latest price"
+    ]
+   },
+   {
+    "h": "Ongoing guidance",
+    "p": "Keep getting your coach's personalised meal plan, diet guidance and progress follow-up, with your plan adjusted as you progress."
+   },
+   {
+    "h": "Team and activities",
+    "p": "Join nutrition club courses and activities, and move toward your next goal with the team."
+   },
+   {
+    "h": "Next goal",
+    "p": "Set goals for the next 3 months and become a healthier you step by step."
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Member benefits",
+    "items": [
+     [
+      "At least 25% off",
+      "Order all products"
+     ],
+     [
+      "Refer new members",
+      "Using your own personal account"
+     ],
+     [
+      "Accumulate points",
+      "Reach bigger benefits"
+     ],
+     [
+      "Income opportunity",
+      "Active members can learn about retail and wholesale income"
+     ]
+    ]
+   },
+   {
+    "type": "recap",
+    "title": "In these 21 days you learned"
+   }
+  ],
+  "myth": {
+   "m": "Once the 21 days are over, I can go back to my old eating habits.",
+   "f": "21 days is just the start of a habit. Keep going and the results will last."
+  },
+  "fact": {
+   "num": "21",
+   "unit": " days",
+   "text": "You've finished the whole course. Give yourself a round of applause!"
+  },
+  "tips": [
+   "Keep drinking enough water every day",
+   "Keep having protein at every meal",
+   "Exercise at least 150 minutes a week"
+  ],
+  "task": "Book a time with your coach to review your 21-day results and set goals for the next 3 months.",
+  "share": "Do you know anyone who'd also like to start this 21-day health journey?",
+  "philo": "Everything you learned in 21 days is in this one chart:"
+ },
+ "ms": {
+  "t": "Jadi ahli dan terus maju",
+  "en": "Become a Member",
+  "tag": "Ahli",
+  "lead": "Tahniah kerana menamatkan 21 hari! Ini permulaan tabiat baharu, bukan pengakhiran.",
+  "intro": "Dalam 21 hari, anda telah belajar tentang kalori, air, nutrisi sel, sarapan, indeks glisemik, protein, lemak, label, senaman dan banyak lagi. Seterusnya, jadikan ilmu ini tabiat sepanjang hayat.",
+  "points": [
+   {
+    "h": "Imbas kembali apa yang diperoleh",
+    "p": "Daripada konsep kalori pada Hari 1 hingga peringkat penurunan berat badan pada Hari 18, anda kini mempunyai ilmu pemakanan sihat yang lengkap."
+   },
+   {
+    "h": "Kelebihan ahli",
+    "p": "Sebagai ahli, anda boleh:",
+    "list": [
+     "Membeli semua produk dengan diskaun sekurang-kurangnya 25%",
+     "Merujuk ahli baharu menggunakan akaun sendiri",
+     "Mengumpul mata untuk kelebihan yang lebih tinggi",
+     "Sebagai ahli aktif, mengenali peluang pendapatan runcit dan borong"
+    ]
+   },
+   {
+    "h": "Menjadi ahli hanya perlukan 2 perkara",
+    "p": "Memohon keahlian sangat mudah:",
+    "list": [
+     "Hadiri mesyuarat peluang perniagaan Herbalife (NCOM) selama 75–90 minit",
+     "Beli pek keahlian (IBP); tanya jurulatih untuk harga terkini"
+    ]
+   },
+   {
+    "h": "Bimbingan berterusan",
+    "p": "Terus menerima pelan makan peribadi, bimbingan pemakanan dan susulan hasil daripada jurulatih, dengan pelan disesuaikan mengikut kemajuan anda."
+   },
+   {
+    "h": "Pasukan dan aktiviti",
+    "p": "Sertai kursus dan aktiviti kelab nutrisi, dan bergerak ke arah matlamat seterusnya bersama pasukan."
+   },
+   {
+    "h": "Matlamat seterusnya",
+    "p": "Tetapkan matlamat untuk 3 bulan akan datang, dan capai diri yang lebih sihat langkah demi langkah."
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Kelebihan ahli",
+    "items": [
+     [
+      "Diskaun sekurang-kurangnya 25%",
+      "Beli semua produk"
+     ],
+     [
+      "Rujuk ahli baharu",
+      "Menggunakan akaun peribadi sendiri"
+     ],
+     [
+      "Kumpul mata",
+      "Capai kelebihan lebih tinggi"
+     ],
+     [
+      "Peluang pendapatan",
+      "Ahli aktif boleh mengenali pendapatan runcit dan borong"
+     ]
+    ]
+   },
+   {
+    "type": "recap",
+    "title": "Dalam 21 hari ini anda telah belajar"
+   }
+  ],
+  "myth": {
+   "m": "Selepas 21 hari tamat, boleh kembali kepada cara makan lama.",
+   "f": "21 hari hanyalah permulaan sesuatu tabiat. Teruskan, barulah hasilnya kekal lama."
+  },
+  "fact": {
+   "num": "21",
+   "unit": " hari",
+   "text": "Anda telah menamatkan keseluruhan kursus. Tepuk tangan untuk diri sendiri!"
+  },
+  "tips": [
+   "Terus minum air yang cukup setiap hari",
+   "Terus ada protein pada setiap hidangan",
+   "Bersenam sekurang-kurangnya 150 minit seminggu"
+  ],
+  "task": "Tetapkan masa bersama jurulatih untuk mengimbas hasil 21 hari ini, dan tetapkan matlamat untuk 3 bulan akan datang.",
+  "share": "Adakah anda kenal sesiapa yang juga mahu memulakan perjalanan kesihatan 21 hari ini?",
+  "philo": "Semua yang dipelajari dalam 21 hari ada dalam satu carta ini:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "21 天课程结束后，接下来最重要的是什么？",
+   "opts": [
+    "回到以前的饮食习惯",
+    "把学到的变成长期的生活方式",
+    "马上找新的减重方法"
+   ],
+   "a": 1,
+   "why": "21 天只是开始。把健康习惯持续下去，成果才会长久。"
+  },
+  "en": {
+   "q": "After the 21-day course, what matters most next?",
+   "opts": [
+    "Go back to old eating habits",
+    "Turn what you've learned into a long-term lifestyle",
+    "Find a new weight-loss method right away"
+   ],
+   "a": 1,
+   "why": "21 days is just the beginning. Keep up your healthy habits and the results will last."
+  },
+  "ms": {
+   "q": "Selepas kursus 21 hari tamat, apa yang paling penting seterusnya?",
+   "opts": [
+    "Kembali kepada tabiat makan lama",
+    "Jadikan apa yang dipelajari sebagai gaya hidup jangka panjang",
+    "Segera cari cara turun berat badan yang baharu"
+   ],
+   "a": 1,
+   "why": "21 hari hanyalah permulaan. Teruskan tabiat sihat, barulah hasilnya kekal lama."
+  }
+ }
+}

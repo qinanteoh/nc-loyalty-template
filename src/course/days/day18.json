@@ -1,0 +1,503 @@
+{
+ "day": 18,
+ "zh": {
+  "t": "健康生活与减重阶段",
+  "en": "Healthy Active Lifestyle",
+  "tag": "提升计划",
+  "lead": "了解减重的不同阶段，遇到平台期就不会慌。",
+  "intro": "减重不是一条直线往下的过程。了解每个阶段会发生什么，才能在体重停住时不放弃，继续调整前进。",
+  "points": [
+   {
+    "h": "先认识体脂率",
+    "p": "体脂率是身体里脂肪占体重的百分比，比体重更能看出你的身材和健康状况。",
+    "list": [
+     "同样体重，体脂率越低，身材越紧实",
+     "男性和女性的标准不一样，女性本来就需要多一点脂肪",
+     "下面每个阶段的判断标准，都是看体脂率"
+    ],
+    "viz": [
+     {
+      "type": "table",
+      "title": "体脂率参考",
+      "head": [
+       "分类",
+       "女性",
+       "男性"
+      ],
+      "rows": [
+       [
+        "运动员",
+        "14–20%",
+        "6–13%"
+       ],
+       [
+        "健康",
+        "21–24%",
+        "14–17%"
+       ],
+       [
+        "一般",
+        "25–31%",
+        "18–24%"
+       ],
+       [
+        "肥胖",
+        "32% 以上",
+        "25% 以上"
+       ]
+      ],
+      "best": 1,
+      "note": "参考一般体脂率分类，数字为约略范围。请教练帮你测量，了解自己在哪一个范围。"
+     }
+    ]
+   },
+   {
+    "h": "你的脂肪藏在哪里？",
+    "p": "每个人囤积脂肪的位置不一样：",
+    "list": [
+     "肚子（苹果型）：脂肪集中在腰腹，男性比较常见",
+     "臀部和大腿（梨型）：女性比较常见",
+     "全身型：脂肪平均分布在全身"
+    ],
+    "after": "最需要留意的是肚子上的脂肪。腰腹的脂肪很多是包在内脏外面的「内脏脂肪」，和心脏病、糖尿病、脂肪肝的关系最密切。所以除了体重，也要定期量腰围。",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "腰围参考（亚洲人）",
+      "items": [
+       [
+        "男性",
+        "腰围 90 厘米以下"
+       ],
+       [
+        "女性",
+        "腰围 80 厘米以下"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "第一阶段：肥变中",
+    "p": "判断标准：男性体脂率高于 25%，女性高于 30%。饮食上，食量比过去少，戒掉零食和夜宵，远离油炸和高糖食物。"
+   },
+   {
+    "h": "第二阶段：中变瘦",
+    "p": "判断标准：男性体脂率 20%–25%，女性 25%–30%。这个阶段要认真跟着教练给的餐单。"
+   },
+   {
+    "h": "第三阶段：平台期",
+    "p": "身体对减重出现「适应」，代谢降低，体重暂时不再下降。这是正常的，不要气馁。",
+    "list": [
+     "饮食：多吃富含 B 族维他命、膳食纤维和优质蛋白质的食物",
+     "水果：换成低升糖的苹果、奇异果、西柚",
+     "运动：改变运动方式来突破"
+    ]
+   },
+   {
+    "h": "最后阶段：瘦变完美（雕塑期）",
+    "p": "恭喜你已经走过最艰难的阶段！",
+    "list": [
+     "饮食：减脂餐，并确保蛋白质充足，帮助肌肉合成",
+     "运动：每天有氧运动，每周至少 3 次力量训练",
+     "针对还不满意的部位做加强",
+     "运动后记得拉伸"
+    ]
+   },
+   {
+    "h": "健康活跃生活的好处",
+    "p": "规律饮食、足够睡眠、每天活动，不只帮助身材，还能舒缓压力、提高工作效率、增加自信心，让心情和生活都变得更好。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "减肥的 4 个阶段",
+    "items": [
+     [
+      "肥变中",
+      "男 > 25% · 女 > 30%",
+      "少吃零食夜宵，远离油炸高糖"
+     ],
+     [
+      "中变瘦",
+      "男 20–25% · 女 25–30%",
+      "认真跟着餐单"
+     ],
+     [
+      "平台期",
+      "体重暂停",
+      "调整饮食和运动方式来突破"
+     ],
+     [
+      "瘦变完美",
+      "雕塑期",
+      "高蛋白 + 有氧 + 每周 3 次力量训练"
+     ]
+    ],
+    "note": "百分比为体脂率判断标准，资料来自课堂讲义。"
+   }
+  ],
+  "myth": {
+   "m": "体重一停住就代表方法没效了。",
+   "f": "平台期是正常过程。坚持并做小调整，身体会继续进步。"
+  },
+  "fact": {
+   "num": "3",
+   "unit": "次 / 周",
+   "text": "雕塑期建议每周至少 3 次力量训练，加上每天的有氧运动。"
+  },
+  "tips": [
+   "每周同一天、同一时间量体重",
+   "同时记录腰围和体脂",
+   "照一张全身照，一个月后对比"
+  ],
+  "task": "和教练一起订下下一个阶段的目标（体重、腰围或体脂），并写下来。",
+  "share": "你有认识谁减重遇到平台期就放弃的吗？",
+  "philo": "不管在哪个阶段，都按这张图来吃："
+ },
+ "en": {
+  "t": "Healthy living and weight-loss stages",
+  "en": "Healthy Active Lifestyle",
+  "tag": "Level up",
+  "lead": "Understand the stages of weight loss so you won't panic at a plateau.",
+  "intro": "Weight loss isn't a straight line down. Knowing what happens at each stage helps you keep going and adjusting when your weight stalls.",
+  "points": [
+   {
+    "h": "First, understand body fat percentage",
+    "p": "Body fat percentage is the share of your body weight that is fat. It reveals your shape and health better than weight does.",
+    "list": [
+     "At the same weight, the lower your body fat, the firmer you look",
+     "Men and women have different standards — women naturally need a bit more fat",
+     "Each stage below is judged by body fat percentage"
+    ],
+    "viz": [
+     {
+      "type": "table",
+      "title": "Body fat reference",
+      "head": [
+       "Category",
+       "Women",
+       "Men"
+      ],
+      "rows": [
+       [
+        "Athlete",
+        "14–20%",
+        "6–13%"
+       ],
+       [
+        "Healthy",
+        "21–24%",
+        "14–17%"
+       ],
+       [
+        "Average",
+        "25–31%",
+        "18–24%"
+       ],
+       [
+        "Obese",
+        "Above 32%",
+        "Above 25%"
+       ]
+      ],
+      "best": 1,
+      "note": "Based on general body fat categories; figures are approximate ranges. Ask your coach to measure you so you know which range you're in."
+     }
+    ]
+   },
+   {
+    "h": "Where is your fat stored?",
+    "p": "Everyone stores fat in different places:",
+    "list": [
+     "Belly (apple shape): fat around the waist, more common in men",
+     "Hips and thighs (pear shape): more common in women",
+     "All over: fat spread evenly across the body"
+    ],
+    "after": "Belly fat needs the most attention. Much of the fat around your waist is \"visceral fat\" wrapped around organs, most closely linked to heart disease, diabetes and fatty liver. So besides weight, measure your waist regularly too.",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "Waist reference (Asians)",
+      "items": [
+       [
+        "Men",
+        "Waist under 90 cm"
+       ],
+       [
+        "Women",
+        "Waist under 80 cm"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Stage 1: from heavy to medium",
+    "p": "Criteria: body fat above 25% for men, above 30% for women. Eat less than before, cut out snacks and late-night supper, and stay away from fried and high-sugar foods."
+   },
+   {
+    "h": "Stage 2: from medium to slim",
+    "p": "Criteria: body fat 20–25% for men, 25–30% for women. At this stage, follow your coach's meal plan carefully."
+   },
+   {
+    "h": "Stage 3: the plateau",
+    "p": "Your body \"adapts\" to weight loss, metabolism slows, and weight temporarily stops dropping. This is normal — don't be discouraged.",
+    "list": [
+     "Diet: eat more foods rich in B vitamins, dietary fibre and quality protein",
+     "Fruit: switch to low-GI apples, kiwis and grapefruit",
+     "Exercise: change your workout to break through"
+    ]
+   },
+   {
+    "h": "Final stage: from slim to perfect (sculpting)",
+    "p": "Congratulations — you've come through the hardest stage!",
+    "list": [
+     "Diet: fat-loss meals with enough protein to help build muscle",
+     "Exercise: cardio every day, strength training at least 3 times a week",
+     "Focus on the areas you're still not happy with",
+     "Remember to stretch after exercise"
+    ]
+   },
+   {
+    "h": "Benefits of a healthy, active life",
+    "p": "Regular meals, enough sleep and daily activity don't just help your figure — they relieve stress, boost productivity and confidence, and make your mood and life better."
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "The 4 stages of weight loss",
+    "items": [
+     [
+      "Heavy to medium",
+      "Men > 25% · Women > 30%",
+      "Cut snacks and supper, avoid fried and high-sugar food"
+     ],
+     [
+      "Medium to slim",
+      "Men 20–25% · Women 25–30%",
+      "Follow the meal plan carefully"
+     ],
+     [
+      "Plateau",
+      "Weight pauses",
+      "Adjust diet and exercise to break through"
+     ],
+     [
+      "Slim to perfect",
+      "Sculpting phase",
+      "High protein + cardio + strength training 3× a week"
+     ]
+    ],
+    "note": "Percentages are body fat criteria, from class handouts."
+   }
+  ],
+  "myth": {
+   "m": "If your weight stalls, the method isn't working.",
+   "f": "A plateau is a normal process. Keep going and make small adjustments, and your body will keep improving."
+  },
+  "fact": {
+   "num": "3",
+   "unit": " ×/week",
+   "text": "In the sculpting phase, at least 3 strength sessions a week plus daily cardio is recommended."
+  },
+  "tips": [
+   "Weigh yourself on the same day and time each week",
+   "Record your waist and body fat too",
+   "Take a full-body photo and compare after a month"
+  ],
+  "task": "Set your next-stage goal (weight, waist or body fat) with your coach, and write it down.",
+  "share": "Do you know anyone who gave up when their weight loss hit a plateau?",
+  "philo": "Whatever stage you're at, eat according to this chart:"
+ },
+ "ms": {
+  "t": "Hidup sihat dan peringkat penurunan berat badan",
+  "en": "Healthy Active Lifestyle",
+  "tag": "Pelan peningkatan",
+  "lead": "Fahami peringkat-peringkat penurunan berat badan supaya tidak panik apabila sampai ke fasa mendatar.",
+  "intro": "Penurunan berat badan bukan garis lurus ke bawah. Fahami apa yang berlaku pada setiap peringkat supaya tidak berputus asa apabila berat terhenti, dan terus menyesuaikan diri.",
+  "points": [
+   {
+    "h": "Kenali dahulu peratus lemak badan",
+    "p": "Peratus lemak badan ialah peratusan lemak daripada berat badan; ia lebih menggambarkan bentuk badan dan tahap kesihatan berbanding berat badan.",
+    "list": [
+     "Dengan berat yang sama, semakin rendah peratus lemak badan, semakin tegap badan",
+     "Piawaian lelaki dan wanita berbeza; wanita memang memerlukan lebih sedikit lemak",
+     "Setiap peringkat di bawah dinilai berdasarkan peratus lemak badan"
+    ],
+    "viz": [
+     {
+      "type": "table",
+      "title": "Rujukan peratus lemak badan",
+      "head": [
+       "Kategori",
+       "Wanita",
+       "Lelaki"
+      ],
+      "rows": [
+       [
+        "Atlet",
+        "14–20%",
+        "6–13%"
+       ],
+       [
+        "Sihat",
+        "21–24%",
+        "14–17%"
+       ],
+       [
+        "Biasa",
+        "25–31%",
+        "18–24%"
+       ],
+       [
+        "Obes",
+        "Melebihi 32%",
+        "Melebihi 25%"
+       ]
+      ],
+      "best": 1,
+      "note": "Berdasarkan klasifikasi umum peratus lemak badan; angka ialah julat anggaran. Minta jurulatih mengukur untuk mengetahui julat anda."
+     }
+    ]
+   },
+   {
+    "h": "Di mana lemak anda tersimpan?",
+    "p": "Setiap orang menyimpan lemak di tempat yang berbeza:",
+    "list": [
+     "Perut (bentuk epal): lemak tertumpu di pinggang dan perut, lebih biasa pada lelaki",
+     "Pinggul dan peha (bentuk pir): lebih biasa pada wanita",
+     "Seluruh badan: lemak tersebar sekata di seluruh badan"
+    ],
+    "after": "Lemak perut paling perlu diberi perhatian. Kebanyakan lemak di pinggang ialah \"lemak viseral\" yang membalut organ dalaman, paling berkait rapat dengan penyakit jantung, diabetes dan hati berlemak. Jadi selain berat badan, ukur juga lilitan pinggang secara berkala.",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "Rujukan lilitan pinggang (orang Asia)",
+      "items": [
+       [
+        "Lelaki",
+        "Lilitan pinggang bawah 90 cm"
+       ],
+       [
+        "Wanita",
+        "Lilitan pinggang bawah 80 cm"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Peringkat 1: dari gemuk ke sederhana",
+    "p": "Kriteria: peratus lemak badan lelaki melebihi 25%, wanita melebihi 30%. Dari segi pemakanan, makan kurang daripada dahulu, hentikan snek dan makan lewat malam, jauhi makanan bergoreng dan tinggi gula."
+   },
+   {
+    "h": "Peringkat 2: dari sederhana ke kurus",
+    "p": "Kriteria: peratus lemak badan lelaki 20–25%, wanita 25–30%. Pada peringkat ini, ikut pelan makan jurulatih dengan bersungguh-sungguh."
+   },
+   {
+    "h": "Peringkat 3: fasa mendatar",
+    "p": "Badan \"menyesuaikan diri\" dengan penurunan berat, metabolisme menurun, dan berat badan berhenti turun buat sementara. Ini normal, jangan berputus asa.",
+    "list": [
+     "Pemakanan: lebihkan makanan kaya vitamin B, serat diet dan protein berkualiti",
+     "Buah: tukar kepada buah GI rendah seperti epal, kiwi dan limau gedang",
+     "Senaman: ubah cara bersenam untuk memecah fasa mendatar"
+    ]
+   },
+   {
+    "h": "Peringkat akhir: dari kurus ke sempurna (fasa membentuk)",
+    "p": "Tahniah, anda sudah melalui peringkat paling sukar!",
+    "list": [
+     "Pemakanan: hidangan kurang lemak, pastikan protein mencukupi untuk membantu pembinaan otot",
+     "Senaman: aerobik setiap hari, latihan kekuatan sekurang-kurangnya 3 kali seminggu",
+     "Fokus pada bahagian yang masih belum memuaskan",
+     "Ingat untuk regangan selepas bersenam"
+    ]
+   },
+   {
+    "h": "Kebaikan hidup sihat dan aktif",
+    "p": "Makan teratur, tidur cukup dan aktif setiap hari bukan sahaja membantu bentuk badan, malah melegakan tekanan, meningkatkan produktiviti dan keyakinan diri, serta menjadikan emosi dan kehidupan lebih baik."
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "4 peringkat penurunan berat badan",
+    "items": [
+     [
+      "Gemuk ke sederhana",
+      "Lelaki > 25% · Wanita > 30%",
+      "Kurangkan snek dan makan malam lewat, jauhi makanan bergoreng dan tinggi gula"
+     ],
+     [
+      "Sederhana ke kurus",
+      "Lelaki 20–25% · Wanita 25–30%",
+      "Ikut pelan makan dengan bersungguh-sungguh"
+     ],
+     [
+      "Fasa mendatar",
+      "Berat badan terhenti",
+      "Ubah pemakanan dan cara bersenam untuk memecahkannya"
+     ],
+     [
+      "Kurus ke sempurna",
+      "Fasa membentuk",
+      "Tinggi protein + aerobik + latihan kekuatan 3 kali seminggu"
+     ]
+    ],
+    "note": "Peratusan ialah kriteria peratus lemak badan, daripada nota kelas."
+   }
+  ],
+  "myth": {
+   "m": "Apabila berat badan terhenti, bermakna cara itu sudah tidak berkesan.",
+   "f": "Fasa mendatar ialah proses biasa. Teruskan usaha dan buat penyesuaian kecil, badan akan terus menunjukkan kemajuan."
+  },
+  "fact": {
+   "num": "3",
+   "unit": " kali/minggu",
+   "text": "Dalam fasa membentuk, disyorkan latihan kekuatan sekurang-kurangnya 3 kali seminggu, ditambah senaman aerobik setiap hari."
+  },
+  "tips": [
+   "Timbang berat badan pada hari dan masa yang sama setiap minggu",
+   "Catat juga lilitan pinggang dan lemak badan",
+   "Ambil gambar seluruh badan dan bandingkan selepas sebulan"
+  ],
+  "task": "Tetapkan matlamat peringkat seterusnya (berat badan, lilitan pinggang atau lemak badan) bersama jurulatih, dan tuliskan.",
+  "share": "Adakah anda kenal sesiapa yang berputus asa apabila penurunan berat badan sampai ke fasa mendatar?",
+  "philo": "Walau di peringkat mana pun, makan mengikut carta ini:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "减重期间体重连续两个星期都没有下降，代表什么？",
+   "opts": [
+    "方法没效，应该放弃",
+    "可能进入平台期，这是正常的",
+    "应该马上不吃饭"
+   ],
+   "a": 1,
+   "why": "平台期是减重的正常阶段。检查饮食、加强运动、和教练讨论调整，就能继续前进。"
+  },
+  "en": {
+   "q": "If your weight hasn't dropped for two weeks while losing weight, what does it mean?",
+   "opts": [
+    "The method doesn't work — give up",
+    "You may have reached a plateau — this is normal",
+    "Stop eating rice immediately"
+   ],
+   "a": 1,
+   "why": "A plateau is a normal stage of weight loss. Review your diet, step up exercise and talk to your coach about adjustments, and you'll keep moving forward."
+  },
+  "ms": {
+   "q": "Jika berat badan tidak turun selama dua minggu berturut-turut semasa menurunkan berat, apa maksudnya?",
+   "opts": [
+    "Cara ini tidak berkesan, patut berputus asa",
+    "Mungkin sampai ke fasa mendatar, ini normal",
+    "Patut terus berhenti makan nasi"
+   ],
+   "a": 1,
+   "why": "Fasa mendatar ialah peringkat normal dalam penurunan berat badan. Semak pemakanan, tingkatkan senaman dan berbincang dengan jurulatih untuk penyesuaian, dan anda akan terus maju."
+  }
+ }
+}

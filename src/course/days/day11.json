@@ -1,0 +1,248 @@
+{
+ "day": 11,
+ "zh": {
+  "t": "营养俱乐部与饥饿控制",
+  "en": "Nutrition Club · Hunger Control",
+  "tag": "营养计划",
+  "lead": "第一阶段完成了！来检查进度，也学会怎么管住饥饿感。",
+  "intro": "你已经走完了前 10 天。今天先回顾自己的变化，再学会第二阶段最重要的一项技能：控制饥饿感。",
+  "points": [
+   {
+    "h": "什么是营养俱乐部？",
+    "p": "营养俱乐部是一个学习营养知识、一起养成健康习惯的地方。",
+    "list": [
+     "教练提供个人化餐单",
+     "饮食指导和效果跟进",
+     "同伴互相鼓励"
+    ]
+   },
+   {
+    "h": "全球性营养哲学",
+    "p": "均衡营养包括七大营养素：蛋白质、碳水化合物、脂肪、维他命、矿物质、纤维和水。",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "philosophy",
+      "cap": "康宝莱均衡营养：30% 蛋白质、40% 醣类、30% 脂肪，加上 Omega-3、减少饱和脂肪、25 克纤维素、充足的水分和睡眠、适量的运动"
+     }
+    ]
+   },
+   {
+    "h": "饥饿控制四招",
+    "p": "每餐有蛋白质、多吃纤维、喝够水、定时进餐不跳餐。做好这四件事，大部分的饥饿感都会减少。"
+   },
+   {
+    "h": "晚上嘴馋怎么办？",
+    "p": "晚上特别想吃东西，常常是白天蛋白质和水不够，或者太晚才吃午餐。先检查白天吃得够不够。"
+   },
+   {
+    "h": "区分真饿和嘴馋",
+    "p": "真饿是慢慢来的，什么食物都愿意吃；嘴馋是突然来的，只想吃特定的零食。嘴馋时先喝水、转移注意力 10 分钟。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "check",
+    "title": "第一阶段自我检查（和第 1 天比较）",
+    "items": [
+     "体重有变化吗？",
+     "腰围有变化吗？",
+     "精神和体力比以前好吗？",
+     "睡眠质量有改善吗？",
+     "排便规律吗？",
+     "饥饿感和嘴馋有减少吗？"
+    ]
+   }
+  ],
+  "myth": {
+   "m": "饿是意志力不够，忍一忍就好。",
+   "f": "饥饿是身体的信号。吃对食物、定时进餐，饥饿感自然会减少，不需要硬忍。"
+  },
+  "fact": {
+   "num": "10",
+   "unit": "天",
+   "text": "你已经完成一半了。习惯的改变，从这里开始变得更轻松。"
+  },
+  "tips": [
+   "每餐先吃蛋白质",
+   "两餐之间准备健康小点心",
+   "晚上 8 点后只喝水或无糖茶"
+  ],
+  "task": "量一量腰围（肚脐位置），记下来，并用上面的检查表和教练分享你这 10 天的变化。",
+  "share": "你有认识谁晚上常常嘴馋、控制不了食欲的吗？"
+ },
+ "en": {
+  "t": "Nutrition club and hunger control",
+  "en": "Nutrition Club · Hunger Control",
+  "tag": "Nutrition plan",
+  "lead": "Phase 1 complete! Check your progress and learn how to control hunger.",
+  "intro": "You've completed the first 10 days. Today, review your changes, then learn the most important skill of phase 2: controlling hunger.",
+  "points": [
+   {
+    "h": "What is a nutrition club?",
+    "p": "A nutrition club is a place to learn about nutrition and build healthy habits together.",
+    "list": [
+     "Your coach provides a personalised meal plan",
+     "Diet guidance and progress follow-up",
+     "Peers encourage each other"
+    ]
+   },
+   {
+    "h": "A global nutrition philosophy",
+    "p": "Balanced nutrition includes seven nutrients: protein, carbohydrates, fat, vitamins, minerals, fibre and water.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "philosophy",
+      "cap": "Herbalife balanced nutrition: 30% protein, 40% carbohydrates, 30% fat, plus Omega-3, less saturated fat, 25 g fibre, enough water and sleep, and moderate exercise"
+     }
+    ]
+   },
+   {
+    "h": "Four ways to control hunger",
+    "p": "Protein at every meal, more fibre, enough water, and regular meals without skipping. Do these four things and most hunger will ease."
+   },
+   {
+    "h": "What about night-time cravings?",
+    "p": "Strong cravings at night often mean you didn't get enough protein and water during the day, or ate lunch too late. First check whether you ate enough during the day."
+   },
+   {
+    "h": "Tell real hunger from cravings",
+    "p": "Real hunger builds slowly and you'll eat anything; cravings come suddenly and you only want a specific snack. When a craving hits, drink water and distract yourself for 10 minutes."
+   }
+  ],
+  "viz": [
+   {
+    "type": "check",
+    "title": "Phase 1 self-check (compared with Day 1)",
+    "items": [
+     "Has your weight changed?",
+     "Has your waist changed?",
+     "Are your energy and stamina better than before?",
+     "Has your sleep quality improved?",
+     "Are your bowel movements regular?",
+     "Have hunger and cravings decreased?"
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Hunger means weak willpower — just tough it out.",
+   "f": "Hunger is a signal from your body. Eat the right foods at regular times and hunger naturally eases — no need to tough it out."
+  },
+  "fact": {
+   "num": "10",
+   "unit": " days",
+   "text": "You're halfway there. From here, changing habits gets easier."
+  },
+  "tips": [
+   "Eat protein first at every meal",
+   "Prepare a healthy snack between meals",
+   "After 8 pm, drink only water or unsweetened tea"
+  ],
+  "task": "Measure your waist (at the navel), write it down, and use the checklist above to share your changes over these 10 days with your coach.",
+  "share": "Do you know anyone who often has night-time cravings and can't control their appetite?"
+ },
+ "ms": {
+  "t": "Kelab nutrisi dan kawalan lapar",
+  "en": "Nutrition Club · Hunger Control",
+  "tag": "Pelan nutrisi",
+  "lead": "Fasa pertama selesai! Semak kemajuan anda dan belajar mengawal rasa lapar.",
+  "intro": "Anda sudah melalui 10 hari pertama. Hari ini, imbas kembali perubahan anda, kemudian pelajari kemahiran paling penting fasa kedua: mengawal rasa lapar.",
+  "points": [
+   {
+    "h": "Apa itu kelab nutrisi?",
+    "p": "Kelab nutrisi ialah tempat untuk belajar ilmu nutrisi dan membina tabiat sihat bersama-sama.",
+    "list": [
+     "Jurulatih menyediakan pelan makan peribadi",
+     "Bimbingan pemakanan dan susulan hasil",
+     "Rakan saling memberi semangat"
+    ]
+   },
+   {
+    "h": "Falsafah nutrisi global",
+    "p": "Nutrisi seimbang merangkumi tujuh nutrien: protein, karbohidrat, lemak, vitamin, mineral, serat dan air.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "philosophy",
+      "cap": "Nutrisi seimbang Herbalife: 30% protein, 40% karbohidrat, 30% lemak, ditambah Omega-3, kurangkan lemak tepu, 25 g serat, air dan tidur yang cukup, serta senaman sederhana"
+     }
+    ]
+   },
+   {
+    "h": "Empat cara mengawal lapar",
+    "p": "Protein pada setiap hidangan, lebih banyak serat, minum air yang cukup, makan tepat pada masanya tanpa skip. Lakukan empat perkara ini dan kebanyakan rasa lapar akan berkurang."
+   },
+   {
+    "h": "Bagaimana jika teringin makan pada waktu malam?",
+    "p": "Terlalu teringin makan pada waktu malam selalunya kerana protein dan air tidak cukup pada siang hari, atau makan tengah hari terlalu lewat. Semak dahulu sama ada pemakanan siang hari mencukupi."
+   },
+   {
+    "h": "Bezakan lapar sebenar dan teringin",
+    "p": "Lapar sebenar datang perlahan-lahan dan anda sanggup makan apa sahaja; teringin datang tiba-tiba dan hanya mahu snek tertentu. Apabila teringin, minum air dan alihkan perhatian selama 10 minit."
+   }
+  ],
+  "viz": [
+   {
+    "type": "check",
+    "title": "Semakan kendiri fasa pertama (berbanding Hari 1)",
+    "items": [
+     "Adakah berat badan berubah?",
+     "Adakah lilitan pinggang berubah?",
+     "Adakah tenaga dan stamina lebih baik daripada dahulu?",
+     "Adakah kualiti tidur bertambah baik?",
+     "Adakah buang air besar teratur?",
+     "Adakah rasa lapar dan teringin makan berkurang?"
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Lapar bermakna kurang daya tahan diri, tahan sahaja.",
+   "f": "Lapar ialah isyarat badan. Makan makanan yang betul dan pada masa yang tetap, rasa lapar akan berkurang dengan sendirinya, tidak perlu menahan."
+  },
+  "fact": {
+   "num": "10",
+   "unit": " hari",
+   "text": "Anda sudah separuh jalan. Mulai sini, perubahan tabiat menjadi lebih mudah."
+  },
+  "tips": [
+   "Makan protein dahulu pada setiap hidangan",
+   "Sediakan snek sihat di antara hidangan",
+   "Selepas 8 malam, hanya minum air atau teh tanpa gula"
+  ],
+  "task": "Ukur lilitan pinggang (pada paras pusat), catat, dan gunakan senarai semak di atas untuk berkongsi perubahan 10 hari ini dengan jurulatih.",
+  "share": "Adakah anda kenal sesiapa yang selalu teringin makan pada waktu malam dan tidak dapat mengawal selera?"
+ },
+ "quiz": {
+  "zh": {
+   "q": "晚上特别嘴馋，最常见的原因是什么？",
+   "opts": [
+    "天生意志力不够",
+    "白天蛋白质和水不够，或太晚吃饭",
+    "晚上肠胃比较好"
+   ],
+   "a": 1,
+   "why": "晚上嘴馋常常是白天没吃够、没喝够。先把白天的三餐和点心吃对，晚上就比较不会想吃。"
+  },
+  "en": {
+   "q": "What's the most common reason for strong night-time cravings?",
+   "opts": [
+    "Being born with weak willpower",
+    "Not enough protein and water during the day, or eating too late",
+    "Digestion is better at night"
+   ],
+   "a": 1,
+   "why": "Night-time cravings often mean you didn't eat or drink enough during the day. Get your daytime meals and snacks right, and you'll crave less at night."
+  },
+  "ms": {
+   "q": "Apa punca paling biasa terlalu teringin makan pada waktu malam?",
+   "opts": [
+    "Memang kurang daya tahan diri sejak lahir",
+    "Protein dan air tidak cukup pada siang hari, atau makan terlalu lewat",
+    "Perut lebih baik pada waktu malam"
+   ],
+   "a": 1,
+   "why": "Teringin makan pada waktu malam selalunya kerana tidak cukup makan dan minum pada siang hari. Makan tiga hidangan dan snek siang hari dengan betul, malam nanti kurang teringin."
+  }
+ }
+}

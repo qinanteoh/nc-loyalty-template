@@ -1,0 +1,1316 @@
+{
+ "day": 10,
+ "zh": {
+  "t": "食物对比",
+  "en": "Food Comparison",
+  "tag": "计划",
+  "lead": "同样是一顿饭，营养和热量可以差很远。",
+  "intro": "前 9 天我们学了热量、水、细胞营养、早餐、升糖指数、蛋白质、脂肪、标签和运动。今天把这些知识放在一起，用来比较日常食物。",
+  "points": [
+   {
+    "h": "营养丰富 vs 空热量",
+    "p": "同样 2000 卡路里，可以吃得很不一样：",
+    "viz": [
+     {
+      "type": "split",
+      "title": "同样 2000 卡路里",
+      "left": {
+       "h": "营养丰富的食物",
+       "cls": "good",
+       "items": [
+        "营养高、热量低",
+        "低糖、少坏脂肪",
+        "帮助保持健康的身体和体重"
+       ]
+      },
+      "right": {
+       "h": "热量密集的食物",
+       "cls": "bad",
+       "items": [
+        "热量高、营养低",
+        "高脂肪、高糖",
+        "容易导致体重增加和营养不良"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "我们选择什么当早餐？",
+    "p": "同样是一份早餐，热量差很多：",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "我们选择什么当早餐？",
+      "items": [
+       [
+        "muffin",
+        "松饼和咖啡",
+        "640 kcal"
+       ],
+       [
+        "campur",
+        "经济饭 / 杂饭",
+        "520 kcal"
+       ],
+       [
+        "shake",
+        "营养奶昔早餐",
+        "150 kcal",
+        "3 汤匙 F1 + 2 汤匙 F3"
+       ]
+      ],
+      "note": "资料来源：印尼卫生部《食物成分表》2015，课堂讲义。"
+     }
+    ]
+   },
+   {
+    "h": "看不见的热量",
+    "p": "一杯加炼奶的饮料、一份炸鸡皮、一碗椰浆饭里的椰浆，都是容易忽略的热量来源。"
+   },
+   {
+    "h": "一天吃下多少卡路里？",
+    "p": "同样是一天三餐加点心，吃法不同，总热量差很远：",
+    "list": [
+     "一般的吃法：约 3000 卡路里",
+     "应酬或假日：吃得放纵的日子，可以超过 2000–2900 卡路里",
+     "用营养奶昔代替其中一两餐：约 1100–1400 卡路里"
+    ],
+    "after": "应酬和假日难免，只要平时用营养奶昔平衡，一整个星期的总热量就控制得住。",
+    "viz": [
+     {
+      "type": "mealdays",
+      "title": "7 种日子，一天吃下多少卡路里？",
+      "days": [
+       {
+        "h": "一般的吃法",
+        "total": "3000 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "noodle",
+          "早餐",
+          "500"
+         ],
+         [
+          "kuih",
+          "9 点",
+          "400"
+         ],
+         [
+          "burger",
+          "午餐",
+          "1200"
+         ],
+         [
+          "pisang",
+          "4 点",
+          "400"
+         ],
+         [
+          "chickenrice",
+          "晚餐",
+          "500"
+         ],
+         [
+          "",
+          "宵夜",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "减重 / 增重计划",
+        "total": "1350 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "早餐",
+          "150"
+         ],
+         [
+          "apple",
+          "9 点",
+          "50"
+         ],
+         [
+          "lunchbox",
+          "午餐",
+          "500"
+         ],
+         [
+          "shake",
+          "4 点",
+          "150"
+         ],
+         [
+          "steak",
+          "晚餐",
+          "500"
+         ],
+         [
+          "",
+          "宵夜",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "应酬：午餐聚餐",
+        "total": "1380 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "早餐",
+          "150"
+         ],
+         [
+          "apple",
+          "9 点",
+          "50"
+         ],
+         [
+          "leaf",
+          "午餐",
+          "800"
+         ],
+         [
+          "shake",
+          "4 点",
+          "150"
+         ],
+         [
+          "egg",
+          "晚餐",
+          "230"
+         ],
+         [
+          "",
+          "宵夜",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "应酬：晚餐大餐",
+        "total": "2050 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "set",
+          "早餐",
+          "150"
+         ],
+         [
+          "brunch",
+          "9 点",
+          "500"
+         ],
+         [
+          "shake",
+          "午餐",
+          "150"
+         ],
+         [
+          "coffee",
+          "4 点",
+          "50"
+         ],
+         [
+          "buffet",
+          "晚餐",
+          "1200"
+         ],
+         [
+          "",
+          "宵夜",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "应酬：加宵夜奶昔",
+        "total": "1400 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "早餐",
+          "150"
+         ],
+         [
+          "",
+          "9 点",
+          "0"
+         ],
+         [
+          "noodle",
+          "午餐",
+          "600"
+         ],
+         [
+          "",
+          "4 点",
+          "0"
+         ],
+         [
+          "steak",
+          "晚餐",
+          "500"
+         ],
+         [
+          "shake",
+          "宵夜",
+          "150"
+         ]
+        ]
+       },
+       {
+        "h": "假日 / 家庭出游",
+        "total": "2900 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "set",
+          "早餐",
+          "150"
+         ],
+         [
+          "brunch",
+          "9 点",
+          "500"
+         ],
+         [
+          "japanese",
+          "午餐",
+          "800"
+         ],
+         [
+          "hightea",
+          "4 点",
+          "500"
+         ],
+         [
+          "grill",
+          "晚餐",
+          "800"
+         ],
+         [
+          "shake",
+          "宵夜",
+          "150"
+         ]
+        ]
+       },
+       {
+        "h": "净化日",
+        "total": "约 1100 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "早餐",
+          "150"
+         ],
+         [
+          "shake",
+          "9 点",
+          "150×2"
+         ],
+         [
+          "eggwhite",
+          "午餐",
+          "17×6"
+         ],
+         [
+          "shake",
+          "4 点",
+          "150×2"
+         ],
+         [
+          "sweetpotato",
+          "晚餐",
+          "100"
+         ],
+         [
+          "shake",
+          "宵夜",
+          "150"
+         ]
+        ]
+       }
+      ],
+      "note": "红色框是热量偏高的日子。资料整理自课堂讲义，热量为约略数值。"
+     },
+     {
+      "type": "split",
+      "title": "一个星期 7 天的总热量",
+      "left": {
+       "h": "用奶昔平衡",
+       "cls": "good",
+       "items": [
+        "7 天约 13,180 kcal",
+        "平均每天约 1,880 kcal",
+        "应酬和假日也照样过"
+       ]
+      },
+      "right": {
+       "h": "每天都照一般吃法",
+       "cls": "bad",
+       "items": [
+        "7 天约 21,000 kcal",
+        "平均每天约 3,000 kcal",
+        "多出约 7,800 kcal ≈ 1 公斤脂肪"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "不是不能吃",
+    "p": "不是要你以后都不吃喜欢的食物，而是知道差别后，大部分时间做更好的选择。"
+   },
+   {
+    "h": "热量平衡等式",
+    "p": "吃进的热量少于消耗，体重下降；两者相等，体重维持；吃进的多于消耗，体重上升。",
+    "viz": [
+     {
+      "type": "balance",
+      "title": "卡路里进，卡路里出",
+      "rows": [
+       [
+        "＜",
+        "体重下降",
+        "down"
+       ],
+       [
+        "＝",
+        "体重维持",
+        "same"
+       ],
+       [
+        "＞",
+        "体重增加",
+        "up"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "习惯需要 21 天建立",
+    "p": "专家建议，一个习惯需要大约 21 天才能建立起来。",
+    "list": [
+     "前 10 天：你已经打好基础",
+     "接下来 11 天：教练会帮你更新餐单",
+     "继续挑战减重或增重目标"
+    ]
+   }
+  ],
+  "viz": [],
+  "myth": {
+   "m": "偶尔放纵一下没关系，反正不常发生。",
+   "f": "如果每周都有两三次「偶尔」，加起来就是很多热量。提前规划，享受的同时也不失控。"
+  },
+  "fact": {
+   "num": "80/20",
+   "unit": "",
+   "text": "八成时间吃得健康，两成时间放松享受，更容易长期坚持。"
+  },
+  "tips": [
+   "聚餐前先吃一点蛋白质垫胃",
+   "自助餐先拿一盘蔬菜",
+   "饮料选白开水或无糖茶"
+  ],
+  "task": "选你最常吃的两样早餐，和教练一起对比它们的热量、蛋白质和糖。",
+  "share": "你有认识谁也有兴趣了解这 10 天的健康资讯吗？"
+ },
+ "en": {
+  "t": "Food comparisons",
+  "en": "Food Comparison",
+  "tag": "Plan",
+  "lead": "Two meals can be worlds apart in nutrition and calories.",
+  "intro": "Over the first 9 days we learned about calories, water, cellular nutrition, breakfast, GI, protein, fat, labels and exercise. Today we put it all together to compare everyday foods.",
+  "points": [
+   {
+    "h": "Nutrient-rich vs empty calories",
+    "p": "The same 2000 calories can be eaten very differently:",
+    "viz": [
+     {
+      "type": "split",
+      "title": "The same 2000 calories",
+      "left": {
+       "h": "Nutrient-rich foods",
+       "cls": "good",
+       "items": [
+        "High in nutrients, low in calories",
+        "Low sugar, less bad fat",
+        "Helps keep a healthy body and weight"
+       ]
+      },
+      "right": {
+       "h": "Calorie-dense foods",
+       "cls": "bad",
+       "items": [
+        "High in calories, low in nutrients",
+        "High fat, high sugar",
+        "Easily leads to weight gain and malnutrition"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "What do we choose for breakfast?",
+    "p": "Breakfasts differ a lot in calories:",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "What do we choose for breakfast?",
+      "items": [
+       [
+        "muffin",
+        "Muffin and coffee",
+        "640 kcal"
+       ],
+       [
+        "campur",
+        "Economy rice / mixed rice",
+        "520 kcal"
+       ],
+       [
+        "shake",
+        "Nutrition shake breakfast",
+        "150 kcal",
+        "3 scoops F1 + 2 scoops F3"
+       ]
+      ],
+      "note": "Source: Indonesian Ministry of Health Food Composition Table 2015, class handouts."
+     }
+    ]
+   },
+   {
+    "h": "Hidden calories",
+    "p": "A drink with condensed milk, a portion of fried chicken skin, the coconut milk in a bowl of nasi lemak — all easily overlooked sources of calories."
+   },
+   {
+    "h": "How many calories do you eat in a day?",
+    "p": "Three meals plus snacks a day — depending on how you eat, the total can differ hugely:",
+    "list": [
+     "Typical eating: about 3000 calories",
+     "Social events or holidays: on indulgent days, it can exceed 2000–2900 calories",
+     "Replacing one or two meals with a nutrition shake: about 1100–1400 calories"
+    ],
+    "after": "Social events and holidays are unavoidable — balance them with nutrition shakes on regular days and your weekly total stays under control.",
+    "viz": [
+     {
+      "type": "mealdays",
+      "title": "7 kinds of day — how many calories in each?",
+      "days": [
+       {
+        "h": "Typical eating",
+        "total": "3000 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "noodle",
+          "Breakfast",
+          "500"
+         ],
+         [
+          "kuih",
+          "9 am",
+          "400"
+         ],
+         [
+          "burger",
+          "Lunch",
+          "1200"
+         ],
+         [
+          "pisang",
+          "4 pm",
+          "400"
+         ],
+         [
+          "chickenrice",
+          "Dinner",
+          "500"
+         ],
+         [
+          "",
+          "Supper",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "Weight loss / gain plan",
+        "total": "1350 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "Breakfast",
+          "150"
+         ],
+         [
+          "apple",
+          "9 am",
+          "50"
+         ],
+         [
+          "lunchbox",
+          "Lunch",
+          "500"
+         ],
+         [
+          "shake",
+          "4 pm",
+          "150"
+         ],
+         [
+          "steak",
+          "Dinner",
+          "500"
+         ],
+         [
+          "",
+          "Supper",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "Social: lunch gathering",
+        "total": "1380 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "Breakfast",
+          "150"
+         ],
+         [
+          "apple",
+          "9 am",
+          "50"
+         ],
+         [
+          "leaf",
+          "Lunch",
+          "800"
+         ],
+         [
+          "shake",
+          "4 pm",
+          "150"
+         ],
+         [
+          "egg",
+          "Dinner",
+          "230"
+         ],
+         [
+          "",
+          "Supper",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "Social: big dinner",
+        "total": "2050 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "set",
+          "Breakfast",
+          "150"
+         ],
+         [
+          "brunch",
+          "9 am",
+          "500"
+         ],
+         [
+          "shake",
+          "Lunch",
+          "150"
+         ],
+         [
+          "coffee",
+          "4 pm",
+          "50"
+         ],
+         [
+          "buffet",
+          "Dinner",
+          "1200"
+         ],
+         [
+          "",
+          "Supper",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "Social: plus supper shake",
+        "total": "1400 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "Breakfast",
+          "150"
+         ],
+         [
+          "",
+          "9 am",
+          "0"
+         ],
+         [
+          "noodle",
+          "Lunch",
+          "600"
+         ],
+         [
+          "",
+          "4 pm",
+          "0"
+         ],
+         [
+          "steak",
+          "Dinner",
+          "500"
+         ],
+         [
+          "shake",
+          "Supper",
+          "150"
+         ]
+        ]
+       },
+       {
+        "h": "Holiday / family outing",
+        "total": "2900 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "set",
+          "Breakfast",
+          "150"
+         ],
+         [
+          "brunch",
+          "9 am",
+          "500"
+         ],
+         [
+          "japanese",
+          "Lunch",
+          "800"
+         ],
+         [
+          "hightea",
+          "4 pm",
+          "500"
+         ],
+         [
+          "grill",
+          "Dinner",
+          "800"
+         ],
+         [
+          "shake",
+          "Supper",
+          "150"
+         ]
+        ]
+       },
+       {
+        "h": "Cleanse day",
+        "total": "About 1100 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "Breakfast",
+          "150"
+         ],
+         [
+          "shake",
+          "9 am",
+          "150×2"
+         ],
+         [
+          "eggwhite",
+          "Lunch",
+          "17×6"
+         ],
+         [
+          "shake",
+          "4 pm",
+          "150×2"
+         ],
+         [
+          "sweetpotato",
+          "Dinner",
+          "100"
+         ],
+         [
+          "shake",
+          "Supper",
+          "150"
+         ]
+        ]
+       }
+      ],
+      "note": "Red boxes are higher-calorie days. Compiled from class handouts; calories are approximate."
+     },
+     {
+      "type": "split",
+      "title": "Total calories over 7 days",
+      "left": {
+       "h": "Balanced with shakes",
+       "cls": "good",
+       "items": [
+        "7 days about 13,180 kcal",
+        "About 1,880 kcal a day on average",
+        "Social events and holidays still included"
+       ]
+      },
+      "right": {
+       "h": "Typical eating every day",
+       "cls": "bad",
+       "items": [
+        "7 days about 21,000 kcal",
+        "About 3,000 kcal a day on average",
+        "About 7,800 kcal extra ≈ 1 kg of fat"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "You can still eat",
+    "p": "It's not about never eating the foods you love again — it's about knowing the difference and making better choices most of the time."
+   },
+   {
+    "h": "The energy balance equation",
+    "p": "Eat fewer calories than you burn and weight drops; equal and weight stays; more and weight rises.",
+    "viz": [
+     {
+      "type": "balance",
+      "title": "Calories in, calories out",
+      "rows": [
+       [
+        "＜",
+        "Weight drops",
+        "down"
+       ],
+       [
+        "＝",
+        "Weight stays",
+        "same"
+       ],
+       [
+        "＞",
+        "Weight rises",
+        "up"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Habits take 21 days to build",
+    "p": "Experts suggest a habit takes about 21 days to form.",
+    "list": [
+     "First 10 days: you've built the foundation",
+     "Next 11 days: your coach will update your meal plan",
+     "Keep working on your weight-loss or weight-gain goal"
+    ]
+   }
+  ],
+  "viz": [],
+  "myth": {
+   "m": "Indulging now and then is fine — it doesn't happen often anyway.",
+   "f": "If \"now and then\" happens two or three times a week, it adds up to a lot of calories. Plan ahead so you can enjoy without losing control."
+  },
+  "fact": {
+   "num": "80/20",
+   "unit": "",
+   "text": "Eating healthily 80% of the time and relaxing 20% of the time makes it easier to stick with long term."
+  },
+  "tips": [
+   "Eat a little protein before a gathering to line your stomach",
+   "At a buffet, take a plate of vegetables first",
+   "Choose plain water or unsweetened tea to drink"
+  ],
+  "task": "Pick the two breakfasts you eat most often and compare their calories, protein and sugar with your coach.",
+  "share": "Do you know anyone who'd also be interested in the health info from these 10 days?"
+ },
+ "ms": {
+  "t": "Perbandingan makanan",
+  "en": "Food Comparison",
+  "tag": "Pelan",
+  "lead": "Sama-sama satu hidangan, nutrisi dan kalorinya boleh jauh berbeza.",
+  "intro": "Dalam 9 hari pertama kita belajar tentang kalori, air, nutrisi sel, sarapan, indeks glisemik, protein, lemak, label dan senaman. Hari ini kita gabungkan semuanya untuk membandingkan makanan harian.",
+  "points": [
+   {
+    "h": "Kaya nutrisi vs kalori kosong",
+    "p": "2000 kalori yang sama boleh dimakan dengan cara yang sangat berbeza:",
+    "viz": [
+     {
+      "type": "split",
+      "title": "2000 kalori yang sama",
+      "left": {
+       "h": "Makanan kaya nutrisi",
+       "cls": "good",
+       "items": [
+        "Tinggi nutrisi, rendah kalori",
+        "Rendah gula, kurang lemak jahat",
+        "Membantu mengekalkan badan dan berat yang sihat"
+       ]
+      },
+      "right": {
+       "h": "Makanan padat kalori",
+       "cls": "bad",
+       "items": [
+        "Tinggi kalori, rendah nutrisi",
+        "Tinggi lemak, tinggi gula",
+        "Mudah menyebabkan berat badan naik dan kekurangan nutrisi"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "Apa yang kita pilih untuk sarapan?",
+    "p": "Sama-sama sarapan, kalorinya jauh berbeza:",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Apa yang kita pilih untuk sarapan?",
+      "items": [
+       [
+        "muffin",
+        "Mufin dan kopi",
+        "640 kcal"
+       ],
+       [
+        "campur",
+        "Nasi campur / nasi ekonomi",
+        "520 kcal"
+       ],
+       [
+        "shake",
+        "Sarapan shake nutrisi",
+        "150 kcal",
+        "3 sudu F1 + 2 sudu F3"
+       ]
+      ],
+      "note": "Sumber: Jadual Komposisi Makanan Kementerian Kesihatan Indonesia 2015, nota kelas."
+     }
+    ]
+   },
+   {
+    "h": "Kalori tersembunyi",
+    "p": "Segelas minuman dengan susu pekat, sehidang kulit ayam goreng, santan dalam nasi lemak, semuanya sumber kalori yang mudah diabaikan."
+   },
+   {
+    "h": "Berapa kalori yang dimakan dalam sehari?",
+    "p": "Tiga hidangan dan snek sehari, cara makan berbeza, jumlah kalori jauh berbeza:",
+    "list": [
+     "Cara makan biasa: kira-kira 3000 kalori",
+     "Majlis atau cuti: hari makan sepuas hati boleh melebihi 2000–2900 kalori",
+     "Gantikan satu atau dua hidangan dengan shake nutrisi: kira-kira 1100–1400 kalori"
+    ],
+    "after": "Majlis dan cuti tidak dapat dielakkan; asalkan diimbangi dengan shake nutrisi pada hari biasa, jumlah kalori seminggu tetap terkawal.",
+    "viz": [
+     {
+      "type": "mealdays",
+      "title": "7 jenis hari, berapa kalori dimakan sehari?",
+      "days": [
+       {
+        "h": "Cara makan biasa",
+        "total": "3000 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "noodle",
+          "Sarapan",
+          "500"
+         ],
+         [
+          "kuih",
+          "9 pagi",
+          "400"
+         ],
+         [
+          "burger",
+          "Makan tengah hari",
+          "1200"
+         ],
+         [
+          "pisang",
+          "4 petang",
+          "400"
+         ],
+         [
+          "chickenrice",
+          "Makan malam",
+          "500"
+         ],
+         [
+          "",
+          "Makan lewat malam",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "Pelan turun / naik berat badan",
+        "total": "1350 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "Sarapan",
+          "150"
+         ],
+         [
+          "apple",
+          "9 pagi",
+          "50"
+         ],
+         [
+          "lunchbox",
+          "Makan tengah hari",
+          "500"
+         ],
+         [
+          "shake",
+          "4 petang",
+          "150"
+         ],
+         [
+          "steak",
+          "Makan malam",
+          "500"
+         ],
+         [
+          "",
+          "Makan lewat malam",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "Majlis: makan tengah hari bersama",
+        "total": "1380 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "Sarapan",
+          "150"
+         ],
+         [
+          "apple",
+          "9 pagi",
+          "50"
+         ],
+         [
+          "leaf",
+          "Makan tengah hari",
+          "800"
+         ],
+         [
+          "shake",
+          "4 petang",
+          "150"
+         ],
+         [
+          "egg",
+          "Makan malam",
+          "230"
+         ],
+         [
+          "",
+          "Makan lewat malam",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "Majlis: makan malam besar",
+        "total": "2050 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "set",
+          "Sarapan",
+          "150"
+         ],
+         [
+          "brunch",
+          "9 pagi",
+          "500"
+         ],
+         [
+          "shake",
+          "Makan tengah hari",
+          "150"
+         ],
+         [
+          "coffee",
+          "4 petang",
+          "50"
+         ],
+         [
+          "buffet",
+          "Makan malam",
+          "1200"
+         ],
+         [
+          "",
+          "Makan lewat malam",
+          "—"
+         ]
+        ]
+       },
+       {
+        "h": "Majlis: tambah shake waktu malam",
+        "total": "1400 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "Sarapan",
+          "150"
+         ],
+         [
+          "",
+          "9 pagi",
+          "0"
+         ],
+         [
+          "noodle",
+          "Makan tengah hari",
+          "600"
+         ],
+         [
+          "",
+          "4 petang",
+          "0"
+         ],
+         [
+          "steak",
+          "Makan malam",
+          "500"
+         ],
+         [
+          "shake",
+          "Makan lewat malam",
+          "150"
+         ]
+        ]
+       },
+       {
+        "h": "Cuti / keluar bersama keluarga",
+        "total": "2900 kcal",
+        "hi": 1,
+        "meals": [
+         [
+          "set",
+          "Sarapan",
+          "150"
+         ],
+         [
+          "brunch",
+          "9 pagi",
+          "500"
+         ],
+         [
+          "japanese",
+          "Makan tengah hari",
+          "800"
+         ],
+         [
+          "hightea",
+          "4 petang",
+          "500"
+         ],
+         [
+          "grill",
+          "Makan malam",
+          "800"
+         ],
+         [
+          "shake",
+          "Makan lewat malam",
+          "150"
+         ]
+        ]
+       },
+       {
+        "h": "Hari pembersihan",
+        "total": "Kira-kira 1100 kcal",
+        "hi": 0,
+        "meals": [
+         [
+          "set",
+          "Sarapan",
+          "150"
+         ],
+         [
+          "shake",
+          "9 pagi",
+          "150×2"
+         ],
+         [
+          "eggwhite",
+          "Makan tengah hari",
+          "17×6"
+         ],
+         [
+          "shake",
+          "4 petang",
+          "150×2"
+         ],
+         [
+          "sweetpotato",
+          "Makan malam",
+          "100"
+         ],
+         [
+          "shake",
+          "Makan lewat malam",
+          "150"
+         ]
+        ]
+       }
+      ],
+      "note": "Kotak merah ialah hari yang tinggi kalori. Disusun daripada nota kelas; kalori adalah anggaran."
+     },
+     {
+      "type": "split",
+      "title": "Jumlah kalori dalam 7 hari",
+      "left": {
+       "h": "Diimbangi dengan shake",
+       "cls": "good",
+       "items": [
+        "7 hari kira-kira 13,180 kcal",
+        "Purata kira-kira 1,880 kcal sehari",
+        "Majlis dan cuti tetap seperti biasa"
+       ]
+      },
+      "right": {
+       "h": "Makan cara biasa setiap hari",
+       "cls": "bad",
+       "items": [
+        "7 hari kira-kira 21,000 kcal",
+        "Purata kira-kira 3,000 kcal sehari",
+        "Lebihan kira-kira 7,800 kcal ≈ 1 kg lemak"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "h": "Bukan tidak boleh makan",
+    "p": "Bukan bermakna anda tidak boleh makan makanan kegemaran lagi, tetapi selepas tahu perbezaannya, buat pilihan yang lebih baik pada kebanyakan masa."
+   },
+   {
+    "h": "Persamaan keseimbangan tenaga",
+    "p": "Kalori masuk kurang daripada kalori dibakar, berat turun; sama, berat kekal; lebih, berat naik.",
+    "viz": [
+     {
+      "type": "balance",
+      "title": "Kalori masuk, kalori keluar",
+      "rows": [
+       [
+        "＜",
+        "Berat turun",
+        "down"
+       ],
+       [
+        "＝",
+        "Berat kekal",
+        "same"
+       ],
+       [
+        "＞",
+        "Berat naik",
+        "up"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Tabiat memerlukan 21 hari untuk dibina",
+    "p": "Pakar mencadangkan satu tabiat memerlukan kira-kira 21 hari untuk terbentuk.",
+    "list": [
+     "10 hari pertama: anda sudah membina asas",
+     "11 hari seterusnya: jurulatih akan mengemas kini pelan makan anda",
+     "Teruskan cabaran matlamat turun atau naik berat badan"
+    ]
+   }
+  ],
+  "viz": [],
+  "myth": {
+   "m": "Sekali-sekala makan sepuas hati tidak mengapa, bukannya selalu.",
+   "f": "Jika \"sekali-sekala\" berlaku dua tiga kali seminggu, jumlah kalorinya sangat banyak. Rancang awal supaya dapat menikmati tanpa hilang kawalan."
+  },
+  "fact": {
+   "num": "80/20",
+   "unit": "",
+   "text": "80% masa makan sihat, 20% masa berehat dan menikmati, lebih mudah untuk diteruskan dalam jangka panjang."
+  },
+  "tips": [
+   "Makan sedikit protein sebelum majlis untuk alas perut",
+   "Di bufet, ambil sepinggan sayur dahulu",
+   "Pilih air kosong atau teh tanpa gula sebagai minuman"
+  ],
+  "task": "Pilih dua sarapan yang paling kerap anda makan, dan bandingkan kalori, protein dan gula bersama jurulatih.",
+  "share": "Adakah anda kenal sesiapa yang juga berminat dengan maklumat kesihatan 10 hari ini?"
+ },
+ "quiz": {
+  "zh": {
+   "q": "同样是 2000 kcal，一整天的均衡营养餐和几个汉堡加薯条，对身体的影响一样吗？",
+   "opts": [
+    "一样，热量相同就好",
+    "不一样，营养完全不同",
+    "汉堡比较有营养"
+   ],
+   "a": 1,
+   "why": "热量相同，营养可以差很远。营养丰富的食物让你更饱、更健康；热量密集的食物营养低，很快又饿。"
+  },
+  "en": {
+   "q": "At the same 2000 kcal, does a day of balanced meals affect your body the same as a few burgers and fries?",
+   "opts": [
+    "Yes, the same calories is all that matters",
+    "No, the nutrition is completely different",
+    "Burgers are more nutritious"
+   ],
+   "a": 1,
+   "why": "Calories can be the same while nutrition differs hugely. Nutrient-rich foods keep you fuller and healthier; calorie-dense foods are low in nutrients and leave you hungry again soon."
+  },
+  "ms": {
+   "q": "Dengan 2000 kcal yang sama, adakah sehari hidangan seimbang dan beberapa burger dengan kentang goreng memberi kesan yang sama kepada badan?",
+   "opts": [
+    "Sama, asalkan kalori sama",
+    "Tidak sama, nutrisinya sangat berbeza",
+    "Burger lebih berkhasiat"
+   ],
+   "a": 1,
+   "why": "Kalori sama, nutrisi boleh jauh berbeza. Makanan kaya nutrisi membuatkan anda lebih kenyang dan sihat; makanan padat kalori rendah nutrisi dan cepat lapar semula."
+  }
+ }
+}

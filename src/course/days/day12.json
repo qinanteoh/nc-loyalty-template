@@ -1,0 +1,365 @@
+{
+ "day": 12,
+ "zh": {
+  "t": "产品背后的科学",
+  "en": "The Science Behind the Products",
+  "tag": "公司",
+  "lead": "选营养产品，要看背后有没有科学和品质把关。",
+  "intro": "市面上的营养产品很多，价钱和品质差别很大。学会看产品背后的科学和品质管理，才能选到值得信赖的产品。",
+  "points": [
+   {
+    "h": "专业的研发团队",
+    "p": "康宝莱背后有一支由医生、营养师和科学家组成的专业团队，负责产品研发和营养教育：",
+    "list": [
+     "全球超过 200 位国际认可的专家，包括医生、教练、营养师和顾问委员",
+     "产品在全球 16 个实验室进行检测",
+     "实验室达到国际最高标准 ISO 17025"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_team",
+      "cap": "康宝莱营养顾问委员会：医生、营养师和科学家团队"
+     }
+    ],
+    "viz": [
+     {
+      "type": "chips",
+      "cols": 3,
+      "title": "科学背后的数字",
+      "items": [
+       [
+        "200+",
+        "国际认可的专家"
+       ],
+       [
+        "16 个",
+        "全球检测实验室"
+       ],
+       [
+        "ISO 17025",
+        "国际实验室最高标准"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "以研究为基础",
+    "p": "好的配方以营养科学研究为依据，而不是只靠广告和口碑。"
+   },
+   {
+    "h": "成分透明",
+    "p": "标签清楚列出所有成分和含量，并符合各地食品法规的要求。"
+   },
+   {
+    "h": "多重品质检测",
+    "p": "从原料、生产过程到成品，都要经过检测，确保每一份产品都和标签一致、安全可靠。"
+   },
+   {
+    "h": "大使计划",
+    "p": "如果你对产品和效果满意，可以了解大使计划，享有更多优惠。成为大使有两个条件：",
+    "list": [
+     "忠诚顾客：对产品和公司有信心，愿意帮助 2 个人和你一样开始营养计划",
+     "产品爱用者：决定把营养早餐当作长期的理想早餐"
+    ]
+   },
+   {
+    "h": "好东西要分享",
+    "p": "邀请家人一起参加营养计划，全家一起拥有健康活跃的生活方式。教练会一直协助你。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "选择营养产品时问自己 4 个问题",
+    "items": [
+     [
+      "谁研发？",
+      "有没有营养和科学专业团队"
+     ],
+     [
+      "有根据吗？",
+      "配方是否以研究为基础"
+     ],
+     [
+      "标签清楚吗？",
+      "所有成分和含量是否列明"
+     ],
+     [
+      "有检测吗？",
+      "原料和成品是否经过品质检测"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "营养品都差不多，买最便宜的就好。",
+   "f": "原料来源、配方和品质管理的差别很大。选择有科学根据和严格品质把关的产品更安心。"
+  },
+  "fact": {
+   "num": "3",
+   "unit": "关",
+   "text": "原料检验、生产过程、成品检测：三道品质关卡。"
+  },
+  "tips": [
+   "买产品前先看成分和营养标签",
+   "不要相信「速效」「神奇」的广告",
+   "有疑问就问教练或专业人士"
+  ],
+  "task": "想一想，身边有谁也想变得更健康？把这 21 天课程分享给他。",
+  "share": "你有认识谁买营养品只看价钱和广告的吗？"
+ },
+ "en": {
+  "t": "The science behind the products",
+  "en": "The Science Behind the Products",
+  "tag": "Company",
+  "lead": "When choosing nutrition products, check whether there's science and quality control behind them.",
+  "intro": "There are many nutrition products on the market, with big differences in price and quality. Learn to look at the science and quality management behind a product so you can choose one you can trust.",
+  "points": [
+   {
+    "h": "A professional R&D team",
+    "p": "Behind Herbalife is a professional team of doctors, dietitians and scientists responsible for product development and nutrition education:",
+    "list": [
+     "More than 200 internationally recognised experts worldwide, including doctors, coaches, dietitians and advisory board members",
+     "Products are tested in 16 laboratories worldwide",
+     "Labs meet the highest international standard, ISO 17025"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_team",
+      "cap": "Herbalife Nutrition Advisory Board: a team of doctors, dietitians and scientists"
+     }
+    ],
+    "viz": [
+     {
+      "type": "chips",
+      "cols": 3,
+      "title": "The numbers behind the science",
+      "items": [
+       [
+        "200+",
+        "Internationally recognised experts"
+       ],
+       [
+        "16",
+        "Testing laboratories worldwide"
+       ],
+       [
+        "ISO 17025",
+        "Highest international laboratory standard"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Research-based",
+    "p": "Good formulas are based on nutrition science research, not just advertising and word of mouth."
+   },
+   {
+    "h": "Transparent ingredients",
+    "p": "Labels clearly list all ingredients and amounts, and meet local food regulations."
+   },
+   {
+    "h": "Multiple quality tests",
+    "p": "From raw materials and production to the finished product, everything is tested to ensure every product matches its label and is safe and reliable."
+   },
+   {
+    "h": "Ambassador programme",
+    "p": "If you're happy with the products and results, you can learn about the ambassador programme for more benefits. There are two requirements to become an ambassador:",
+    "list": [
+     "Loyal customer: confident in the products and company, and willing to help 2 people start a nutrition plan like you",
+     "Product lover: decides to make the nutrition breakfast their ideal breakfast for the long term"
+    ]
+   },
+   {
+    "h": "Share good things",
+    "p": "Invite your family to join the nutrition plan so the whole family can enjoy a healthy, active lifestyle. Your coach will support you all the way."
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "4 questions to ask when choosing nutrition products",
+    "items": [
+     [
+      "Who developed it?",
+      "Is there a professional nutrition and science team?"
+     ],
+     [
+      "Is it evidence-based?",
+      "Is the formula based on research?"
+     ],
+     [
+      "Is the label clear?",
+      "Are all ingredients and amounts listed?"
+     ],
+     [
+      "Is it tested?",
+      "Are raw materials and finished products quality-tested?"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Supplements are all the same — just buy the cheapest.",
+   "f": "Raw material sources, formulas and quality management differ greatly. Products backed by science and strict quality control give more peace of mind."
+  },
+  "fact": {
+   "num": "3",
+   "unit": " checkpoints",
+   "text": "Raw material testing, production, finished product testing: three quality checkpoints."
+  },
+  "tips": [
+   "Check ingredients and the nutrition label before buying",
+   "Don't trust \"instant results\" or \"miracle\" ads",
+   "If in doubt, ask your coach or a professional"
+  ],
+  "task": "Think about who around you also wants to be healthier, and share this 21-day course with them.",
+  "share": "Do you know anyone who buys supplements based only on price and advertising?"
+ },
+ "ms": {
+  "t": "Sains di sebalik produk",
+  "en": "The Science Behind the Products",
+  "tag": "Syarikat",
+  "lead": "Apabila memilih produk nutrisi, lihat sama ada ada sains dan kawalan kualiti di belakangnya.",
+  "intro": "Terdapat banyak produk nutrisi di pasaran, harga dan kualitinya sangat berbeza. Belajar melihat sains dan pengurusan kualiti di sebalik produk supaya dapat memilih produk yang boleh dipercayai.",
+  "points": [
+   {
+    "h": "Pasukan penyelidikan dan pembangunan profesional",
+    "p": "Di belakang Herbalife ialah pasukan profesional terdiri daripada doktor, pakar diet dan saintis yang bertanggungjawab atas pembangunan produk dan pendidikan nutrisi:",
+    "list": [
+     "Lebih 200 pakar yang diiktiraf antarabangsa di seluruh dunia, termasuk doktor, jurulatih, pakar diet dan ahli lembaga penasihat",
+     "Produk diuji di 16 makmal di seluruh dunia",
+     "Makmal mencapai piawaian antarabangsa tertinggi ISO 17025"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_team",
+      "cap": "Lembaga Penasihat Nutrisi Herbalife: pasukan doktor, pakar diet dan saintis"
+     }
+    ],
+    "viz": [
+     {
+      "type": "chips",
+      "cols": 3,
+      "title": "Angka di sebalik sains",
+      "items": [
+       [
+        "200+",
+        "Pakar diiktiraf antarabangsa"
+       ],
+       [
+        "16",
+        "Makmal ujian di seluruh dunia"
+       ],
+       [
+        "ISO 17025",
+        "Piawaian makmal antarabangsa tertinggi"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Berasaskan kajian",
+    "p": "Formula yang baik berasaskan kajian sains nutrisi, bukan hanya bergantung pada iklan dan cakap mulut."
+   },
+   {
+    "h": "Bahan yang telus",
+    "p": "Label menyenaraikan semua bahan dan kandungannya dengan jelas, serta mematuhi peraturan makanan tempatan."
+   },
+   {
+    "h": "Pelbagai ujian kualiti",
+    "p": "Daripada bahan mentah, proses pengeluaran hingga produk siap, semuanya diuji untuk memastikan setiap produk sepadan dengan label, selamat dan boleh dipercayai."
+   },
+   {
+    "h": "Program duta",
+    "p": "Jika anda berpuas hati dengan produk dan hasilnya, anda boleh mengenali program duta untuk menikmati lebih banyak kelebihan. Terdapat dua syarat untuk menjadi duta:",
+    "list": [
+     "Pelanggan setia: yakin dengan produk dan syarikat, dan sanggup membantu 2 orang memulakan pelan nutrisi seperti anda",
+     "Pengguna setia produk: memutuskan untuk menjadikan sarapan nutrisi sebagai sarapan ideal jangka panjang"
+    ]
+   },
+   {
+    "h": "Kongsikan perkara yang baik",
+    "p": "Ajak ahli keluarga menyertai pelan nutrisi bersama, supaya seluruh keluarga menikmati gaya hidup sihat dan aktif. Jurulatih akan sentiasa membantu anda."
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "4 soalan untuk ditanya ketika memilih produk nutrisi",
+    "items": [
+     [
+      "Siapa yang membangunkannya?",
+      "Adakah ada pasukan profesional nutrisi dan sains?"
+     ],
+     [
+      "Adakah ada asasnya?",
+      "Adakah formula berasaskan kajian?"
+     ],
+     [
+      "Adakah label jelas?",
+      "Adakah semua bahan dan kandungan disenaraikan?"
+     ],
+     [
+      "Adakah ia diuji?",
+      "Adakah bahan mentah dan produk siap melalui ujian kualiti?"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Semua produk nutrisi lebih kurang sama, beli yang paling murah sudah memadai.",
+   "f": "Sumber bahan mentah, formula dan pengurusan kualiti sangat berbeza. Memilih produk yang berasaskan sains dan kawalan kualiti yang ketat lebih meyakinkan."
+  },
+  "fact": {
+   "num": "3",
+   "unit": " peringkat",
+   "text": "Pemeriksaan bahan mentah, proses pengeluaran, ujian produk siap: tiga peringkat kawalan kualiti."
+  },
+  "tips": [
+   "Lihat bahan dan label nutrisi sebelum membeli",
+   "Jangan percaya iklan \"kesan segera\" atau \"ajaib\"",
+   "Jika ragu-ragu, tanya jurulatih atau pakar"
+  ],
+  "task": "Fikirkan siapa di sekeliling anda yang juga mahu lebih sihat, dan kongsikan kursus 21 hari ini dengan mereka.",
+  "share": "Adakah anda kenal sesiapa yang membeli produk nutrisi hanya berdasarkan harga dan iklan?"
+ },
+ "quiz": {
+  "zh": {
+   "q": "选择营养产品时，最应该看什么？",
+   "opts": [
+    "价钱越便宜越好",
+    "广告说得最神奇的",
+    "研发团队、成分标签和品质检测"
+   ],
+   "a": 2,
+   "why": "可靠的产品要有科学团队研发、成分透明，并经过原料到成品的品质检测。"
+  },
+  "en": {
+   "q": "What should you look at most when choosing nutrition products?",
+   "opts": [
+    "The cheaper the better",
+    "The one with the most amazing ads",
+    "R&D team, ingredient label and quality testing"
+   ],
+   "a": 2,
+   "why": "A reliable product is developed by a science team, has transparent ingredients, and is quality-tested from raw materials to finished product."
+  },
+  "ms": {
+   "q": "Apa yang paling perlu dilihat ketika memilih produk nutrisi?",
+   "opts": [
+    "Semakin murah semakin baik",
+    "Yang iklannya paling hebat",
+    "Pasukan penyelidikan, label bahan dan ujian kualiti"
+   ],
+   "a": 2,
+   "why": "Produk yang boleh dipercayai dibangunkan oleh pasukan sains, bahannya telus, dan melalui ujian kualiti daripada bahan mentah hingga produk siap."
+  }
+ }
+}

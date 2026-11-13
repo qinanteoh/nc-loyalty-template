@@ -160,7 +160,7 @@
 "Manual"
 ],
 "打卡": [
-"Check in",
+"Check-in",
 "Daftar masuk"
 ],
 "拒绝": [
@@ -344,8 +344,8 @@
 "Kumpul mata"
 ],
 "进行中": [
-"Active",
-"Aktif"
+"Reading",
+"Sedang membaca"
 ],
 "已过期": [
 "Expired",
@@ -768,16 +768,16 @@
 "Mohon pembaharuan. Selepas jurulatih sahkan, anda boleh daftar masuk semula."
 ],
 "打卡成功！每日消费 +{0} 分。": [
-"Checked in! +{0} daily points. ",
-"Berjaya! +{0} mata harian. "
+"Checked in! +{0} points.",
+"Berjaya daftar masuk! +{0} mata."
 ],
 "还剩 {0} 次。": [
 "{0} visits left.",
 "Baki {0} lawatan."
 ],
 "刚刚已经打卡成功了，不用重复扫码。": [
-"You just checked in. No need to scan again. ",
-"Anda baru sahaja daftar masuk. Tidak perlu imbas lagi. "
+"You've just checked in; no need to scan again.",
+"Anda baru sahaja daftar masuk; tidak perlu imbas lagi."
 ],
 "把柜台的二维码放进框里": [
 "Fit the QR code at the counter inside the frame",
@@ -1205,7 +1205,7 @@
 ],
 "再按一次确认删除": [
 "Tap again to delete",
-"Tekan lagi untuk padam"
+"Tekan sekali lagi untuk padam"
 ],
 "搜索名字或电话": [
 "Search name or phone",
@@ -1560,7 +1560,7 @@
 "Poster QR dimuat turun"
 ],
 "二维码还没准备好": [
-"The QR code is not ready yet",
+"The QR code isn't ready yet",
 "Kod QR belum sedia"
 ],
 "今天共有": [
@@ -1768,8 +1768,8 @@
 "Kad semasa"
 ],
 "剩余次数": [
-"Visits left",
-"Baki lawatan"
+"Left",
+"Baki"
 ],
 "累计打卡": [
 "Total check-ins",
@@ -1984,8 +1984,8 @@
 "mata"
 ],
 "卡": [
-"card",
-"kad"
+"Card",
+"Kad"
 ],
 "/ {0} 次": [
 "/ {0} visits",
@@ -2064,8 +2064,8 @@
 "Kami akan maklumkan tentang penebusan, kad hampir habis dan berita kelab."
 ],
 "关闭": [
-"Turn off",
-"Matikan"
+"Close",
+"Tutup"
 ],
 "通知已被关闭": [
 "Notifications are blocked",
@@ -2206,5 +2206,625 @@
 "通知设定不正确": [
 "Notification settings are not valid",
 "Tetapan notifikasi tidak sah"
+],
+"照片（选填）": [
+"Photo (optional)",
+"Gambar (pilihan)"
+],
+"加照片": [
+"Add photo",
+"Tambah gambar"
+],
+"换一张照片": [
+"Change photo",
+"Tukar gambar"
+],
+"照片已加上": [
+"Photo added",
+"Gambar ditambah"
+],
+"Android 和电脑会在通知里直接显示照片；iPhone 的通知只显示文字，点开就能看到照片。": [
+"Android phones and computers show the photo right in the notification. On iPhone the notification shows text only; tap it to see the photo.",
+"Telefon Android dan komputer memaparkan gambar terus dalam notifikasi. Di iPhone, notifikasi hanya menunjukkan teks; tekan untuk melihat gambar."
+],
+"想在 iPhone 收到核准提醒？": [
+"Want approval alerts on iPhone?",
+"Mahu makluman kelulusan di iPhone?"
+],
+"先按 Safari 下方的分享按钮 → 「加入主画面」，从主画面打开后进入管理页，就可以开启。": [
+"Tap Safari's Share button → \"Add to Home Screen\", open the app from the Home Screen, go to the admin page and turn it on.",
+"Tekan butang Kongsi Safari → \"Tambah ke Skrin Utama\", buka app dari Skrin Utama, pergi ke halaman admin dan hidupkan."
+],
+"这部手机会收到核准提醒": [
+"This phone gets approval alerts",
+"Telefon ini menerima makluman kelulusan"
+],
+"有新会员注册、兑换、赚分或续卡申请时，马上通知你。": [
+"You'll be notified right away about new sign-ups and redeem, points or renewal requests.",
+"Anda akan dimaklumkan segera tentang pendaftaran baharu dan permohonan tebus, mata atau pembaharuan."
+],
+"开启核准提醒": [
+"Turn on approval alerts",
+"Hidupkan makluman kelulusan"
+],
+"有新会员注册或申请等待核准时，这部手机会收到通知。": [
+"This phone will be notified when a new member or request is waiting for approval.",
+"Telefon ini akan dimaklumkan apabila ahli baharu atau permohonan menunggu kelulusan."
+],
+"核准提醒已开启": [
+"Approval alerts turned on",
+"Makluman kelulusan dihidupkan"
+],
+"核准提醒已关闭": [
+"Approval alerts turned off",
+"Makluman kelulusan dimatikan"
+],
+"等待店里核准": [
+"Waiting for the shop's approval",
+"Menunggu kelulusan kedai"
+],
+"你的注册已经收到了。店里核准后会通知你，然后就可以开始打卡、赚分和兑换礼物。": [
+"We've received your sign-up. You'll be notified once the shop approves it, then you can start checking in, earning points and redeeming gifts.",
+"Pendaftaran anda telah diterima. Anda akan dimaklumkan selepas kedai meluluskannya, kemudian anda boleh mula daftar masuk, kumpul mata dan tebus hadiah."
+],
+"新会员等待核准（{0}）": [
+"New members waiting for approval ({0})",
+"Ahli baharu menunggu kelulusan ({0})"
+],
+"{0} · 注册于 {1}": [
+"{0} · Signed up {1}",
+"{0} · Didaftar {1}"
+],
+"核准": [
+"Approve",
+"Luluskan"
+],
+"兑换 / 赚分 / 续卡申请": [
+"Redeem / points / renewal requests",
+"Permohonan tebus / mata / pembaharuan"
+],
+"待核准": [
+"Pending",
+"Belum diluluskan"
+],
+"已核准，会员会收到通知": [
+"Approved. The member will be notified.",
+"Diluluskan. Ahli akan dimaklumkan."
+],
+"已拒绝并删除这个注册": [
+"Rejected and removed this sign-up",
+"Ditolak dan pendaftaran ini dipadam"
+],
+"注册成功！请等待店里核准": [
+"Signed up! Please wait for the shop's approval.",
+"Berjaya mendaftar! Sila tunggu kelulusan kedai."
+],
+"你的会员资料还在等待店里核准，核准后就可以使用": [
+"Your membership is still waiting for the shop's approval. You can use it once approved.",
+"Keahlian anda masih menunggu kelulusan kedai. Anda boleh menggunakannya selepas diluluskan."
+],
+"这位会员已经核准了": [
+"This member is already approved",
+"Ahli ini sudah diluluskan"
+],
+"这位会员已经核准了，不能在这里拒绝": [
+"This member is already approved and can't be rejected here",
+"Ahli ini sudah diluluskan dan tidak boleh ditolak di sini"
+],
+"今天已满": [
+"Full today",
+"Penuh hari ini"
+],
+"今天 {0}/{1}": [
+"Today {0}/{1}",
+"Hari ini {0}/{1}"
+],
+"选择一项": [
+"Choose one",
+"Pilih satu"
+],
+"今天已申请": [
+"Requested today",
+"Sudah dimohon hari ini"
+],
+"今天已申请 {0}/{1} 次": [
+"Requested {0}/{1} times today",
+"Sudah dimohon {0}/{1} kali hari ini"
+],
+"请先选择一项": [
+"Please choose one first",
+"Sila pilih satu dahulu"
+],
+"每天最多申请几次": [
+"Max requests per day",
+"Maksimum permohonan sehari"
+],
+"0 = 不限": [
+"0 = no limit",
+"0 = tiada had"
+],
+"会员要选的项目（选填）": [
+"Choices for members (optional)",
+"Pilihan untuk ahli (pilihan)"
+],
+"例如：早餐、午餐、晚餐": [
+"e.g. breakfast, lunch, dinner",
+"cth. sarapan, makan tengah hari, makan malam"
+],
+"填了项目的话，会员申请时要选一项，每一项每天只能申请一次。": [
+"If you add choices, members pick one when they apply, and each choice can be requested once a day.",
+"Jika anda tambah pilihan, ahli memilih satu semasa memohon, dan setiap pilihan boleh dimohon sekali sehari."
+],
+"这个任务每天最多申请 {0} 次，今天已经满了": [
+"This task can be requested {0} times a day, and today is full",
+"Tugasan ini boleh dimohon {0} kali sehari, dan hari ini sudah penuh"
+],
+"早餐": [
+"Breakfast",
+"Sarapan"
+],
+"午餐": [
+"Lunch",
+"Makan tengah hari"
+],
+"晚餐": [
+"Dinner",
+"Makan malam"
+],
+"{0}pm 小食": [
+"{0}pm snack",
+"Snek {0}pm"
+],
+"餐单打卡": [
+"Meal Check-in",
+"Daftar Masuk Menu Makan"
+],
+"{0} 天 {1}/{2} · 检测 {3} 次 · 最近 {4}/{5}/{6}": [
+"{0} days {1}/{2} · {3} scans · last {4}/{5}/{6}",
+"{0} hari {1}/{2} · {3} imbasan · terkini {4}/{5}/{6}"
+],
+"{0} 天课程 ·": [
+"{0}-day course ·",
+"Kursus {0} hari ·"
+],
+"{0} 天课程 · 下一课第 {1} 天": [
+"{0}-day course · next: day {1}",
+"Kursus {0} hari · seterusnya: hari {1}"
+],
+"{0} 天课程 · 已完成": [
+"{0}-day course · completed",
+"Kursus {0} hari · selesai"
+],
+"· 健康旅程": [
+"· Health journey",
+"· Perjalanan kesihatan"
+],
+"不一定每一项都要填，有的就输入。体脂肪和肌肉 % 不填会自动算。": [
+"You don't need every item; key in what you have. Fat mass and muscle % are worked out if left blank.",
+"Tidak perlu isi semua; masukkan yang ada. Jisim lemak dan otot % dikira sendiri jika dibiarkan kosong."
+],
+"个人资料": [
+"My details",
+"Maklumat saya"
+],
+"会员自己输入的健康检测表和 {0} 天课程进度（只能看，不能改）。": [
+"Health records members keyed in themselves, and their {0}-day course progress (view only).",
+"Rekod kesihatan yang dimasukkan sendiri oleh ahli, dan kemajuan kursus {0} hari (lihat sahaja)."
+],
+"修改记录": [
+"Edit record",
+"Ubah rekod"
+],
+"新增记录": [
+"Add record",
+"Tambah rekod"
+],
+"健康": [
+"Health",
+"Kesihatan"
+],
+"健康检测表": [
+"Health records",
+"Rekod kesihatan"
+],
+"健康检测表 · {0} 次": [
+"Health records · {0}",
+"Rekod kesihatan · {0}"
+],
+"女": [
+"Female",
+"Perempuan"
+],
+"男": [
+"Male",
+"Lelaki"
+],
+"年龄": [
+"Age",
+"Umur"
+],
+"引荐人": [
+"Sponsor",
+"Penaja"
+],
+"性别": [
+"Gender",
+"Jantina"
+],
+"教练": [
+"Coach",
+"Jurulatih"
+],
+"生日": [
+"Birthday",
+"Hari lahir"
+],
+"计划": [
+"Program",
+"Program"
+],
+"身高 (cm)": [
+"Height (cm)",
+"Tinggi (cm)"
+],
+"目标体重 (kg)": [
+"Target weight (kg)",
+"Berat sasaran (kg)"
+],
+"我的健康旅程": [
+"My health journey",
+"Perjalanan kesihatan saya"
+],
+"检测次数": [
+"Scans",
+"Imbasan"
+],
+"每次量完体脂秤（Tanita），把数字输入进来，就会自动比较和画图。教练也看得到。": [
+"After each Tanita scan, key in the numbers. The app compares them and draws the charts. Your coach can see them too.",
+"Selepas setiap imbasan Tanita, masukkan nombornya. Aplikasi akan membandingkan dan melukis graf. Jurulatih anda juga boleh melihatnya."
+],
+"第 {0} 天": [
+"Day {0}",
+"Hari {0}"
+],
+"全部完成！": [
+"All done!",
+"Semua selesai!"
+],
+"新增第一次记录": [
+"Add your first record",
+"Tambah rekod pertama"
+],
+"返回上一页": [
+"Back",
+"Kembali"
+],
+"量身日期": [
+"Weigh-in date",
+"Tarikh timbang"
+],
+"至少输入一项数字": [
+"Enter at least one number",
+"Masukkan sekurang-kurangnya satu nombor"
+],
+"记录已保存": [
+"Record saved",
+"Rekod disimpan"
+],
+"记录已删除": [
+"Record deleted",
+"Rekod dipadam"
+],
+"个人资料已保存": [
+"Details saved",
+"Maklumat disimpan"
+],
+"还没有会员输入健康记录。": [
+"No member has added health records yet.",
+"Belum ada ahli yang menambah rekod kesihatan."
+],
+"{0} 天健康课程": [
+"{0}-day health course",
+"Kursus kesihatan {0} hari"
+],
+"先登入，课程进度会跟你的会员资料连在一起。": [
+"Log in first so your course progress is saved to your membership.",
+"Log masuk dahulu supaya kemajuan kursus disimpan ke keahlian anda."
+],
+"下一项": [
+"Next",
+"Seterusnya"
+],
+"跳过": [
+"Skip",
+"Langkau"
+],
+"一项一项填，没有的按「跳过」。体脂肪、肌肉 % 和 BMI 会自动算。": [
+"Fill in one item at a time; tap \"Skip\" for any you don't have. Fat mass, muscle % and BMI are worked out for you.",
+"Isi satu demi satu; tekan \"Langkau\" jika tiada. Jisim lemak, otot % dan BMI dikira sendiri."
+],
+"打卡报告": [
+"Check-in report",
+"Laporan daftar masuk"
+],
+"每日打卡报告": [
+"Daily check-in report",
+"Laporan daftar masuk harian"
+],
+"昨天": [
+"Yesterday",
+"Semalam"
+],
+"今天": [
+"Today",
+"Hari ini"
+],
+"选日期": [
+"Choose a date",
+"Pilih tarikh"
+],
+"打卡总人数": [
+"People checked in",
+"Jumlah orang"
+],
+"用 NCP 卡打卡": [
+"With NCP card",
+"Dengan kad NCP"
+],
+"打卡积分总数": [
+"Check-in points",
+"Mata daftar masuk"
+],
+"这一天没有人打卡。": [
+"No check-ins on this day.",
+"Tiada daftar masuk pada hari ini."
+],
+"剩 {0} 次": [
+"{0} left",
+"{0} lagi"
+],
+"导出时间": [
+"Exported",
+"Dieksport"
+],
+"{0} 天": [
+"{0} days",
+"{0} hari"
+],
+"星期日": [
+"Sunday",
+"Ahad"
+],
+"星期一": [
+"Monday",
+"Isnin"
+],
+"星期二": [
+"Tuesday",
+"Selasa"
+],
+"星期三": [
+"Wednesday",
+"Rabu"
+],
+"星期四": [
+"Thursday",
+"Khamis"
+],
+"星期五": [
+"Friday",
+"Jumaat"
+],
+"星期六": [
+"Saturday",
+"Sabtu"
+],
+"PDF 已下载": [
+"PDF downloaded",
+"PDF dimuat turun"
+],
+"· {0} 天 ·": [
+"· {0}-day ·",
+"· {0} hari ·"
+],
+"不限次数": [
+"Unlimited",
+"Tanpa had"
+],
+"不限次": [
+"Unlimited",
+"Tanpa had"
+],
+"每次打卡由教练核准后": [
+"Each check-in is approved by your coach, then ",
+"Setiap daftar masuk diluluskan jurulatih, kemudian "
+],
+"加 {0} 分": [
+"+{0} points",
+"+{0} mata"
+],
+"已打卡次数（": [
+"Check-ins (",
+"Daftar masuk ("
+],
+" 次等待核准）": [
+" waiting)",
+" menunggu)"
+],
+"Daily Pass 会员": [
+"Daily Pass member",
+"Ahli Daily Pass"
+],
+"打卡成功！Daily Pass 打卡要等教练核准，核准后会加 {0} 分。": [
+"Checked in! Daily Pass check-ins need your coach's approval; {0} points will be added once approved.",
+"Berjaya daftar masuk! Daftar masuk Daily Pass perlu kelulusan jurulatih; {0} mata akan ditambah selepas diluluskan."
+],
+"Daily Pass 打卡": [
+"Daily Pass check-in",
+"Daftar masuk Daily Pass"
+],
+"会员注册二维码": [
+"Member sign-up QR code",
+"Kod QR pendaftaran ahli"
+],
+"新顾客用手机相机扫这个二维码，就会打开注册页面。注册后要你在「审核」核准。": [
+"New customers scan this with their phone camera to open the sign-up page. You approve them under Review afterwards.",
+"Pelanggan baharu imbas kod ini dengan kamera telefon untuk membuka halaman pendaftaran. Anda luluskan mereka di Semakan selepas itu."
+],
+"下载注册海报": [
+"Download sign-up poster",
+"Muat turun poster pendaftaran"
+],
+"复制注册链接": [
+"Copy sign-up link",
+"Salin pautan pendaftaran"
+],
+"注册链接已复制，可以贴到 WhatsApp": [
+"Sign-up link copied. You can paste it into WhatsApp.",
+"Pautan pendaftaran disalin. Anda boleh tampal di WhatsApp."
+],
+"欢迎加入会员": [
+"Join as a member",
+"Sertai sebagai ahli"
+],
+"欢迎加入 {0}！输入你的手机号码，按「下一步」就可以注册。": [
+"Welcome to {0}! Enter your phone number and tap \"Next\" to sign up.",
+"Selamat datang ke {0}! Masukkan nombor telefon anda dan tekan \"Seterusnya\" untuk mendaftar."
+],
+"扫码加入会员": [
+"Scan to join",
+"Imbas untuk sertai"
+],
+"打开相机扫一扫，免费注册会员": [
+"Open your camera and scan to join free",
+"Buka kamera dan imbas untuk sertai percuma"
+],
+"天天打卡，健康有加，好礼到家": [
+"Check in daily for better health and rewards",
+"Daftar masuk setiap hari untuk kesihatan dan ganjaran"
+],
+"注册海报已下载": [
+"Sign-up poster downloaded",
+"Poster pendaftaran dimuat turun"
+],
+"欢迎来到 {0}": [
+"Welcome to {0}",
+"Selamat datang ke {0}"
+],
+"第一次来？": [
+"First time? ",
+"Kali pertama? "
+],
+"输入手机号码按「下一步」，就可以免费注册成为会员。": [
+"Enter your phone number and tap \"Next\" to sign up free.",
+"Masukkan nombor telefon dan tekan \"Seterusnya\" untuk mendaftar percuma."
+],
+"已经是会员？输入号码登入后就会帮你打卡。": [
+"Already a member? Log in with your number and you'll be checked in.",
+"Sudah ahli? Log masuk dengan nombor anda dan anda akan didaftar masuk."
+],
+"注册成功，欢迎你！": [
+"Signed up. Welcome!",
+"Berjaya mendaftar. Selamat datang!"
+],
+"请等店里核准你的会员资料，教练帮你开卡后，就可以扫码打卡累积积分。": [
+"Please wait for the shop to approve you. Once your coach opens a card for you, you can scan to check in and collect points.",
+"Sila tunggu kedai meluluskan anda. Selepas jurulatih membuka kad untuk anda, anda boleh imbas untuk daftar masuk dan kumpul mata."
+],
+"{0}，欢迎！": [
+"Welcome, {0}!",
+"Selamat datang, {0}!"
+],
+"你还没有 NCP 卡。请找教练帮你开卡，开卡后就可以扫码打卡累积积分。": [
+"You don't have an NCP card yet. Ask your coach to open one, then you can scan to check in and collect points.",
+"Anda belum ada kad NCP. Minta jurulatih buka kad, kemudian anda boleh imbas untuk daftar masuk dan kumpul mata."
+],
+"导出 PDF / 分享": [
+"Export PDF / share",
+"Eksport PDF / kongsi"
+],
+"课程": [
+"Course",
+"Kursus"
+],
+"每位会员 {0} 天健康课程读到哪里。会员打开 App 后，阅读进度才会更新到这里。": [
+"How far each member has read in the {0}-day health course. Progress shows here after the member opens the app.",
+"Sejauh mana setiap ahli membaca kursus kesihatan {0} hari. Kemajuan dipaparkan di sini selepas ahli membuka aplikasi."
+],
+"还没开始": [
+"Not started",
+"Belum mula"
+],
+"停了好几天": [
+"Stopped for days",
+"Berhenti beberapa hari"
+],
+"已读完": [
+"Finished",
+"Selesai"
+],
+"全部 {0}": [
+"All {0}",
+"Semua {0}"
+],
+"停了好几天 {0}": [
+"Stopped for days {0}",
+"Berhenti beberapa hari {0}"
+],
+"进行中 {0}": [
+"Reading {0}",
+"Sedang membaca {0}"
+],
+"还没开始 {0}": [
+"Not started {0}",
+"Belum mula {0}"
+],
+"已读完 {0}": [
+"Finished {0}",
+"Selesai {0}"
+],
+"最近读：{0}/{1}/{2}（{3} 天前）": [
+"Last read {0}/{1}/{2} ({3} days ago)",
+"Terakhir dibaca {0}/{1}/{2} ({3} hari lalu)"
+],
+"最近读：{0}/{1}/{2}（今天）": [
+"Last read {0}/{1}/{2} (today)",
+"Terakhir dibaca {0}/{1}/{2} (hari ini)"
+],
+"最近读：{0}/{1}/{2}（{3} 天前） · 下一课第 {4} 天": [
+"Last read {0}/{1}/{2} ({3} days ago) · next: day {4}",
+"Terakhir dibaca {0}/{1}/{2} ({3} hari lalu) · seterusnya: hari {4}"
+],
+"最近读：{0}/{1}/{2}（今天） · 下一课第 {3} 天": [
+"Last read {0}/{1}/{2} (today) · next: day {3}",
+"Terakhir dibaca {0}/{1}/{2} (hari ini) · seterusnya: hari {3}"
+],
+"还没读过": [
+"Not read yet",
+"Belum dibaca"
+],
+"还没读": [
+"Not read",
+"Belum dibaca"
+],
+"没有符合的会员。": [
+"No matching members.",
+"Tiada ahli yang sepadan."
+],
+"· {0} 天课程": [
+"· {0}-day course",
+"· Kursus {0} hari"
+],
+"已读天数": [
+"Days read",
+"Hari dibaca"
+],
+"最近一次读": [
+"Last read",
+"Terakhir dibaca"
+],
+"打开完整 21 天课程": [
+"Open the full 21-day course",
+"Buka kursus 21 hari penuh"
 ]
 }

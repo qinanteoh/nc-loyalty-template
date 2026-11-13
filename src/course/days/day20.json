@@ -1,0 +1,272 @@
+{
+ "day": 20,
+ "zh": {
+  "t": "互助精神与团队",
+  "en": "Bayanihan Spirit & Teamwork",
+  "tag": "教育系统",
+  "lead": "一个人走得快，一群人走得远。",
+  "intro": "健康习惯最难的不是开始，而是坚持。一个支持你的团队，能让坚持变得容易很多。",
+  "points": [
+   {
+    "h": "什么是 Bayanihan？",
+    "p": "Bayanihan 是菲律宾语，原意是邻里一起帮忙搬房子，代表互相帮助、一起扛起重担的精神。"
+   },
+   {
+    "h": "同伴的力量",
+    "p": "有同伴一起打卡、一起运动、一起分享餐单，遇到困难时有人鼓励，坚持下去的机会更高。"
+   },
+   {
+    "h": "什么是营养俱乐部？",
+    "p": "营养俱乐部是一个充满乐趣、享用健康早餐的地方。",
+    "list": [
+     "分享健康、健身和营养资讯",
+     "分享成功的经验",
+     "地点可以在家里或其他地方"
+    ],
+    "after": "欢迎邀请想要健康的家人和朋友一起来。"
+   },
+   {
+    "h": "教育系统",
+    "p": "营养俱乐部的教育系统包括健康知识课程、教练个人化跟进和团队活动，帮助你持续学习和进步。"
+   },
+   {
+    "h": "健康与财富",
+    "p": "教育系统涵盖健康和财富两方面。当你自己有了改变，也可以成为帮助别人的人。"
+   },
+   {
+    "h": "从受助者到助人者",
+    "p": "如果你也想帮助身边的人变健康，可以向教练了解分享计划。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "你的支持系统",
+    "items": [
+     [
+      "教练",
+      "个人化餐单、饮食指导、效果跟进"
+     ],
+     [
+      "课程",
+      "持续学习营养知识"
+     ],
+     [
+      "团队",
+      "一起打卡、运动、互相鼓励"
+     ],
+     [
+      "分享",
+      "帮助身边的人一起变健康"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "健康是自己的事，不需要别人帮忙。",
+   "f": "研究和经验都显示，有支持系统的人更容易坚持健康习惯。"
+  },
+  "fact": {
+   "num": "1+1",
+   "unit": "",
+   "text": "找一个健康伙伴，互相提醒、互相鼓励。"
+  },
+  "tips": [
+   "参加一次营养俱乐部的活动",
+   "和健康伙伴每天互相打卡",
+   "分享你的餐单给朋友看"
+  ],
+  "task": "邀请一位朋友或家人，明天和你一起吃一顿健康早餐。",
+  "share": "你有认识谁想变健康，但一个人很难坚持的吗？"
+ },
+ "en": {
+  "t": "The spirit of mutual help and teamwork",
+  "en": "Bayanihan Spirit & Teamwork",
+  "tag": "Education system",
+  "lead": "Alone you go fast; together you go far.",
+  "intro": "The hardest part of healthy habits isn't starting — it's sticking with them. A supportive team makes that much easier.",
+  "points": [
+   {
+    "h": "What is Bayanihan?",
+    "p": "Bayanihan is a Filipino word that originally meant neighbours helping to carry a house together — the spirit of helping each other and sharing the load."
+   },
+   {
+    "h": "The power of peers",
+    "p": "With peers to check in, exercise and share meal plans with — and encouragement when things get hard — you're far more likely to keep going."
+   },
+   {
+    "h": "What is a nutrition club?",
+    "p": "A nutrition club is a fun place to enjoy a healthy breakfast.",
+    "list": [
+     "Share health, fitness and nutrition info",
+     "Share success stories",
+     "It can be at home or elsewhere"
+    ],
+    "after": "You're welcome to bring family and friends who want to be healthy."
+   },
+   {
+    "h": "Education system",
+    "p": "The nutrition club's education system includes health courses, personalised coach follow-up and team activities to help you keep learning and improving."
+   },
+   {
+    "h": "Health and wealth",
+    "p": "The education system covers both health and wealth. Once you've changed yourself, you can become someone who helps others."
+   },
+   {
+    "h": "From being helped to helping others",
+    "p": "If you'd also like to help the people around you get healthy, ask your coach about the sharing programme."
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "Your support system",
+    "items": [
+     [
+      "Coach",
+      "Personalised meal plan, diet guidance, progress follow-up"
+     ],
+     [
+      "Course",
+      "Keep learning about nutrition"
+     ],
+     [
+      "Team",
+      "Check in, exercise and encourage each other"
+     ],
+     [
+      "Share",
+      "Help the people around you get healthy too"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Health is my own business — I don't need anyone's help.",
+   "f": "Research and experience both show that people with a support system find it easier to keep healthy habits."
+  },
+  "fact": {
+   "num": "1+1",
+   "unit": "",
+   "text": "Find a health buddy to remind and encourage each other."
+  },
+  "tips": [
+   "Attend a nutrition club activity",
+   "Check in with your health buddy every day",
+   "Share your meal plan with friends"
+  ],
+  "task": "Invite a friend or family member to have a healthy breakfast with you tomorrow.",
+  "share": "Do you know anyone who wants to get healthy but finds it hard to keep going alone?"
+ },
+ "ms": {
+  "t": "Semangat saling membantu dan kerja berpasukan",
+  "en": "Bayanihan Spirit & Teamwork",
+  "tag": "Sistem pendidikan",
+  "lead": "Berseorangan kita pergi cepat, bersama kita pergi jauh.",
+  "intro": "Bahagian paling sukar dalam tabiat sihat bukan bermula, tetapi meneruskannya. Pasukan yang menyokong menjadikannya jauh lebih mudah.",
+  "points": [
+   {
+    "h": "Apa itu Bayanihan?",
+    "p": "Bayanihan ialah perkataan Filipina yang asalnya bermaksud jiran tetangga bergotong-royong mengangkat rumah, melambangkan semangat saling membantu dan memikul beban bersama."
+   },
+   {
+    "h": "Kekuatan rakan",
+    "p": "Dengan rakan untuk melapor diri, bersenam dan berkongsi pelan makan bersama, serta galakan ketika menghadapi kesukaran, peluang untuk terus konsisten lebih tinggi."
+   },
+   {
+    "h": "Apa itu kelab nutrisi?",
+    "p": "Kelab nutrisi ialah tempat yang menyeronokkan untuk menikmati sarapan sihat.",
+    "list": [
+     "Berkongsi maklumat kesihatan, kecergasan dan nutrisi",
+     "Berkongsi pengalaman kejayaan",
+     "Lokasinya boleh di rumah atau tempat lain"
+    ],
+    "after": "Dialu-alukan membawa ahli keluarga dan rakan yang mahu sihat."
+   },
+   {
+    "h": "Sistem pendidikan",
+    "p": "Sistem pendidikan kelab nutrisi merangkumi kursus pengetahuan kesihatan, susulan peribadi jurulatih dan aktiviti berpasukan, membantu anda terus belajar dan maju."
+   },
+   {
+    "h": "Kesihatan dan kekayaan",
+    "p": "Sistem pendidikan merangkumi aspek kesihatan dan kekayaan. Apabila anda sendiri sudah berubah, anda juga boleh menjadi orang yang membantu orang lain."
+   },
+   {
+    "h": "Daripada dibantu kepada membantu",
+    "p": "Jika anda juga mahu membantu orang di sekeliling menjadi sihat, tanya jurulatih tentang program perkongsian."
+   }
+  ],
+  "viz": [
+   {
+    "type": "timeline",
+    "title": "Sistem sokongan anda",
+    "items": [
+     [
+      "Jurulatih",
+      "Pelan makan peribadi, bimbingan pemakanan, susulan hasil"
+     ],
+     [
+      "Kursus",
+      "Terus belajar ilmu nutrisi"
+     ],
+     [
+      "Pasukan",
+      "Melapor diri, bersenam dan saling memberi semangat"
+     ],
+     [
+      "Kongsi",
+      "Bantu orang di sekeliling menjadi sihat bersama"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Kesihatan urusan sendiri, tidak perlu bantuan orang lain.",
+   "f": "Kajian dan pengalaman menunjukkan bahawa mereka yang mempunyai sistem sokongan lebih mudah mengekalkan tabiat sihat."
+  },
+  "fact": {
+   "num": "1+1",
+   "unit": "",
+   "text": "Cari rakan sihat untuk saling mengingatkan dan memberi semangat."
+  },
+  "tips": [
+   "Sertai satu aktiviti kelab nutrisi",
+   "Melapor diri dengan rakan sihat setiap hari",
+   "Kongsi pelan makan anda dengan rakan"
+  ],
+  "task": "Ajak seorang rakan atau ahli keluarga untuk bersarapan sihat bersama anda esok.",
+  "share": "Adakah anda kenal sesiapa yang mahu sihat tetapi sukar untuk konsisten berseorangan?"
+ },
+ "quiz": {
+  "zh": {
+   "q": "一个人减重，和一群人一起减重，哪一个更容易坚持？",
+   "opts": [
+    "一个人比较自由",
+    "一群人互相鼓励",
+    "没有差别"
+   ],
+   "a": 1,
+   "why": "有同伴一起打卡、一起运动，遇到困难时有人鼓励，坚持下去的机会更高。"
+  },
+  "en": {
+   "q": "Losing weight alone or with a group — which is easier to stick with?",
+   "opts": [
+    "Alone gives more freedom",
+    "A group encouraging each other",
+    "No difference"
+   ],
+   "a": 1,
+   "why": "With peers to check in and exercise with, and encouragement when things get hard, you're more likely to keep going."
+  },
+  "ms": {
+   "q": "Turun berat badan berseorangan atau bersama kumpulan, yang mana lebih mudah untuk konsisten?",
+   "opts": [
+    "Berseorangan lebih bebas",
+    "Kumpulan yang saling memberi semangat",
+    "Tiada perbezaan"
+   ],
+   "a": 1,
+   "why": "Dengan rakan untuk melapor diri dan bersenam bersama, serta galakan ketika menghadapi kesukaran, peluang untuk terus konsisten lebih tinggi."
+  }
+ }
+}

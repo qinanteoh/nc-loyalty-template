@@ -1,0 +1,779 @@
+{
+ "day": 14,
+ "zh": {
+  "t": "每日营养补充",
+  "en": "Daily Nutritional Supplements",
+  "tag": "营养",
+  "lead": "营养补充品是用来填补饮食缺口，不是取代正餐。",
+  "intro": "理想状况下，营养应该全部来自食物。但忙碌的生活、外食多、蔬果吃得少，让很多人每天都有营养缺口。",
+  "points": [
+   {
+    "h": "为什么会有营养缺口？",
+    "p": "外食多油多盐、蔬果吃得少、饮食种类单一，再加上压力和作息不规律，都会让身体缺少某些维他命和矿物质。"
+   },
+   {
+    "h": "原型食物的营养，比以前少了",
+    "p": "很多人说「吃原型食物就够了」。原型食物当然要吃，但今天的蔬果营养，已经和几十年前不一样：",
+    "list": [
+     "美国营养学院期刊的研究，比较了 1950 年和 1999 年 43 种蔬果的营养数据",
+     "多种蔬果的钙、铁、维他命 C、核黄素（维他命 B2）等营养素都下降了",
+     "例如西兰花的钙，从 1950 年的每份 130 毫克，下降到约 48 毫克",
+     "原因包括土壤营养流失、品种改良追求产量和外观等"
+    ],
+    "after": "所以每日营养补充，是在我们没办法每天吃得均衡时，帮忙补上营养的漏洞，而不是取代原型食物。",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "nut_study",
+      "cap": "《美国营养学院期刊》2004 年研究：1950–1999 年 43 种园艺作物的营养成分变化"
+     },
+     {
+      "f": "nut_decline",
+      "cap": "西兰花、花椰菜、哈密瓜、茄子、番茄、芦笋，1950 年 vs 1999 年的营养变化（%）"
+     }
+    ]
+   },
+   {
+    "h": "常见容易不足的营养",
+    "p": "膳食纤维、钙、维他命 D、铁（尤其是女性）和 Omega-3，是许多人饮食中容易缺乏的营养。"
+   },
+   {
+    "h": "维他命与矿物质的作用",
+    "p": "身体需要适量的维他命和矿物质来维持机能平衡。",
+    "viz": [
+     {
+      "type": "cloud",
+      "title": "身体每天需要的维他命与矿物质",
+      "items": [
+       [
+        "维他命 A",
+        "",
+        "v",
+        1
+       ],
+       [
+        "B1",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B2",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B3",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B5",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B6",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B12",
+        "",
+        "v",
+        3
+       ],
+       [
+        "维他命 C",
+        "",
+        "v",
+        2
+       ],
+       [
+        "维他命 D",
+        "",
+        "v",
+        1
+       ],
+       [
+        "维他命 E",
+        "",
+        "v",
+        1
+       ],
+       [
+        "维他命 K",
+        "",
+        "v",
+        3
+       ],
+       [
+        "叶酸",
+        "",
+        "v",
+        3
+       ],
+       [
+        "生物素",
+        "",
+        "v",
+        3
+       ],
+       [
+        "钙",
+        "",
+        "m",
+        2
+       ],
+       [
+        "铁",
+        "",
+        "m",
+        1
+       ],
+       [
+        "锌",
+        "",
+        "m",
+        1
+       ],
+       [
+        "镁",
+        "",
+        "m",
+        1
+       ],
+       [
+        "钾",
+        "",
+        "m",
+        1
+       ],
+       [
+        "碘",
+        "",
+        "m",
+        3
+       ],
+       [
+        "硒",
+        "",
+        "m",
+        3
+       ],
+       [
+        "铬",
+        "",
+        "m",
+        3
+       ],
+       [
+        "钼",
+        "",
+        "m",
+        3
+       ],
+       [
+        "锰",
+        "",
+        "m",
+        3
+       ]
+      ],
+      "note": "橙色为维他命，蓝色为矿物质。"
+     }
+    ],
+    "after": "需要量不大，但日常饮食未必每天都吃得够。"
+   },
+   {
+    "h": "补充要适量",
+    "p": "补充品不是吃越多越好，要按建议份量使用。某些维他命和矿物质过量也可能有害。"
+   },
+   {
+    "h": "特殊情况先问医生",
+    "p": "有慢性病、怀孕、哺乳或正在服药的人，开始任何补充品前，请先咨询医生或药剂师。"
+   },
+   {
+    "h": "运动和睡眠也是营养的一部分",
+    "p": "除了吃对营养，适量的运动和充足的睡眠，也是健康生活方式的一部分。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "常见营养缺口和食物来源",
+    "items": [
+     [
+      "膳食纤维",
+      "蔬菜、水果、全谷类、豆类"
+     ],
+     [
+      "钙",
+      "牛奶、豆腐、小鱼干、深绿色蔬菜"
+     ],
+     [
+      "维他命 D",
+      "阳光、鸡蛋、深海鱼"
+     ],
+     [
+      "铁",
+      "红肉、深绿色蔬菜、豆类"
+     ],
+     [
+      "Omega-3",
+      "三文鱼、鲭鱼、沙丁鱼、亚麻籽"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "吃了维他命，就可以不用吃蔬菜。",
+   "f": "蔬果含有纤维和许多补充品没有的营养成分。补充品是辅助，不能取代均衡饮食。"
+  },
+  "fact": {
+   "num": "5",
+   "unit": "份",
+   "text": "建议每天吃至少 5 份蔬菜水果（约 400 克），这是最基础的营养来源。"
+  },
+  "tips": [
+   "每餐蔬菜占餐盘一半",
+   "每天晒 10–15 分钟太阳",
+   "补充品随餐吃，吸收更好"
+  ],
+  "task": "数一数今天吃了几份蔬菜水果（一份约一个拳头大小），目标是 5 份。",
+  "share": "你有认识谁外食多、很少吃蔬菜水果的吗？",
+  "philo": "维他命和矿物质，帮你补足均衡营养的缺口："
+ },
+ "en": {
+  "t": "Daily nutritional supplements",
+  "en": "Daily Nutritional Supplements",
+  "tag": "Nutrition",
+  "lead": "Supplements fill the gaps in your diet; they don't replace meals.",
+  "intro": "Ideally, all nutrition should come from food. But busy lives, eating out often and too few vegetables and fruit leave many people with daily nutrition gaps.",
+  "points": [
+   {
+    "h": "Why are there nutrition gaps?",
+    "p": "Oily, salty food when eating out, too few vegetables and fruit, a limited diet, plus stress and irregular routines can all leave your body short of certain vitamins and minerals."
+   },
+   {
+    "h": "Whole foods have fewer nutrients than before",
+    "p": "Many people say \"eating whole foods is enough\". Of course you should eat whole foods, but today's vegetables and fruit aren't as nutritious as they were decades ago:",
+    "list": [
+     "A study in the Journal of the American College of Nutrition compared nutrient data for 43 vegetables and fruits in 1950 and 1999",
+     "Calcium, iron, vitamin C, riboflavin (vitamin B2) and other nutrients fell in many vegetables and fruits",
+     "For example, calcium in broccoli fell from 130 mg per serving in 1950 to about 48 mg",
+     "Reasons include soil nutrient depletion and breeding for yield and appearance"
+    ],
+    "after": "So daily supplements help plug nutrition gaps when we can't eat a balanced diet every day — they don't replace whole foods.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "nut_study",
+      "cap": "Journal of the American College of Nutrition, 2004: changes in nutrients of 43 garden crops, 1950–1999"
+     },
+     {
+      "f": "nut_decline",
+      "cap": "Broccoli, cauliflower, cantaloupe, eggplant, tomato, asparagus: nutrient change 1950 vs 1999 (%)"
+     }
+    ]
+   },
+   {
+    "h": "Commonly lacking nutrients",
+    "p": "Dietary fibre, calcium, vitamin D, iron (especially for women) and Omega-3 are nutrients many people's diets lack."
+   },
+   {
+    "h": "What vitamins and minerals do",
+    "p": "Your body needs the right amount of vitamins and minerals to keep its functions balanced.",
+    "viz": [
+     {
+      "type": "cloud",
+      "title": "Vitamins and minerals your body needs daily",
+      "items": [
+       [
+        "Vitamin A",
+        "",
+        "v",
+        1
+       ],
+       [
+        "B1",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B2",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B3",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B5",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B6",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B12",
+        "",
+        "v",
+        3
+       ],
+       [
+        "Vitamin C",
+        "",
+        "v",
+        2
+       ],
+       [
+        "Vitamin D",
+        "",
+        "v",
+        1
+       ],
+       [
+        "Vitamin E",
+        "",
+        "v",
+        1
+       ],
+       [
+        "Vitamin K",
+        "",
+        "v",
+        3
+       ],
+       [
+        "Folic acid",
+        "",
+        "v",
+        3
+       ],
+       [
+        "Biotin",
+        "",
+        "v",
+        3
+       ],
+       [
+        "Calcium",
+        "",
+        "m",
+        2
+       ],
+       [
+        "Iron",
+        "",
+        "m",
+        1
+       ],
+       [
+        "Zinc",
+        "",
+        "m",
+        1
+       ],
+       [
+        "Magnesium",
+        "",
+        "m",
+        1
+       ],
+       [
+        "Potassium",
+        "",
+        "m",
+        1
+       ],
+       [
+        "Iodine",
+        "",
+        "m",
+        3
+       ],
+       [
+        "Selenium",
+        "",
+        "m",
+        3
+       ],
+       [
+        "Chromium",
+        "",
+        "m",
+        3
+       ],
+       [
+        "Molybdenum",
+        "",
+        "m",
+        3
+       ],
+       [
+        "Manganese",
+        "",
+        "m",
+        3
+       ]
+      ],
+      "note": "Orange are vitamins, blue are minerals."
+     }
+    ],
+    "after": "You don't need much, but a normal diet may not provide enough every day."
+   },
+   {
+    "h": "Supplement in moderation",
+    "p": "More supplements isn't better — use the recommended serving. Too much of some vitamins and minerals can be harmful."
+   },
+   {
+    "h": "Special situations: ask your doctor first",
+    "p": "If you have a chronic illness, are pregnant or breastfeeding, or take medication, consult your doctor or pharmacist before starting any supplement."
+   },
+   {
+    "h": "Exercise and sleep are part of nutrition too",
+    "p": "Besides eating right, moderate exercise and enough sleep are part of a healthy lifestyle."
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Common nutrition gaps and food sources",
+    "items": [
+     [
+      "Dietary fibre",
+      "Vegetables, fruit, whole grains, beans"
+     ],
+     [
+      "Calcium",
+      "Milk, tofu, dried small fish, dark green vegetables"
+     ],
+     [
+      "Vitamin D",
+      "Sunlight, eggs, deep-sea fish"
+     ],
+     [
+      "Iron",
+      "Red meat, dark green vegetables, beans"
+     ],
+     [
+      "Omega-3",
+      "Salmon, mackerel, sardines, flaxseed"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "If I take vitamins, I don't need to eat vegetables.",
+   "f": "Vegetables and fruit contain fibre and many nutrients supplements don't. Supplements support your diet; they can't replace a balanced diet."
+  },
+  "fact": {
+   "num": "5",
+   "unit": " servings",
+   "text": "Eat at least 5 servings of vegetables and fruit a day (about 400 g) — the most basic source of nutrition."
+  },
+  "tips": [
+   "Vegetables fill half your plate at every meal",
+   "Get 10–15 minutes of sunlight every day",
+   "Take supplements with meals for better absorption"
+  ],
+  "task": "Count how many servings of vegetables and fruit you ate today (one serving is about a fist). Aim for 5.",
+  "share": "Do you know anyone who eats out a lot and rarely eats vegetables and fruit?",
+  "philo": "Vitamins and minerals help fill the gaps in balanced nutrition:"
+ },
+ "ms": {
+  "t": "Suplemen nutrisi harian",
+  "en": "Daily Nutritional Supplements",
+  "tag": "Nutrisi",
+  "lead": "Suplemen nutrisi digunakan untuk mengisi jurang pemakanan, bukan menggantikan hidangan utama.",
+  "intro": "Idealnya, semua nutrisi patut datang daripada makanan. Tetapi kehidupan sibuk, kerap makan di luar dan kurang makan sayur dan buah menyebabkan ramai orang mempunyai jurang nutrisi setiap hari.",
+  "points": [
+   {
+    "h": "Kenapa ada jurang nutrisi?",
+    "p": "Makanan luar yang berminyak dan masin, kurang sayur dan buah, pemakanan yang kurang pelbagai, ditambah tekanan dan rutin tidak teratur, semuanya boleh menyebabkan badan kekurangan vitamin dan mineral tertentu."
+   },
+   {
+    "h": "Nutrisi makanan asli lebih rendah berbanding dahulu",
+    "p": "Ramai berkata \"makan makanan asli sudah cukup\". Makanan asli memang perlu dimakan, tetapi nutrisi sayur dan buah hari ini sudah berbeza berbanding beberapa dekad lalu:",
+    "list": [
+     "Satu kajian dalam Journal of the American College of Nutrition membandingkan data nutrisi 43 jenis sayur dan buah pada tahun 1950 dan 1999",
+     "Kalsium, zat besi, vitamin C, riboflavin (vitamin B2) dan nutrien lain menurun dalam pelbagai sayur dan buah",
+     "Contohnya kalsium dalam brokoli menurun daripada 130 mg setiap hidangan pada tahun 1950 kepada kira-kira 48 mg",
+     "Antara puncanya ialah kehilangan nutrien tanah dan pembiakan baka yang mengutamakan hasil dan rupa"
+    ],
+    "after": "Jadi suplemen nutrisi harian membantu menampung kekurangan nutrisi apabila kita tidak dapat makan seimbang setiap hari, bukan menggantikan makanan asli.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "nut_study",
+      "cap": "Journal of the American College of Nutrition 2004: perubahan kandungan nutrien 43 tanaman kebun, 1950–1999"
+     },
+     {
+      "f": "nut_decline",
+      "cap": "Brokoli, kubis bunga, tembikai susu, terung, tomato, asparagus: perubahan nutrien 1950 vs 1999 (%)"
+     }
+    ]
+   },
+   {
+    "h": "Nutrien yang biasa tidak mencukupi",
+    "p": "Serat diet, kalsium, vitamin D, zat besi (terutamanya wanita) dan Omega-3 ialah nutrien yang mudah kurang dalam pemakanan ramai orang."
+   },
+   {
+    "h": "Fungsi vitamin dan mineral",
+    "p": "Badan memerlukan vitamin dan mineral yang secukupnya untuk mengekalkan keseimbangan fungsi.",
+    "viz": [
+     {
+      "type": "cloud",
+      "title": "Vitamin dan mineral yang diperlukan badan setiap hari",
+      "items": [
+       [
+        "Vitamin A",
+        "",
+        "v",
+        1
+       ],
+       [
+        "B1",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B2",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B3",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B5",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B6",
+        "",
+        "v",
+        3
+       ],
+       [
+        "B12",
+        "",
+        "v",
+        3
+       ],
+       [
+        "Vitamin C",
+        "",
+        "v",
+        2
+       ],
+       [
+        "Vitamin D",
+        "",
+        "v",
+        1
+       ],
+       [
+        "Vitamin E",
+        "",
+        "v",
+        1
+       ],
+       [
+        "Vitamin K",
+        "",
+        "v",
+        3
+       ],
+       [
+        "Asid folik",
+        "",
+        "v",
+        3
+       ],
+       [
+        "Biotin",
+        "",
+        "v",
+        3
+       ],
+       [
+        "Kalsium",
+        "",
+        "m",
+        2
+       ],
+       [
+        "Zat besi",
+        "",
+        "m",
+        1
+       ],
+       [
+        "Zink",
+        "",
+        "m",
+        1
+       ],
+       [
+        "Magnesium",
+        "",
+        "m",
+        1
+       ],
+       [
+        "Kalium",
+        "",
+        "m",
+        1
+       ],
+       [
+        "Iodin",
+        "",
+        "m",
+        3
+       ],
+       [
+        "Selenium",
+        "",
+        "m",
+        3
+       ],
+       [
+        "Kromium",
+        "",
+        "m",
+        3
+       ],
+       [
+        "Molibdenum",
+        "",
+        "m",
+        3
+       ],
+       [
+        "Mangan",
+        "",
+        "m",
+        3
+       ]
+      ],
+      "note": "Oren ialah vitamin, biru ialah mineral."
+     }
+    ],
+    "after": "Keperluannya tidak banyak, tetapi pemakanan harian belum tentu mencukupi setiap hari."
+   },
+   {
+    "h": "Ambil suplemen secara sederhana",
+    "p": "Suplemen bukan semakin banyak semakin baik; gunakan mengikut sukatan yang disyorkan. Sesetengah vitamin dan mineral boleh memudaratkan jika berlebihan."
+   },
+   {
+    "h": "Keadaan khas: tanya doktor dahulu",
+    "p": "Jika anda mempunyai penyakit kronik, hamil, menyusu atau sedang mengambil ubat, rujuk doktor atau ahli farmasi sebelum memulakan sebarang suplemen."
+   },
+   {
+    "h": "Senaman dan tidur juga sebahagian daripada nutrisi",
+    "p": "Selain makan dengan betul, senaman sederhana dan tidur yang cukup juga sebahagian daripada gaya hidup sihat."
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Jurang nutrisi biasa dan sumber makanan",
+    "items": [
+     [
+      "Serat diet",
+      "Sayur, buah, bijirin penuh, kekacang"
+     ],
+     [
+      "Kalsium",
+      "Susu, tauhu, ikan bilis, sayur hijau gelap"
+     ],
+     [
+      "Vitamin D",
+      "Cahaya matahari, telur, ikan laut dalam"
+     ],
+     [
+      "Zat besi",
+      "Daging merah, sayur hijau gelap, kekacang"
+     ],
+     [
+      "Omega-3",
+      "Salmon, makarel, sardin, biji rami"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Jika makan vitamin, tidak perlu makan sayur.",
+   "f": "Sayur dan buah mengandungi serat dan banyak nutrien yang tiada dalam suplemen. Suplemen hanya membantu, tidak boleh menggantikan pemakanan seimbang."
+  },
+  "fact": {
+   "num": "5",
+   "unit": " hidangan",
+   "text": "Disyorkan makan sekurang-kurangnya 5 hidangan sayur dan buah sehari (kira-kira 400 g), sumber nutrisi paling asas."
+  },
+  "tips": [
+   "Sayur memenuhi separuh pinggan pada setiap hidangan",
+   "Berjemur di bawah matahari 10–15 minit setiap hari",
+   "Ambil suplemen bersama makanan untuk penyerapan lebih baik"
+  ],
+  "task": "Kira berapa hidangan sayur dan buah yang anda makan hari ini (satu hidangan kira-kira sebesar penumbuk), sasarannya 5 hidangan.",
+  "share": "Adakah anda kenal sesiapa yang kerap makan di luar dan jarang makan sayur dan buah?",
+  "philo": "Vitamin dan mineral membantu mengisi jurang nutrisi seimbang:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "每天吃维他命补充品，是不是就可以不吃蔬菜？",
+   "opts": [
+    "可以，补充品比较方便",
+    "不可以，补充品是辅助，不能取代食物",
+    "蔬菜没什么营养"
+   ],
+   "a": 1,
+   "why": "蔬果有纤维和许多补充品没有的营养。先把饮食吃均衡，补充品用来填补缺口。"
+  },
+  "en": {
+   "q": "If you take a vitamin supplement every day, can you skip vegetables?",
+   "opts": [
+    "Yes, supplements are more convenient",
+    "No — supplements support your diet, they can't replace food",
+    "Vegetables don't have much nutrition"
+   ],
+   "a": 1,
+   "why": "Vegetables and fruit have fibre and many nutrients supplements don't. Eat a balanced diet first, and use supplements to fill the gaps."
+  },
+  "ms": {
+   "q": "Jika makan suplemen vitamin setiap hari, bolehkah tidak makan sayur?",
+   "opts": [
+    "Boleh, suplemen lebih mudah",
+    "Tidak boleh, suplemen hanya membantu, tidak boleh menggantikan makanan",
+    "Sayur tidak banyak nutrisi"
+   ],
+   "a": 1,
+   "why": "Sayur dan buah mengandungi serat dan banyak nutrien yang tiada dalam suplemen. Makan seimbang dahulu, gunakan suplemen untuk mengisi kekurangan."
+  }
+ }
+}

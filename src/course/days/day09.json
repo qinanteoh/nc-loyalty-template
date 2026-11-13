@@ -1,0 +1,770 @@
+{
+ "day": 9,
+ "zh": {
+  "t": "运动",
+  "en": "Exercise",
+  "tag": "计划",
+  "lead": "运动很重要，但单靠运动减不了肥。",
+  "intro": "很多人以为只要多运动就能瘦下来。今天我们先看看常见的误区，再了解运动真正能消耗多少卡路里，以及运动带来的好处。",
+  "points": [
+   {
+    "h": "减肥的 8 大误区",
+    "p": "很多人一减肥就犯这些错，结果越减越累，还容易反弹：",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "你中了几个？",
+      "items": [
+       [
+        "不吃碳水化合物",
+        "身体没有能量运作"
+       ],
+       [
+        "少吃节食",
+        "新陈代谢下降"
+       ],
+       [
+        "不吃晚餐",
+        "新陈代谢下降"
+       ],
+       [
+        "只吃蔬菜水果",
+        "水果糖分高，肌肉流失"
+       ],
+       [
+        "不敢吃肉",
+        "无法建立肌肉"
+       ],
+       [
+        "熬夜",
+        "身体无法修复"
+       ],
+       [
+        "不喝水",
+        "营养无法好好吸收"
+       ],
+       [
+        "拼命运动",
+        "吃得比消耗多，还会流失肌肉"
+       ]
+      ],
+      "cols": 2
+     }
+    ]
+   },
+   {
+    "h": "迷思：光运动就能减重？",
+    "p": "很多人以为只要多运动就能减肥。其实运动燃烧的卡路里，远比你想象的少：",
+    "viz": [
+     {
+      "type": "burn",
+      "title": "吃一样东西，要运动多久才消耗得完？",
+      "items": [
+       [
+        "汽水 1 罐",
+        200,
+        "弓步蹲",
+        54
+       ],
+       [
+        "炸鸡胸 1 块",
+        444,
+        "踩健身脚车",
+        65
+       ],
+       [
+        "奶昔 1 杯",
+        780,
+        "跳绳",
+        72
+       ],
+       [
+        "甜甜圈 1 个",
+        242,
+        "仰卧起坐",
+        88
+       ],
+       [
+        "汉堡 + 薯条",
+        691,
+        "椭圆机",
+        141
+       ],
+       [
+        "芝士蛋糕 1 块",
+        710,
+        "快走",
+        148
+       ],
+       [
+        "比萨 2 片",
+        626,
+        "爬楼梯",
+        159
+       ]
+      ],
+      "note": "资料整理自课堂讲义的参考图，为约略数值，实际消耗视体重和运动强度而定。"
+     },
+     {
+      "type": "bars",
+      "title": "30 分钟运动大约消耗多少热量",
+      "unit": "kcal",
+      "items": [
+       [
+        "跳绳",
+        264
+       ],
+       [
+        "慢跑",
+        249
+       ],
+       [
+        "骑脚车",
+        225
+       ],
+       [
+        "游泳",
+        174
+       ],
+       [
+        "羽毛球",
+        165
+       ],
+       [
+        "快走",
+        129
+       ],
+       [
+        "散步",
+        105
+       ]
+      ],
+      "note": "数值来自课堂讲义，实际消耗因体重和强度而不同。"
+     }
+    ],
+    "list": [
+     "吃一份汉堡加薯条，要在健身器上踩约 141 分钟才消耗得完",
+     "运动后大吃一顿，消耗的热量会「加倍奉还」",
+     "运动后 30 分钟是补充营养、修复肌肉的黄金时间，要吃对，不是吃多"
+    ],
+    "after": "所以运动后不要用大餐奖励自己。"
+   },
+   {
+    "h": "运动的好处",
+    "p": "虽然单靠运动很难减肥，但运动对身体的好处非常多：",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "运动的好处",
+      "items": [
+       [
+        "提升新陈代谢",
+        "肌肉越多，消耗越多"
+       ],
+       [
+        "增加心肺功能",
+        "走路爬楼梯更轻松"
+       ],
+       [
+        "增强肌力和耐力",
+        "日常活动更有力"
+       ],
+       [
+        "增强抵抗力",
+        "身体更强壮"
+       ],
+       [
+        "心情愉快",
+        "舒缓压力"
+       ],
+       [
+        "修饰体型",
+        "肌肉线条更好看"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "怎样运动最有效？",
+    "p": "不需要一开始就很拼，持续最重要：",
+    "list": [
+     "有氧运动：快走、慢跑、游泳、骑车，从每天 20–30 分钟开始",
+     "肌力训练：深蹲、俯卧撑、弹力带，保住肌肉、提高代谢",
+     "运动后：尽快补充水分，30–60 分钟内吃一份蛋白质",
+     "每天动一点、持续做，比偶尔一次拼命更有效，也更不容易受伤"
+    ]
+   },
+   {
+    "h": "总结：运动与营养的关系密切",
+    "p": "均衡营养与适度运动，是维持健康的不二法门。",
+    "list": [
+     "只运动不控制饮食，很难看到效果",
+     "只节食不运动，容易流失肌肉",
+     "两者配合：80% 营养 + 20% 运动"
+    ],
+    "viz": [
+     {
+      "type": "ratio",
+      "title": "健康 = 80% 营养 + 20% 运动",
+      "parts": [
+       [
+        "营养",
+        80,
+        "吃对、吃够、守住神奇数字",
+        "var(--leaf)"
+       ],
+       [
+        "运动",
+        20,
+        "提升代谢、保住肌肉",
+        "var(--sun)"
+       ]
+      ]
+     }
+    ]
+   }
+  ],
+  "viz": [],
+  "myth": {
+   "m": "我有运动，所以想吃什么都可以。",
+   "f": "运动消耗的热量比想象中少，饮食不控制，很容易吃回去甚至更多。"
+  },
+  "fact": {
+   "num": "150",
+   "unit": "分钟",
+   "text": "世界卫生组织建议成人每周至少 150 分钟中等强度运动，另加每周 2 天肌力训练。"
+  },
+  "tips": [
+   "饭后散步 10–15 分钟",
+   "能走楼梯就不搭电梯",
+   "找朋友一起运动更容易坚持"
+  ],
+  "task": "今天快走 20 分钟，或在家做 3 组深蹲（每组 10 下），运动后记得喝水。",
+  "share": "你有认识谁很少运动，或者运动后反而大吃一顿的吗？",
+  "leadHL": false,
+  "philo": "运动只是其中一部分，营养、水分和睡眠同样重要："
+ },
+ "en": {
+  "t": "Exercise",
+  "en": "Exercise",
+  "tag": "Plan",
+  "lead": "Exercise matters, but exercise alone won't make you lose weight.",
+  "intro": "Many people think more exercise alone will make them slim. Today we look at common mistakes, how many calories exercise really burns, and the benefits of exercise.",
+  "points": [
+   {
+    "h": "8 big weight-loss mistakes",
+    "p": "Many people make these mistakes when trying to lose weight — they end up more tired and rebound easily:",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "How many are you making?",
+      "items": [
+       [
+        "Cutting out carbs",
+        "No energy for the body to function"
+       ],
+       [
+        "Starving yourself",
+        "Metabolism drops"
+       ],
+       [
+        "Skipping dinner",
+        "Metabolism drops"
+       ],
+       [
+        "Eating only fruit and vegetables",
+        "Fruit is high in sugar; muscle is lost"
+       ],
+       [
+        "Avoiding meat",
+        "Can't build muscle"
+       ],
+       [
+        "Staying up late",
+        "Body can't repair itself"
+       ],
+       [
+        "Not drinking water",
+        "Nutrients aren't absorbed well"
+       ],
+       [
+        "Exercising like crazy",
+        "Eating more than you burn, and losing muscle too"
+       ]
+      ],
+      "cols": 2
+     }
+    ]
+   },
+   {
+    "h": "Myth: can exercise alone make you lose weight?",
+    "p": "Many people think they can lose weight just by exercising more. In fact, exercise burns far fewer calories than you'd think:",
+    "viz": [
+     {
+      "type": "burn",
+      "title": "Eat one thing — how long must you exercise to burn it off?",
+      "items": [
+       [
+        "1 can of soft drink",
+        200,
+        "Lunges",
+        54
+       ],
+       [
+        "1 piece of fried chicken breast",
+        444,
+        "Stationary bike",
+        65
+       ],
+       [
+        "1 milkshake",
+        780,
+        "Skipping rope",
+        72
+       ],
+       [
+        "1 doughnut",
+        242,
+        "Sit-ups",
+        88
+       ],
+       [
+        "Burger + fries",
+        691,
+        "Elliptical machine",
+        141
+       ],
+       [
+        "1 slice of cheesecake",
+        710,
+        "Brisk walking",
+        148
+       ],
+       [
+        "2 slices of pizza",
+        626,
+        "Climbing stairs",
+        159
+       ]
+      ],
+      "note": "Compiled from class reference charts; approximate values — actual burn depends on body weight and intensity."
+     },
+     {
+      "type": "bars",
+      "title": "Roughly how many calories 30 minutes of exercise burns",
+      "unit": "kcal",
+      "items": [
+       [
+        "Skipping rope",
+        264
+       ],
+       [
+        "Jogging",
+        249
+       ],
+       [
+        "Cycling",
+        225
+       ],
+       [
+        "Swimming",
+        174
+       ],
+       [
+        "Badminton",
+        165
+       ],
+       [
+        "Brisk walking",
+        129
+       ],
+       [
+        "Walking",
+        105
+       ]
+      ],
+      "note": "Values from class handouts; actual burn varies with body weight and intensity."
+     }
+    ],
+    "list": [
+     "A burger with fries takes about 141 minutes on an exercise bike to burn off",
+     "A big meal after exercise \"pays back\" the calories you burned — with interest",
+     "The 30 minutes after exercise are the golden time to refuel and repair muscle — eat right, not more"
+    ],
+    "after": "So don't reward yourself with a feast after exercise."
+   },
+   {
+    "h": "Benefits of exercise",
+    "p": "Although exercise alone rarely makes you lose weight, it has many benefits for your body:",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "Benefits of exercise",
+      "items": [
+       [
+        "Boosts metabolism",
+        "More muscle burns more"
+       ],
+       [
+        "Improves heart and lung fitness",
+        "Walking and climbing stairs feel easier"
+       ],
+       [
+        "Builds strength and endurance",
+        "More power for daily activities"
+       ],
+       [
+        "Strengthens resistance",
+        "A stronger body"
+       ],
+       [
+        "Better mood",
+        "Relieves stress"
+       ],
+       [
+        "Shapes your body",
+        "Better muscle tone"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "What kind of exercise works best?",
+    "p": "No need to go all out at the start — consistency matters most:",
+    "list": [
+     "Cardio: brisk walking, jogging, swimming, cycling — start with 20–30 minutes a day",
+     "Strength training: squats, push-ups, resistance bands — keep muscle and raise metabolism",
+     "After exercise: rehydrate soon, and eat a portion of protein within 30–60 minutes",
+     "A little movement every day, consistently, works better than the occasional all-out session — and you're less likely to get injured"
+    ]
+   },
+   {
+    "h": "Summary: exercise and nutrition go hand in hand",
+    "p": "Balanced nutrition and moderate exercise are the only sure way to stay healthy.",
+    "list": [
+     "Exercise without controlling your diet rarely shows results",
+     "Dieting without exercise easily loses muscle",
+     "Combine both: 80% nutrition + 20% exercise"
+    ],
+    "viz": [
+     {
+      "type": "ratio",
+      "title": "Health = 80% nutrition + 20% exercise",
+      "parts": [
+       [
+        "Nutrition",
+        80,
+        "Eat right, eat enough, stay within your magic number",
+        "var(--leaf)"
+       ],
+       [
+        "Exercise",
+        20,
+        "Boost metabolism, keep muscle",
+        "var(--sun)"
+       ]
+      ]
+     }
+    ]
+   }
+  ],
+  "viz": [],
+  "myth": {
+   "m": "I exercise, so I can eat whatever I want.",
+   "f": "Exercise burns fewer calories than you think. Without controlling your diet, it's easy to eat it all back — or more."
+  },
+  "fact": {
+   "num": "150",
+   "unit": " min",
+   "text": "The World Health Organization recommends adults do at least 150 minutes of moderate exercise a week, plus strength training on 2 days a week."
+  },
+  "tips": [
+   "Take a 10–15 minute walk after meals",
+   "Take the stairs instead of the lift whenever you can",
+   "Exercising with a friend makes it easier to keep going"
+  ],
+  "task": "Walk briskly for 20 minutes today, or do 3 sets of 10 squats at home, and remember to drink water afterwards.",
+  "share": "Do you know anyone who rarely exercises, or who eats a huge meal after exercising?",
+  "leadHL": false,
+  "philo": "Exercise is just one part — nutrition, water and sleep matter just as much:"
+ },
+ "ms": {
+  "t": "Senaman",
+  "en": "Exercise",
+  "tag": "Pelan",
+  "lead": "Senaman penting, tetapi senaman sahaja tidak dapat menurunkan berat badan.",
+  "intro": "Ramai sangka cukup dengan banyak bersenam untuk kurus. Hari ini kita lihat kesilapan biasa, berapa banyak kalori yang sebenarnya dibakar oleh senaman, dan kebaikan senaman.",
+  "points": [
+   {
+    "h": "8 kesilapan besar menurunkan berat badan",
+    "p": "Ramai orang melakukan kesilapan ini semasa cuba turun berat badan, akhirnya semakin letih dan berat mudah naik semula:",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "Berapa banyak yang anda lakukan?",
+      "items": [
+       [
+        "Tidak makan karbohidrat",
+        "Badan tiada tenaga untuk berfungsi"
+       ],
+       [
+        "Berlapar dan berdiet ketat",
+        "Metabolisme menurun"
+       ],
+       [
+        "Tidak makan malam",
+        "Metabolisme menurun"
+       ],
+       [
+        "Hanya makan sayur dan buah",
+        "Buah tinggi gula, otot hilang"
+       ],
+       [
+        "Takut makan daging",
+        "Tidak dapat membina otot"
+       ],
+       [
+        "Tidur lewat",
+        "Badan tidak dapat membaiki diri"
+       ],
+       [
+        "Tidak minum air",
+        "Nutrien tidak dapat diserap dengan baik"
+       ],
+       [
+        "Bersenam bermati-matian",
+        "Makan lebih daripada yang dibakar, malah kehilangan otot"
+       ]
+      ],
+      "cols": 2
+     }
+    ]
+   },
+   {
+    "h": "Mitos: senaman sahaja boleh turunkan berat badan?",
+    "p": "Ramai sangka cukup dengan lebih bersenam untuk turun berat badan. Sebenarnya kalori yang dibakar oleh senaman jauh lebih sedikit daripada yang disangka:",
+    "viz": [
+     {
+      "type": "burn",
+      "title": "Makan satu makanan, berapa lama perlu bersenam untuk membakarnya?",
+      "items": [
+       [
+        "1 tin minuman bergas",
+        200,
+        "Lunge",
+        54
+       ],
+       [
+        "1 ketul dada ayam goreng",
+        444,
+        "Basikal senaman",
+        65
+       ],
+       [
+        "1 gelas milkshake",
+        780,
+        "Lompat tali",
+        72
+       ],
+       [
+        "1 biji donat",
+        242,
+        "Bangkit tubi",
+        88
+       ],
+       [
+        "Burger + kentang goreng",
+        691,
+        "Mesin elips",
+        141
+       ],
+       [
+        "1 potong kek keju",
+        710,
+        "Jalan pantas",
+        148
+       ],
+       [
+        "2 potong piza",
+        626,
+        "Naik tangga",
+        159
+       ]
+      ],
+      "note": "Disusun daripada carta rujukan kelas; nilai anggaran, pembakaran sebenar bergantung pada berat badan dan intensiti senaman."
+     },
+     {
+      "type": "bars",
+      "title": "Anggaran kalori yang dibakar dalam 30 minit senaman",
+      "unit": "kcal",
+      "items": [
+       [
+        "Lompat tali",
+        264
+       ],
+       [
+        "Joging",
+        249
+       ],
+       [
+        "Berbasikal",
+        225
+       ],
+       [
+        "Berenang",
+        174
+       ],
+       [
+        "Badminton",
+        165
+       ],
+       [
+        "Jalan pantas",
+        129
+       ],
+       [
+        "Berjalan",
+        105
+       ]
+      ],
+      "note": "Nilai daripada nota kelas; pembakaran sebenar berbeza mengikut berat badan dan intensiti."
+     }
+    ],
+    "list": [
+     "Satu set burger dan kentang goreng memerlukan kira-kira 141 minit berbasikal senaman untuk dibakar",
+     "Makan besar selepas bersenam akan \"memulangkan berganda\" kalori yang dibakar",
+     "30 minit selepas bersenam ialah masa emas untuk menambah nutrisi dan membaiki otot; makan dengan betul, bukan makan banyak"
+    ],
+    "after": "Jadi jangan beri ganjaran kepada diri dengan makan besar selepas bersenam."
+   },
+   {
+    "h": "Kebaikan senaman",
+    "p": "Walaupun senaman sahaja sukar menurunkan berat badan, kebaikannya kepada badan sangat banyak:",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "Kebaikan senaman",
+      "items": [
+       [
+        "Meningkatkan metabolisme",
+        "Lebih banyak otot, lebih banyak dibakar"
+       ],
+       [
+        "Meningkatkan fungsi jantung dan paru-paru",
+        "Berjalan dan naik tangga lebih mudah"
+       ],
+       [
+        "Meningkatkan kekuatan dan daya tahan otot",
+        "Lebih bertenaga untuk aktiviti harian"
+       ],
+       [
+        "Meningkatkan daya tahan badan",
+        "Badan lebih kuat"
+       ],
+       [
+        "Hati lebih gembira",
+        "Melegakan tekanan"
+       ],
+       [
+        "Membentuk badan",
+        "Garis otot lebih cantik"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Senaman yang bagaimana paling berkesan?",
+    "p": "Tidak perlu terlalu keras pada awalnya, konsisten paling penting:",
+    "list": [
+     "Senaman aerobik: jalan pantas, joging, berenang, berbasikal, mulakan dengan 20–30 minit sehari",
+     "Latihan kekuatan: cangkung, tekan tubi, tali rintangan, mengekalkan otot dan meningkatkan metabolisme",
+     "Selepas bersenam: segera minum air, dan makan satu hidangan protein dalam masa 30–60 minit",
+     "Bergerak sedikit setiap hari secara konsisten lebih berkesan daripada sekali-sekala bersenam bermati-matian, dan kurang risiko cedera"
+    ]
+   },
+   {
+    "h": "Kesimpulan: senaman dan nutrisi berkait rapat",
+    "p": "Nutrisi seimbang dan senaman sederhana ialah satu-satunya cara untuk kekal sihat.",
+    "list": [
+     "Bersenam tanpa mengawal pemakanan sukar menunjukkan hasil",
+     "Berdiet tanpa bersenam mudah kehilangan otot",
+     "Gabungkan kedua-duanya: 80% nutrisi + 20% senaman"
+    ],
+    "viz": [
+     {
+      "type": "ratio",
+      "title": "Kesihatan = 80% nutrisi + 20% senaman",
+      "parts": [
+       [
+        "Nutrisi",
+        80,
+        "Makan betul, makan cukup, kekal dalam nombor ajaib",
+        "var(--leaf)"
+       ],
+       [
+        "Senaman",
+        20,
+        "Tingkatkan metabolisme, kekalkan otot",
+        "var(--sun)"
+       ]
+      ]
+     }
+    ]
+   }
+  ],
+  "viz": [],
+  "myth": {
+   "m": "Saya bersenam, jadi boleh makan apa sahaja.",
+   "f": "Senaman membakar kalori lebih sedikit daripada yang disangka. Tanpa kawalan pemakanan, mudah sahaja makan semula, malah lebih banyak."
+  },
+  "fact": {
+   "num": "150",
+   "unit": " minit",
+   "text": "Pertubuhan Kesihatan Sedunia mengesyorkan orang dewasa bersenam sekurang-kurangnya 150 minit intensiti sederhana seminggu, serta latihan kekuatan 2 hari seminggu."
+  },
+  "tips": [
+   "Berjalan 10–15 minit selepas makan",
+   "Guna tangga dan bukan lif apabila boleh",
+   "Bersenam bersama kawan lebih mudah untuk konsisten"
+  ],
+  "task": "Hari ini jalan pantas 20 minit, atau buat 3 set cangkung di rumah (10 kali setiap set), dan ingat minum air selepas bersenam.",
+  "share": "Adakah anda kenal sesiapa yang jarang bersenam, atau makan besar selepas bersenam?",
+  "leadHL": false,
+  "philo": "Senaman hanya satu bahagian; nutrisi, air dan tidur sama penting:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "慢跑 30 分钟，大约消耗多少热量？",
+   "opts": [
+    "大约 250 kcal",
+    "大约 1000 kcal",
+    "大约 2000 kcal"
+   ],
+   "a": 0,
+   "why": "慢跑 30 分钟约消耗 250 kcal，一杯奶茶就补回来了。所以运动后不要用大餐奖励自己。"
+  },
+  "en": {
+   "q": "Roughly how many calories does 30 minutes of jogging burn?",
+   "opts": [
+    "About 250 kcal",
+    "About 1000 kcal",
+    "About 2000 kcal"
+   ],
+   "a": 0,
+   "why": "30 minutes of jogging burns about 250 kcal — one cup of milk tea puts it right back. So don't reward yourself with a feast after exercise."
+  },
+  "ms": {
+   "q": "Joging 30 minit membakar kira-kira berapa kalori?",
+   "opts": [
+    "Kira-kira 250 kcal",
+    "Kira-kira 1000 kcal",
+    "Kira-kira 2000 kcal"
+   ],
+   "a": 0,
+   "why": "Joging 30 minit membakar kira-kira 250 kcal, secawan teh susu sudah menggantikannya. Jadi jangan beri ganjaran kepada diri dengan makan besar selepas bersenam."
+  }
+ }
+}

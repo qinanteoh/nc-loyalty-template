@@ -1,0 +1,824 @@
+{
+ "day": 17,
+ "zh": {
+  "t": "健康老化与纤维",
+  "en": "Healthy Aging · Greens Power",
+  "tag": "营养",
+  "lead": "活得久不够，还要活得有力气、有精神。",
+  "intro": "健康老化的意思是，年纪增长时依然能自由活动、有精神、少病痛。饮食中的蛋白质和纤维，是两个最重要的帮手。",
+  "points": [
+   {
+    "h": "肌肉是健康老化的本钱",
+    "p": "老化是身体结构或功能慢慢减退的过程。如果没有锻炼，30 岁以后肌肉每年大约减少 1%：",
+    "list": [
+     "肌肉减少，脂肪增加，体重不变也会显得更胖",
+     "肌肉少了，燃烧脂肪的能力变差，更容易发胖",
+     "到 70 岁，肌肉可能只剩下 30 岁时的约三分之二",
+     "保持活跃、规律运动、吃够蛋白质，可以减缓肌肉流失"
+    ],
+    "viz": [
+     {
+      "type": "bars",
+      "title": "没有锻炼时，肌肉量随年龄的变化（示意）",
+      "unit": "%",
+      "items": [
+       [
+        "30 岁",
+        100
+       ],
+       [
+        "40 岁",
+        90
+       ],
+       [
+        "50 岁",
+        82
+       ],
+       [
+        "60 岁",
+        74
+       ],
+       [
+        "70 岁",
+        67,
+        1
+       ]
+      ],
+      "note": "以 30 岁的肌肉量为 100% 计算的示意值。适度运动加上足够蛋白质，可以维持肌肉量。"
+     }
+    ]
+   },
+   {
+    "h": "纤维的三大好处",
+    "p": "膳食纤维不只帮助排便，对身体的好处还有很多：",
+    "list": [
+     "帮助消化：促进肠道蠕动、增加粪便体积，支持肠道好菌生长，降低肠胃疾病风险",
+     "支持免疫：菊粉和抗性淀粉这类可发酵纤维是「益生元」，是肠道好菌的食物。好菌产生的短链脂肪酸，有助调节免疫反应、减少发炎",
+     "代谢健康：多吃蔬菜、水果、鱼、奶制品、咖啡和茶，有助预防代谢综合征"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_benefit",
+      "cap": "纤维与消化、免疫和代谢综合征（参考：Microorganisms 2023；美国营养与饮食学会 2015）"
+     }
+    ]
+   },
+   {
+    "h": "研究证明：吃够蛋白质和纤维，减重更成功",
+    "p": "2024 年发表在《肥胖科学与实践》（Obesity Science and Practice）期刊的研究，追踪了参加减重计划的人一整年：",
+    "list": [
+     "减重成功的人，一年后平均体重下降约 13%",
+     "失败的人只下降约 2%",
+     "关键差别：成功的人吃了更多蛋白质和纤维，同时控制热量"
+    ],
+    "after": "研究结论：体重管理要成功，就要在控制热量的同时，多吃蛋白质和纤维。",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_study",
+      "cap": "Lee 等人，2024 年，《肥胖科学与实践》：成功的饮食改变与减重效果相关"
+     }
+    ]
+   },
+   {
+    "h": "纤维稳定血糖和胆固醇",
+    "p": "可溶性纤维（燕麦、豆类、苹果）能减缓糖分吸收，也有助降低胆固醇。"
+   },
+   {
+    "h": "大多数人纤维不够",
+    "p": "成人每天需要约 25 克纤维，但只靠天然食物，要吃很多才够：",
+    "list": [
+     "5 克纤维 ≈ 2 个番薯，或 3 个橙",
+     "25 克纤维 ≈ 10 个番薯，或 15 个橙",
+     "大多数人每天只吃到一半左右"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_25g",
+      "cap": "25 克纤维 ≈ 10 个番薯 ≈ 15 个橙"
+     }
+    ],
+    "viz": [
+     {
+      "type": "cmp2",
+      "title": "吃够纤维，要吃进多少热量？",
+      "a": "天然食物",
+      "b": "Herbalife 综合纤维饮",
+      "rows": [
+       {
+        "h": "5 克纤维",
+        "a": [
+         [
+          "2 个番薯",
+          "约 200 kcal"
+         ],
+         [
+          "3 个橙",
+          "约 190 kcal"
+         ]
+        ],
+        "b": [
+         "1 份",
+         "9 kcal"
+        ]
+       },
+       {
+        "h": "25 克纤维",
+        "a": [
+         [
+          "10 个番薯",
+          "约 1000 kcal"
+         ],
+         [
+          "15 个橙",
+          "约 930 kcal"
+         ]
+        ],
+        "b": [
+         "5 份",
+         "45 kcal"
+        ]
+       }
+      ],
+      "note": "天然食物热量为约略数值。天然食物仍然要吃，纤维饮帮你在不增加太多热量的情况下补足缺口。"
+     }
+    ]
+   },
+   {
+    "h": "纤维有三种，最好一起补",
+    "p": "纤维不是只有一种，不同的纤维有不同的作用：",
+    "list": [
+     "水溶性纤维：在肠道形成凝胶，减缓糖分吸收，帮助稳定血糖和胆固醇，增加饱足感",
+     "非水溶性纤维：增加粪便体积，促进肠道蠕动，帮助排便顺畅",
+     "菊粉（Inulin）：一种益生元，是肠道好菌的食物，帮助维持肠道健康"
+    ],
+    "after": "Herbalife 综合纤维饮（含菊粉），同时有水溶性和非水溶性纤维，每份 5 克纤维、只有 9 卡路里，帮你轻松补足每天需要的纤维。",
+    "viz": [
+     {
+      "type": "chips",
+      "cols": 3,
+      "title": "三种纤维，各有作用",
+      "items": [
+       [
+        "水溶性",
+        "稳血糖、降胆固醇"
+       ],
+       [
+        "非水溶性",
+        "帮助排便"
+       ],
+       [
+        "菊粉",
+        "喂养肠道好菌"
+       ]
+      ]
+     }
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_product",
+      "cap": "康宝莱综合纤维饮（含菊粉）：水溶性 + 非水溶性纤维，每份 5 克"
+     }
+    ]
+   },
+   {
+    "h": "慢慢增加，多喝水",
+    "p": "突然大量增加纤维可能会胀气。要循序渐进，同时多喝水，纤维才能发挥作用。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "常见食物一份的纤维和热量",
+    "unit": "g",
+    "target": [
+     25,
+     "每日目标 25 克"
+    ],
+    "items": [
+     [
+      "一碗煮熟扁豆（约 200 克）",
+      15,
+      0,
+      230
+     ],
+     [
+      "一个梨",
+      5.5,
+      0,
+      100
+     ],
+     [
+      "Herbalife 综合纤维饮（1 份）",
+      5,
+      0,
+      9
+     ],
+     [
+      "一碗煮熟西兰花",
+      5,
+      0,
+      55
+     ],
+     [
+      "一碗燕麦粥",
+      4,
+      0,
+      160
+     ],
+     [
+      "一片全麦面包",
+      2,
+      0,
+      80
+     ],
+     [
+      "一碗白饭",
+      0.6,
+      0,
+      200
+     ]
+    ],
+    "note": "约略数值。Herbalife 综合纤维饮每份 5 克纤维，只有 9 卡路里。"
+   }
+  ],
+  "myth": {
+   "m": "吃纤维会让人一直跑厕所。",
+   "f": "适量的纤维让排便更规律。循序渐进、多喝水，身体会慢慢适应。"
+  },
+  "fact": {
+   "num": "25–30",
+   "unit": "g",
+   "text": "成人每天建议的膳食纤维摄取量。很多人只吃到一半左右。"
+  },
+  "tips": [
+   "午餐或晚餐把白米换成糙米",
+   "每餐加一份蔬菜、水果或豆类",
+   "零食选全麦饼干、水果、坚果或绿豆汤"
+  ],
+  "task": "今天每一餐都加一份绿色蔬菜，并多喝两杯水。",
+  "share": "你有认识谁常常便秘、很少吃蔬菜的吗？",
+  "philo": "每天 25 克纤维素，也是均衡营养的一部分："
+ },
+ "en": {
+  "t": "Healthy ageing and fibre",
+  "en": "Healthy Aging · Greens Power",
+  "tag": "Nutrition",
+  "lead": "Living long isn't enough — you want to live with strength and energy.",
+  "intro": "Healthy ageing means staying mobile, energetic and largely free of illness as you get older. Protein and fibre in your diet are the two most important helpers.",
+  "points": [
+   {
+    "h": "Muscle is the capital of healthy ageing",
+    "p": "Ageing is the slow decline of body structure or function. Without exercise, muscle drops by about 1% a year after age 30:",
+    "list": [
+     "Less muscle and more fat — you look bigger even at the same weight",
+     "With less muscle, you burn fat less well and gain weight more easily",
+     "By 70, you may have only about two-thirds of the muscle you had at 30",
+     "Staying active, exercising regularly and eating enough protein slow muscle loss"
+    ],
+    "viz": [
+     {
+      "type": "bars",
+      "title": "Muscle mass with age without exercise (illustration)",
+      "unit": "%",
+      "items": [
+       [
+        "Age 30",
+        100
+       ],
+       [
+        "Age 40",
+        90
+       ],
+       [
+        "Age 50",
+        82
+       ],
+       [
+        "Age 60",
+        74
+       ],
+       [
+        "Age 70",
+        67,
+        1
+       ]
+      ],
+      "note": "Illustrative values with muscle mass at age 30 as 100%. Moderate exercise plus enough protein can maintain muscle mass."
+     }
+    ]
+   },
+   {
+    "h": "Three big benefits of fibre",
+    "p": "Dietary fibre doesn't just help bowel movements — it has many other benefits:",
+    "list": [
+     "Digestion: promotes gut movement, adds stool bulk, supports good gut bacteria and lowers the risk of digestive diseases",
+     "Immunity: fermentable fibres like inulin and resistant starch are \"prebiotics\" — food for good gut bacteria. The short-chain fatty acids they produce help regulate immune responses and reduce inflammation",
+     "Metabolic health: eating more vegetables, fruit, fish, dairy, coffee and tea helps prevent metabolic syndrome"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_benefit",
+      "cap": "Fibre and digestion, immunity and metabolic syndrome (refs: Microorganisms 2023; Academy of Nutrition and Dietetics 2015)"
+     }
+    ]
+   },
+   {
+    "h": "Research shows: enough protein and fibre means more successful weight loss",
+    "p": "A 2024 study in Obesity Science and Practice followed people on a weight-loss programme for a full year:",
+    "list": [
+     "Those who succeeded lost about 13% of body weight on average after a year",
+     "Those who didn't lost only about 2%",
+     "The key difference: the successful group ate more protein and fibre while controlling calories"
+    ],
+    "after": "Conclusion: to succeed at weight management, eat more protein and fibre while controlling calories.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_study",
+      "cap": "Lee et al., 2024, Obesity Science and Practice: successful dietary changes linked to weight-loss results"
+     }
+    ]
+   },
+   {
+    "h": "Fibre steadies blood sugar and cholesterol",
+    "p": "Soluble fibre (oats, beans, apples) slows sugar absorption and helps lower cholesterol."
+   },
+   {
+    "h": "Most people don't get enough fibre",
+    "p": "Adults need about 25 g of fibre a day, but from natural foods alone you'd have to eat a lot:",
+    "list": [
+     "5 g fibre ≈ 2 sweet potatoes or 3 oranges",
+     "25 g fibre ≈ 10 sweet potatoes or 15 oranges",
+     "Most people get only about half that each day"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_25g",
+      "cap": "25 g fibre ≈ 10 sweet potatoes ≈ 15 oranges"
+     }
+    ],
+    "viz": [
+     {
+      "type": "cmp2",
+      "title": "How many calories to get enough fibre?",
+      "a": "Natural foods",
+      "b": "Herbalife Active Fiber Complex",
+      "rows": [
+       {
+        "h": "5 g fibre",
+        "a": [
+         [
+          "2 sweet potatoes",
+          "About 200 kcal"
+         ],
+         [
+          "3 oranges",
+          "About 190 kcal"
+         ]
+        ],
+        "b": [
+         "1 serving",
+         "9 kcal"
+        ]
+       },
+       {
+        "h": "25 g fibre",
+        "a": [
+         [
+          "10 sweet potatoes",
+          "About 1000 kcal"
+         ],
+         [
+          "15 oranges",
+          "About 930 kcal"
+         ]
+        ],
+        "b": [
+         "5 servings",
+         "45 kcal"
+        ]
+       }
+      ],
+      "note": "Natural food calories are approximate. Keep eating natural foods; the fibre drink helps fill the gap without adding many calories."
+     }
+    ]
+   },
+   {
+    "h": "There are three kinds of fibre — best to get them together",
+    "p": "Fibre isn't just one thing — different fibres do different jobs:",
+    "list": [
+     "Soluble fibre: forms a gel in the gut, slows sugar absorption, helps steady blood sugar and cholesterol, and increases fullness",
+     "Insoluble fibre: adds stool bulk and promotes gut movement for smooth bowel movements",
+     "Inulin: a prebiotic that feeds good gut bacteria and helps maintain gut health"
+    ],
+    "after": "Herbalife Active Fiber Complex (with inulin) has both soluble and insoluble fibre — 5 g of fibre per serving at only 9 calories, making it easy to reach your daily fibre needs.",
+    "viz": [
+     {
+      "type": "chips",
+      "cols": 3,
+      "title": "Three fibres, each with its own job",
+      "items": [
+       [
+        "Soluble",
+        "Steadies blood sugar, lowers cholesterol"
+       ],
+       [
+        "Insoluble",
+        "Helps bowel movements"
+       ],
+       [
+        "Inulin",
+        "Feeds good gut bacteria"
+       ]
+      ]
+     }
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_product",
+      "cap": "Herbalife Active Fiber Complex (with inulin): soluble + insoluble fibre, 5 g per serving"
+     }
+    ]
+   },
+   {
+    "h": "Increase slowly and drink more water",
+    "p": "Suddenly eating a lot more fibre can cause bloating. Increase gradually and drink more water so the fibre can do its job."
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "Fibre and calories in one serving of common foods",
+    "unit": "g",
+    "target": [
+     25,
+     "Daily target 25 g"
+    ],
+    "items": [
+     [
+      "A bowl of cooked lentils (about 200 g)",
+      15,
+      0,
+      230
+     ],
+     [
+      "A pear",
+      5.5,
+      0,
+      100
+     ],
+     [
+      "Herbalife Active Fiber Complex (1 serving)",
+      5,
+      0,
+      9
+     ],
+     [
+      "A bowl of cooked broccoli",
+      5,
+      0,
+      55
+     ],
+     [
+      "A bowl of oatmeal",
+      4,
+      0,
+      160
+     ],
+     [
+      "A slice of wholemeal bread",
+      2,
+      0,
+      80
+     ],
+     [
+      "A bowl of white rice",
+      0.6,
+      0,
+      200
+     ]
+    ],
+    "note": "Approximate values. Herbalife Active Fiber Complex has 5 g of fibre per serving at only 9 calories."
+   }
+  ],
+  "myth": {
+   "m": "Eating fibre makes you run to the toilet all the time.",
+   "f": "The right amount of fibre makes bowel movements more regular. Increase gradually and drink more water, and your body will adapt."
+  },
+  "fact": {
+   "num": "25–30",
+   "unit": "g",
+   "text": "Recommended daily fibre intake for adults. Many people get only about half."
+  },
+  "tips": [
+   "Swap white rice for brown rice at lunch or dinner",
+   "Add a portion of vegetables, fruit or beans to every meal",
+   "For snacks, choose wholemeal crackers, fruit, nuts or mung bean soup"
+  ],
+  "task": "Add a portion of green vegetables to every meal today, and drink two more glasses of water.",
+  "share": "Do you know anyone who is often constipated and rarely eats vegetables?",
+  "philo": "25 g of fibre a day is also part of balanced nutrition:"
+ },
+ "ms": {
+  "t": "Penuaan sihat dan serat",
+  "en": "Healthy Aging · Greens Power",
+  "tag": "Nutrisi",
+  "lead": "Hidup lama tidak cukup, kita mahu hidup bertenaga dan bersemangat.",
+  "intro": "Penuaan sihat bermakna masih boleh bergerak bebas, bertenaga dan kurang penyakit apabila usia meningkat. Protein dan serat dalam pemakanan ialah dua pembantu paling penting.",
+  "points": [
+   {
+    "h": "Otot ialah modal penuaan sihat",
+    "p": "Penuaan ialah proses struktur atau fungsi badan merosot perlahan-lahan. Tanpa latihan, otot berkurang kira-kira 1% setahun selepas umur 30:",
+    "list": [
+     "Otot berkurang, lemak bertambah, nampak lebih gemuk walaupun berat sama",
+     "Kurang otot, keupayaan membakar lemak menurun, lebih mudah gemuk",
+     "Pada umur 70, otot mungkin tinggal kira-kira dua pertiga berbanding umur 30",
+     "Kekal aktif, bersenam secara berkala dan makan protein yang cukup boleh melambatkan kehilangan otot"
+    ],
+    "viz": [
+     {
+      "type": "bars",
+      "title": "Perubahan jisim otot mengikut usia tanpa latihan (ilustrasi)",
+      "unit": "%",
+      "items": [
+       [
+        "Umur 30",
+        100
+       ],
+       [
+        "Umur 40",
+        90
+       ],
+       [
+        "Umur 50",
+        82
+       ],
+       [
+        "Umur 60",
+        74
+       ],
+       [
+        "Umur 70",
+        67,
+        1
+       ]
+      ],
+      "note": "Nilai ilustrasi dengan jisim otot pada umur 30 sebagai 100%. Senaman sederhana dan protein yang cukup boleh mengekalkan jisim otot."
+     }
+    ]
+   },
+   {
+    "h": "Tiga kebaikan utama serat",
+    "p": "Serat diet bukan hanya membantu buang air besar, malah banyak lagi kebaikannya:",
+    "list": [
+     "Pencernaan: menggalakkan pergerakan usus, menambah isi najis, menyokong pertumbuhan bakteria baik dan mengurangkan risiko penyakit usus",
+     "Imuniti: serat yang boleh ditapai seperti inulin dan kanji rintang ialah \"prebiotik\", makanan bakteria baik dalam usus. Asid lemak rantai pendek yang dihasilkan membantu mengawal tindak balas imun dan mengurangkan keradangan",
+     "Kesihatan metabolik: lebih banyak sayur, buah, ikan, produk tenusu, kopi dan teh membantu mencegah sindrom metabolik"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_benefit",
+      "cap": "Serat dan pencernaan, imuniti serta sindrom metabolik (rujukan: Microorganisms 2023; Academy of Nutrition and Dietetics 2015)"
+     }
+    ]
+   },
+   {
+    "h": "Kajian membuktikan: protein dan serat yang cukup, penurunan berat badan lebih berjaya",
+    "p": "Satu kajian 2024 dalam jurnal Obesity Science and Practice menjejaki peserta program penurunan berat badan selama setahun:",
+    "list": [
+     "Mereka yang berjaya, berat badan purata turun kira-kira 13% selepas setahun",
+     "Yang tidak berjaya hanya turun kira-kira 2%",
+     "Perbezaan utama: yang berjaya makan lebih banyak protein dan serat sambil mengawal kalori"
+    ],
+    "after": "Kesimpulan kajian: untuk berjaya mengurus berat badan, makan lebih banyak protein dan serat sambil mengawal kalori.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_study",
+      "cap": "Lee et al., 2024, Obesity Science and Practice: perubahan pemakanan yang berjaya berkait dengan hasil penurunan berat badan"
+     }
+    ]
+   },
+   {
+    "h": "Serat menstabilkan gula darah dan kolesterol",
+    "p": "Serat larut (oat, kekacang, epal) melambatkan penyerapan gula dan membantu menurunkan kolesterol."
+   },
+   {
+    "h": "Kebanyakan orang tidak cukup serat",
+    "p": "Orang dewasa memerlukan kira-kira 25 g serat sehari, tetapi jika hanya bergantung pada makanan semula jadi, perlu makan banyak:",
+    "list": [
+     "5 g serat ≈ 2 biji ubi keledek atau 3 biji oren",
+     "25 g serat ≈ 10 biji ubi keledek atau 15 biji oren",
+     "Kebanyakan orang hanya mendapat kira-kira separuh setiap hari"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_25g",
+      "cap": "25 g serat ≈ 10 biji ubi keledek ≈ 15 biji oren"
+     }
+    ],
+    "viz": [
+     {
+      "type": "cmp2",
+      "title": "Berapa kalori perlu dimakan untuk serat yang cukup?",
+      "a": "Makanan semula jadi",
+      "b": "Herbalife Active Fiber Complex",
+      "rows": [
+       {
+        "h": "5 g serat",
+        "a": [
+         [
+          "2 biji ubi keledek",
+          "Kira-kira 200 kcal"
+         ],
+         [
+          "3 biji oren",
+          "Kira-kira 190 kcal"
+         ]
+        ],
+        "b": [
+         "1 hidangan",
+         "9 kcal"
+        ]
+       },
+       {
+        "h": "25 g serat",
+        "a": [
+         [
+          "10 biji ubi keledek",
+          "Kira-kira 1000 kcal"
+         ],
+         [
+          "15 biji oren",
+          "Kira-kira 930 kcal"
+         ]
+        ],
+        "b": [
+         "5 hidangan",
+         "45 kcal"
+        ]
+       }
+      ],
+      "note": "Kalori makanan semula jadi adalah anggaran. Makanan semula jadi tetap perlu dimakan; minuman serat membantu mengisi kekurangan tanpa menambah banyak kalori."
+     }
+    ]
+   },
+   {
+    "h": "Serat ada tiga jenis, terbaik diambil bersama",
+    "p": "Serat bukan satu jenis sahaja; serat berbeza mempunyai fungsi berbeza:",
+    "list": [
+     "Serat larut: membentuk gel dalam usus, melambatkan penyerapan gula, membantu menstabilkan gula darah dan kolesterol, serta menambah rasa kenyang",
+     "Serat tak larut: menambah isi najis, menggalakkan pergerakan usus dan melancarkan buang air besar",
+     "Inulin: sejenis prebiotik, makanan bakteria baik dalam usus, membantu mengekalkan kesihatan usus"
+    ],
+    "after": "Herbalife Active Fiber Complex (mengandungi inulin) mempunyai serat larut dan tak larut, 5 g serat setiap hidangan dengan hanya 9 kalori, membantu anda mencukupkan keperluan serat harian dengan mudah.",
+    "viz": [
+     {
+      "type": "chips",
+      "cols": 3,
+      "title": "Tiga jenis serat, setiap satu ada fungsinya",
+      "items": [
+       [
+        "Larut",
+        "Menstabilkan gula darah, menurunkan kolesterol"
+       ],
+       [
+        "Tak larut",
+        "Membantu buang air besar"
+       ],
+       [
+        "Inulin",
+        "Memberi makan bakteria baik usus"
+       ]
+      ]
+     }
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "fib_product",
+      "cap": "Herbalife Active Fiber Complex (mengandungi inulin): serat larut + tak larut, 5 g setiap hidangan"
+     }
+    ]
+   },
+   {
+    "h": "Tingkatkan perlahan-lahan, minum lebih banyak air",
+    "p": "Menambah serat secara mendadak boleh menyebabkan kembung. Tingkatkan secara beransur-ansur dan minum lebih banyak air supaya serat berfungsi dengan baik."
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "Serat dan kalori dalam satu hidangan makanan biasa",
+    "unit": "g",
+    "target": [
+     25,
+     "Sasaran harian 25 g"
+    ],
+    "items": [
+     [
+      "Semangkuk kacang dal masak (kira-kira 200 g)",
+      15,
+      0,
+      230
+     ],
+     [
+      "Sebiji pir",
+      5.5,
+      0,
+      100
+     ],
+     [
+      "Herbalife Active Fiber Complex (1 hidangan)",
+      5,
+      0,
+      9
+     ],
+     [
+      "Semangkuk brokoli masak",
+      5,
+      0,
+      55
+     ],
+     [
+      "Semangkuk bubur oat",
+      4,
+      0,
+      160
+     ],
+     [
+      "Sekeping roti gandum penuh",
+      2,
+      0,
+      80
+     ],
+     [
+      "Semangkuk nasi putih",
+      0.6,
+      0,
+      200
+     ]
+    ],
+    "note": "Nilai anggaran. Herbalife Active Fiber Complex mengandungi 5 g serat setiap hidangan dengan hanya 9 kalori."
+   }
+  ],
+  "myth": {
+   "m": "Makan serat menyebabkan selalu ke tandas.",
+   "f": "Serat yang secukupnya menjadikan buang air besar lebih teratur. Tingkatkan secara beransur-ansur dan minum lebih banyak air, badan akan menyesuaikan diri."
+  },
+  "fact": {
+   "num": "25–30",
+   "unit": "g",
+   "text": "Pengambilan serat diet harian yang disyorkan untuk orang dewasa. Ramai orang hanya mendapat kira-kira separuh."
+  },
+  "tips": [
+   "Tukar nasi putih kepada beras perang pada makan tengah hari atau malam",
+   "Tambah satu hidangan sayur, buah atau kekacang pada setiap hidangan",
+   "Untuk snek, pilih biskut gandum penuh, buah, kekacang atau bubur kacang hijau"
+  ],
+  "task": "Hari ini tambah satu hidangan sayur hijau pada setiap hidangan, dan minum dua gelas air lagi.",
+  "share": "Adakah anda kenal sesiapa yang selalu sembelit dan jarang makan sayur?",
+  "philo": "25 g serat sehari juga sebahagian daripada nutrisi seimbang:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "成年人每天建议吃多少膳食纤维？",
+   "opts": [
+    "5 克左右",
+    "25–30 克",
+    "100 克以上"
+   ],
+   "a": 1,
+   "why": "建议每天 25–30 克，但很多人只吃到一半左右。多吃蔬菜、水果、全谷类和豆类。"
+  },
+  "en": {
+   "q": "How much dietary fibre should adults eat each day?",
+   "opts": [
+    "About 5 g",
+    "25–30 g",
+    "Over 100 g"
+   ],
+   "a": 1,
+   "why": "25–30 g a day is recommended, but many people get only about half. Eat more vegetables, fruit, whole grains and beans."
+  },
+  "ms": {
+   "q": "Berapa banyak serat diet disyorkan untuk orang dewasa setiap hari?",
+   "opts": [
+    "Kira-kira 5 g",
+    "25–30 g",
+    "Lebih 100 g"
+   ],
+   "a": 1,
+   "why": "Disyorkan 25–30 g sehari, tetapi ramai orang hanya mendapat kira-kira separuh. Lebihkan sayur, buah, bijirin penuh dan kekacang."
+  }
+ }
+}

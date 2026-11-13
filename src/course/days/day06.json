@@ -1,0 +1,1775 @@
+{
+ "day": 6,
+ "zh": {
+  "t": "蛋白质的重要性",
+  "en": "Importance of Protein",
+  "tag": "营养",
+  "lead": "除了脂肪和骨骼，身体的「瘦体重」主要由蛋白质构成。",
+  "intro": "蛋白质是身体的建筑材料。肌肉、皮肤、头发、酵素、荷尔蒙、抗体都需要它，而身体无法大量储存蛋白质，所以每天都要补充。",
+  "points": [
+   {
+    "h": "蛋白质的八大作用",
+    "p": "蛋白质在身体里的工作很多，看看下面这张图：",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "蛋白质在身体里的作用",
+      "items": [
+       [
+        "提供身体结构",
+        "支撑身体"
+       ],
+       [
+        "组成和修复组织",
+        "肌肉、皮肤、头发"
+       ],
+       [
+        "帮助消化酵素",
+        "促进化学反应"
+       ],
+       [
+        "支持免疫",
+        "制造抗体"
+       ],
+       [
+        "协调荷尔蒙",
+        "调节身体功能"
+       ],
+       [
+        "运送营养",
+        "在体内移动必需分子"
+       ],
+       [
+        "调节 DNA",
+        "支持 DNA 和 RNA 的表达"
+       ],
+       [
+        "支持肌肉",
+        "收缩和活动"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "每天需要多少蛋白质？",
+    "p": "蛋白质的需要量，要看你的目标：",
+    "list": [
+     "维持体重：每公斤体重每天 0.8–1.2 克",
+     "减重：每公斤体重每天 1.2–1.6 克",
+     "增重：每公斤体重每天 1.6–2.2 克"
+    ],
+    "after": "例如 60 公斤的人：维持体重约 48–72 克，减重约 72–96 克，增重约 96–132 克。减重的人特别要吃够蛋白质，不然肌肉会不断流失，一停下来就很容易复胖。用下面「今日小任务」的计算器算算你自己的需要量。"
+   },
+   {
+    "h": "饱足感更持久",
+    "p": "蛋白质消化较慢，能让你更久不饿。每餐有足够蛋白质，是控制食欲最简单的方法。"
+   },
+   {
+    "h": "减重有健康和不健康之分",
+    "p": "身体由肌肉、水分和脂肪组成，减掉的是哪一种很重要。",
+    "viz": [
+     {
+      "type": "mwf",
+      "title": "人体由肌肉、水分和脂肪组成：减重的三种结果",
+      "rows": [
+       [
+        "原本",
+        44,
+        44,
+        44,
+        "",
+        ""
+       ],
+       [
+        "节食减重",
+        28,
+        30,
+        44,
+        "不健康",
+        "no"
+       ],
+       [
+        "均衡营养",
+        44,
+        44,
+        26,
+        "健康",
+        "ok"
+       ]
+      ],
+      "note": "M 肌肉、W 水分、F 脂肪。节食减掉的是肌肉和水分，均衡营养主要减掉脂肪。"
+     }
+    ],
+    "list": [
+     "节食减肥：减掉的多是肌肉和水分，脂肪留下来，精神、免疫力和代谢都会下降",
+     "均衡营养减重：减少卡路里，同时吃到均衡营养，主要减掉脂肪、保住肌肉",
+     "结果：体力充足、免疫力提升、代谢维持，而且不会觉得饿"
+    ]
+   },
+   {
+    "h": "吃够蛋白质，减重后不容易复胖",
+    "p": "减重时蛋白质吃得够，身体才能保住肌肉。",
+    "list": [
+     "肌肉保住了，新陈代谢就不会变慢",
+     "代谢正常，恢复正常饮食后体重比较稳定",
+     "蛋白质不够：肌肉不断流失，代谢变慢，一停下来就很容易复胖"
+    ],
+    "after": "所以减重期间，蛋白质要吃到每公斤体重 1.2–1.6 克，不只是少吃。"
+   },
+   {
+    "h": "年龄越大越重要",
+    "p": "30 岁以后，肌肉量会随年龄慢慢流失。足够的蛋白质加上肌力训练，可以减缓这个过程。"
+   },
+   {
+    "h": "优质蛋白 vs 低质蛋白",
+    "p": "同样是蛋白质，身体能吸收多少、要吃多少才够，差别很大。",
+    "list": [
+     "优质蛋白：吸收率高，含有身体需要的完整氨基酸，吃少量就够",
+     "低质蛋白：吸收率低，缺少某些必需氨基酸，要吃很多才够"
+    ],
+    "after": "所以每餐要选优质蛋白，才能真正吃够身体需要的蛋白质。",
+    "viz": [
+     {
+      "type": "versus",
+      "title": "优质蛋白 vs 低质蛋白",
+      "good": {
+       "h": "优质蛋白 · 吸收率高",
+       "items": [
+        [
+         "chicken",
+         "鸡肉"
+        ],
+        [
+         "salmon",
+         "鱼"
+        ],
+        [
+         "egg",
+         "鸡蛋"
+        ],
+        [
+         "tofu",
+         "豆腐"
+        ],
+        [
+         "shake",
+         "营养奶昔"
+        ]
+       ],
+       "points": [
+        "吸收率高，评分接近 1.00",
+        "含有完整的必需氨基酸",
+        "吃少量就能吃够"
+       ]
+      },
+      "bad": {
+       "h": "低质蛋白 · 吸收率低",
+       "items": [
+        [
+         "redbean",
+         "红豆"
+        ],
+        [
+         "mungbean",
+         "绿豆"
+        ],
+        [
+         "brownrice_k",
+         "全谷类"
+        ],
+        [
+         "bread",
+         "面包"
+        ]
+       ],
+       "points": [
+        "吸收率较低",
+        "缺少某些必需氨基酸",
+        "要吃很多才够"
+       ]
+      }
+     },
+     {
+      "type": "bars",
+      "title": "蛋白质吸收率评分（满分 1.00）",
+      "unit": "",
+      "items": [
+       [
+        "大豆",
+        1,
+        0
+       ],
+       [
+        "酪蛋白（牛奶）",
+        1,
+        0
+       ],
+       [
+        "鸡蛋蛋白",
+        1,
+        0
+       ],
+       [
+        "牛肉",
+        0.92
+       ],
+       [
+        "青豆粉",
+        0.69
+       ],
+       [
+        "红豆",
+        0.68
+       ],
+       [
+        "斑豆",
+        0.63
+       ],
+       [
+        "全麦",
+        0.4
+       ],
+       [
+        "小麦面筋",
+        0.25
+       ]
+      ],
+      "note": "这个评分（PDCAAS）代表蛋白质被人体吸收利用的程度，分数越高越好。大豆、牛奶和鸡蛋都是满分 1.00 的优质蛋白质。"
+     },
+     {
+      "type": "kcal",
+      "title": "要吃多少，才有约 25 克蛋白质？",
+      "items": [
+       [
+        "chicken",
+        "鸡胸肉",
+        "约 80 克",
+        "一个手掌"
+       ],
+       [
+        "salmon",
+        "鱼",
+        "约 115 克",
+        "一块鱼片"
+       ],
+       [
+        "egg",
+        "鸡蛋",
+        "约 4 粒",
+        ""
+       ],
+       [
+        "tofu",
+        "豆腐",
+        "约 170 克",
+        "大半块"
+       ],
+       [
+        "redbean",
+        "红豆（煮熟）",
+        "约 280 克",
+        "一大碗"
+       ],
+       [
+        "brownrice_k",
+        "糙米饭",
+        "约 830 克",
+        "约 5 碗饭"
+       ]
+      ],
+      "note": "按每 100 克的约略蛋白质含量计算。低质蛋白要吃很多，热量也会跟着增加。"
+     }
+    ]
+   },
+   {
+    "h": "素食者怎样吃够优质蛋白？",
+    "p": "吃素一样可以吃够优质蛋白，重点是选对来源、懂得搭配：",
+    "list": [
+     "黄豆类最好：豆腐、天贝、毛豆、无糖豆浆，吸收率评分满分 1.00",
+     "蛋奶素：鸡蛋和低脂牛奶也是满分的优质蛋白",
+     "豆类 + 谷类一起吃：例如红豆、豌豆配糙米饭或燕麦，氨基酸可以互相补足",
+     "营养奶昔：以大豆蛋白为主，方便补足每天的蛋白质"
+    ],
+    "after": "吃全素的人更要留意，每一餐都要有一份黄豆类食物。",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "素食者的蛋白质来源（每 100 克）",
+      "items": [
+       [
+        "soybean",
+        "黄豆（毛豆）",
+        "约 13 克",
+        "吸收率满分"
+       ],
+       [
+        "tempeh",
+        "天贝",
+        "约 19 克",
+        "黄豆发酵"
+       ],
+       [
+        "tofu",
+        "豆腐",
+        "约 17 克",
+        "板豆腐"
+       ],
+       [
+        "egg",
+        "鸡蛋",
+        "约 13 克",
+        "蛋奶素"
+       ],
+       [
+        "oats",
+        "燕麦",
+        "约 17 克",
+        "配豆类吃"
+       ],
+       [
+        "redbean",
+        "红腰豆",
+        "约 5 克",
+        "配谷类吃"
+       ],
+       [
+        "peas",
+        "豌豆",
+        "约 5 克",
+        "配谷类吃"
+       ],
+       [
+        "pb",
+        "花生酱",
+        "约 25 克",
+        "脂肪高，1 汤匙就好"
+       ],
+       [
+        "shake",
+        "营养奶昔",
+        "大豆蛋白",
+        "方便补充"
+       ]
+      ],
+      "note": "约略数值。黄豆类和蛋奶的吸收率最高；豆类和谷类（燕麦、糙米）要搭配着吃，营养才完整。花生酱蛋白质高，但脂肪和热量也高，要控制分量。"
+     },
+     {
+      "type": "bars",
+      "title": "植物性食物的蛋白质含量（每 100 克）",
+      "unit": "g",
+      "items": [
+       [
+        "南瓜子",
+        33
+       ],
+       [
+        "花生酱",
+        25.1
+       ],
+       [
+        "杏仁",
+        22.1
+       ],
+       [
+        "亚麻籽",
+        19.5
+       ],
+       [
+        "豆腐",
+        17.2
+       ],
+       [
+        "燕麦",
+        16.9
+       ],
+       [
+        "奇亚籽",
+        15.6
+       ],
+       [
+        "腰果",
+        15.3
+       ],
+       [
+        "核桃",
+        15
+       ],
+       [
+        "黄豆（毛豆）",
+        13.1
+       ],
+       [
+        "扁豆",
+        9
+       ],
+       [
+        "鹰嘴豆",
+        8.9
+       ],
+       [
+        "全麦面包",
+        8.8
+       ],
+       [
+        "豌豆",
+        5.4
+       ],
+       [
+        "红腰豆",
+        4.8
+       ],
+       [
+        "藜麦",
+        4.4
+       ],
+       [
+        "菠菜",
+        2.9
+       ],
+       [
+        "糙米",
+        2.6
+       ],
+       [
+        "马铃薯",
+        2.5
+       ]
+      ],
+      "note": "坚果和种子蛋白质高，但脂肪和热量也很高，每天一小把就够。黄豆类（豆腐、天贝、毛豆）是素食者最好的蛋白质来源。"
+     }
+    ]
+   },
+   {
+    "h": "从天然食物中找蛋白质",
+    "p": "优质蛋白质有两种来源：",
+    "list": [
+     "植物蛋白：豆腐、天贝、扁豆、黄豆",
+     "动物蛋白：鸡蛋、鸡胸肉、鱼、虾、低脂奶制品"
+    ],
+    "after": "注意：坚果和肥肉的热量和脂肪也很高，要控制分量。"
+   },
+   {
+    "h": "不只看体重",
+    "p": "体重一样，身材可以差很多。关键在于你身上是肌肉多，还是脂肪多：",
+    "list": [
+     "同样 1 公斤：肌肉体积小，脂肪体积大",
+     "肌肉多：身材紧实、充满活力，每天燃烧更多卡路里",
+     "脂肪多：身材松垮、容易疲累，更容易变胖"
+    ],
+    "after": "所以减重不只看体重计上的数字，更要看体脂率和肌肉量，这就是为什么要定期测量和跟进。",
+    "viz": [
+     {
+      "type": "vs2",
+      "title": "同样都是 50 公斤，为什么体型差这么多？",
+      "left": {
+       "h": "肌肉多",
+       "cls": "good",
+       "bar": [
+        [
+         "肌肉",
+         62
+        ],
+        [
+         "脂肪",
+         22
+        ],
+        [
+         "其他",
+         16
+        ]
+       ],
+       "items": [
+        "身材紧实",
+        "充满活力",
+        "易瘦体质",
+        "燃烧更多卡路里"
+       ]
+      },
+      "right": {
+       "h": "脂肪多",
+       "cls": "bad",
+       "bar": [
+        [
+         "肌肉",
+         34
+        ],
+        [
+         "脂肪",
+         50
+        ],
+        [
+         "其他",
+         16
+        ]
+       ],
+       "items": [
+        "身材松垮",
+        "容易疲累",
+        "易胖体质",
+        "体积大，看起来更胖"
+       ]
+      },
+      "note": "示意图，比例仅供说明。同样重量的脂肪，体积比肌肉大很多。"
+     }
+    ]
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "每 100 克食物的蛋白质含量",
+    "unit": "g",
+    "items": [
+     [
+      "鸡胸肉",
+      31
+     ],
+     [
+      "牛肉",
+      26
+     ],
+     [
+      "猪肉",
+      26
+     ],
+     [
+      "鸡腿肉",
+      25
+     ],
+     [
+      "三文鱼",
+      22
+     ],
+     [
+      "鸡蛋",
+      13
+     ],
+     [
+      "豆腐",
+      15
+     ],
+     [
+      "扁豆",
+      9
+     ],
+     [
+      "糙米饭",
+      3
+     ]
+    ],
+    "note": "每 100 克、煮熟、去骨计算的约略数值。"
+   }
+  ],
+  "myth": {
+   "m": "只有健身的人才需要蛋白质。",
+   "f": "每个人都需要蛋白质来维持肌肉、免疫和身体修复。减重中、年长者和运动的人需要更多。"
+  },
+  "fact": {
+   "num": "1.2–1.6",
+   "unit": "g/kg",
+   "text": "减重期间，每公斤体重每天建议 1.2–1.6 克蛋白质。维持体重 0.8–1.2 克，增重 1.6–2.2 克。"
+  },
+  "tips": [
+   "每餐有一个手掌大小的蛋白质",
+   "早餐最容易缺蛋白质，优先补上",
+   "动物蛋白和植物蛋白轮流吃"
+  ],
+  "task": "选择你的目标，输入体重，算一算你每天大约需要多少蛋白质：",
+  "calc": "protein",
+  "share": "你有认识谁经常用自己的方法节食减肥的吗？",
+  "philo": "蛋白质占每天热量的 30%，是均衡营养的重要一环："
+ },
+ "en": {
+  "t": "The importance of protein",
+  "en": "Importance of Protein",
+  "tag": "Nutrition",
+  "lead": "Apart from fat and bone, your body's \"lean mass\" is mainly made of protein.",
+  "intro": "Protein is your body's building material. Muscle, skin, hair, enzymes, hormones and antibodies all need it, and your body can't store much protein, so you need it every day.",
+  "points": [
+   {
+    "h": "Protein's eight key roles",
+    "p": "Protein does many jobs in the body — see the chart below:",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "What protein does in the body",
+      "items": [
+       [
+        "Provides body structure",
+        "Supports the body"
+       ],
+       [
+        "Builds and repairs tissue",
+        "Muscle, skin, hair"
+       ],
+       [
+        "Helps digestive enzymes",
+        "Speeds up chemical reactions"
+       ],
+       [
+        "Supports immunity",
+        "Makes antibodies"
+       ],
+       [
+        "Coordinates hormones",
+        "Regulates body functions"
+       ],
+       [
+        "Transports nutrients",
+        "Moves essential molecules around the body"
+       ],
+       [
+        "Regulates DNA",
+        "Supports DNA and RNA expression"
+       ],
+       [
+        "Supports muscles",
+        "Contraction and movement"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "How much protein do you need each day?",
+    "p": "How much protein you need depends on your goal:",
+    "list": [
+     "Maintain weight: 0.8–1.2 g per kg of body weight per day",
+     "Lose weight: 1.2–1.6 g per kg of body weight per day",
+     "Gain weight: 1.6–2.2 g per kg of body weight per day"
+    ],
+    "after": "For example, a 60 kg person needs about 48–72 g to maintain, 72–96 g to lose weight, and 96–132 g to gain. People losing weight especially need enough protein, or they keep losing muscle and regain weight easily once they stop. Use the calculator in \"Today's task\" below to work out your own needs."
+   },
+   {
+    "h": "Fullness lasts longer",
+    "p": "Protein digests slowly and keeps you full longer. Enough protein at every meal is the simplest way to control appetite."
+   },
+   {
+    "h": "There's healthy and unhealthy weight loss",
+    "p": "Your body is made of muscle, water and fat — which one you lose matters.",
+    "viz": [
+     {
+      "type": "mwf",
+      "title": "The body is muscle, water and fat: three weight-loss outcomes",
+      "rows": [
+       [
+        "Before",
+        44,
+        44,
+        44,
+        "",
+        ""
+       ],
+       [
+        "Dieting",
+        28,
+        30,
+        44,
+        "Unhealthy",
+        "no"
+       ],
+       [
+        "Balanced nutrition",
+        44,
+        44,
+        26,
+        "Healthy",
+        "ok"
+       ]
+      ],
+      "note": "M muscle, W water, F fat. Dieting loses muscle and water; balanced nutrition mainly loses fat."
+     }
+    ],
+    "list": [
+     "Crash dieting: you mostly lose muscle and water while fat stays, and energy, immunity and metabolism drop",
+     "Balanced-nutrition weight loss: cut calories while eating balanced nutrition, mainly losing fat and keeping muscle",
+     "Result: plenty of energy, better immunity, metabolism maintained — and you don't feel hungry"
+    ]
+   },
+   {
+    "h": "Enough protein means less rebound after weight loss",
+    "p": "Only with enough protein while losing weight can your body keep its muscle.",
+    "list": [
+     "Keep your muscle and your metabolism won't slow down",
+     "With normal metabolism, your weight is more stable when you return to normal eating",
+     "Not enough protein: you keep losing muscle, metabolism slows, and weight comes back easily once you stop"
+    ],
+    "after": "So while losing weight, eat 1.2–1.6 g of protein per kg of body weight — not just less food."
+   },
+   {
+    "h": "It matters more as you age",
+    "p": "After 30, muscle mass slowly declines with age. Enough protein plus strength training can slow this process."
+   },
+   {
+    "h": "Quality protein vs low-quality protein",
+    "p": "Not all protein is equal: how much your body absorbs, and how much you need to eat, differ greatly.",
+    "list": [
+     "Quality protein: high absorption, contains all the amino acids your body needs — a small amount is enough",
+     "Low-quality protein: low absorption, missing some essential amino acids — you need to eat a lot"
+    ],
+    "after": "So choose quality protein at every meal to truly get the protein your body needs.",
+    "viz": [
+     {
+      "type": "versus",
+      "title": "Quality protein vs low-quality protein",
+      "good": {
+       "h": "Quality protein · high absorption",
+       "items": [
+        [
+         "chicken",
+         "Chicken"
+        ],
+        [
+         "salmon",
+         "Fish"
+        ],
+        [
+         "egg",
+         "Egg"
+        ],
+        [
+         "tofu",
+         "Tofu"
+        ],
+        [
+         "shake",
+         "Nutrition shake"
+        ]
+       ],
+       "points": [
+        "High absorption, score close to 1.00",
+        "Contains all essential amino acids",
+        "A small amount is enough"
+       ]
+      },
+      "bad": {
+       "h": "Low-quality protein · low absorption",
+       "items": [
+        [
+         "redbean",
+         "Red beans"
+        ],
+        [
+         "mungbean",
+         "Mung beans"
+        ],
+        [
+         "brownrice_k",
+         "Whole grains"
+        ],
+        [
+         "bread",
+         "Bread"
+        ]
+       ],
+       "points": [
+        "Lower absorption",
+        "Missing some essential amino acids",
+        "You need to eat a lot"
+       ]
+      }
+     },
+     {
+      "type": "bars",
+      "title": "Protein absorption score (max 1.00)",
+      "unit": "",
+      "items": [
+       [
+        "Soy",
+        1,
+        0
+       ],
+       [
+        "Casein (milk)",
+        1,
+        0
+       ],
+       [
+        "Egg white",
+        1,
+        0
+       ],
+       [
+        "Beef",
+        0.92
+       ],
+       [
+        "Pea protein",
+        0.69
+       ],
+       [
+        "Red beans",
+        0.68
+       ],
+       [
+        "Pinto beans",
+        0.63
+       ],
+       [
+        "Whole wheat",
+        0.4
+       ],
+       [
+        "Wheat gluten",
+        0.25
+       ]
+      ],
+      "note": "This score (PDCAAS) shows how well the body absorbs and uses a protein — higher is better. Soy, milk and eggs are all quality proteins with a perfect score of 1.00."
+     },
+     {
+      "type": "kcal",
+      "title": "How much do you need to eat to get about 25 g of protein?",
+      "items": [
+       [
+        "chicken",
+        "Chicken breast",
+        "About 80 g",
+        "One palm"
+       ],
+       [
+        "salmon",
+        "Fish",
+        "About 115 g",
+        "One fish fillet"
+       ],
+       [
+        "egg",
+        "Egg",
+        "About 4",
+        ""
+       ],
+       [
+        "tofu",
+        "Tofu",
+        "About 170 g",
+        "Most of a block"
+       ],
+       [
+        "redbean",
+        "Red beans (cooked)",
+        "About 280 g",
+        "A large bowl"
+       ],
+       [
+        "brownrice_k",
+        "Brown rice",
+        "About 830 g",
+        "About 5 bowls of rice"
+       ]
+      ],
+      "note": "Based on approximate protein per 100 g. With low-quality protein you have to eat a lot, and the calories add up too."
+     }
+    ]
+   },
+   {
+    "h": "How can vegetarians get enough quality protein?",
+    "p": "Vegetarians can get enough quality protein too — the key is choosing the right sources and combining them:",
+    "list": [
+     "Soy foods are best: tofu, tempeh, edamame, unsweetened soy milk — perfect absorption score of 1.00",
+     "Lacto-ovo vegetarians: eggs and low-fat milk are also perfect-score quality proteins",
+     "Eat beans + grains together: e.g. red beans or peas with brown rice or oats, so the amino acids complement each other",
+     "Nutrition shake: mainly soy protein, a convenient way to top up your daily protein"
+    ],
+    "after": "Vegans need to be extra careful: include a portion of soy food at every meal.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Vegetarian protein sources (per 100 g)",
+      "items": [
+       [
+        "soybean",
+        "Soybeans (edamame)",
+        "About 13 g",
+        "Perfect absorption score"
+       ],
+       [
+        "tempeh",
+        "Tempeh",
+        "About 19 g",
+        "Fermented soybeans"
+       ],
+       [
+        "tofu",
+        "Tofu",
+        "About 17 g",
+        "Firm tofu"
+       ],
+       [
+        "egg",
+        "Egg",
+        "About 13 g",
+        "Lacto-ovo vegetarian"
+       ],
+       [
+        "oats",
+        "Oats",
+        "About 17 g",
+        "Eat with beans"
+       ],
+       [
+        "redbean",
+        "Red kidney beans",
+        "About 5 g",
+        "Eat with grains"
+       ],
+       [
+        "peas",
+        "Peas",
+        "About 5 g",
+        "Eat with grains"
+       ],
+       [
+        "pb",
+        "Peanut butter",
+        "About 25 g",
+        "High in fat — 1 tablespoon is enough"
+       ],
+       [
+        "shake",
+        "Nutrition shake",
+        "Soy protein",
+        "Convenient top-up"
+       ]
+      ],
+      "note": "Approximate values. Soy foods, eggs and dairy have the highest absorption; beans and grains (oats, brown rice) should be eaten together for complete nutrition. Peanut butter is high in protein but also in fat and calories, so control the portion."
+     },
+     {
+      "type": "bars",
+      "title": "Protein in plant foods (per 100 g)",
+      "unit": "g",
+      "items": [
+       [
+        "Pumpkin seeds",
+        33
+       ],
+       [
+        "Peanut butter",
+        25.1
+       ],
+       [
+        "Almonds",
+        22.1
+       ],
+       [
+        "Flaxseed",
+        19.5
+       ],
+       [
+        "Tofu",
+        17.2
+       ],
+       [
+        "Oats",
+        16.9
+       ],
+       [
+        "Chia seeds",
+        15.6
+       ],
+       [
+        "Cashews",
+        15.3
+       ],
+       [
+        "Walnuts",
+        15
+       ],
+       [
+        "Soybeans (edamame)",
+        13.1
+       ],
+       [
+        "Lentils",
+        9
+       ],
+       [
+        "Chickpeas",
+        8.9
+       ],
+       [
+        "Wholemeal bread",
+        8.8
+       ],
+       [
+        "Peas",
+        5.4
+       ],
+       [
+        "Red kidney beans",
+        4.8
+       ],
+       [
+        "Quinoa",
+        4.4
+       ],
+       [
+        "Spinach",
+        2.9
+       ],
+       [
+        "Brown rice",
+        2.6
+       ],
+       [
+        "Potato",
+        2.5
+       ]
+      ],
+      "note": "Nuts and seeds are high in protein but also very high in fat and calories — a small handful a day is enough. Soy foods (tofu, tempeh, edamame) are the best protein sources for vegetarians."
+     }
+    ]
+   },
+   {
+    "h": "Find protein in natural foods",
+    "p": "Quality protein comes from two sources:",
+    "list": [
+     "Plant protein: tofu, tempeh, lentils, soybeans",
+     "Animal protein: eggs, chicken breast, fish, prawns, low-fat dairy"
+    ],
+    "after": "Note: nuts and fatty meat are also high in calories and fat — control the portion."
+   },
+   {
+    "h": "Don't just look at your weight",
+    "p": "At the same weight, bodies can look very different. The key is whether you carry more muscle or more fat:",
+    "list": [
+     "Same 1 kg: muscle is small, fat is bulky",
+     "More muscle: firm body, full of energy, burns more calories every day",
+     "More fat: soft body, tires easily, gains weight more easily"
+    ],
+    "after": "So weight loss isn't just the number on the scale — body fat percentage and muscle mass matter more. That's why we measure and follow up regularly.",
+    "viz": [
+     {
+      "type": "vs2",
+      "title": "Both are 50 kg — why do they look so different?",
+      "left": {
+       "h": "More muscle",
+       "cls": "good",
+       "bar": [
+        [
+         "Muscle",
+         62
+        ],
+        [
+         "Fat",
+         22
+        ],
+        [
+         "Other",
+         16
+        ]
+       ],
+       "items": [
+        "Firm body",
+        "Full of energy",
+        "Stays lean easily",
+        "Burns more calories"
+       ]
+      },
+      "right": {
+       "h": "More fat",
+       "cls": "bad",
+       "bar": [
+        [
+         "Muscle",
+         34
+        ],
+        [
+         "Fat",
+         50
+        ],
+        [
+         "Other",
+         16
+        ]
+       ],
+       "items": [
+        "Soft body",
+        "Tires easily",
+        "Gains weight easily",
+        "Bulky — looks bigger"
+       ]
+      },
+      "note": "Illustration only; proportions for explanation. The same weight of fat takes up much more space than muscle."
+     }
+    ]
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "Protein per 100 g of food",
+    "unit": "g",
+    "items": [
+     [
+      "Chicken breast",
+      31
+     ],
+     [
+      "Beef",
+      26
+     ],
+     [
+      "Pork",
+      26
+     ],
+     [
+      "Chicken thigh",
+      25
+     ],
+     [
+      "Salmon",
+      22
+     ],
+     [
+      "Egg",
+      13
+     ],
+     [
+      "Tofu",
+      15
+     ],
+     [
+      "Lentils",
+      9
+     ],
+     [
+      "Brown rice",
+      3
+     ]
+    ],
+    "note": "Approximate values per 100 g, cooked, boneless."
+   }
+  ],
+  "myth": {
+   "m": "Only people who work out need protein.",
+   "f": "Everyone needs protein to maintain muscle, immunity and body repair. People losing weight, older adults and those who exercise need more."
+  },
+  "fact": {
+   "num": "1.2–1.6",
+   "unit": "g/kg",
+   "text": "While losing weight, about 1.2–1.6 g of protein per kg of body weight per day is recommended. To maintain: 0.8–1.2 g; to gain: 1.6–2.2 g."
+  },
+  "tips": [
+   "A palm-sized portion of protein at every meal",
+   "Breakfast is most often short of protein — fix it first",
+   "Alternate animal and plant protein"
+  ],
+  "task": "Choose your goal, enter your weight, and work out roughly how much protein you need each day:",
+  "calc": "protein",
+  "share": "Do you know anyone who often diets using their own methods?",
+  "philo": "Protein makes up 30% of daily calories — a key part of balanced nutrition:"
+ },
+ "ms": {
+  "t": "Kepentingan protein",
+  "en": "Importance of Protein",
+  "tag": "Nutrisi",
+  "lead": "Selain lemak dan tulang, \"berat tanpa lemak\" badan kebanyakannya terdiri daripada protein.",
+  "intro": "Protein ialah bahan binaan badan. Otot, kulit, rambut, enzim, hormon dan antibodi semuanya memerlukannya, dan badan tidak dapat menyimpan banyak protein, jadi perlu diambil setiap hari.",
+  "points": [
+   {
+    "h": "Lapan fungsi utama protein",
+    "p": "Protein melakukan banyak kerja dalam badan, lihat carta di bawah:",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "Fungsi protein dalam badan",
+      "items": [
+       [
+        "Memberi struktur badan",
+        "Menyokong badan"
+       ],
+       [
+        "Membina dan membaiki tisu",
+        "Otot, kulit, rambut"
+       ],
+       [
+        "Membantu enzim pencernaan",
+        "Mempercepatkan tindak balas kimia"
+       ],
+       [
+        "Menyokong imuniti",
+        "Menghasilkan antibodi"
+       ],
+       [
+        "Menyelaraskan hormon",
+        "Mengawal fungsi badan"
+       ],
+       [
+        "Mengangkut nutrien",
+        "Menggerakkan molekul penting dalam badan"
+       ],
+       [
+        "Mengawal DNA",
+        "Menyokong ekspresi DNA dan RNA"
+       ],
+       [
+        "Menyokong otot",
+        "Pengecutan dan pergerakan"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Berapa banyak protein diperlukan setiap hari?",
+    "p": "Keperluan protein bergantung pada matlamat anda:",
+    "list": [
+     "Kekalkan berat: 0.8–1.2 g setiap kg berat badan sehari",
+     "Turun berat: 1.2–1.6 g setiap kg berat badan sehari",
+     "Naik berat: 1.6–2.2 g setiap kg berat badan sehari"
+    ],
+    "after": "Contohnya, seseorang 60 kg memerlukan kira-kira 48–72 g untuk kekalkan berat, 72–96 g untuk turun berat, dan 96–132 g untuk naik berat. Mereka yang turun berat badan paling perlu protein yang cukup; jika tidak, otot terus hilang dan berat badan mudah naik semula selepas berhenti. Gunakan kalkulator dalam \"Tugasan hari ini\" di bawah untuk mengira keperluan anda."
+   },
+   {
+    "h": "Rasa kenyang lebih lama",
+    "p": "Protein lambat dicerna dan membuatkan anda kenyang lebih lama. Protein yang cukup pada setiap hidangan ialah cara paling mudah mengawal selera."
+   },
+   {
+    "h": "Penurunan berat badan ada yang sihat dan tidak sihat",
+    "p": "Badan terdiri daripada otot, air dan lemak; yang mana satu hilang sangat penting.",
+    "viz": [
+     {
+      "type": "mwf",
+      "title": "Badan terdiri daripada otot, air dan lemak: tiga hasil penurunan berat badan",
+      "rows": [
+       [
+        "Asal",
+        44,
+        44,
+        44,
+        "",
+        ""
+       ],
+       [
+        "Diet ketat",
+        28,
+        30,
+        44,
+        "Tidak sihat",
+        "no"
+       ],
+       [
+        "Nutrisi seimbang",
+        44,
+        44,
+        26,
+        "Sihat",
+        "ok"
+       ]
+      ],
+      "note": "M otot, W air, F lemak. Diet ketat menghilangkan otot dan air; nutrisi seimbang terutamanya menghilangkan lemak."
+     }
+    ],
+    "list": [
+     "Diet ketat: kebanyakan yang hilang ialah otot dan air, lemak kekal, tenaga, imuniti dan metabolisme menurun",
+     "Turun berat dengan nutrisi seimbang: kurangkan kalori sambil mendapat nutrisi seimbang, terutamanya hilang lemak dan kekalkan otot",
+     "Hasilnya: bertenaga, imuniti meningkat, metabolisme terjaga, dan tidak terasa lapar"
+    ]
+   },
+   {
+    "h": "Protein yang cukup, berat badan tidak mudah naik semula",
+    "p": "Hanya dengan protein yang cukup semasa turun berat badan, badan dapat mengekalkan otot.",
+    "list": [
+     "Otot dikekalkan, metabolisme tidak menjadi perlahan",
+     "Metabolisme normal, berat badan lebih stabil apabila kembali makan seperti biasa",
+     "Protein tidak cukup: otot terus hilang, metabolisme perlahan, berat badan mudah naik semula selepas berhenti"
+    ],
+    "after": "Jadi semasa turun berat badan, ambil 1.2–1.6 g protein setiap kg berat badan, bukan sekadar makan kurang."
+   },
+   {
+    "h": "Semakin berusia, semakin penting",
+    "p": "Selepas umur 30, jisim otot berkurang perlahan-lahan mengikut usia. Protein yang cukup dan latihan kekuatan boleh melambatkan proses ini."
+   },
+   {
+    "h": "Protein berkualiti vs protein berkualiti rendah",
+    "p": "Walaupun sama-sama protein, berapa banyak yang diserap badan dan berapa banyak perlu dimakan sangat berbeza.",
+    "list": [
+     "Protein berkualiti: kadar penyerapan tinggi, mengandungi asid amino lengkap yang diperlukan badan, sedikit sudah cukup",
+     "Protein berkualiti rendah: kadar penyerapan rendah, kekurangan sesetengah asid amino perlu, perlu makan banyak baru cukup"
+    ],
+    "after": "Jadi pilih protein berkualiti pada setiap hidangan untuk benar-benar mendapat protein yang diperlukan badan.",
+    "viz": [
+     {
+      "type": "versus",
+      "title": "Protein berkualiti vs protein berkualiti rendah",
+      "good": {
+       "h": "Protein berkualiti · penyerapan tinggi",
+       "items": [
+        [
+         "chicken",
+         "Ayam"
+        ],
+        [
+         "salmon",
+         "Ikan"
+        ],
+        [
+         "egg",
+         "Telur"
+        ],
+        [
+         "tofu",
+         "Tauhu"
+        ],
+        [
+         "shake",
+         "Shake nutrisi"
+        ]
+       ],
+       "points": [
+        "Penyerapan tinggi, skor hampir 1.00",
+        "Mengandungi asid amino perlu yang lengkap",
+        "Sedikit sudah cukup"
+       ]
+      },
+      "bad": {
+       "h": "Protein berkualiti rendah · penyerapan rendah",
+       "items": [
+        [
+         "redbean",
+         "Kacang merah"
+        ],
+        [
+         "mungbean",
+         "Kacang hijau"
+        ],
+        [
+         "brownrice_k",
+         "Bijirin penuh"
+        ],
+        [
+         "bread",
+         "Roti"
+        ]
+       ],
+       "points": [
+        "Penyerapan lebih rendah",
+        "Kekurangan sesetengah asid amino perlu",
+        "Perlu makan banyak baru cukup"
+       ]
+      }
+     },
+     {
+      "type": "bars",
+      "title": "Skor penyerapan protein (maksimum 1.00)",
+      "unit": "",
+      "items": [
+       [
+        "Soya",
+        1,
+        0
+       ],
+       [
+        "Kasein (susu)",
+        1,
+        0
+       ],
+       [
+        "Putih telur",
+        1,
+        0
+       ],
+       [
+        "Daging lembu",
+        0.92
+       ],
+       [
+        "Serbuk kacang pea",
+        0.69
+       ],
+       [
+        "Kacang merah",
+        0.68
+       ],
+       [
+        "Kacang pinto",
+        0.63
+       ],
+       [
+        "Gandum penuh",
+        0.4
+       ],
+       [
+        "Gluten gandum",
+        0.25
+       ]
+      ],
+      "note": "Skor ini (PDCAAS) menunjukkan sejauh mana protein diserap dan digunakan oleh badan; semakin tinggi semakin baik. Soya, susu dan telur semuanya protein berkualiti dengan skor penuh 1.00."
+     },
+     {
+      "type": "kcal",
+      "title": "Berapa banyak perlu dimakan untuk mendapat kira-kira 25 g protein?",
+      "items": [
+       [
+        "chicken",
+        "Dada ayam",
+        "Kira-kira 80 g",
+        "Satu tapak tangan"
+       ],
+       [
+        "salmon",
+        "Ikan",
+        "Kira-kira 115 g",
+        "Seketul fillet ikan"
+       ],
+       [
+        "egg",
+        "Telur",
+        "Kira-kira 4 biji",
+        ""
+       ],
+       [
+        "tofu",
+        "Tauhu",
+        "Kira-kira 170 g",
+        "Lebih separuh ketul"
+       ],
+       [
+        "redbean",
+        "Kacang merah (dimasak)",
+        "Kira-kira 280 g",
+        "Semangkuk besar"
+       ],
+       [
+        "brownrice_k",
+        "Nasi beras perang",
+        "Kira-kira 830 g",
+        "Kira-kira 5 mangkuk nasi"
+       ]
+      ],
+      "note": "Dikira berdasarkan anggaran kandungan protein setiap 100 g. Protein berkualiti rendah perlu dimakan banyak, dan kalorinya turut bertambah."
+     }
+    ]
+   },
+   {
+    "h": "Bagaimana vegetarian boleh mendapat protein berkualiti yang cukup?",
+    "p": "Vegetarian juga boleh mendapat protein berkualiti yang cukup; kuncinya memilih sumber yang betul dan tahu menggabungkannya:",
+    "list": [
+     "Makanan soya paling baik: tauhu, tempe, edamame, susu soya tanpa gula, skor penyerapan penuh 1.00",
+     "Vegetarian lakto-ovo: telur dan susu rendah lemak juga protein berkualiti dengan skor penuh",
+     "Makan kekacang + bijirin bersama: contohnya kacang merah atau kacang pea dengan nasi beras perang atau oat, asid amino saling melengkapi",
+     "Shake nutrisi: berasaskan protein soya, mudah untuk mencukupkan protein harian"
+    ],
+    "after": "Vegan perlu lebih berhati-hati: setiap hidangan mesti ada satu hidangan makanan soya.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Sumber protein vegetarian (setiap 100 g)",
+      "items": [
+       [
+        "soybean",
+        "Kacang soya (edamame)",
+        "Kira-kira 13 g",
+        "Skor penyerapan penuh"
+       ],
+       [
+        "tempeh",
+        "Tempe",
+        "Kira-kira 19 g",
+        "Kacang soya diperam"
+       ],
+       [
+        "tofu",
+        "Tauhu",
+        "Kira-kira 17 g",
+        "Tauhu keras"
+       ],
+       [
+        "egg",
+        "Telur",
+        "Kira-kira 13 g",
+        "Vegetarian lakto-ovo"
+       ],
+       [
+        "oats",
+        "Oat",
+        "Kira-kira 17 g",
+        "Makan bersama kekacang"
+       ],
+       [
+        "redbean",
+        "Kacang buah pinggang merah",
+        "Kira-kira 5 g",
+        "Makan bersama bijirin"
+       ],
+       [
+        "peas",
+        "Kacang pea",
+        "Kira-kira 5 g",
+        "Makan bersama bijirin"
+       ],
+       [
+        "pb",
+        "Mentega kacang",
+        "Kira-kira 25 g",
+        "Tinggi lemak, 1 sudu besar sudah cukup"
+       ],
+       [
+        "shake",
+        "Shake nutrisi",
+        "Protein soya",
+        "Mudah ditambah"
+       ]
+      ],
+      "note": "Nilai anggaran. Makanan soya, telur dan susu mempunyai kadar penyerapan tertinggi; kekacang dan bijirin (oat, beras perang) perlu dimakan bersama untuk nutrisi lengkap. Mentega kacang tinggi protein tetapi juga tinggi lemak dan kalori, jadi kawal saiz hidangan."
+     },
+     {
+      "type": "bars",
+      "title": "Kandungan protein makanan tumbuhan (setiap 100 g)",
+      "unit": "g",
+      "items": [
+       [
+        "Biji labu",
+        33
+       ],
+       [
+        "Mentega kacang",
+        25.1
+       ],
+       [
+        "Badam",
+        22.1
+       ],
+       [
+        "Biji rami",
+        19.5
+       ],
+       [
+        "Tauhu",
+        17.2
+       ],
+       [
+        "Oat",
+        16.9
+       ],
+       [
+        "Biji chia",
+        15.6
+       ],
+       [
+        "Gajus",
+        15.3
+       ],
+       [
+        "Walnut",
+        15
+       ],
+       [
+        "Kacang soya (edamame)",
+        13.1
+       ],
+       [
+        "Kacang dal",
+        9
+       ],
+       [
+        "Kacang kuda",
+        8.9
+       ],
+       [
+        "Roti gandum penuh",
+        8.8
+       ],
+       [
+        "Kacang pea",
+        5.4
+       ],
+       [
+        "Kacang buah pinggang merah",
+        4.8
+       ],
+       [
+        "Kuinoa",
+        4.4
+       ],
+       [
+        "Bayam",
+        2.9
+       ],
+       [
+        "Beras perang",
+        2.6
+       ],
+       [
+        "Kentang",
+        2.5
+       ]
+      ],
+      "note": "Kekacang dan biji-bijian tinggi protein tetapi juga sangat tinggi lemak dan kalori, segenggam kecil sehari sudah cukup. Makanan soya (tauhu, tempe, edamame) ialah sumber protein terbaik untuk vegetarian."
+     }
+    ]
+   },
+   {
+    "h": "Cari protein daripada makanan semula jadi",
+    "p": "Protein berkualiti datang daripada dua sumber:",
+    "list": [
+     "Protein tumbuhan: tauhu, tempe, kacang dal, kacang soya",
+     "Protein haiwan: telur, dada ayam, ikan, udang, produk tenusu rendah lemak"
+    ],
+    "after": "Perhatian: kekacang dan daging berlemak juga tinggi kalori dan lemak, kawal saiz hidangan."
+   },
+   {
+    "h": "Jangan hanya lihat berat badan",
+    "p": "Dengan berat yang sama, bentuk badan boleh sangat berbeza. Kuncinya sama ada badan anda lebih banyak otot atau lemak:",
+    "list": [
+     "1 kg yang sama: isipadu otot kecil, isipadu lemak besar",
+     "Lebih banyak otot: badan tegap, bertenaga, membakar lebih banyak kalori setiap hari",
+     "Lebih banyak lemak: badan kendur, mudah letih, lebih mudah gemuk"
+    ],
+    "after": "Jadi penurunan berat badan bukan sekadar nombor pada penimbang, peratus lemak badan dan jisim otot lebih penting. Itulah sebabnya kita mengukur dan membuat susulan secara berkala.",
+    "viz": [
+     {
+      "type": "vs2",
+      "title": "Sama-sama 50 kg, kenapa bentuk badan begitu berbeza?",
+      "left": {
+       "h": "Lebih banyak otot",
+       "cls": "good",
+       "bar": [
+        [
+         "Otot",
+         62
+        ],
+        [
+         "Lemak",
+         22
+        ],
+        [
+         "Lain-lain",
+         16
+        ]
+       ],
+       "items": [
+        "Badan tegap",
+        "Bertenaga",
+        "Mudah kekal kurus",
+        "Membakar lebih banyak kalori"
+       ]
+      },
+      "right": {
+       "h": "Lebih banyak lemak",
+       "cls": "bad",
+       "bar": [
+        [
+         "Otot",
+         34
+        ],
+        [
+         "Lemak",
+         50
+        ],
+        [
+         "Lain-lain",
+         16
+        ]
+       ],
+       "items": [
+        "Badan kendur",
+        "Mudah letih",
+        "Mudah gemuk",
+        "Isipadu besar, nampak lebih gemuk"
+       ]
+      },
+      "note": "Gambar ilustrasi, nisbah hanya untuk penerangan. Lemak dengan berat yang sama mempunyai isipadu jauh lebih besar daripada otot."
+     }
+    ]
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "Kandungan protein setiap 100 g makanan",
+    "unit": "g",
+    "items": [
+     [
+      "Dada ayam",
+      31
+     ],
+     [
+      "Daging lembu",
+      26
+     ],
+     [
+      "Daging babi",
+      26
+     ],
+     [
+      "Peha ayam",
+      25
+     ],
+     [
+      "Salmon",
+      22
+     ],
+     [
+      "Telur",
+      13
+     ],
+     [
+      "Tauhu",
+      15
+     ],
+     [
+      "Kacang dal",
+      9
+     ],
+     [
+      "Nasi beras perang",
+      3
+     ]
+    ],
+    "note": "Nilai anggaran setiap 100 g, dimasak, tanpa tulang."
+   }
+  ],
+  "myth": {
+   "m": "Hanya orang yang bersenam perlukan protein.",
+   "f": "Setiap orang memerlukan protein untuk mengekalkan otot, imuniti dan membaiki badan. Mereka yang sedang turun berat badan, warga emas dan yang bersenam memerlukan lebih banyak."
+  },
+  "fact": {
+   "num": "1.2–1.6",
+   "unit": "g/kg",
+   "text": "Semasa turun berat badan, disyorkan 1.2–1.6 g protein setiap kg berat badan sehari. Kekalkan berat 0.8–1.2 g, naik berat 1.6–2.2 g."
+  },
+  "tips": [
+   "Satu hidangan protein sebesar tapak tangan pada setiap hidangan",
+   "Sarapan paling mudah kekurangan protein, utamakan menambahnya",
+   "Selang-selikan protein haiwan dan tumbuhan"
+  ],
+  "task": "Pilih matlamat anda, masukkan berat badan, dan kira anggaran protein yang diperlukan setiap hari:",
+  "calc": "protein",
+  "share": "Adakah anda kenal sesiapa yang sering berdiet dengan cara sendiri untuk turun berat badan?",
+  "philo": "Protein menyumbang 30% kalori harian, bahagian penting dalam nutrisi seimbang:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "一个 60 公斤、想维持体重的人，每天大约需要多少克蛋白质？",
+   "opts": [
+    "大约 10–20 克",
+    "大约 48–72 克",
+    "200 克以上"
+   ],
+   "a": 1,
+   "why": "维持体重的参考量是每公斤体重 0.8–1.2 克，60 公斤 × 0.8–1.2 ≈ 48–72 克。想减重的话要提高到每公斤 1.2–1.6 克（约 72–96 克），想增重则是每公斤 1.6–2.2 克（约 96–132 克）。"
+  },
+  "en": {
+   "q": "A 60 kg person who wants to maintain weight needs roughly how many grams of protein a day?",
+   "opts": [
+    "About 10–20 g",
+    "About 48–72 g",
+    "Over 200 g"
+   ],
+   "a": 1,
+   "why": "The reference for maintaining weight is 0.8–1.2 g per kg of body weight: 60 kg × 0.8–1.2 ≈ 48–72 g. To lose weight, raise it to 1.2–1.6 g per kg (about 72–96 g); to gain, 1.6–2.2 g per kg (about 96–132 g)."
+  },
+  "ms": {
+   "q": "Seseorang 60 kg yang mahu kekalkan berat badan memerlukan kira-kira berapa gram protein sehari?",
+   "opts": [
+    "Kira-kira 10–20 g",
+    "Kira-kira 48–72 g",
+    "Lebih 200 g"
+   ],
+   "a": 1,
+   "why": "Rujukan untuk kekalkan berat badan ialah 0.8–1.2 g setiap kg berat badan: 60 kg × 0.8–1.2 ≈ 48–72 g. Untuk turun berat, tingkatkan kepada 1.2–1.6 g setiap kg (kira-kira 72–96 g); untuk naik berat, 1.6–2.2 g setiap kg (kira-kira 96–132 g)."
+  }
+ }
+}

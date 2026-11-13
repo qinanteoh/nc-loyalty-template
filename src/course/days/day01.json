@@ -1,0 +1,2687 @@
+{
+ "day": 1,
+ "zh": {
+  "t": "减卡路里，不减食物",
+  "en": "Cut Calories, Not Food",
+  "tag": "餐单",
+  "lead": "体重管理的关键不是饿肚子，而是吃对你身体需要的分量。",
+  "intro": "很多人一想到减重，就是少吃一餐、晚上不吃饭。可是身体需要的是营养，不是饥饿。今天我们先认识一个最基本的观念：每个人都有自己的「神奇数字」。",
+  "points": [
+   {
+    "h": "神奇数字是你自己的号码",
+    "p": "「神奇数字」是你每天应该吃进的卡路里目标。",
+    "list": [
+     "不是人人通用的数字",
+     "你的教练会帮你算出属于你自己的神奇数字",
+     "每个人的神奇数字都不一样"
+    ]
+   },
+   {
+    "h": "减重和增重，数字不一样",
+    "p": "同样身高体重的两个人，目标不同，神奇数字也不同。",
+    "list": [
+     "要减重的人，有减重的数字",
+     "要增重的人，有增重的数字",
+     "体重和新陈代谢改变时，教练会定期帮你重新调整"
+    ]
+   },
+   {
+    "h": "跟紧你的神奇数字来吃",
+    "p": "知道自己的神奇数字之后，最重要的就是每天跟着这个数字来吃。",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "常见食物的热量（约略估计）",
+      "items": [
+       [
+        "rice",
+        "一碗白饭",
+        "200 kcal"
+       ],
+       [
+        "roticurry",
+        "Roti canai 配咖喱",
+        "300 kcal"
+       ],
+       [
+        "steak",
+        "一份牛排",
+        "600 kcal"
+       ],
+       [
+        "burger2",
+        "汉堡包",
+        "600 kcal"
+       ],
+       [
+        "nasilemak",
+        "椰浆饭",
+        "640 kcal"
+       ],
+       [
+        "maggi",
+        "Maggi goreng",
+        "600 kcal"
+       ],
+       [
+        "bread2",
+        "一片白面包",
+        "100 kcal"
+       ],
+       [
+        "vege",
+        "一份炒杂菜",
+        "150 kcal"
+       ],
+       [
+        "guava",
+        "一个番石榴",
+        "45 kcal"
+       ]
+      ],
+      "note": "以上卡路里纯属估计，实际热量视分量和煮法而定。"
+     }
+    ],
+    "list": [
+     "想减重：跟着数字吃",
+     "想增重：跟着数字吃",
+     "想维持：也是跟着数字吃"
+    ],
+    "after": "只要根据自己的身体数据来吃，就能得到最好的效果。吃得太多或太少，都会离目标越来越远。"
+   },
+   {
+    "h": "饮料和零食也有卡路里",
+    "p": "吃进去和喝下去的东西，都含有卡路里。",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "饮料也含有卡路里",
+      "items": [
+       [
+        "tehtarik2",
+        "拉茶",
+        "98 kcal"
+       ],
+       [
+        "icedrink",
+        "含糖饮料",
+        "160–200 kcal"
+       ],
+       [
+        "whitecoffee",
+        "白咖啡",
+        "190 kcal"
+       ]
+      ]
+     },
+     {
+      "type": "kcal",
+      "title": "你或许觉得无害的零食",
+      "items": [
+       [
+        "choc",
+        "巧克力",
+        "480 kcal",
+        "每 100 克"
+       ],
+       [
+        "karipap2",
+        "咖喱角",
+        "130 kcal",
+        "1 个，约 40 克"
+       ],
+       [
+        "peanut_k",
+        "花生",
+        "约 170 kcal",
+        "一小把，约 30 克"
+       ]
+      ]
+     }
+    ],
+    "list": [
+     "只有白开水是 0 卡路里",
+     "快餐、糖果的卡路里非常高",
+     "一杯含糖饮料：100–200 卡路里",
+     "巧克力：每 100 克约 480 卡路里"
+    ]
+   },
+   {
+    "h": "一点零食，就等于一碗饭",
+    "p": "很多人觉得没吃饭就不会胖，其实随手吃的零食，热量很快就追上一碗白饭。下面每一份，热量都差不多等于一碗饭。",
+    "viz": [
+     {
+      "type": "ricebowl",
+      "title": "这些零食 ≈ 一碗白饭的热量",
+      "base": [
+       "rice",
+       "一碗白饭",
+       "约 225 kcal"
+      ],
+      "items": [
+       [
+        "2 杯 Milo kosong",
+        "248",
+        "s_milo"
+       ],
+       [
+        "5 小包燕麦巧克力",
+        "256",
+        "s_oat"
+       ],
+       [
+        "2 小包苏打饼干",
+        "242",
+        "s_cracker"
+       ],
+       [
+        "2 份葡萄干（80 克）",
+        "244",
+        "s_raisin"
+       ],
+       [
+        "5 块 Oreo",
+        "233",
+        "s_oreo"
+       ],
+       [
+        "12 块迷你 Chipsmore",
+        "230",
+        "s_chips"
+       ],
+       [
+        "10 块 Weetameal 饼干",
+        "228",
+        "s_weet"
+       ],
+       [
+        "2 杯脱脂酸奶",
+        "210",
+        "s_yogurt"
+       ]
+      ],
+      "note": "资料来自课堂参考图，热量为约略数值。"
+     }
+    ]
+   },
+   {
+    "h": "一餐营养奶昔，只有约 100 卡",
+    "p": "我们的营养奶昔，热量低，营养却很均衡。",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "一餐营养奶昔的热量",
+      "items": [
+       [
+        "shake",
+        "营养奶昔",
+        "约 100 kcal",
+        "一餐"
+       ],
+       [
+        "shakepro",
+        "营养奶昔 + 蛋白粉",
+        "约 140–150 kcal",
+        "一餐"
+       ]
+      ]
+     },
+     {
+      "type": "bars",
+      "title": "一餐的热量对比",
+      "unit": "kcal",
+      "items": [
+       [
+        "椰浆饭",
+        640,
+        1
+       ],
+       [
+        "Maggi goreng",
+        600,
+        1
+       ],
+       [
+        "炒米粉",
+        550,
+        1
+       ],
+       [
+        "一碗白饭",
+        200
+       ],
+       [
+        "营养奶昔 + 蛋白粉",
+        150
+       ],
+       [
+        "营养奶昔",
+        100
+       ]
+      ],
+      "note": "营养奶昔的热量按教练建议的冲法计算，其他食物为约略数值。"
+     }
+    ],
+    "list": [
+     "一餐营养奶昔：约 100 卡路里",
+     "加上蛋白粉：也只有约 140–150 卡路里",
+     "有均衡的蛋白质、维他命和矿物质",
+     "热量只有一盘椰浆饭或 Maggi goreng 的大约四分之一"
+    ],
+    "after": "吃得饱，又守得住你的神奇数字。"
+   },
+   {
+    "h": "饿肚子为什么没用？",
+    "p": "长期吃得太少，身体会以为遇上饥荒：",
+    "list": [
+     "开始分解肌肉",
+     "降低代谢来省电",
+     "一恢复正常饮食，体重就反弹，甚至比以前更重"
+    ]
+   },
+   {
+    "h": "什么是碳水化合物？什么是蛋白质？",
+    "p": "用自己的手就能估算分量：",
+    "viz": [
+     {
+      "type": "hands",
+      "title": "用手来估算分量",
+      "items": [
+       [
+        "k_fist_carb",
+        "碳水化合物",
+        "约 200 kcal",
+        "一个拳头的分量，例如西兰花",
+        "carb"
+       ],
+       [
+        "k_palm_pro",
+        "蛋白质",
+        "约 300 kcal",
+        "一个手掌的分量，例如一块肉",
+        "pro"
+       ]
+      ],
+      "note": "图中的圆圈就是一份的大小。"
+     },
+     {
+      "type": "portion",
+      "title": "哪些是碳水化合物？哪些是蛋白质？",
+      "carb": {
+       "h": "碳水化合物",
+       "kcal": "约 200",
+       "unit": "一份 = 一个拳头",
+       "items": [
+        [
+         "蔬菜",
+         "vege"
+        ],
+        [
+         "水果",
+         "guava"
+        ],
+        [
+         "全谷类",
+         "brownrice_k"
+        ],
+        [
+         "米饭",
+         "rice",
+         "尽量少吃"
+        ]
+       ]
+      },
+      "pro": {
+       "h": "蛋白质",
+       "kcal": "约 300",
+       "unit": "一份 = 一个手掌",
+       "items": [
+        [
+         "鸡肉",
+         "chicken"
+        ],
+        [
+         "鱼",
+         "salmon"
+        ],
+        [
+         "豆腐",
+         "tofu"
+        ],
+        [
+         "蛋",
+         "egg"
+        ],
+        [
+         "天贝",
+         "tempeh"
+        ]
+       ]
+      },
+      "note": "资料来自课堂讲义。我们要的蛋白质是鸡、鱼、豆腐、蛋这类优质蛋白质，少吃肥肉和加工肉。"
+     }
+    ],
+    "list": [
+     "碳水化合物：一份 = 一个拳头",
+     "蛋白质：一份 = 一个手掌",
+     "两者的热量不一样"
+    ],
+    "after": "认识哪些食物属于哪一类，才能按教练给的分量来搭配每一餐。"
+   },
+   {
+    "h": "换食物，而不是少吃",
+    "p": "同样吃饱一餐，选择不同，热量可以差好几倍。",
+    "list": [
+     "多选：蛋白质、蔬菜和原形食物",
+     "少选：油炸、精致淀粉和含糖饮料",
+     "烹调：多用蒸、煮、烤，少用炸和煎"
+    ],
+    "after": "这样就能在吃饱的同时，守住你的神奇数字。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "每天多吃一点，一年后会多出多少体脂？",
+    "unit": "kg",
+    "note": "理论估算：每天多出的热量 × 365 天 ÷ 7700 kcal（约 1 公斤体脂）。",
+    "items": [
+     [
+      "每天多 1 块饼干（约 50 kcal）",
+      2.4
+     ],
+     [
+      "每天多 1 杯含糖饮料（约 150 kcal）",
+      7.1
+     ],
+     [
+      "每天多 1 块蛋糕（约 300 kcal）",
+      14.2
+     ]
+    ]
+   },
+   {
+    "type": "caltable",
+    "title": "卡路里速查表",
+    "tabs": [
+     {
+      "name": "本地早餐",
+      "note": "一般分量，约略数值。",
+      "rows": [
+       [
+        "Mee goreng",
+        "1 盘",
+        660
+       ],
+       [
+        "炒饭加蛋",
+        "1 盘",
+        635
+       ],
+       [
+        "Maggi goreng",
+        "1 盘",
+        600
+       ],
+       [
+        "炒米粉",
+        "1 盘",
+        550
+       ],
+       [
+        "Nasi minyak（无配）",
+        "1 盘",
+        445
+       ],
+       [
+        "椰浆饭（参巴）",
+        "1 盘",
+        400
+       ],
+       [
+        "Mee sup",
+        "1 碗",
+        380
+       ],
+       [
+        "鸡饭（无配）",
+        "1 盘",
+        300
+       ],
+       [
+        "鸡肉包",
+        "1 个",
+        205
+       ],
+       [
+        "Roti canai（无配）",
+        "1 片",
+        200
+       ],
+       [
+        "Chapati（无配）",
+        "1 片",
+        180
+       ],
+       [
+        "白面包",
+        "2 片",
+        160
+       ]
+      ]
+     },
+     {
+      "name": "Roti canai",
+      "note": "某餐厅菜单上标示的热量，含配料，做法不同热量也不同。",
+      "rows": [
+       [
+        "Roti pisang（香蕉）",
+        "1 片",
+        500
+       ],
+       [
+        "Roti milo",
+        "1 片",
+        470
+       ],
+       [
+        "Roti tisu",
+        "1 片",
+        465
+       ],
+       [
+        "Roti boom",
+        "1 片",
+        465
+       ],
+       [
+        "Roti telur（蛋）",
+        "1 片",
+        455
+       ],
+       [
+        "Roti cheese",
+        "1 片",
+        410
+       ],
+       [
+        "Roti planta",
+        "1 片",
+        400
+       ],
+       [
+        "Roti sardin",
+        "1 片",
+        355
+       ],
+       [
+        "Roti bawang（洋葱）",
+        "1 片",
+        350
+       ],
+       [
+        "Roti sayur（蔬菜）",
+        "1 片",
+        350
+       ],
+       [
+        "Roti salad",
+        "1 片",
+        350
+       ],
+       [
+        "Roti biasa（普通）",
+        "1 片",
+        345
+       ]
+      ]
+     },
+     {
+      "name": "粉面",
+      "note": "一碗的约略热量。",
+      "rows": [
+       [
+        "牛腩米粉",
+        "1 碗",
+        455
+       ],
+       [
+        "鱼皮饺面",
+        "1 碗",
+        389
+       ],
+       [
+        "贡丸米粉",
+        "1 碗",
+        383
+       ],
+       [
+        "水饺面",
+        "1 碗",
+        370
+       ],
+       [
+        "牛丸面",
+        "1 碗",
+        370
+       ],
+       [
+        "云吞河粉",
+        "1 碗",
+        367
+       ],
+       [
+        "鱼蛋河粉",
+        "1 碗",
+        309
+       ],
+       [
+        "墨丸米粉",
+        "1 碗",
+        220
+       ]
+      ]
+     },
+     {
+      "name": "粥",
+      "note": "一碗的约略热量。",
+      "rows": [
+       [
+        "及第粥",
+        "1 碗",
+        338
+       ],
+       [
+        "粟米粥",
+        "1 碗",
+        282
+       ],
+       [
+        "柴鱼花生粥",
+        "1 碗",
+        261
+       ],
+       [
+        "鱼片粥",
+        "1 碗",
+        234
+       ],
+       [
+        "泥鳅粥",
+        "1 碗",
+        218
+       ],
+       [
+        "碎牛肉粥",
+        "1 碗",
+        165
+       ],
+       [
+        "生滚牛肉粥",
+        "1 碗",
+        147
+       ],
+       [
+        "白粥",
+        "1 碗",
+        89
+       ]
+      ]
+     },
+     {
+      "name": "西饼甜点",
+      "note": "一件或一个的约略热量。",
+      "rows": [
+       [
+        "冬甩（甜甜圈）",
+        "1 个",
+        426
+       ],
+       [
+        "咖啡蛋糕",
+        "1 件",
+        418
+       ],
+       [
+        "焗芝士蛋糕",
+        "1 件",
+        410
+       ],
+       [
+        "蛋糕 / 糕点",
+        "1 份",
+        400
+       ],
+       [
+        "冰淇淋",
+        "1 勺",
+        400
+       ],
+       [
+        "栗子蛋糕",
+        "1 件",
+        345
+       ],
+       [
+        "巧克力蛋糕",
+        "1 件",
+        331
+       ],
+       [
+        "果挞",
+        "1 个",
+        300
+       ],
+       [
+        "牛油蛋糕",
+        "1 件",
+        253
+       ],
+       [
+        "泡芙",
+        "1 个",
+        250
+       ]
+      ]
+     },
+     {
+      "name": "零食",
+      "note": "注意分量：很多零食一包不止一份。",
+      "rows": [
+       [
+        "大薯条",
+        "1 包",
+        600
+       ],
+       [
+        "熊仔饼",
+        "1 盒",
+        341
+       ],
+       [
+        "芝士波",
+        "28 克",
+        157
+       ],
+       [
+        "薯片",
+        "28 克（约 10 片）",
+        151
+       ],
+       [
+        "爆米花",
+        "17 克",
+        80
+       ],
+       [
+        "糖果",
+        "1 粒",
+        80
+       ],
+       [
+        "苏打饼干",
+        "3 块",
+        45
+       ],
+       [
+        "米饼",
+        "1 块（7.5 克）",
+        35
+       ],
+       [
+        "蒟蒻果冻",
+        "2 个",
+        32
+       ],
+       [
+        "仙贝",
+        "1 包 2 片",
+        29
+       ]
+      ]
+     },
+     {
+      "name": "饮料",
+      "note": "8 盎司约等于一杯 240 毫升。只有白开水是 0 卡路里。",
+      "rows": [
+       [
+        "汽水",
+        "8 盎司",
+        197
+       ],
+       [
+        "果汁",
+        "8 盎司",
+        180
+       ],
+       [
+        "3 合 1 咖啡",
+        "1 杯",
+        60
+       ],
+       [
+        "黑咖啡（斋）",
+        "1 杯",
+        30
+       ],
+       [
+        "白开水",
+        "1 杯",
+        0
+       ]
+      ]
+     },
+     {
+      "name": "基本指南",
+      "note": "简单的卡路里指南，帮助你估算每一餐。",
+      "rows": [
+       [
+        "比萨",
+        "1 片",
+        600
+       ],
+       [
+        "汉堡包",
+        "1 个",
+        600
+       ],
+       [
+        "猪肉 / 牛肉",
+        "1 份",
+        600
+       ],
+       [
+        "炒饭",
+        "1 杯",
+        400
+       ],
+       [
+        "鱼肉 / 鸡肉",
+        "1 份",
+        300
+       ],
+       [
+        "烧包",
+        "8 盎司",
+        260
+       ],
+       [
+        "快熟面",
+        "8 盎司",
+        240
+       ],
+       [
+        "白饭",
+        "1 杯",
+        200
+       ],
+       [
+        "食油 / 美乃滋",
+        "1 汤匙",
+        150
+       ],
+       [
+        "煮熟的蔬菜",
+        "1 杯",
+        150
+       ],
+       [
+        "新鲜蔬菜",
+        "1 杯",
+        100
+       ],
+       [
+        "切片面包",
+        "1 片",
+        100
+       ],
+       [
+        "卤汁 / 酱汁",
+        "1 汤匙",
+        100
+       ],
+       [
+        "水果",
+        "1 份",
+        90
+       ],
+       [
+        "鸡蛋",
+        "1 粒",
+        86
+       ]
+      ]
+     }
+    ],
+    "note": "资料整理自课堂参考资料，热量为约略数值，实际视分量和煮法而定。"
+   }
+  ],
+  "myth": {
+   "m": "神奇数字人人都一样，大家都吃 1200 kcal 就对了。",
+   "f": "每个人的新陈代谢和目标都不同。神奇数字要由教练为你个人计算，吃得太少反而会流失肌肉、降低代谢。"
+  },
+  "fact": {
+   "num": "7700",
+   "unit": "kcal",
+   "text": "约等于 1 公斤体脂肪的热量。每天少吃约 500 kcal，一周大约可减 0.5 公斤。"
+  },
+  "tips": [
+   "用小一号的碗盘装饭",
+   "先吃蔬菜和蛋白质，最后才吃饭",
+   "外食时请店家少油、少酱、饭减半"
+  ],
+  "task": "1. 请教练帮你计算你自己的神奇数字，并把今天三餐和零食都写下来（包括饮料），对比看看有没有超过。\n2. 从今天开始，不管吃下任何东西，包括三餐、零食和饮料，都要先摆盘，拍照传给教练看，然后才吃。",
+  "share": "你有认识谁吃了过多的卡路里而超重，或者吃得太少而过轻的吗？",
+  "template": {
+   "title": "先摆盘，再拍照传给教练",
+   "img": "plate_template",
+   "tips": [
+    "把饭、菜、肉分开摆在盘子上，一眼就看得出分量",
+    "叉子和汤匙放在盘边，方便教练估算分量",
+    "从正上方拍，把整个盘子拍进去",
+    "每一餐、每一样零食和饮料都要拍，吃之前先传给教练"
+   ],
+   "note": "图中的绿色标签是教练帮你计算的卡路里，例如：菜 200 kcal + 鸡 300 kcal = 500 kcal。"
+  }
+ },
+ "en": {
+  "t": "Cut calories, not food",
+  "en": "Cut Calories, Not Food",
+  "tag": "Meal plan",
+  "lead": "Weight management isn't about starving — it's about eating the right amount your body needs.",
+  "intro": "When people think of losing weight, many skip a meal or stop eating dinner. But your body needs nutrition, not hunger. Today we start with the most basic idea: everyone has their own \"magic number\".",
+  "points": [
+   {
+    "h": "Your magic number is yours alone",
+    "p": "Your \"magic number\" is your daily calorie target.",
+    "list": [
+     "It isn't a one-size-fits-all number",
+     "Your coach will work out your own magic number for you",
+     "Everyone's magic number is different"
+    ]
+   },
+   {
+    "h": "Losing and gaining weight use different numbers",
+    "p": "Two people with the same height and weight but different goals have different magic numbers.",
+    "list": [
+     "If you want to lose weight, you get a weight-loss number",
+     "If you want to gain weight, you get a weight-gain number",
+     "As your weight and metabolism change, your coach will adjust it regularly"
+    ]
+   },
+   {
+    "h": "Eat according to your magic number",
+    "p": "Once you know your magic number, the most important thing is to eat by it every day.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Calories in common foods (rough estimates)",
+      "items": [
+       [
+        "rice",
+        "A bowl of white rice",
+        "200 kcal"
+       ],
+       [
+        "roticurry",
+        "Roti canai with curry",
+        "300 kcal"
+       ],
+       [
+        "steak",
+        "A steak",
+        "600 kcal"
+       ],
+       [
+        "burger2",
+        "Burger",
+        "600 kcal"
+       ],
+       [
+        "nasilemak",
+        "Nasi lemak",
+        "640 kcal"
+       ],
+       [
+        "maggi",
+        "Maggi goreng",
+        "600 kcal"
+       ],
+       [
+        "bread2",
+        "A slice of white bread",
+        "100 kcal"
+       ],
+       [
+        "vege",
+        "A plate of mixed stir-fried vegetables",
+        "150 kcal"
+       ],
+       [
+        "guava",
+        "A guava",
+        "45 kcal"
+       ]
+      ],
+      "note": "These calories are estimates only; actual values depend on portion size and cooking method."
+     }
+    ],
+    "list": [
+     "To lose weight: eat by your number",
+     "To gain weight: eat by your number",
+     "To maintain: also eat by your number"
+    ],
+    "after": "Eat according to your own body data and you'll get the best results. Eating too much or too little both take you further from your goal."
+   },
+   {
+    "h": "Drinks and snacks have calories too",
+    "p": "Everything you eat and drink contains calories.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Drinks contain calories too",
+      "items": [
+       [
+        "tehtarik2",
+        "Teh tarik",
+        "98 kcal"
+       ],
+       [
+        "icedrink",
+        "Sugary drinks",
+        "160–200 kcal"
+       ],
+       [
+        "whitecoffee",
+        "White coffee",
+        "190 kcal"
+       ]
+      ]
+     },
+     {
+      "type": "kcal",
+      "title": "Snacks you may think are harmless",
+      "items": [
+       [
+        "choc",
+        "Chocolate",
+        "480 kcal",
+        "Per 100 g"
+       ],
+       [
+        "karipap2",
+        "Curry puff",
+        "130 kcal",
+        "1 piece, about 40 g"
+       ],
+       [
+        "peanut_k",
+        "Peanuts",
+        "About 170 kcal",
+        "A small handful, about 30 g"
+       ]
+      ]
+     }
+    ],
+    "list": [
+     "Only plain water has 0 calories",
+     "Fast food and sweets are very high in calories",
+     "A sugary drink: 100–200 calories",
+     "Chocolate: about 480 calories per 100 g"
+    ]
+   },
+   {
+    "h": "A few snacks equal a bowl of rice",
+    "p": "Many people think skipping rice means they won't gain weight, but casual snacking quickly catches up with a bowl of rice. Each portion below has about the same calories as a bowl of rice.",
+    "viz": [
+     {
+      "type": "ricebowl",
+      "title": "These snacks ≈ the calories of a bowl of white rice",
+      "base": [
+       "rice",
+       "A bowl of white rice",
+       "About 225 kcal"
+      ],
+      "items": [
+       [
+        "2 cups Milo kosong",
+        "248",
+        "s_milo"
+       ],
+       [
+        "5 small packs of oat chocolate",
+        "256",
+        "s_oat"
+       ],
+       [
+        "2 small packs of cream crackers",
+        "242",
+        "s_cracker"
+       ],
+       [
+        "2 servings of raisins (80 g)",
+        "244",
+        "s_raisin"
+       ],
+       [
+        "5 Oreos",
+        "233",
+        "s_oreo"
+       ],
+       [
+        "12 mini Chipsmore",
+        "230",
+        "s_chips"
+       ],
+       [
+        "10 Weetameal biscuits",
+        "228",
+        "s_weet"
+       ],
+       [
+        "2 cups of low-fat yogurt",
+        "210",
+        "s_yogurt"
+       ]
+      ],
+      "note": "From class reference charts; calories are approximate."
+     }
+    ]
+   },
+   {
+    "h": "A shake meal is only about 100 kcal",
+    "p": "Our nutrition shake is low in calories but nutritionally balanced.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Calories in one shake meal",
+      "items": [
+       [
+        "shake",
+        "Nutrition shake",
+        "About 100 kcal",
+        "One meal"
+       ],
+       [
+        "shakepro",
+        "Nutrition shake + protein powder",
+        "About 140–150 kcal",
+        "One meal"
+       ]
+      ]
+     },
+     {
+      "type": "bars",
+      "title": "Calories per meal compared",
+      "unit": "kcal",
+      "items": [
+       [
+        "Nasi lemak",
+        640,
+        1
+       ],
+       [
+        "Maggi goreng",
+        600,
+        1
+       ],
+       [
+        "Fried bee hoon",
+        550,
+        1
+       ],
+       [
+        "A bowl of white rice",
+        200
+       ],
+       [
+        "Nutrition shake + protein powder",
+        150
+       ],
+       [
+        "Nutrition shake",
+        100
+       ]
+      ],
+      "note": "Shake calories follow the coach's recommended recipe; other foods are approximate."
+     }
+    ],
+    "list": [
+     "One shake meal: about 100 calories",
+     "Add protein powder: still only about 140–150 calories",
+     "Balanced protein, vitamins and minerals",
+     "About a quarter of the calories of a plate of nasi lemak or Maggi goreng"
+    ],
+    "after": "You stay full and stay within your magic number."
+   },
+   {
+    "h": "Why doesn't starving work?",
+    "p": "If you eat too little for too long, your body thinks there's a famine:",
+    "list": [
+     "It starts breaking down muscle",
+     "It lowers metabolism to save energy",
+     "Once you eat normally again, the weight comes back — sometimes more than before"
+    ]
+   },
+   {
+    "h": "What are carbohydrates? What is protein?",
+    "p": "You can estimate portions with your own hand:",
+    "viz": [
+     {
+      "type": "hands",
+      "title": "Estimate portions with your hand",
+      "items": [
+       [
+        "k_fist_carb",
+        "Carbohydrates",
+        "About 200 kcal",
+        "One fist-sized portion, e.g. broccoli",
+        "carb"
+       ],
+       [
+        "k_palm_pro",
+        "Protein",
+        "About 300 kcal",
+        "One palm-sized portion, e.g. a piece of meat",
+        "pro"
+       ]
+      ],
+      "note": "The circle in the picture shows one portion."
+     },
+     {
+      "type": "portion",
+      "title": "Which foods are carbs? Which are protein?",
+      "carb": {
+       "h": "Carbohydrates",
+       "kcal": "About 200",
+       "unit": "1 portion = 1 fist",
+       "items": [
+        [
+         "Vegetables",
+         "vege"
+        ],
+        [
+         "Fruit",
+         "guava"
+        ],
+        [
+         "Whole grains",
+         "brownrice_k"
+        ],
+        [
+         "Rice",
+         "rice",
+         "Eat as little as possible"
+        ]
+       ]
+      },
+      "pro": {
+       "h": "Protein",
+       "kcal": "About 300",
+       "unit": "1 portion = 1 palm",
+       "items": [
+        [
+         "Chicken",
+         "chicken"
+        ],
+        [
+         "Fish",
+         "salmon"
+        ],
+        [
+         "Tofu",
+         "tofu"
+        ],
+        [
+         "Eggs",
+         "egg"
+        ],
+        [
+         "Tempeh",
+         "tempeh"
+        ]
+       ]
+      },
+      "note": "From class handouts. The protein we want is high-quality protein like chicken, fish, tofu and eggs — eat less fatty and processed meat."
+     }
+    ],
+    "list": [
+     "Carbs: 1 portion = 1 fist",
+     "Protein: 1 portion = 1 palm",
+     "The two have different calories"
+    ],
+    "after": "Knowing which group each food belongs to lets you build each meal using the portions your coach gives you."
+   },
+   {
+    "h": "Swap foods instead of eating less",
+    "p": "For an equally filling meal, different choices can differ several times in calories.",
+    "list": [
+     "Choose more: protein, vegetables and whole foods",
+     "Choose less: fried food, refined starch and sugary drinks",
+     "Cooking: steam, boil and bake more; fry less"
+    ],
+    "after": "That way you stay full and still stay within your magic number."
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "Eat a little extra every day — how much body fat after a year?",
+    "unit": "kg",
+    "note": "Theoretical estimate: extra calories per day × 365 days ÷ 7700 kcal (about 1 kg of body fat).",
+    "items": [
+     [
+      "1 extra biscuit a day (about 50 kcal)",
+      2.4
+     ],
+     [
+      "1 extra sugary drink a day (about 150 kcal)",
+      7.1
+     ],
+     [
+      "1 extra slice of cake a day (about 300 kcal)",
+      14.2
+     ]
+    ]
+   },
+   {
+    "type": "caltable",
+    "title": "Calorie quick-reference",
+    "tabs": [
+     {
+      "name": "Local breakfasts",
+      "note": "Typical portions, approximate values.",
+      "rows": [
+       [
+        "Mee goreng",
+        "1 plate",
+        660
+       ],
+       [
+        "Fried rice with egg",
+        "1 plate",
+        635
+       ],
+       [
+        "Maggi goreng",
+        "1 plate",
+        600
+       ],
+       [
+        "Fried bee hoon",
+        "1 plate",
+        550
+       ],
+       [
+        "Nasi minyak (plain)",
+        "1 plate",
+        445
+       ],
+       [
+        "Nasi lemak (sambal)",
+        "1 plate",
+        400
+       ],
+       [
+        "Mee sup",
+        "1 bowl",
+        380
+       ],
+       [
+        "Chicken rice (plain)",
+        "1 plate",
+        300
+       ],
+       [
+        "Chicken pau",
+        "1 piece",
+        205
+       ],
+       [
+        "Roti canai (plain)",
+        "1 piece",
+        200
+       ],
+       [
+        "Chapati (plain)",
+        "1 piece",
+        180
+       ],
+       [
+        "White bread",
+        "2 slices",
+        160
+       ]
+      ]
+     },
+     {
+      "name": "Roti canai",
+      "note": "Calories listed on one restaurant's menu, including sides; values differ with cooking.",
+      "rows": [
+       [
+        "Roti pisang (banana)",
+        "1 piece",
+        500
+       ],
+       [
+        "Roti milo",
+        "1 piece",
+        470
+       ],
+       [
+        "Roti tisu",
+        "1 piece",
+        465
+       ],
+       [
+        "Roti boom",
+        "1 piece",
+        465
+       ],
+       [
+        "Roti telur (egg)",
+        "1 piece",
+        455
+       ],
+       [
+        "Roti cheese",
+        "1 piece",
+        410
+       ],
+       [
+        "Roti planta",
+        "1 piece",
+        400
+       ],
+       [
+        "Roti sardin",
+        "1 piece",
+        355
+       ],
+       [
+        "Roti bawang (onion)",
+        "1 piece",
+        350
+       ],
+       [
+        "Roti sayur (vegetable)",
+        "1 piece",
+        350
+       ],
+       [
+        "Roti salad",
+        "1 piece",
+        350
+       ],
+       [
+        "Roti biasa (plain)",
+        "1 piece",
+        345
+       ]
+      ]
+     },
+     {
+      "name": "Noodles",
+      "note": "Approximate calories per bowl.",
+      "rows": [
+       [
+        "Beef brisket bee hoon",
+        "1 bowl",
+        455
+       ],
+       [
+        "Fish-skin dumpling noodles",
+        "1 bowl",
+        389
+       ],
+       [
+        "Meatball bee hoon",
+        "1 bowl",
+        383
+       ],
+       [
+        "Dumpling noodles",
+        "1 bowl",
+        370
+       ],
+       [
+        "Beef ball noodles",
+        "1 bowl",
+        370
+       ],
+       [
+        "Wonton kuey teow",
+        "1 bowl",
+        367
+       ],
+       [
+        "Fish ball kuey teow",
+        "1 bowl",
+        309
+       ],
+       [
+        "Cuttlefish ball bee hoon",
+        "1 bowl",
+        220
+       ]
+      ]
+     },
+     {
+      "name": "Porridge",
+      "note": "Approximate calories per bowl.",
+      "rows": [
+       [
+        "Pork offal porridge",
+        "1 bowl",
+        338
+       ],
+       [
+        "Corn porridge",
+        "1 bowl",
+        282
+       ],
+       [
+        "Dried fish & peanut porridge",
+        "1 bowl",
+        261
+       ],
+       [
+        "Sliced fish porridge",
+        "1 bowl",
+        234
+       ],
+       [
+        "Loach porridge",
+        "1 bowl",
+        218
+       ],
+       [
+        "Minced beef porridge",
+        "1 bowl",
+        165
+       ],
+       [
+        "Fresh-cooked beef porridge",
+        "1 bowl",
+        147
+       ],
+       [
+        "Plain porridge",
+        "1 bowl",
+        89
+       ]
+      ]
+     },
+     {
+      "name": "Cakes & desserts",
+      "note": "Approximate calories per piece.",
+      "rows": [
+       [
+        "Doughnut",
+        "1 piece",
+        426
+       ],
+       [
+        "Coffee cake",
+        "1 slice",
+        418
+       ],
+       [
+        "Baked cheesecake",
+        "1 slice",
+        410
+       ],
+       [
+        "Cake / pastry",
+        "1 serving",
+        400
+       ],
+       [
+        "Ice cream",
+        "1 scoop",
+        400
+       ],
+       [
+        "Chestnut cake",
+        "1 slice",
+        345
+       ],
+       [
+        "Chocolate cake",
+        "1 slice",
+        331
+       ],
+       [
+        "Fruit tart",
+        "1 piece",
+        300
+       ],
+       [
+        "Butter cake",
+        "1 slice",
+        253
+       ],
+       [
+        "Cream puff",
+        "1 piece",
+        250
+       ]
+      ]
+     },
+     {
+      "name": "Snacks",
+      "note": "Watch portions: many snack packs contain more than one serving.",
+      "rows": [
+       [
+        "Large fries",
+        "1 pack",
+        600
+       ],
+       [
+        "Animal biscuits",
+        "1 box",
+        341
+       ],
+       [
+        "Cheese balls",
+        "28 g",
+        157
+       ],
+       [
+        "Potato chips",
+        "28 g (about 10 chips)",
+        151
+       ],
+       [
+        "Popcorn",
+        "17 g",
+        80
+       ],
+       [
+        "Sweets",
+        "1 piece",
+        80
+       ],
+       [
+        "Cream crackers",
+        "3 pieces",
+        45
+       ],
+       [
+        "Rice cracker",
+        "1 piece (7.5 g)",
+        35
+       ],
+       [
+        "Konjac jelly",
+        "2 pieces",
+        32
+       ],
+       [
+        "Senbei rice crackers",
+        "1 pack of 2",
+        29
+       ]
+      ]
+     },
+     {
+      "name": "Drinks",
+      "note": "8 oz is about one 240 ml cup. Only plain water has 0 calories.",
+      "rows": [
+       [
+        "Soft drinks",
+        "8 oz",
+        197
+       ],
+       [
+        "Fruit juice",
+        "8 oz",
+        180
+       ],
+       [
+        "3-in-1 coffee",
+        "1 cup",
+        60
+       ],
+       [
+        "Black coffee (no sugar)",
+        "1 cup",
+        30
+       ],
+       [
+        "Plain water",
+        "1 cup",
+        0
+       ]
+      ]
+     },
+     {
+      "name": "Basic guide",
+      "note": "A simple calorie guide to help you estimate each meal.",
+      "rows": [
+       [
+        "Pizza",
+        "1 piece",
+        600
+       ],
+       [
+        "Burger",
+        "1 piece",
+        600
+       ],
+       [
+        "Pork / beef",
+        "1 serving",
+        600
+       ],
+       [
+        "Fried rice",
+        "1 cup",
+        400
+       ],
+       [
+        "Fish / chicken",
+        "1 serving",
+        300
+       ],
+       [
+        "Char siu pau",
+        "8 oz",
+        260
+       ],
+       [
+        "Instant noodles",
+        "8 oz",
+        240
+       ],
+       [
+        "White rice",
+        "1 cup",
+        200
+       ],
+       [
+        "Cooking oil / mayonnaise",
+        "1 tablespoon",
+        150
+       ],
+       [
+        "Cooked vegetables",
+        "1 cup",
+        150
+       ],
+       [
+        "Fresh vegetables",
+        "1 cup",
+        100
+       ],
+       [
+        "Sliced bread",
+        "1 piece",
+        100
+       ],
+       [
+        "Gravy / sauce",
+        "1 tablespoon",
+        100
+       ],
+       [
+        "Fruit",
+        "1 serving",
+        90
+       ],
+       [
+        "Egg",
+        "1 piece",
+        86
+       ]
+      ]
+     }
+    ],
+    "note": "Compiled from class references; calories are approximate and depend on portion and cooking method."
+   }
+  ],
+  "myth": {
+   "m": "The magic number is the same for everyone — just eat 1200 kcal and you're fine.",
+   "f": "Everyone's metabolism and goals are different. Your magic number must be calculated for you personally by your coach — eating too little actually loses muscle and slows metabolism."
+  },
+  "fact": {
+   "num": "7700",
+   "unit": "kcal",
+   "text": "Roughly the calories in 1 kg of body fat. Eating about 500 kcal less per day loses about 0.5 kg a week."
+  },
+  "tips": [
+   "Use a smaller bowl and plate for rice",
+   "Eat vegetables and protein first, rice last",
+   "When eating out, ask for less oil, less sauce and half rice"
+  ],
+  "task": "1. Ask your coach to calculate your own magic number, and write down today's three meals and snacks (including drinks) to compare whether you went over.\n2. Starting today, before you eat anything — meals, snacks or drinks — plate it first, take a photo and send it to your coach, then eat.",
+  "share": "Do you know anyone who became overweight from eating too many calories, or underweight from eating too little?",
+  "template": {
+   "title": "Plate it first, then photograph and send to your coach",
+   "img": "plate_template",
+   "tips": [
+    "Place rice, vegetables and meat separately on the plate so portions are clear at a glance",
+    "Put a fork and spoon beside the plate so your coach can estimate the portion",
+    "Shoot from directly above and include the whole plate",
+    "Photograph every meal, snack and drink, and send it to your coach before eating"
+   ],
+   "note": "The green labels in the picture are calories your coach calculates, e.g. vegetables 200 kcal + chicken 300 kcal = 500 kcal."
+  }
+ },
+ "ms": {
+  "t": "Kurangkan kalori, bukan makanan",
+  "en": "Cut Calories, Not Food",
+  "tag": "Pelan makan",
+  "lead": "Kunci pengurusan berat badan bukan berlapar, tetapi makan jumlah yang betul mengikut keperluan badan anda.",
+  "intro": "Ramai orang yang mahu turunkan berat badan terus skip satu hidangan atau tidak makan malam. Tetapi badan memerlukan nutrisi, bukan kelaparan. Hari ini kita kenali satu konsep paling asas: setiap orang ada \"nombor ajaib\" sendiri.",
+  "points": [
+   {
+    "h": "Nombor ajaib ialah nombor anda sendiri",
+    "p": "\"Nombor ajaib\" ialah sasaran kalori yang patut anda ambil setiap hari.",
+    "list": [
+     "Ia bukan nombor yang sama untuk semua orang",
+     "Jurulatih anda akan mengira nombor ajaib khas untuk anda",
+     "Nombor ajaib setiap orang berbeza"
+    ]
+   },
+   {
+    "h": "Turun dan naik berat badan, nombornya berbeza",
+    "p": "Dua orang dengan ketinggian dan berat yang sama tetapi matlamat berbeza, nombor ajaibnya juga berbeza.",
+    "list": [
+     "Yang mahu turun berat badan ada nombor untuk turun berat",
+     "Yang mahu naik berat badan ada nombor untuk naik berat",
+     "Apabila berat badan dan metabolisme berubah, jurulatih akan menyesuaikannya dari semasa ke semasa"
+    ]
+   },
+   {
+    "h": "Makan mengikut nombor ajaib anda",
+    "p": "Selepas tahu nombor ajaib anda, perkara paling penting ialah makan mengikut nombor itu setiap hari.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Kalori makanan biasa (anggaran kasar)",
+      "items": [
+       [
+        "rice",
+        "Semangkuk nasi putih",
+        "200 kcal"
+       ],
+       [
+        "roticurry",
+        "Roti canai dengan kari",
+        "300 kcal"
+       ],
+       [
+        "steak",
+        "Sepinggan stik",
+        "600 kcal"
+       ],
+       [
+        "burger2",
+        "Burger",
+        "600 kcal"
+       ],
+       [
+        "nasilemak",
+        "Nasi lemak",
+        "640 kcal"
+       ],
+       [
+        "maggi",
+        "Maggi goreng",
+        "600 kcal"
+       ],
+       [
+        "bread2",
+        "Sekeping roti putih",
+        "100 kcal"
+       ],
+       [
+        "vege",
+        "Sepinggan sayur campur goreng",
+        "150 kcal"
+       ],
+       [
+        "guava",
+        "Sebiji jambu batu",
+        "45 kcal"
+       ]
+      ],
+      "note": "Kalori di atas hanyalah anggaran; nilai sebenar bergantung pada saiz hidangan dan cara masakan."
+     }
+    ],
+    "list": [
+     "Mahu turun berat: makan ikut nombor",
+     "Mahu naik berat: makan ikut nombor",
+     "Mahu kekalkan: juga makan ikut nombor"
+    ],
+    "after": "Makan mengikut data badan anda sendiri untuk hasil terbaik. Makan terlalu banyak atau terlalu sedikit akan menjauhkan anda dari matlamat."
+   },
+   {
+    "h": "Minuman dan snek juga ada kalori",
+    "p": "Semua yang dimakan dan diminum mengandungi kalori.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Minuman juga mengandungi kalori",
+      "items": [
+       [
+        "tehtarik2",
+        "Teh tarik",
+        "98 kcal"
+       ],
+       [
+        "icedrink",
+        "Minuman bergula",
+        "160–200 kcal"
+       ],
+       [
+        "whitecoffee",
+        "Kopi putih",
+        "190 kcal"
+       ]
+      ]
+     },
+     {
+      "type": "kcal",
+      "title": "Snek yang mungkin anda sangka tidak berbahaya",
+      "items": [
+       [
+        "choc",
+        "Coklat",
+        "480 kcal",
+        "Setiap 100 g"
+       ],
+       [
+        "karipap2",
+        "Karipap",
+        "130 kcal",
+        "1 biji, kira-kira 40 g"
+       ],
+       [
+        "peanut_k",
+        "Kacang tanah",
+        "Kira-kira 170 kcal",
+        "Segenggam kecil, kira-kira 30 g"
+       ]
+      ]
+     }
+    ],
+    "list": [
+     "Hanya air kosong yang 0 kalori",
+     "Makanan segera dan gula-gula sangat tinggi kalori",
+     "Segelas minuman bergula: 100–200 kalori",
+     "Coklat: kira-kira 480 kalori setiap 100 g"
+    ]
+   },
+   {
+    "h": "Sedikit snek sama dengan semangkuk nasi",
+    "p": "Ramai sangka tidak makan nasi maka tidak akan gemuk, tetapi snek yang dimakan sambil lewa cepat menyamai kalori semangkuk nasi. Setiap hidangan di bawah kira-kira sama kalorinya dengan semangkuk nasi.",
+    "viz": [
+     {
+      "type": "ricebowl",
+      "title": "Snek ini ≈ kalori semangkuk nasi putih",
+      "base": [
+       "rice",
+       "Semangkuk nasi putih",
+       "Kira-kira 225 kcal"
+      ],
+      "items": [
+       [
+        "2 cawan Milo kosong",
+        "248",
+        "s_milo"
+       ],
+       [
+        "5 paket kecil coklat oat",
+        "256",
+        "s_oat"
+       ],
+       [
+        "2 paket kecil biskut kraker",
+        "242",
+        "s_cracker"
+       ],
+       [
+        "2 hidangan kismis (80 g)",
+        "244",
+        "s_raisin"
+       ],
+       [
+        "5 keping Oreo",
+        "233",
+        "s_oreo"
+       ],
+       [
+        "12 keping Chipsmore mini",
+        "230",
+        "s_chips"
+       ],
+       [
+        "10 keping biskut Weetameal",
+        "228",
+        "s_weet"
+       ],
+       [
+        "2 cawan yogurt rendah lemak",
+        "210",
+        "s_yogurt"
+       ]
+      ],
+      "note": "Sumber: carta rujukan kelas; kalori adalah anggaran."
+     }
+    ]
+   },
+   {
+    "h": "Satu hidangan shake nutrisi hanya kira-kira 100 kcal",
+    "p": "Shake nutrisi kami rendah kalori tetapi nutrisinya seimbang.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Kalori satu hidangan shake nutrisi",
+      "items": [
+       [
+        "shake",
+        "Shake nutrisi",
+        "Kira-kira 100 kcal",
+        "Satu hidangan"
+       ],
+       [
+        "shakepro",
+        "Shake nutrisi + serbuk protein",
+        "Kira-kira 140–150 kcal",
+        "Satu hidangan"
+       ]
+      ]
+     },
+     {
+      "type": "bars",
+      "title": "Perbandingan kalori satu hidangan",
+      "unit": "kcal",
+      "items": [
+       [
+        "Nasi lemak",
+        640,
+        1
+       ],
+       [
+        "Maggi goreng",
+        600,
+        1
+       ],
+       [
+        "Bihun goreng",
+        550,
+        1
+       ],
+       [
+        "Semangkuk nasi putih",
+        200
+       ],
+       [
+        "Shake nutrisi + serbuk protein",
+        150
+       ],
+       [
+        "Shake nutrisi",
+        100
+       ]
+      ],
+      "note": "Kalori shake dikira mengikut cara bancuhan yang disyorkan jurulatih; makanan lain adalah anggaran."
+     }
+    ],
+    "list": [
+     "Satu hidangan shake: kira-kira 100 kalori",
+     "Tambah serbuk protein: masih hanya kira-kira 140–150 kalori",
+     "Protein, vitamin dan mineral yang seimbang",
+     "Kalorinya hanya kira-kira suku daripada sepinggan nasi lemak atau Maggi goreng"
+    ],
+    "after": "Kenyang dan masih kekal dalam nombor ajaib anda."
+   },
+   {
+    "h": "Kenapa berlapar tidak berkesan?",
+    "p": "Jika terlalu lama makan terlalu sedikit, badan menyangka sedang berlaku kebuluran:",
+    "list": [
+     "Ia mula memecahkan otot",
+     "Ia merendahkan metabolisme untuk jimat tenaga",
+     "Sebaik kembali makan seperti biasa, berat badan naik semula, malah lebih berat daripada dahulu"
+    ]
+   },
+   {
+    "h": "Apa itu karbohidrat? Apa itu protein?",
+    "p": "Anda boleh anggar hidangan dengan tangan sendiri:",
+    "viz": [
+     {
+      "type": "hands",
+      "title": "Anggar hidangan dengan tangan",
+      "items": [
+       [
+        "k_fist_carb",
+        "Karbohidrat",
+        "Kira-kira 200 kcal",
+        "Satu hidangan sebesar penumbuk, contohnya brokoli",
+        "carb"
+       ],
+       [
+        "k_palm_pro",
+        "Protein",
+        "Kira-kira 300 kcal",
+        "Satu hidangan sebesar tapak tangan, contohnya seketul daging",
+        "pro"
+       ]
+      ],
+      "note": "Bulatan dalam gambar menunjukkan saiz satu hidangan."
+     },
+     {
+      "type": "portion",
+      "title": "Yang mana karbohidrat? Yang mana protein?",
+      "carb": {
+       "h": "Karbohidrat",
+       "kcal": "Kira-kira 200",
+       "unit": "1 hidangan = 1 penumbuk",
+       "items": [
+        [
+         "Sayur-sayuran",
+         "vege"
+        ],
+        [
+         "Buah-buahan",
+         "guava"
+        ],
+        [
+         "Bijirin penuh",
+         "brownrice_k"
+        ],
+        [
+         "Nasi",
+         "rice",
+         "Kurangkan sebanyak mungkin"
+        ]
+       ]
+      },
+      "pro": {
+       "h": "Protein",
+       "kcal": "Kira-kira 300",
+       "unit": "1 hidangan = 1 tapak tangan",
+       "items": [
+        [
+         "Ayam",
+         "chicken"
+        ],
+        [
+         "Ikan",
+         "salmon"
+        ],
+        [
+         "Tauhu",
+         "tofu"
+        ],
+        [
+         "Telur",
+         "egg"
+        ],
+        [
+         "Tempe",
+         "tempeh"
+        ]
+       ]
+      },
+      "note": "Sumber: nota kelas. Protein yang kita mahu ialah protein berkualiti seperti ayam, ikan, tauhu dan telur; kurangkan daging berlemak dan daging diproses."
+     }
+    ],
+    "list": [
+     "Karbohidrat: 1 hidangan = 1 penumbuk",
+     "Protein: 1 hidangan = 1 tapak tangan",
+     "Kalori kedua-duanya berbeza"
+    ],
+    "after": "Kenali kumpulan setiap makanan supaya anda boleh susun setiap hidangan mengikut saiz yang diberi jurulatih."
+   },
+   {
+    "h": "Tukar makanan, bukan kurangkan makan",
+    "p": "Untuk hidangan yang sama mengenyangkan, pilihan berbeza boleh berbeza kalori beberapa kali ganda.",
+    "list": [
+     "Pilih lebih: protein, sayur dan makanan asli",
+     "Pilih kurang: makanan bergoreng, kanji halus dan minuman bergula",
+     "Masakan: lebih banyak kukus, rebus dan bakar; kurangkan goreng"
+    ],
+    "after": "Dengan cara ini anda kenyang dan masih kekal dalam nombor ajaib anda."
+   }
+  ],
+  "viz": [
+   {
+    "type": "bars",
+    "title": "Makan lebih sedikit setiap hari, berapa banyak lemak badan bertambah selepas setahun?",
+    "unit": "kg",
+    "note": "Anggaran teori: kalori lebihan sehari × 365 hari ÷ 7700 kcal (kira-kira 1 kg lemak badan).",
+    "items": [
+     [
+      "1 keping biskut lebih sehari (kira-kira 50 kcal)",
+      2.4
+     ],
+     [
+      "1 gelas minuman bergula lebih sehari (kira-kira 150 kcal)",
+      7.1
+     ],
+     [
+      "1 potong kek lebih sehari (kira-kira 300 kcal)",
+      14.2
+     ]
+    ]
+   },
+   {
+    "type": "caltable",
+    "title": "Rujukan pantas kalori",
+    "tabs": [
+     {
+      "name": "Sarapan tempatan",
+      "note": "Hidangan biasa, nilai anggaran.",
+      "rows": [
+       [
+        "Mee goreng",
+        "1 pinggan",
+        660
+       ],
+       [
+        "Nasi goreng dengan telur",
+        "1 pinggan",
+        635
+       ],
+       [
+        "Maggi goreng",
+        "1 pinggan",
+        600
+       ],
+       [
+        "Bihun goreng",
+        "1 pinggan",
+        550
+       ],
+       [
+        "Nasi minyak (kosong)",
+        "1 pinggan",
+        445
+       ],
+       [
+        "Nasi lemak (sambal)",
+        "1 pinggan",
+        400
+       ],
+       [
+        "Mee sup",
+        "1 mangkuk",
+        380
+       ],
+       [
+        "Nasi ayam (kosong)",
+        "1 pinggan",
+        300
+       ],
+       [
+        "Pau ayam",
+        "1 biji",
+        205
+       ],
+       [
+        "Roti canai (kosong)",
+        "1 keping",
+        200
+       ],
+       [
+        "Capati (kosong)",
+        "1 keping",
+        180
+       ],
+       [
+        "Roti putih",
+        "2 keping",
+        160
+       ]
+      ]
+     },
+     {
+      "name": "Roti canai",
+      "note": "Kalori yang tertera pada menu sebuah restoran, termasuk lauk; nilainya berbeza mengikut cara masakan.",
+      "rows": [
+       [
+        "Roti pisang",
+        "1 keping",
+        500
+       ],
+       [
+        "Roti milo",
+        "1 keping",
+        470
+       ],
+       [
+        "Roti tisu",
+        "1 keping",
+        465
+       ],
+       [
+        "Roti boom",
+        "1 keping",
+        465
+       ],
+       [
+        "Roti telur",
+        "1 keping",
+        455
+       ],
+       [
+        "Roti cheese",
+        "1 keping",
+        410
+       ],
+       [
+        "Roti planta",
+        "1 keping",
+        400
+       ],
+       [
+        "Roti sardin",
+        "1 keping",
+        355
+       ],
+       [
+        "Roti bawang",
+        "1 keping",
+        350
+       ],
+       [
+        "Roti sayur",
+        "1 keping",
+        350
+       ],
+       [
+        "Roti salad",
+        "1 keping",
+        350
+       ],
+       [
+        "Roti biasa",
+        "1 keping",
+        345
+       ]
+      ]
+     },
+     {
+      "name": "Mi",
+      "note": "Anggaran kalori semangkuk.",
+      "rows": [
+       [
+        "Bihun daging lembu",
+        "1 mangkuk",
+        455
+       ],
+       [
+        "Mi ladu kulit ikan",
+        "1 mangkuk",
+        389
+       ],
+       [
+        "Bihun bebola daging",
+        "1 mangkuk",
+        383
+       ],
+       [
+        "Mi ladu",
+        "1 mangkuk",
+        370
+       ],
+       [
+        "Mi bebola daging lembu",
+        "1 mangkuk",
+        370
+       ],
+       [
+        "Kuey teow wantan",
+        "1 mangkuk",
+        367
+       ],
+       [
+        "Kuey teow bebola ikan",
+        "1 mangkuk",
+        309
+       ],
+       [
+        "Bihun bebola sotong",
+        "1 mangkuk",
+        220
+       ]
+      ]
+     },
+     {
+      "name": "Bubur",
+      "note": "Anggaran kalori semangkuk.",
+      "rows": [
+       [
+        "Bubur isi perut",
+        "1 mangkuk",
+        338
+       ],
+       [
+        "Bubur jagung",
+        "1 mangkuk",
+        282
+       ],
+       [
+        "Bubur ikan kering dan kacang",
+        "1 mangkuk",
+        261
+       ],
+       [
+        "Bubur hirisan ikan",
+        "1 mangkuk",
+        234
+       ],
+       [
+        "Bubur ikan keli kecil",
+        "1 mangkuk",
+        218
+       ],
+       [
+        "Bubur daging lembu cincang",
+        "1 mangkuk",
+        165
+       ],
+       [
+        "Bubur daging lembu segar",
+        "1 mangkuk",
+        147
+       ],
+       [
+        "Bubur kosong",
+        "1 mangkuk",
+        89
+       ]
+      ]
+     },
+     {
+      "name": "Kek dan pencuci mulut",
+      "note": "Anggaran kalori setiap keping atau biji.",
+      "rows": [
+       [
+        "Donat",
+        "1 biji",
+        426
+       ],
+       [
+        "Kek kopi",
+        "1 potong",
+        418
+       ],
+       [
+        "Kek keju bakar",
+        "1 potong",
+        410
+       ],
+       [
+        "Kek / pastri",
+        "1 hidangan",
+        400
+       ],
+       [
+        "Aiskrim",
+        "1 sudu besar",
+        400
+       ],
+       [
+        "Kek buah berangan",
+        "1 potong",
+        345
+       ],
+       [
+        "Kek coklat",
+        "1 potong",
+        331
+       ],
+       [
+        "Tart buah",
+        "1 biji",
+        300
+       ],
+       [
+        "Kek mentega",
+        "1 potong",
+        253
+       ],
+       [
+        "Puf krim",
+        "1 biji",
+        250
+       ]
+      ]
+     },
+     {
+      "name": "Snek",
+      "note": "Awas saiz hidangan: banyak paket snek mengandungi lebih daripada satu hidangan.",
+      "rows": [
+       [
+        "Kentang goreng besar",
+        "1 paket",
+        600
+       ],
+       [
+        "Biskut haiwan",
+        "1 kotak",
+        341
+       ],
+       [
+        "Bebola keju",
+        "28 g",
+        157
+       ],
+       [
+        "Kerepek kentang",
+        "28 g (kira-kira 10 keping)",
+        151
+       ],
+       [
+        "Bertih jagung",
+        "17 g",
+        80
+       ],
+       [
+        "Gula-gula",
+        "1 biji",
+        80
+       ],
+       [
+        "Biskut kraker",
+        "3 keping",
+        45
+       ],
+       [
+        "Keropok beras",
+        "1 keping (7.5 g)",
+        35
+       ],
+       [
+        "Jeli konjac",
+        "2 biji",
+        32
+       ],
+       [
+        "Keropok senbei",
+        "1 paket 2 keping",
+        29
+       ]
+      ]
+     },
+     {
+      "name": "Minuman",
+      "note": "8 auns kira-kira satu cawan 240 ml. Hanya air kosong yang 0 kalori.",
+      "rows": [
+       [
+        "Minuman bergas",
+        "8 auns",
+        197
+       ],
+       [
+        "Jus buah",
+        "8 auns",
+        180
+       ],
+       [
+        "Kopi 3 dalam 1",
+        "1 cawan",
+        60
+       ],
+       [
+        "Kopi O kosong",
+        "1 cawan",
+        30
+       ],
+       [
+        "Air kosong",
+        "1 cawan",
+        0
+       ]
+      ]
+     },
+     {
+      "name": "Panduan asas",
+      "note": "Panduan kalori ringkas untuk membantu anda menganggar setiap hidangan.",
+      "rows": [
+       [
+        "Piza",
+        "1 keping",
+        600
+       ],
+       [
+        "Burger",
+        "1 biji",
+        600
+       ],
+       [
+        "Daging babi / lembu",
+        "1 hidangan",
+        600
+       ],
+       [
+        "Nasi goreng",
+        "1 cawan",
+        400
+       ],
+       [
+        "Ikan / ayam",
+        "1 hidangan",
+        300
+       ],
+       [
+        "Pau char siu",
+        "8 auns",
+        260
+       ],
+       [
+        "Mi segera",
+        "8 auns",
+        240
+       ],
+       [
+        "Nasi putih",
+        "1 cawan",
+        200
+       ],
+       [
+        "Minyak masak / mayonis",
+        "1 sudu besar",
+        150
+       ],
+       [
+        "Sayur dimasak",
+        "1 cawan",
+        150
+       ],
+       [
+        "Sayur segar",
+        "1 cawan",
+        100
+       ],
+       [
+        "Roti hiris",
+        "1 keping",
+        100
+       ],
+       [
+        "Kuah / sos",
+        "1 sudu besar",
+        100
+       ],
+       [
+        "Buah-buahan",
+        "1 hidangan",
+        90
+       ],
+       [
+        "Telur",
+        "1 biji",
+        86
+       ]
+      ]
+     }
+    ],
+    "note": "Disusun daripada bahan rujukan kelas; kalori adalah anggaran dan bergantung pada hidangan serta cara masakan."
+   }
+  ],
+  "myth": {
+   "m": "Nombor ajaib semua orang sama, makan saja 1200 kcal sudah betul.",
+   "f": "Metabolisme dan matlamat setiap orang berbeza. Nombor ajaib mesti dikira khas untuk anda oleh jurulatih; makan terlalu sedikit malah akan menghilangkan otot dan merendahkan metabolisme."
+  },
+  "fact": {
+   "num": "7700",
+   "unit": "kcal",
+   "text": "Kira-kira sama dengan kalori 1 kg lemak badan. Kurangkan kira-kira 500 kcal sehari, boleh turun kira-kira 0.5 kg seminggu."
+  },
+  "tips": [
+   "Guna mangkuk dan pinggan yang lebih kecil untuk nasi",
+   "Makan sayur dan protein dahulu, nasi paling akhir",
+   "Bila makan di luar, minta kurang minyak, kurang kuah dan separuh nasi"
+  ],
+  "task": "1. Minta jurulatih kira nombor ajaib anda, dan catat tiga hidangan serta snek hari ini (termasuk minuman), kemudian bandingkan sama ada melebihi.\n2. Mulai hari ini, sebelum makan apa-apa, termasuk hidangan utama, snek dan minuman, susun dalam pinggan dahulu, ambil gambar dan hantar kepada jurulatih, barulah makan.",
+  "share": "Adakah anda kenal sesiapa yang berlebihan berat badan kerana terlalu banyak kalori, atau terlalu kurus kerana makan terlalu sedikit?",
+  "template": {
+   "title": "Susun dalam pinggan dahulu, kemudian ambil gambar dan hantar kepada jurulatih",
+   "img": "plate_template",
+   "tips": [
+    "Asingkan nasi, sayur dan daging di atas pinggan supaya saiz hidangan jelas sekali pandang",
+    "Letakkan garpu dan sudu di tepi pinggan supaya jurulatih mudah menganggar hidangan",
+    "Ambil gambar dari atas dan masukkan seluruh pinggan",
+    "Ambil gambar setiap hidangan, snek dan minuman, dan hantar kepada jurulatih sebelum makan"
+   ],
+   "note": "Label hijau dalam gambar ialah kalori yang dikira oleh jurulatih, contohnya sayur 200 kcal + ayam 300 kcal = 500 kcal."
+  }
+ },
+ "quiz": {
+  "zh": {
+   "q": "你知道什么是「神奇数字」吗？",
+   "opts": [
+    "每个人都一样，大约每天 2000 kcal",
+    "教练为你个人算出的每日卡路里目标",
+    "吃得越少越好的数字"
+   ],
+   "a": 1,
+   "why": "神奇数字是你自己的号码。你的教练会帮你算出属于你自己的每日卡路里目标，每个人都不一样。"
+  },
+  "en": {
+   "q": "Do you know what a \"magic number\" is?",
+   "opts": [
+    "It's the same for everyone — about 2000 kcal a day",
+    "Your personal daily calorie target worked out by your coach",
+    "A number where the less you eat, the better"
+   ],
+   "a": 1,
+   "why": "The magic number is yours alone. Your coach will work out your own daily calorie target — everyone's is different."
+  },
+  "ms": {
+   "q": "Adakah anda tahu apa itu \"nombor ajaib\"?",
+   "opts": [
+    "Semua orang sama, kira-kira 2000 kcal sehari",
+    "Sasaran kalori harian peribadi yang dikira oleh jurulatih untuk anda",
+    "Nombor di mana semakin sedikit makan semakin baik"
+   ],
+   "a": 1,
+   "why": "Nombor ajaib ialah nombor anda sendiri. Jurulatih akan mengira sasaran kalori harian khas untuk anda; setiap orang berbeza."
+  }
+ }
+}

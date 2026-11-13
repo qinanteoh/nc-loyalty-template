@@ -1,0 +1,1328 @@
+{
+ "day": 7,
+ "zh": {
+  "t": "好脂肪与坏脂肪",
+  "en": "Good Fats & Bad Fats",
+  "tag": "营养",
+  "lead": "脂肪不是敌人，选对种类才是关键。",
+  "intro": "身体需要脂肪来制造荷尔蒙、构成细胞膜、吸收维他命 A、D、E、K。问题不在于吃不吃脂肪，而在于吃哪一种。",
+  "points": [
+   {
+    "h": "饱和脂肪：适量就好",
+    "p": "肥肉、牛油、奶油、椰浆、棕榈油都含饱和脂肪，室温下是固体。吃太多会提高坏胆固醇 LDL，增加心血管疾病风险。"
+   },
+   {
+    "h": "反式脂肪：完全避免",
+    "p": "反式脂肪越少越好。",
+    "list": [
+     "常见于：氢化植物油、人造黄油、起酥油",
+     "用这些油做的饼干、蛋糕、酥皮和油炸食品",
+     "会升高坏胆固醇、降低好胆固醇"
+    ]
+   },
+   {
+    "h": "油炸食物会吸进很多油",
+    "p": "食物下锅油炸时，会把油吸进去。越是裹面糊、面包类的食物，吸油越多：",
+    "list": [
+     "炸散鸡蛋：吸油率高达 43%",
+     "裹面糊的食物：外层面糊特别会吸油",
+     "同样的食材，蒸、煮、烤会比油炸少很多脂肪和热量"
+    ],
+    "viz": [
+     {
+      "type": "bars",
+      "title": "常见油炸食物的吸油率",
+      "unit": "%",
+      "items": [
+       [
+        "炸散鸡蛋",
+        43,
+        1
+       ],
+       [
+        "炸面糊小虾",
+        35,
+        1
+       ],
+       [
+        "炸面糊裹香菇",
+        23,
+        1
+       ],
+       [
+        "炸莲藕",
+        19
+       ],
+       [
+        "炸茄盒",
+        17
+       ],
+       [
+        "炸薯条",
+        15
+       ]
+      ],
+      "note": "吸油率：油炸后食物吸进去的油，占食物重量的比例。资料整理自课堂参考资料；炸薯条按一般每 100 克约含 15 克油估算。"
+     }
+    ]
+   },
+   {
+    "h": "不饱和脂肪：多选",
+    "p": "橄榄油、芥花籽油、牛油果、坚果和种子含单元或多元不饱和脂肪，室温下是液体，有助降低坏胆固醇。"
+   },
+   {
+    "h": "常用食油怎么选？",
+    "p": "不同的油，脂肪的种类差很多。煮食时尽量选不饱和脂肪多、饱和脂肪少的油：",
+    "list": [
+     "多选：芥花籽油、橄榄油（单元不饱和脂肪高）",
+     "适量：葵花油、玉米油、大豆油",
+     "少用：猪油、棕榈油、牛油、椰油（饱和脂肪高）"
+    ],
+    "viz": [
+     {
+      "type": "stack",
+      "title": "常用食油的脂肪组成（%）",
+      "keys": [
+       [
+        "饱和脂肪",
+        "var(--bad)"
+       ],
+       [
+        "Omega-6",
+        "var(--water)"
+       ],
+       [
+        "Omega-3",
+        "var(--sun)"
+       ],
+       [
+        "Omega-9",
+        "var(--leaf)"
+       ]
+      ],
+      "rows": [
+       [
+        "亚麻籽油",
+        [
+         9,
+         16,
+         57,
+         18
+        ]
+       ],
+       [
+        "芥花籽油",
+        [
+         7,
+         21,
+         11,
+         61
+        ]
+       ],
+       [
+        "橄榄油",
+        [
+         15,
+         9,
+         1,
+         75
+        ]
+       ],
+       [
+        "大豆油",
+        [
+         15,
+         54,
+         8,
+         23
+        ]
+       ],
+       [
+        "花生油",
+        [
+         19,
+         33,
+         0,
+         48
+        ]
+       ],
+       [
+        "玉米油",
+        [
+         13,
+         57,
+         1,
+         29
+        ]
+       ],
+       [
+        "葵花油",
+        [
+         12,
+         71,
+         1,
+         16
+        ]
+       ],
+       [
+        "猪油",
+        [
+         43,
+         9,
+         1,
+         47
+        ]
+       ],
+       [
+        "棕榈油",
+        [
+         51,
+         10,
+         0,
+         39
+        ]
+       ],
+       [
+        "牛油",
+        [
+         68,
+         3,
+         1,
+         28
+        ]
+       ],
+       [
+        "椰油",
+        [
+         91,
+         2,
+         0,
+         7
+        ]
+       ]
+      ],
+      "note": "每一种油都含有 Omega-3、6、9，但比例差很多。橙色（Omega-3）普遍很少，只有亚麻籽油比较多。资料整理自课堂参考图，数字为约略值。"
+     }
+    ]
+   },
+   {
+    "h": "Omega-3：身体做不出来",
+    "p": "Omega-3 是必需脂肪酸，身体无法自己制造，要从食物中摄取。鱼油里的 Omega-3 主要有两种：",
+    "list": [
+     "DHA：是大脑和眼睛视网膜的重要成分，有助维持脑部和视力健康",
+     "EPA：有助维持正常的三酸甘油酯水平和血管健康",
+     "来源：深海鱼（三文鱼、鲭鱼、沙丁鱼）、亚麻籽"
+    ],
+    "viz": [
+     {
+      "type": "table",
+      "title": "Omega-3 剂量指南",
+      "head": [
+       "机构",
+       "对象",
+       "每天建议"
+      ],
+      "wrap": [
+       1
+      ],
+      "rows": [
+       [
+        "FDA",
+        "一般成人：每天安全上限",
+        "3 克"
+       ],
+       [
+        "AHA",
+        "冠状动脉心脏病",
+        "1 克"
+       ],
+       [
+        "AHA",
+        "三酸甘油酯高",
+        "3–4 克"
+       ],
+       [
+        "AHA",
+        "高血压",
+        "2 克"
+       ],
+       [
+        "AHA",
+        "类风湿关节炎",
+        "2.7 克"
+       ],
+       [
+        "WHO",
+        "孕妇和哺乳期妇女",
+        "300 毫克"
+       ],
+       [
+        "WHO",
+        "眼睛健康、改善干眼症",
+        "1 克"
+       ]
+      ],
+      "best": -1,
+      "note": "FDA：美国食品药品管理局；AHA：美国心脏协会；WHO：世界卫生组织。资料整理自课堂讲义，数字指 EPA + DHA。一般人每周吃 2 次深海鱼或适量补充鱼油即可；有疾病、怀孕或正在服药的人，补充前请先咨询医生。"
+     },
+     {
+      "type": "chips",
+      "title": "鱼油最担心什么？",
+      "items": [
+       [
+        "水银和重金属",
+        "大型鱼类容易累积水银等重金属，这是鱼油最让人担心的地方"
+       ],
+       [
+        "选小型深海鱼",
+        "鲭鱼、鳀鱼、沙丁鱼这类小型鱼，重金属累积较少"
+       ],
+       [
+        "看检测报告",
+        "有重金属检测，结果为未检出，吃得更安心"
+       ],
+       [
+        "添加维他命 E",
+        "帮助防止鱼油氧化，保持品质"
+       ]
+      ]
+     },
+     {
+      "type": "kcal",
+      "title": "Omega-3 从哪里来？",
+      "items": [
+       [
+        "fishoil",
+        "Omega-3 鱼油",
+        "重金属未检出",
+        "重金属分析测试"
+       ],
+       [
+        "salmon",
+        "深海鱼",
+        "每周 2 次",
+        "天然来源"
+       ]
+      ],
+      "note": "康宝莱鱼油采用北大西洋小型深海鱼（鲭鱼、鳀鱼、沙丁鱼），重金属检测结果为未检出，并添加维他命 E 防止氧化。"
+     }
+    ],
+    "img": [
+     {
+      "f": "fishoil_report",
+      "cap": "康宝莱深海鱼油胶囊重金属分析测试：重金属未检出"
+     }
+    ]
+   },
+   {
+    "h": "植物的 Omega-3（ALA）够不够？",
+    "p": "亚麻籽、奇亚籽、核桃里的 Omega-3 叫做 ALA。很多人以为吃这些就够了，其实 ALA 吃进身体后，还要再经过转换，才会变成身体真正需要的 EPA 和 DHA：",
+    "list": [
+     "ALA 转换成 EPA：只有约 5–10%",
+     "ALA 转换成 DHA：更少，只有约 0.5–5%（很多人不到 1%）",
+     "转换率因人而异，饮食中 Omega-6 太多，转换率会更低"
+    ],
+    "after": "所以植物的 ALA 可以吃，但想要足够的 EPA 和 DHA，最直接的来源还是深海鱼和鱼油。",
+    "viz": [
+     {
+      "type": "bars",
+      "title": "吃进 100 份 ALA，最多能变成多少？",
+      "unit": "份",
+      "items": [
+       [
+        "吃进的 ALA",
+        100
+       ],
+       [
+        "变成 EPA",
+        10,
+        1
+       ],
+       [
+        "变成 DHA",
+        5,
+        1
+       ]
+      ],
+      "note": "以研究中较高的转换率计算，实际上很多人更低。资料来源：营养学研究对 ALA 转换率的综合估计。"
+     }
+    ]
+   },
+   {
+    "h": "坏脂肪吃太多，身体会怎样？",
+    "p": "长期吃太多饱和脂肪和反式脂肪，坏胆固醇升高，会慢慢影响身体：",
+    "list": [
+     "血管：脂肪斑块堆积在血管壁，血管变窄、变硬",
+     "心脏：血管被堵住，增加心脏病发作和中风的风险；心脏要更用力工作",
+     "肝脏：脂肪堆积在肝脏，形成脂肪肝",
+     "肚子：内脏脂肪增加，腰围变大"
+    ],
+    "after": "好消息是，改变饮食习惯、多运动，血管可以保持得更年轻。",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "heart_attack",
+      "cap": "心脏病发作：血管被斑块堵住，心脏肌肉得不到含氧的血液，每过一分钟就有更多组织受损坏死"
+     },
+     {
+      "f": "liver_real",
+      "cap": "健康的肝脏（左）vs 脂肪肝（右）"
+     }
+    ]
+   },
+   {
+    "h": "Omega-3、6、9：要补的是 Omega-3",
+    "p": "食物里的不饱和脂肪，主要有 Omega-3、Omega-6 和 Omega-9 三种：",
+    "list": [
+     "Omega-6：大部分食油和加工食品都有，随便吃都吃得到。吃太多会促进身体发炎",
+     "Omega-9：橄榄油、芥花籽油、坚果里很多，身体也能自己制造",
+     "Omega-3：帮助减少不正常的发炎，但一般饮食很少吃得到，是最需要补充的"
+    ],
+    "after": "现代人的饮食 Omega-6 太多、Omega-3 太少。所以不需要特别补 Omega-6 和 Omega-9，要多摄取的是 Omega-3。"
+   },
+   {
+    "h": "好脂肪也有热量",
+    "p": "即使是橄榄油、坚果这些好脂肪，每克也有 9 卡路里，比蛋白质和碳水化合物高一倍多。选对种类，也要控制分量。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "split",
+    "title": "一眼分辨好脂肪与坏脂肪",
+    "left": {
+     "h": "好脂肪 · 多选",
+     "cls": "good",
+     "items": [
+      "深海鱼：三文鱼、鲭鱼、沙丁鱼",
+      "橄榄油、芥花籽油",
+      "牛油果",
+      "杏仁、核桃等原味坚果",
+      "亚麻籽、奇亚籽"
+     ]
+    },
+    "right": {
+     "h": "坏脂肪 · 少吃或避免",
+     "cls": "bad",
+     "items": [
+      "肥肉、鸡皮、猪油",
+      "牛油、奶油、炼奶",
+      "椰浆、棕榈油（饱和脂肪）",
+      "人造黄油、起酥油（反式脂肪）",
+      "饼干、蛋糕、酥皮、油炸食品"
+     ]
+    }
+   }
+  ],
+  "myth": {
+   "m": "想减重就要完全不吃油。",
+   "f": "完全不吃油会影响荷尔蒙和脂溶性维他命吸收。重点是少吃坏脂肪、适量吃好脂肪。"
+  },
+  "fact": {
+   "num": "1",
+   "unit": "g",
+   "text": "美国心脏协会指出，平时少吃鱼的人，每天约 1 克 Omega-3 可能对健康有益。"
+  },
+  "tips": [
+   "每周吃 2 次深海鱼",
+   "零食换成一小把原味坚果",
+   "买饼干糕点前看看配料有没有氢化油"
+  ],
+  "task": "本周安排两餐深海鱼（三文鱼、鲭鱼、沙丁鱼），或和教练聊聊鱼油补充。",
+  "share": "你有认识谁经常吃肥肉、油炸食物这些坏脂肪的吗？",
+  "philo": "脂肪占每天热量的 30%，重点是减少饱和脂肪、补充 Omega-3："
+ },
+ "en": {
+  "t": "Good fats and bad fats",
+  "en": "Good Fats & Bad Fats",
+  "tag": "Nutrition",
+  "lead": "Fat isn't the enemy — choosing the right kind is what matters.",
+  "intro": "Your body needs fat to make hormones, build cell membranes and absorb vitamins A, D, E and K. The question isn't whether to eat fat, but which kind.",
+  "points": [
+   {
+    "h": "Saturated fat: in moderation",
+    "p": "Fatty meat, butter, cream, coconut milk and palm oil contain saturated fat, which is solid at room temperature. Too much raises bad LDL cholesterol and the risk of heart disease."
+   },
+   {
+    "h": "Trans fat: avoid completely",
+    "p": "The less trans fat, the better.",
+    "list": [
+     "Common in: hydrogenated vegetable oil, margarine, shortening",
+     "Biscuits, cakes, pastry and fried foods made with these oils",
+     "Raises bad cholesterol and lowers good cholesterol"
+    ]
+   },
+   {
+    "h": "Fried food soaks up a lot of oil",
+    "p": "Food absorbs oil when deep-fried. Battered and bready foods absorb the most:",
+    "list": [
+     "Fried scrambled egg: absorbs up to 43% oil",
+     "Battered foods: the batter coating soaks up a lot of oil",
+     "The same ingredients steamed, boiled or baked have far less fat and fewer calories than fried"
+    ],
+    "viz": [
+     {
+      "type": "bars",
+      "title": "Oil absorption of common fried foods",
+      "unit": "%",
+      "items": [
+       [
+        "Fried scrambled egg",
+        43,
+        1
+       ],
+       [
+        "Battered fried shrimp",
+        35,
+        1
+       ],
+       [
+        "Battered fried mushrooms",
+        23,
+        1
+       ],
+       [
+        "Fried lotus root",
+        19
+       ],
+       [
+        "Fried stuffed eggplant",
+        17
+       ],
+       [
+        "French fries",
+        15
+       ]
+      ],
+      "note": "Oil absorption: oil absorbed by food after frying, as a share of the food's weight. Compiled from class references; fries estimated at about 15 g oil per 100 g."
+     }
+    ]
+   },
+   {
+    "h": "Unsaturated fat: choose more",
+    "p": "Olive oil, canola oil, avocado, nuts and seeds contain mono- or polyunsaturated fats, which are liquid at room temperature and help lower bad cholesterol."
+   },
+   {
+    "h": "How to choose cooking oil?",
+    "p": "Oils differ greatly in fat type. When cooking, choose oils high in unsaturated fat and low in saturated fat:",
+    "list": [
+     "Choose more: canola oil, olive oil (high in monounsaturated fat)",
+     "In moderation: sunflower, corn and soybean oil",
+     "Use less: lard, palm oil, butter, coconut oil (high in saturated fat)"
+    ],
+    "viz": [
+     {
+      "type": "stack",
+      "title": "Fat composition of common cooking oils (%)",
+      "keys": [
+       [
+        "Saturated fat",
+        "var(--bad)"
+       ],
+       [
+        "Omega-6",
+        "var(--water)"
+       ],
+       [
+        "Omega-3",
+        "var(--sun)"
+       ],
+       [
+        "Omega-9",
+        "var(--leaf)"
+       ]
+      ],
+      "rows": [
+       [
+        "Flaxseed oil",
+        [
+         9,
+         16,
+         57,
+         18
+        ]
+       ],
+       [
+        "Canola oil",
+        [
+         7,
+         21,
+         11,
+         61
+        ]
+       ],
+       [
+        "Olive oil",
+        [
+         15,
+         9,
+         1,
+         75
+        ]
+       ],
+       [
+        "Soybean oil",
+        [
+         15,
+         54,
+         8,
+         23
+        ]
+       ],
+       [
+        "Peanut oil",
+        [
+         19,
+         33,
+         0,
+         48
+        ]
+       ],
+       [
+        "Corn oil",
+        [
+         13,
+         57,
+         1,
+         29
+        ]
+       ],
+       [
+        "Sunflower oil",
+        [
+         12,
+         71,
+         1,
+         16
+        ]
+       ],
+       [
+        "Lard",
+        [
+         43,
+         9,
+         1,
+         47
+        ]
+       ],
+       [
+        "Palm oil",
+        [
+         51,
+         10,
+         0,
+         39
+        ]
+       ],
+       [
+        "Butter",
+        [
+         68,
+         3,
+         1,
+         28
+        ]
+       ],
+       [
+        "Coconut oil",
+        [
+         91,
+         2,
+         0,
+         7
+        ]
+       ]
+      ],
+      "note": "Every oil contains Omega-3, 6 and 9, but in very different proportions. Orange (Omega-3) is generally small — only flaxseed oil has more. Compiled from class reference charts; figures are approximate."
+     }
+    ]
+   },
+   {
+    "h": "Omega-3: your body can't make it",
+    "p": "Omega-3 is an essential fatty acid your body can't make on its own, so it must come from food. Fish oil contains two main types of Omega-3:",
+    "list": [
+     "DHA: a key component of the brain and the retina, helps maintain brain and eye health",
+     "EPA: helps maintain normal triglyceride levels and healthy blood vessels",
+     "Sources: deep-sea fish (salmon, mackerel, sardines), flaxseed"
+    ],
+    "viz": [
+     {
+      "type": "table",
+      "title": "Omega-3 dosage guide",
+      "head": [
+       "Organisation",
+       "For",
+       "Daily recommendation"
+      ],
+      "wrap": [
+       1
+      ],
+      "rows": [
+       [
+        "FDA",
+        "General adults: daily safe upper limit",
+        "3 g"
+       ],
+       [
+        "AHA",
+        "Coronary heart disease",
+        "1 g"
+       ],
+       [
+        "AHA",
+        "High triglycerides",
+        "3–4 g"
+       ],
+       [
+        "AHA",
+        "High blood pressure",
+        "2 g"
+       ],
+       [
+        "AHA",
+        "Rheumatoid arthritis",
+        "2.7 g"
+       ],
+       [
+        "WHO",
+        "Pregnant and breastfeeding women",
+        "300 mg"
+       ],
+       [
+        "WHO",
+        "Eye health, relieving dry eyes",
+        "1 g"
+       ]
+      ],
+      "best": -1,
+      "note": "FDA: US Food and Drug Administration; AHA: American Heart Association; WHO: World Health Organization. Compiled from class handouts; figures refer to EPA + DHA. Most people only need deep-sea fish twice a week or a moderate fish oil supplement; if you have a medical condition, are pregnant or take medication, consult your doctor before supplementing."
+     },
+     {
+      "type": "chips",
+      "title": "What's the biggest worry with fish oil?",
+      "items": [
+       [
+        "Mercury and heavy metals",
+        "Large fish tend to accumulate heavy metals such as mercury — the biggest worry with fish oil"
+       ],
+       [
+        "Choose small deep-sea fish",
+        "Small fish like mackerel, anchovies and sardines accumulate fewer heavy metals"
+       ],
+       [
+        "Check the test report",
+        "Tested for heavy metals with none detected — more peace of mind"
+       ],
+       [
+        "Added vitamin E",
+        "Helps prevent fish oil oxidation and keeps it fresh"
+       ]
+      ]
+     },
+     {
+      "type": "kcal",
+      "title": "Where does Omega-3 come from?",
+      "items": [
+       [
+        "fishoil",
+        "Omega-3 fish oil",
+        "Heavy metals not detected",
+        "Heavy metal analysis test"
+       ],
+       [
+        "salmon",
+        "Deep-sea fish",
+        "Twice a week",
+        "Natural source"
+       ]
+      ],
+      "note": "Herbalife fish oil uses small North Atlantic deep-sea fish (mackerel, anchovies, sardines). Heavy metal testing showed none detected, and vitamin E is added to prevent oxidation."
+     }
+    ],
+    "img": [
+     {
+      "f": "fishoil_report",
+      "cap": "Herbalife deep-sea fish oil capsules heavy metal analysis test: heavy metals not detected"
+     }
+    ]
+   },
+   {
+    "h": "Is plant Omega-3 (ALA) enough?",
+    "p": "The Omega-3 in flaxseed, chia seeds and walnuts is called ALA. Many people think eating these is enough, but ALA still has to be converted in the body before it becomes the EPA and DHA your body actually needs:",
+    "list": [
+     "ALA to EPA: only about 5–10%",
+     "ALA to DHA: even less, only about 0.5–5% (under 1% for many people)",
+     "Conversion varies by person, and too much Omega-6 in the diet lowers it further"
+    ],
+    "after": "So plant ALA is fine to eat, but for enough EPA and DHA, the most direct sources are still deep-sea fish and fish oil.",
+    "viz": [
+     {
+      "type": "bars",
+      "title": "Eat 100 units of ALA — how much can it become at most?",
+      "unit": " servings",
+      "items": [
+       [
+        "ALA eaten",
+        100
+       ],
+       [
+        "Becomes EPA",
+        10,
+        1
+       ],
+       [
+        "Becomes DHA",
+        5,
+        1
+       ]
+      ],
+      "note": "Calculated with the higher conversion rates from research; many people are actually lower. Source: combined estimates of ALA conversion from nutrition research."
+     }
+    ]
+   },
+   {
+    "h": "What happens if you eat too much bad fat?",
+    "p": "Eating too much saturated and trans fat over time raises bad cholesterol and slowly affects your body:",
+    "list": [
+     "Blood vessels: fatty plaque builds up on the walls, narrowing and hardening them",
+     "Heart: blocked vessels raise the risk of heart attack and stroke; the heart must work harder",
+     "Liver: fat builds up in the liver, causing fatty liver",
+     "Belly: visceral fat increases and your waist grows"
+    ],
+    "after": "The good news: by changing your eating habits and exercising more, your blood vessels can stay younger.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "heart_attack",
+      "cap": "Heart attack: a vessel blocked by plaque stops oxygen-rich blood reaching heart muscle, and more tissue dies every minute"
+     },
+     {
+      "f": "liver_real",
+      "cap": "Healthy liver (left) vs fatty liver (right)"
+     }
+    ]
+   },
+   {
+    "h": "Omega-3, 6, 9: it's Omega-3 you need to top up",
+    "p": "The unsaturated fats in food are mainly of three kinds: Omega-3, Omega-6 and Omega-9:",
+    "list": [
+     "Omega-6: found in most cooking oils and processed foods — you get plenty without trying. Too much promotes inflammation",
+     "Omega-9: plentiful in olive oil, canola oil and nuts, and your body can make it too",
+     "Omega-3: helps reduce abnormal inflammation, but a normal diet provides very little — this is the one you most need to top up"
+    ],
+    "after": "Modern diets have too much Omega-6 and too little Omega-3. So there's no need to supplement Omega-6 or Omega-9 — it's Omega-3 you need more of."
+   },
+   {
+    "h": "Good fats have calories too",
+    "p": "Even good fats like olive oil and nuts have 9 calories per gram — more than double protein and carbohydrates. Choose the right kind, and control the portion too."
+   }
+  ],
+  "viz": [
+   {
+    "type": "split",
+    "title": "Tell good and bad fats apart at a glance",
+    "left": {
+     "h": "Good fats · choose more",
+     "cls": "good",
+     "items": [
+      "Deep-sea fish: salmon, mackerel, sardines",
+      "Olive oil, canola oil",
+      "Avocado",
+      "Plain nuts such as almonds and walnuts",
+      "Flaxseed, chia seeds"
+     ]
+    },
+    "right": {
+     "h": "Bad fats · eat less or avoid",
+     "cls": "bad",
+     "items": [
+      "Fatty meat, chicken skin, lard",
+      "Butter, cream, condensed milk",
+      "Coconut milk, palm oil (saturated fat)",
+      "Margarine, shortening (trans fat)",
+      "Biscuits, cakes, pastry, fried foods"
+     ]
+    }
+   }
+  ],
+  "myth": {
+   "m": "To lose weight you must cut out oil completely.",
+   "f": "Cutting out oil completely affects hormones and the absorption of fat-soluble vitamins. The key is eating less bad fat and moderate amounts of good fat."
+  },
+  "fact": {
+   "num": "1",
+   "unit": "g",
+   "text": "The American Heart Association notes that for people who rarely eat fish, about 1 g of Omega-3 a day may benefit health."
+  },
+  "tips": [
+   "Eat deep-sea fish twice a week",
+   "Swap snacks for a small handful of plain nuts",
+   "Before buying biscuits and cakes, check the ingredients for hydrogenated oil"
+  ],
+  "task": "Plan two deep-sea fish meals this week (salmon, mackerel, sardines), or talk to your coach about fish oil.",
+  "share": "Do you know anyone who often eats bad fats like fatty meat and fried food?",
+  "philo": "Fat makes up 30% of daily calories — the key is cutting saturated fat and adding Omega-3:"
+ },
+ "ms": {
+  "t": "Lemak baik dan lemak jahat",
+  "en": "Good Fats & Bad Fats",
+  "tag": "Nutrisi",
+  "lead": "Lemak bukan musuh, memilih jenis yang betul itulah kuncinya.",
+  "intro": "Badan memerlukan lemak untuk menghasilkan hormon, membina membran sel dan menyerap vitamin A, D, E dan K. Persoalannya bukan sama ada makan lemak, tetapi jenis yang mana.",
+  "points": [
+   {
+    "h": "Lemak tepu: secara sederhana",
+    "p": "Daging berlemak, mentega, krim, santan dan minyak sawit mengandungi lemak tepu, yang pepejal pada suhu bilik. Terlalu banyak akan meningkatkan kolesterol jahat LDL dan risiko penyakit kardiovaskular."
+   },
+   {
+    "h": "Lemak trans: elakkan sepenuhnya",
+    "p": "Semakin kurang lemak trans, semakin baik.",
+    "list": [
+     "Biasa terdapat dalam: minyak sayuran terhidrogen, marjerin, lemak sayuran (shortening)",
+     "Biskut, kek, pastri dan makanan bergoreng yang dibuat dengan minyak ini",
+     "Meningkatkan kolesterol jahat dan menurunkan kolesterol baik"
+    ]
+   },
+   {
+    "h": "Makanan bergoreng menyerap banyak minyak",
+    "p": "Makanan menyerap minyak semasa digoreng. Makanan bersalut tepung dan roti paling banyak menyerap minyak:",
+    "list": [
+     "Telur hancur goreng: kadar serapan minyak sehingga 43%",
+     "Makanan bersalut tepung: lapisan tepung sangat menyerap minyak",
+     "Bahan yang sama jika dikukus, direbus atau dibakar jauh lebih rendah lemak dan kalori berbanding digoreng"
+    ],
+    "viz": [
+     {
+      "type": "bars",
+      "title": "Kadar serapan minyak makanan bergoreng biasa",
+      "unit": "%",
+      "items": [
+       [
+        "Telur hancur goreng",
+        43,
+        1
+       ],
+       [
+        "Udang kecil goreng tepung",
+        35,
+        1
+       ],
+       [
+        "Cendawan goreng tepung",
+        23,
+        1
+       ],
+       [
+        "Akar teratai goreng",
+        19
+       ],
+       [
+        "Terung sumbat goreng",
+        17
+       ],
+       [
+        "Kentang goreng",
+        15
+       ]
+      ],
+      "note": "Kadar serapan minyak: minyak yang diserap makanan selepas digoreng, sebagai peratusan berat makanan. Disusun daripada bahan rujukan kelas; kentang goreng dianggarkan kira-kira 15 g minyak setiap 100 g."
+     }
+    ]
+   },
+   {
+    "h": "Lemak tak tepu: pilih lebih",
+    "p": "Minyak zaitun, minyak kanola, avokado, kekacang dan biji-bijian mengandungi lemak tak tepu mono atau poli, yang cecair pada suhu bilik dan membantu menurunkan kolesterol jahat."
+   },
+   {
+    "h": "Bagaimana memilih minyak masak?",
+    "p": "Jenis lemak dalam setiap minyak sangat berbeza. Semasa memasak, pilih minyak yang tinggi lemak tak tepu dan rendah lemak tepu:",
+    "list": [
+     "Pilih lebih: minyak kanola, minyak zaitun (tinggi lemak tak tepu mono)",
+     "Secara sederhana: minyak bunga matahari, minyak jagung, minyak soya",
+     "Kurangkan: minyak babi, minyak sawit, mentega, minyak kelapa (tinggi lemak tepu)"
+    ],
+    "viz": [
+     {
+      "type": "stack",
+      "title": "Komposisi lemak minyak masak biasa (%)",
+      "keys": [
+       [
+        "Lemak tepu",
+        "var(--bad)"
+       ],
+       [
+        "Omega-6",
+        "var(--water)"
+       ],
+       [
+        "Omega-3",
+        "var(--sun)"
+       ],
+       [
+        "Omega-9",
+        "var(--leaf)"
+       ]
+      ],
+      "rows": [
+       [
+        "Minyak biji rami",
+        [
+         9,
+         16,
+         57,
+         18
+        ]
+       ],
+       [
+        "Minyak kanola",
+        [
+         7,
+         21,
+         11,
+         61
+        ]
+       ],
+       [
+        "Minyak zaitun",
+        [
+         15,
+         9,
+         1,
+         75
+        ]
+       ],
+       [
+        "Minyak soya",
+        [
+         15,
+         54,
+         8,
+         23
+        ]
+       ],
+       [
+        "Minyak kacang tanah",
+        [
+         19,
+         33,
+         0,
+         48
+        ]
+       ],
+       [
+        "Minyak jagung",
+        [
+         13,
+         57,
+         1,
+         29
+        ]
+       ],
+       [
+        "Minyak bunga matahari",
+        [
+         12,
+         71,
+         1,
+         16
+        ]
+       ],
+       [
+        "Minyak babi",
+        [
+         43,
+         9,
+         1,
+         47
+        ]
+       ],
+       [
+        "Minyak sawit",
+        [
+         51,
+         10,
+         0,
+         39
+        ]
+       ],
+       [
+        "Mentega",
+        [
+         68,
+         3,
+         1,
+         28
+        ]
+       ],
+       [
+        "Minyak kelapa",
+        [
+         91,
+         2,
+         0,
+         7
+        ]
+       ]
+      ],
+      "note": "Setiap minyak mengandungi Omega-3, 6 dan 9, tetapi nisbahnya sangat berbeza. Oren (Omega-3) biasanya sangat sedikit, hanya minyak biji rami yang lebih banyak. Disusun daripada carta rujukan kelas; angka adalah anggaran."
+     }
+    ]
+   },
+   {
+    "h": "Omega-3: badan tidak dapat menghasilkannya",
+    "p": "Omega-3 ialah asid lemak perlu yang tidak dapat dihasilkan oleh badan, jadi mesti diperoleh daripada makanan. Minyak ikan mengandungi dua jenis utama Omega-3:",
+    "list": [
+     "DHA: komponen penting otak dan retina mata, membantu mengekalkan kesihatan otak dan penglihatan",
+     "EPA: membantu mengekalkan paras trigliserida normal dan kesihatan saluran darah",
+     "Sumber: ikan laut dalam (salmon, makarel, sardin), biji rami"
+    ],
+    "viz": [
+     {
+      "type": "table",
+      "title": "Panduan dos Omega-3",
+      "head": [
+       "Organisasi",
+       "Untuk",
+       "Saranan harian"
+      ],
+      "wrap": [
+       1
+      ],
+      "rows": [
+       [
+        "FDA",
+        "Dewasa umum: had atas selamat sehari",
+        "3 g"
+       ],
+       [
+        "AHA",
+        "Penyakit jantung koronari",
+        "1 g"
+       ],
+       [
+        "AHA",
+        "Trigliserida tinggi",
+        "3–4 g"
+       ],
+       [
+        "AHA",
+        "Darah tinggi",
+        "2 g"
+       ],
+       [
+        "AHA",
+        "Artritis reumatoid",
+        "2.7 g"
+       ],
+       [
+        "WHO",
+        "Wanita hamil dan menyusu",
+        "300 mg"
+       ],
+       [
+        "WHO",
+        "Kesihatan mata, melegakan mata kering",
+        "1 g"
+       ]
+      ],
+      "best": -1,
+      "note": "FDA: Pentadbiran Makanan dan Ubat AS; AHA: Persatuan Jantung Amerika; WHO: Pertubuhan Kesihatan Sedunia. Disusun daripada nota kelas; angka merujuk kepada EPA + DHA. Kebanyakan orang hanya perlu makan ikan laut dalam 2 kali seminggu atau suplemen minyak ikan secara sederhana; jika ada penyakit, hamil atau sedang mengambil ubat, rujuk doktor sebelum mengambil suplemen."
+     },
+     {
+      "type": "chips",
+      "title": "Apa kebimbangan terbesar tentang minyak ikan?",
+      "items": [
+       [
+        "Merkuri dan logam berat",
+        "Ikan besar mudah mengumpul logam berat seperti merkuri; inilah kebimbangan utama tentang minyak ikan"
+       ],
+       [
+        "Pilih ikan laut dalam yang kecil",
+        "Ikan kecil seperti makarel, ikan bilis dan sardin kurang mengumpul logam berat"
+       ],
+       [
+        "Semak laporan ujian",
+        "Diuji untuk logam berat dengan keputusan tidak dikesan, lebih yakin untuk diambil"
+       ],
+       [
+        "Ditambah vitamin E",
+        "Membantu mencegah pengoksidaan minyak ikan dan mengekalkan kualiti"
+       ]
+      ]
+     },
+     {
+      "type": "kcal",
+      "title": "Dari mana datangnya Omega-3?",
+      "items": [
+       [
+        "fishoil",
+        "Minyak ikan Omega-3",
+        "Logam berat tidak dikesan",
+        "Ujian analisis logam berat"
+       ],
+       [
+        "salmon",
+        "Ikan laut dalam",
+        "2 kali seminggu",
+        "Sumber semula jadi"
+       ]
+      ],
+      "note": "Minyak ikan Herbalife menggunakan ikan laut dalam kecil dari Atlantik Utara (makarel, ikan bilis, sardin). Ujian logam berat menunjukkan tidak dikesan, dan ditambah vitamin E untuk mencegah pengoksidaan."
+     }
+    ],
+    "img": [
+     {
+      "f": "fishoil_report",
+      "cap": "Ujian analisis logam berat kapsul minyak ikan laut dalam Herbalife: logam berat tidak dikesan"
+     }
+    ]
+   },
+   {
+    "h": "Adakah Omega-3 tumbuhan (ALA) mencukupi?",
+    "p": "Omega-3 dalam biji rami, biji chia dan walnut dipanggil ALA. Ramai sangka makan ini sudah cukup, tetapi ALA perlu ditukar dalam badan sebelum menjadi EPA dan DHA yang benar-benar diperlukan:",
+    "list": [
+     "ALA ditukar kepada EPA: hanya kira-kira 5–10%",
+     "ALA ditukar kepada DHA: lebih sedikit, hanya kira-kira 0.5–5% (ramai kurang daripada 1%)",
+     "Kadar penukaran berbeza mengikut individu; terlalu banyak Omega-6 dalam pemakanan akan merendahkannya lagi"
+    ],
+    "after": "Jadi ALA tumbuhan boleh dimakan, tetapi untuk EPA dan DHA yang mencukupi, sumber paling langsung masih ikan laut dalam dan minyak ikan.",
+    "viz": [
+     {
+      "type": "bars",
+      "title": "Makan 100 unit ALA, paling banyak boleh menjadi berapa?",
+      "unit": " hidangan",
+      "items": [
+       [
+        "ALA yang dimakan",
+        100
+       ],
+       [
+        "Menjadi EPA",
+        10,
+        1
+       ],
+       [
+        "Menjadi DHA",
+        5,
+        1
+       ]
+      ],
+      "note": "Dikira menggunakan kadar penukaran yang lebih tinggi dalam kajian; sebenarnya ramai orang lebih rendah. Sumber: anggaran gabungan kadar penukaran ALA daripada kajian nutrisi."
+     }
+    ]
+   },
+   {
+    "h": "Apa berlaku jika terlalu banyak makan lemak jahat?",
+    "p": "Terlalu banyak lemak tepu dan lemak trans dalam jangka panjang meningkatkan kolesterol jahat dan perlahan-lahan menjejaskan badan:",
+    "list": [
+     "Saluran darah: plak lemak terkumpul pada dinding saluran darah, menjadi sempit dan keras",
+     "Jantung: saluran darah tersumbat meningkatkan risiko serangan jantung dan strok; jantung perlu bekerja lebih kuat",
+     "Hati: lemak terkumpul di hati, menyebabkan hati berlemak",
+     "Perut: lemak viseral bertambah, lilitan pinggang membesar"
+    ],
+    "after": "Berita baiknya: dengan mengubah tabiat makan dan lebih bersenam, saluran darah boleh kekal lebih muda.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "heart_attack",
+      "cap": "Serangan jantung: saluran darah tersumbat oleh plak, otot jantung tidak mendapat darah beroksigen, dan setiap minit lebih banyak tisu rosak dan mati"
+     },
+     {
+      "f": "liver_real",
+      "cap": "Hati sihat (kiri) vs hati berlemak (kanan)"
+     }
+    ]
+   },
+   {
+    "h": "Omega-3, 6, 9: yang perlu ditambah ialah Omega-3",
+    "p": "Lemak tak tepu dalam makanan terdiri daripada tiga jenis utama: Omega-3, Omega-6 dan Omega-9:",
+    "list": [
+     "Omega-6: terdapat dalam kebanyakan minyak masak dan makanan diproses, mudah didapati. Terlalu banyak boleh menggalakkan keradangan dalam badan",
+     "Omega-9: banyak dalam minyak zaitun, minyak kanola dan kekacang, badan juga boleh menghasilkannya sendiri",
+     "Omega-3: membantu mengurangkan keradangan tidak normal, tetapi pemakanan biasa jarang membekalkannya, inilah yang paling perlu ditambah"
+    ],
+    "after": "Pemakanan moden terlalu banyak Omega-6 dan terlalu sedikit Omega-3. Jadi tidak perlu menambah Omega-6 dan Omega-9; yang perlu diambil lebih ialah Omega-3."
+   },
+   {
+    "h": "Lemak baik juga ada kalori",
+    "p": "Walaupun lemak baik seperti minyak zaitun dan kekacang, setiap gram mengandungi 9 kalori, lebih dua kali ganda protein dan karbohidrat. Pilih jenis yang betul, dan kawal juga saiz hidangan."
+   }
+  ],
+  "viz": [
+   {
+    "type": "split",
+    "title": "Bezakan lemak baik dan lemak jahat sekali pandang",
+    "left": {
+     "h": "Lemak baik · pilih lebih",
+     "cls": "good",
+     "items": [
+      "Ikan laut dalam: salmon, makarel, sardin",
+      "Minyak zaitun, minyak kanola",
+      "Avokado",
+      "Kekacang asli seperti badam dan walnut",
+      "Biji rami, biji chia"
+     ]
+    },
+    "right": {
+     "h": "Lemak jahat · kurangkan atau elakkan",
+     "cls": "bad",
+     "items": [
+      "Daging berlemak, kulit ayam, minyak babi",
+      "Mentega, krim, susu pekat",
+      "Santan, minyak sawit (lemak tepu)",
+      "Marjerin, lemak sayuran (lemak trans)",
+      "Biskut, kek, pastri, makanan bergoreng"
+     ]
+    }
+   }
+  ],
+  "myth": {
+   "m": "Mahu turun berat badan mesti langsung tidak makan minyak.",
+   "f": "Langsung tidak makan minyak akan menjejaskan hormon dan penyerapan vitamin larut lemak. Kuncinya kurangkan lemak jahat dan ambil lemak baik secara sederhana."
+  },
+  "fact": {
+   "num": "1",
+   "unit": "g",
+   "text": "Persatuan Jantung Amerika menyatakan bahawa bagi mereka yang jarang makan ikan, kira-kira 1 g Omega-3 sehari mungkin baik untuk kesihatan."
+  },
+  "tips": [
+   "Makan ikan laut dalam 2 kali seminggu",
+   "Tukar snek kepada segenggam kecil kekacang asli",
+   "Sebelum membeli biskut dan kek, semak bahan sama ada mengandungi minyak terhidrogen"
+  ],
+  "task": "Rancang dua hidangan ikan laut dalam minggu ini (salmon, makarel, sardin), atau berbincang dengan jurulatih tentang suplemen minyak ikan.",
+  "share": "Adakah anda kenal sesiapa yang selalu makan lemak jahat seperti daging berlemak dan makanan bergoreng?",
+  "philo": "Lemak menyumbang 30% kalori harian; kuncinya kurangkan lemak tepu dan tambah Omega-3:"
+ },
+ "quiz": {
+  "zh": {
+   "q": "想减重，是不是应该完全不吃油？",
+   "opts": [
+    "是，油越少越好",
+    "不是，要选对脂肪的种类",
+    "只吃椰浆和牛油就好"
+   ],
+   "a": 1,
+   "why": "身体需要好脂肪来制造荷尔蒙和吸收维他命。要避免的是反式脂肪，并减少饱和脂肪。"
+  },
+  "en": {
+   "q": "To lose weight, should you cut out oil completely?",
+   "opts": [
+    "Yes, the less oil the better",
+    "No, choose the right kind of fat",
+    "Just eat coconut milk and butter"
+   ],
+   "a": 1,
+   "why": "Your body needs good fats to make hormones and absorb vitamins. What to avoid is trans fat, and cut down on saturated fat."
+  },
+  "ms": {
+   "q": "Untuk turun berat badan, patutkah langsung tidak makan minyak?",
+   "opts": [
+    "Ya, semakin kurang minyak semakin baik",
+    "Tidak, pilih jenis lemak yang betul",
+    "Makan santan dan mentega sahaja"
+   ],
+   "a": 1,
+   "why": "Badan memerlukan lemak baik untuk menghasilkan hormon dan menyerap vitamin. Yang perlu dielakkan ialah lemak trans, dan kurangkan lemak tepu."
+  }
+ }
+}

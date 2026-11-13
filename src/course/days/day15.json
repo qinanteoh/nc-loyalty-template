@@ -1,0 +1,320 @@
+{
+ "day": 15,
+ "zh": {
+  "t": "外在营养",
+  "en": "Outer Nutrition",
+  "tag": "产品",
+  "lead": "好皮肤要里应外合：内在营养 + 外在护理，一起配合才能达到最好的效果。",
+  "intro": "皮肤是身体最大的器官，应该好好呵护。美丽是由内而外的，皮肤、头发和指甲每天都在更新，原料来自你吃进去的营养。",
+  "points": [
+   {
+    "h": "维他命 B 群",
+    "p": "维他命 B2、B3、B6 和生物素有助维持皮肤和头发的健康。B 群是水溶性的，需要每天补充。"
+   },
+   {
+    "h": "锌和铜",
+    "p": "锌有助维持健康的皮肤、头发和指甲；铜有助头发和皮肤的正常色素。"
+   },
+   {
+    "h": "蛋白质",
+    "p": "头发和指甲主要由蛋白质构成，皮肤的胶原蛋白也需要蛋白质作原料。蛋白质吃不够，头发会变干、易断。"
+   },
+   {
+    "h": "水分和好脂肪",
+    "p": "喝够水让皮肤保持水润；Omega-3 等好脂肪有助维持皮肤屏障。"
+   },
+   {
+    "h": "外在护理同样重要",
+    "p": "每天防晒、充足睡眠、温和清洁、少熬夜、不吸烟，都能帮助皮肤保持健康。"
+   },
+   {
+    "h": "康宝莱的外在营养产品",
+    "p": "皮肤是身体最大的器官，除了由内吃对营养，也要由外好好呵护。康宝莱有一系列外在护理产品：",
+    "list": [
+     "SKIN 系列：洁面、爽肤水、精华、日霜、晚霜、去角质等日常护理",
+     "芦荟系列：护手霜、沐浴露、舒缓凝胶、洗发水和护发素",
+     "维他命面膜：12 种维他命，加上芦荟和牛油果成分，帮助保湿"
+    ],
+    "after": "皮肤要里应外合：由内吃对营养，由外好好护理，两者配合才能达到最好的效果。有兴趣了解更多？请教练为你安排一次 Skin Spa，亲身体验我们的外在营养。",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "skin_products2",
+      "cap": "康宝莱外在营养：SKIN 护肤系列、芦荟身体和头发护理系列、维他命面膜"
+     }
+    ]
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "美肤美发营养和食物来源",
+    "items": [
+     [
+      "维他命 B2",
+      "牛奶、鸡蛋、绿叶菜"
+     ],
+     [
+      "维他命 B3",
+      "鸡肉、鱼、花生"
+     ],
+     [
+      "维他命 B6",
+      "鸡肉、香蕉、马铃薯"
+     ],
+     [
+      "生物素",
+      "蛋黄、坚果、种子"
+     ],
+     [
+      "铜",
+      "坚果、贝类、全谷类"
+     ],
+     [
+      "锌",
+      "牡蛎、红肉、南瓜子"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "皮肤好不好只靠保养品。",
+   "f": "保养品作用在表面，皮肤的原料来自饮食。内在营养加外在护理，效果才更好。"
+  },
+  "fact": {
+   "num": "7–9",
+   "unit": "小时",
+   "text": "成人每晚建议睡眠时间。睡眠时是皮肤修复的重要时段。"
+  },
+  "tips": [
+   "出门前擦防晒",
+   "睡前一小时放下手机",
+   "每天一小把坚果"
+  ],
+  "task": "今晚比平时早 30 分钟上床，放下手机，明早看看精神有没有不同。想了解外在护理的话，可以请教练帮你安排一次 Skin Spa 体验。",
+  "share": "你有认识谁很重视皮肤和头发保养的吗？",
+  "leadHL": true
+ },
+ "en": {
+  "t": "Outer nutrition",
+  "en": "Outer Nutrition",
+  "tag": "Products",
+  "lead": "Good skin needs inside and outside working together: inner nutrition + outer care for the best results.",
+  "intro": "Skin is the body's largest organ and deserves good care. Beauty comes from within: skin, hair and nails renew every day, built from the nutrients you eat.",
+  "points": [
+   {
+    "h": "B vitamins",
+    "p": "Vitamins B2, B3, B6 and biotin help maintain healthy skin and hair. B vitamins are water-soluble and need topping up daily."
+   },
+   {
+    "h": "Zinc and copper",
+    "p": "Zinc helps maintain healthy skin, hair and nails; copper supports normal hair and skin pigmentation."
+   },
+   {
+    "h": "Protein",
+    "p": "Hair and nails are mainly made of protein, and skin collagen needs protein as raw material. Without enough protein, hair becomes dry and breaks easily."
+   },
+   {
+    "h": "Water and good fats",
+    "p": "Drinking enough water keeps skin hydrated; good fats like Omega-3 help maintain the skin barrier."
+   },
+   {
+    "h": "Outer care matters just as much",
+    "p": "Daily sun protection, enough sleep, gentle cleansing, fewer late nights and no smoking all help keep skin healthy."
+   },
+   {
+    "h": "Herbalife outer nutrition products",
+    "p": "Skin is the body's largest organ. Besides eating the right nutrients from within, it needs good care from the outside too. Herbalife has a range of outer care products:",
+    "list": [
+     "SKIN range: cleanser, toner, serum, day cream, night cream, exfoliator and other daily care",
+     "Aloe range: hand cream, body wash, soothing gel, shampoo and conditioner",
+     "Vitamin face mask: 12 vitamins plus aloe and avocado to help moisturise"
+    ],
+    "after": "Skin needs inside and outside working together: eat the right nutrients from within and care for it well from outside — the two together give the best results. Want to know more? Ask your coach to arrange a Skin Spa so you can experience our outer nutrition for yourself.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "skin_products2",
+      "cap": "Herbalife outer nutrition: SKIN skincare range, Aloe body and hair care range, vitamin face mask"
+     }
+    ]
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Nutrients for skin and hair, and food sources",
+    "items": [
+     [
+      "Vitamin B2",
+      "Milk, eggs, leafy greens"
+     ],
+     [
+      "Vitamin B3",
+      "Chicken, fish, peanuts"
+     ],
+     [
+      "Vitamin B6",
+      "Chicken, bananas, potatoes"
+     ],
+     [
+      "Biotin",
+      "Egg yolk, nuts, seeds"
+     ],
+     [
+      "Copper",
+      "Nuts, shellfish, whole grains"
+     ],
+     [
+      "Zinc",
+      "Oysters, red meat, pumpkin seeds"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Good skin depends only on skincare products.",
+   "f": "Skincare works on the surface; your skin's raw materials come from your diet. Inner nutrition plus outer care works best."
+  },
+  "fact": {
+   "num": "7–9",
+   "unit": " hours",
+   "text": "Recommended nightly sleep for adults. Sleep is an important time for skin repair."
+  },
+  "tips": [
+   "Apply sunscreen before going out",
+   "Put your phone down an hour before bed",
+   "A small handful of nuts a day"
+  ],
+  "task": "Go to bed 30 minutes earlier than usual tonight, put your phone away, and see if you feel more energetic tomorrow morning. To learn about outer care, ask your coach to arrange a Skin Spa experience.",
+  "share": "Do you know anyone who cares a lot about skin and hair care?",
+  "leadHL": true
+ },
+ "ms": {
+  "t": "Nutrisi luaran",
+  "en": "Outer Nutrition",
+  "tag": "Produk",
+  "lead": "Kulit cantik memerlukan gabungan dalam dan luar: nutrisi dalaman + penjagaan luaran, barulah hasilnya terbaik.",
+  "intro": "Kulit ialah organ terbesar badan dan patut dijaga dengan baik. Kecantikan datang dari dalam; kulit, rambut dan kuku diperbaharui setiap hari, dan bahan mentahnya datang daripada nutrisi yang anda makan.",
+  "points": [
+   {
+    "h": "Vitamin B kompleks",
+    "p": "Vitamin B2, B3, B6 dan biotin membantu mengekalkan kesihatan kulit dan rambut. Vitamin B larut dalam air dan perlu diambil setiap hari."
+   },
+   {
+    "h": "Zink dan kuprum",
+    "p": "Zink membantu mengekalkan kesihatan kulit, rambut dan kuku; kuprum membantu pigmentasi normal rambut dan kulit."
+   },
+   {
+    "h": "Protein",
+    "p": "Rambut dan kuku kebanyakannya terdiri daripada protein, dan kolagen kulit juga memerlukan protein sebagai bahan mentah. Jika kurang protein, rambut menjadi kering dan mudah patah."
+   },
+   {
+    "h": "Air dan lemak baik",
+    "p": "Minum air yang cukup memastikan kulit lembap; lemak baik seperti Omega-3 membantu mengekalkan lapisan pelindung kulit."
+   },
+   {
+    "h": "Penjagaan luaran sama penting",
+    "p": "Pelindung matahari setiap hari, tidur yang cukup, pembersihan lembut, kurangkan tidur lewat dan tidak merokok, semuanya membantu kulit kekal sihat."
+   },
+   {
+    "h": "Produk nutrisi luaran Herbalife",
+    "p": "Kulit ialah organ terbesar badan. Selain makan nutrisi yang betul dari dalam, ia juga perlu dijaga dari luar. Herbalife mempunyai rangkaian produk penjagaan luaran:",
+    "list": [
+     "Siri SKIN: pencuci muka, toner, serum, krim siang, krim malam, pengelupas dan penjagaan harian lain",
+     "Siri Aloe: krim tangan, sabun mandi, gel penenang, syampu dan perapi",
+     "Topeng muka vitamin: 12 jenis vitamin, ditambah aloe dan avokado untuk membantu melembapkan"
+    ],
+    "after": "Kulit memerlukan gabungan dalam dan luar: makan nutrisi yang betul dari dalam dan jaga dengan baik dari luar; gabungan kedua-duanya memberi hasil terbaik. Berminat untuk tahu lebih lanjut? Minta jurulatih aturkan satu sesi Skin Spa untuk anda merasai sendiri nutrisi luaran kami.",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "skin_products2",
+      "cap": "Nutrisi luaran Herbalife: siri penjagaan kulit SKIN, siri penjagaan badan dan rambut Aloe, topeng muka vitamin"
+     }
+    ]
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Nutrien untuk kulit dan rambut, serta sumber makanan",
+    "items": [
+     [
+      "Vitamin B2",
+      "Susu, telur, sayur berdaun hijau"
+     ],
+     [
+      "Vitamin B3",
+      "Ayam, ikan, kacang tanah"
+     ],
+     [
+      "Vitamin B6",
+      "Ayam, pisang, kentang"
+     ],
+     [
+      "Biotin",
+      "Kuning telur, kekacang, biji-bijian"
+     ],
+     [
+      "Kuprum",
+      "Kekacang, kerang-kerangan, bijirin penuh"
+     ],
+     [
+      "Zink",
+      "Tiram, daging merah, biji labu"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Kulit cantik hanya bergantung pada produk penjagaan.",
+   "f": "Produk penjagaan bertindak di permukaan; bahan mentah kulit datang daripada pemakanan. Nutrisi dalaman dan penjagaan luaran bersama memberi hasil lebih baik."
+  },
+  "fact": {
+   "num": "7–9",
+   "unit": " jam",
+   "text": "Tempoh tidur yang disyorkan untuk orang dewasa setiap malam. Waktu tidur ialah masa penting untuk kulit membaiki diri."
+  },
+  "tips": [
+   "Sapu pelindung matahari sebelum keluar",
+   "Letak telefon sejam sebelum tidur",
+   "Segenggam kecil kekacang sehari"
+  ],
+  "task": "Malam ini tidur 30 minit lebih awal daripada biasa, letak telefon, dan lihat sama ada anda lebih bertenaga esok pagi. Jika mahu tahu tentang penjagaan luaran, minta jurulatih aturkan satu sesi Skin Spa.",
+  "share": "Adakah anda kenal sesiapa yang sangat mementingkan penjagaan kulit dan rambut?",
+  "leadHL": true
+ },
+ "quiz": {
+  "zh": {
+   "q": "头发容易干、易断，可能和饮食中缺少什么有关？",
+   "opts": [
+    "蛋白质",
+    "糖",
+    "盐"
+   ],
+   "a": 0,
+   "why": "头发和指甲主要由蛋白质构成。蛋白质吃不够，头发就容易变干、易断。B 族维他命和锌也很重要。"
+  },
+  "en": {
+   "q": "Hair that's dry and breaks easily may be linked to a lack of what in your diet?",
+   "opts": [
+    "Protein",
+    "Sugar",
+    "Salt"
+   ],
+   "a": 0,
+   "why": "Hair and nails are mainly made of protein. Without enough protein, hair becomes dry and breaks easily. B vitamins and zinc matter too."
+  },
+  "ms": {
+   "q": "Rambut yang mudah kering dan patah mungkin berkait dengan kekurangan apa dalam pemakanan?",
+   "opts": [
+    "Protein",
+    "Gula",
+    "Garam"
+   ],
+   "a": 0,
+   "why": "Rambut dan kuku kebanyakannya terdiri daripada protein. Jika kurang protein, rambut mudah kering dan patah. Vitamin B dan zink juga penting."
+  }
+ }
+}

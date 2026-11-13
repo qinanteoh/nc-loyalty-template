@@ -1,0 +1,578 @@
+{
+ "day": 2,
+ "zh": {
+  "t": "水的重要性",
+  "en": "Importance of Water",
+  "tag": "营养",
+  "lead": "身体里每一个化学反应都需要水，喝够水是健康的第一步。",
+  "intro": "我们可以几个星期不吃东西，但几天不喝水就会有生命危险。水是身体最基本、也最容易被忽略的营养素。",
+  "points": [
+   {
+    "h": "身体有六成是水",
+    "p": "人体约六到七成是水。",
+    "viz": [
+     {
+      "type": "body",
+      "title": "身体里的水分",
+      "level": 0.65,
+      "items": [
+       [
+        "大脑",
+        "75%"
+       ],
+       [
+        "肝脏",
+        "86%"
+       ],
+       [
+        "肌肉",
+        "86%"
+       ]
+      ],
+      "note": "全身约六到七成是水，资料来自课堂讲义。"
+     }
+    ],
+    "list": [
+     "大脑、肝脏、肌肉、血液都含有大量水分",
+     "体温调节、营养输送都要靠水",
+     "帮助身体通过汗水、尿液和粪便排出废物"
+    ]
+   },
+   {
+    "h": "一天要喝多少水？",
+    "p": "增加营养摄取和进行体重管理时，水分更加重要。",
+    "list": [
+     "每公斤体重每天 40–50 毫升",
+     "大约是每天 3–4 公升",
+     "以 400 毫升一杯计算，约 8–10 杯"
+    ]
+   },
+   {
+    "h": "每个人都需要足够的水",
+    "p": "除了少数特殊情况，每个人都需要摄取足够的水分。",
+    "list": [
+     "例外：因为特殊疾病（例如某些肾脏或心脏疾病），医生交代要限制喝水的人",
+     "不确定自己是否属于这种情况，请先问医生"
+    ]
+   },
+   {
+    "h": "口渴时已经缺水了",
+    "p": "等到觉得口渴，身体其实已经轻微缺水。缺水时身体会发出警报，可能出现肌肉痉挛、疲劳、便秘和皮肤干燥。"
+   },
+   {
+    "h": "渴和饿常被搞混",
+    "p": "很多时候我们以为自己饿了，其实只是渴了。想吃零食之前，先喝一杯水，等 10 分钟再决定。"
+   },
+   {
+    "h": "低卡路里的补水选择",
+    "p": "除了白开水，芦荟汁和草本茶饮也是很好的补水选择。",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "补水饮品：选对了，热量差很多",
+      "items": [
+       [
+        "aloe",
+        "芦荟汁",
+        "低卡路里",
+        "帮助补水"
+       ],
+       [
+        "tea",
+        "草本茶饮",
+        "低卡路里",
+        "帮助补水"
+       ],
+       [
+        "icedrink",
+        "含糖饮料",
+        "160–200 kcal",
+        "一杯"
+       ]
+      ]
+     }
+    ],
+    "list": [
+     "热量很低",
+     "味道清爽，更容易喝够一天的水",
+     "可以用来代替含糖饮料"
+    ]
+   },
+   {
+    "h": "喝水帮助代谢",
+    "p": "身体分解脂肪、排出代谢废物都需要水。水喝不够，代谢效率会变差，也容易便秘。"
+   },
+   {
+    "h": "喝水不会水肿，喝不够才会",
+    "p": "很多人怕喝多了水会水肿，其实刚好相反。",
+    "list": [
+     "水喝不够：身体以为缺水，会把水分留住，人反而容易浮肿",
+     "每天喝够水：身体才会放心把多余的水分排出去",
+     "水喝足够：皮肤更水润，减重的效果也会更好"
+    ],
+    "after": "想要脸部少细纹、皮肤好，就要多喝水！"
+   },
+   {
+    "h": "水喝不够，可能出现好转反应",
+    "p": "刚开始调整饮食时，如果水喝得不够，少数人（大约每 100 人中有 5 人）可能出现身体调整的反应。",
+    "viz": [
+     {
+      "type": "bubbles",
+      "title": "可能出现的好转反应",
+      "items": [
+       "头晕",
+       "头痛",
+       "恶心作呕",
+       "长疹",
+       "心跳加速",
+       "腹泻",
+       "便秘"
+      ],
+      "note": "出现这些反应时，记得多喝水，这是身体调整期的自然反应。但不要把所有症状都当成好转反应，如有不适，请马上咨询医生。"
+     }
+    ],
+    "list": [
+     "最重要的是多喝水",
+     "继续按餐单进食，千万不要中断每天的营养奶昔",
+     "每个人体质不同，反应因人而异，一段日子后会慢慢消失"
+    ],
+    "after": "不过，不要把所有的不舒服都当成好转反应；如有不适，请马上咨询医生。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "cups",
+    "title": "每天喝多少杯水？（一杯以 400 毫升计算）",
+    "rows": [
+     [
+      "一般建议",
+      10,
+      "8–10 杯，约 3.2–4 公升"
+     ],
+     [
+      "男性",
+      9,
+      "约 3.7 公升"
+     ],
+     [
+      "女性",
+      7,
+      "约 2.7 公升"
+     ]
+    ],
+    "note": "一般建议每天约 8–10 杯水。男性和女性的数字来自美国国家科学、工程和医学研究院，约两成水分可以来自食物。"
+   }
+  ],
+  "myth": {
+   "m": "喝汽水、咖啡、奶茶也算是喝水。",
+   "f": "含糖饮料会带来大量热量，咖啡因也有利尿作用。补充水分最好还是白开水，其次是无糖茶。"
+  },
+  "fact": {
+   "num": "60",
+   "unit": "%",
+   "text": "成年人体重中水分大约占的比例。"
+  },
+  "tips": [
+   "早上起床先喝一杯温水",
+   "每次上完厕所就喝几口水",
+   "在手机设定每小时提醒喝水"
+  ],
+  "task": "用下面的计算器算出你每天应该喝多少水，准备一个 400 毫升的水杯或有刻度的水瓶，记录今天一共喝了几杯。",
+  "share": "你有认识谁平时很少喝白开水的吗？",
+  "calc": "water"
+ },
+ "en": {
+  "t": "The importance of water",
+  "en": "Importance of Water",
+  "tag": "Nutrition",
+  "lead": "Every chemical reaction in your body needs water. Drinking enough water is the first step to health.",
+  "intro": "We can go weeks without food, but just a few days without water is life-threatening. Water is the most basic — and most overlooked — nutrient.",
+  "points": [
+   {
+    "h": "Your body is about 60% water",
+    "p": "The human body is about 60–70% water.",
+    "viz": [
+     {
+      "type": "body",
+      "title": "Water in the body",
+      "level": 0.65,
+      "items": [
+       [
+        "Brain",
+        "75%"
+       ],
+       [
+        "Liver",
+        "86%"
+       ],
+       [
+        "Muscle",
+        "86%"
+       ]
+      ],
+      "note": "The whole body is about 60–70% water (from class handouts)."
+     }
+    ],
+    "list": [
+     "The brain, liver, muscles and blood all contain a lot of water",
+     "Temperature control and nutrient delivery depend on water",
+     "Helps your body remove waste through sweat, urine and stool"
+    ]
+   },
+   {
+    "h": "How much water should you drink a day?",
+    "p": "Water matters even more when you increase nutrient intake and manage your weight.",
+    "list": [
+     "40–50 ml per kg of body weight per day",
+     "About 3–4 litres a day",
+     "At 400 ml per cup, about 8–10 cups"
+    ]
+   },
+   {
+    "h": "Everyone needs enough water",
+    "p": "Except in a few special cases, everyone needs enough water.",
+    "list": [
+     "Exception: people whose doctor has told them to limit fluids because of certain conditions (e.g. some kidney or heart diseases)",
+     "If you're unsure whether this applies to you, ask your doctor first"
+    ]
+   },
+   {
+    "h": "When you're thirsty, you're already short of water",
+    "p": "By the time you feel thirsty, your body is already mildly dehydrated. When short of water, your body sends warnings: muscle cramps, fatigue, constipation and dry skin."
+   },
+   {
+    "h": "Thirst and hunger are often confused",
+    "p": "Often we think we're hungry when we're just thirsty. Before reaching for a snack, drink a glass of water and wait 10 minutes before deciding."
+   },
+   {
+    "h": "Low-calorie hydration options",
+    "p": "Besides plain water, aloe drink and herbal tea are great ways to hydrate.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Hydrating drinks: choose right and calories differ a lot",
+      "items": [
+       [
+        "aloe",
+        "Aloe drink",
+        "Low calorie",
+        "Helps hydration"
+       ],
+       [
+        "tea",
+        "Herbal tea",
+        "Low calorie",
+        "Helps hydration"
+       ],
+       [
+        "icedrink",
+        "Sugary drinks",
+        "160–200 kcal",
+        "One cup"
+       ]
+      ]
+     }
+    ],
+    "list": [
+     "Very low in calories",
+     "Refreshing taste makes it easier to drink enough water each day",
+     "Can replace sugary drinks"
+    ]
+   },
+   {
+    "h": "Water helps metabolism",
+    "p": "Your body needs water to break down fat and remove metabolic waste. Without enough water, metabolism slows and constipation is more likely."
+   },
+   {
+    "h": "Water doesn't make you puffy — not drinking enough does",
+    "p": "Many fear that drinking more water makes them puffy. It's actually the opposite.",
+    "list": [
+     "Not enough water: your body thinks it's short and holds on to water, so you get puffy",
+     "Enough water every day: your body feels safe to release excess water",
+     "Enough water: more hydrated skin and better weight-loss results"
+    ],
+    "after": "For fewer fine lines and better skin, drink more water!"
+   },
+   {
+    "h": "Not enough water may bring adjustment reactions",
+    "p": "When you first change your diet and don't drink enough water, a few people (about 5 in 100) may experience adjustment reactions.",
+    "viz": [
+     {
+      "type": "bubbles",
+      "title": "Possible adjustment reactions",
+      "items": [
+       "Dizziness",
+       "Headache",
+       "Nausea",
+       "Rashes",
+       "Faster heartbeat",
+       "Diarrhoea",
+       "Constipation"
+      ],
+      "note": "If these appear, remember to drink more water — it's a natural reaction while your body adjusts. But don't treat every symptom as an adjustment reaction; if you feel unwell, see a doctor right away."
+     }
+    ],
+    "list": [
+     "Most importantly, drink more water",
+     "Keep following your meal plan and never stop your daily nutrition shake",
+     "Everyone's body is different; reactions vary and fade after a while"
+    ],
+    "after": "However, don't treat every discomfort as an adjustment reaction; if you feel unwell, see a doctor right away."
+   }
+  ],
+  "viz": [
+   {
+    "type": "cups",
+    "title": "How many cups of water a day? (1 cup = 400 ml)",
+    "rows": [
+     [
+      "General advice",
+      10,
+      "8–10 cups, about 3.2–4 litres"
+     ],
+     [
+      "Men",
+      9,
+      "About 3.7 litres"
+     ],
+     [
+      "Women",
+      7,
+      "About 2.7 litres"
+     ]
+    ],
+    "note": "The general advice is about 8–10 cups a day. The figures for men and women come from the US National Academies of Sciences, Engineering, and Medicine; about 20% of water can come from food."
+   }
+  ],
+  "myth": {
+   "m": "Soft drinks, coffee and milk tea count as drinking water.",
+   "f": "Sugary drinks bring lots of calories, and caffeine is also a diuretic. Plain water is still the best way to hydrate, followed by unsweetened tea."
+  },
+  "fact": {
+   "num": "60",
+   "unit": "%",
+   "text": "The approximate share of water in an adult's body weight."
+  },
+  "tips": [
+   "Drink a glass of warm water when you wake up",
+   "Take a few sips of water every time after using the toilet",
+   "Set an hourly reminder on your phone to drink water"
+  ],
+  "task": "Use the calculator below to work out how much water you should drink daily. Get a 400 ml cup or a marked bottle and record how many cups you drink today.",
+  "share": "Do you know anyone who rarely drinks plain water?",
+  "calc": "water"
+ },
+ "ms": {
+  "t": "Kepentingan air",
+  "en": "Importance of Water",
+  "tag": "Nutrisi",
+  "lead": "Setiap tindak balas kimia dalam badan memerlukan air. Minum air yang cukup ialah langkah pertama ke arah kesihatan.",
+  "intro": "Kita boleh hidup beberapa minggu tanpa makanan, tetapi beberapa hari tanpa air boleh mengancam nyawa. Air ialah nutrien paling asas dan paling mudah diabaikan.",
+  "points": [
+   {
+    "h": "Badan anda kira-kira 60% air",
+    "p": "Badan manusia kira-kira 60 hingga 70% air.",
+    "viz": [
+     {
+      "type": "body",
+      "title": "Air dalam badan",
+      "level": 0.65,
+      "items": [
+       [
+        "Otak",
+        "75%"
+       ],
+       [
+        "Hati",
+        "86%"
+       ],
+       [
+        "Otot",
+        "86%"
+       ]
+      ],
+      "note": "Seluruh badan kira-kira 60 hingga 70% air (sumber: nota kelas)."
+     }
+    ],
+    "list": [
+     "Otak, hati, otot dan darah semuanya mengandungi banyak air",
+     "Pengawalan suhu badan dan pengangkutan nutrien bergantung pada air",
+     "Membantu badan membuang sisa melalui peluh, air kencing dan najis"
+    ]
+   },
+   {
+    "h": "Berapa banyak air perlu diminum sehari?",
+    "p": "Air lebih penting apabila anda meningkatkan pengambilan nutrisi dan menguruskan berat badan.",
+    "list": [
+     "40–50 ml bagi setiap kg berat badan sehari",
+     "Kira-kira 3–4 liter sehari",
+     "Dengan 400 ml secawan, kira-kira 8–10 cawan"
+    ]
+   },
+   {
+    "h": "Setiap orang memerlukan air yang cukup",
+    "p": "Kecuali beberapa keadaan khas, setiap orang perlu minum air yang cukup.",
+    "list": [
+     "Pengecualian: mereka yang diarahkan doktor untuk menghadkan air kerana penyakit tertentu (contohnya sesetengah penyakit buah pinggang atau jantung)",
+     "Jika tidak pasti sama ada anda termasuk dalam keadaan ini, tanya doktor dahulu"
+    ]
+   },
+   {
+    "h": "Bila dahaga, badan sudah kekurangan air",
+    "p": "Apabila terasa dahaga, badan sebenarnya sudah sedikit kekurangan air. Badan akan memberi amaran seperti kejang otot, keletihan, sembelit dan kulit kering."
+   },
+   {
+    "h": "Dahaga dan lapar sering keliru",
+    "p": "Selalunya kita sangka lapar padahal hanya dahaga. Sebelum makan snek, minum segelas air dan tunggu 10 minit sebelum membuat keputusan."
+   },
+   {
+    "h": "Pilihan hidrasi rendah kalori",
+    "p": "Selain air kosong, jus aloe dan minuman teh herba juga pilihan hidrasi yang baik.",
+    "viz": [
+     {
+      "type": "kcal",
+      "title": "Minuman hidrasi: pilih yang betul, kalorinya jauh berbeza",
+      "items": [
+       [
+        "aloe",
+        "Jus aloe",
+        "Rendah kalori",
+        "Membantu hidrasi"
+       ],
+       [
+        "tea",
+        "Minuman teh herba",
+        "Rendah kalori",
+        "Membantu hidrasi"
+       ],
+       [
+        "icedrink",
+        "Minuman bergula",
+        "160–200 kcal",
+        "Secawan"
+       ]
+      ]
+     }
+    ],
+    "list": [
+     "Sangat rendah kalori",
+     "Rasa yang menyegarkan memudahkan anda minum air yang cukup setiap hari",
+     "Boleh menggantikan minuman bergula"
+    ]
+   },
+   {
+    "h": "Air membantu metabolisme",
+    "p": "Badan memerlukan air untuk memecahkan lemak dan membuang sisa metabolik. Jika kurang minum air, metabolisme menjadi kurang cekap dan mudah sembelit."
+   },
+   {
+    "h": "Air tidak menyebabkan bengkak, kurang minum air yang menyebabkannya",
+    "p": "Ramai takut minum banyak air akan menyebabkan badan bengkak. Sebenarnya sebaliknya.",
+    "list": [
+     "Kurang minum air: badan menyangka kekurangan air lalu menyimpannya, jadi badan mudah bengkak",
+     "Minum air cukup setiap hari: barulah badan berani membuang air yang berlebihan",
+     "Minum air cukup: kulit lebih lembap dan hasil penurunan berat badan lebih baik"
+    ],
+    "after": "Mahu kurang garis halus di wajah dan kulit cantik, minumlah lebih banyak air!"
+   },
+   {
+    "h": "Kurang minum air mungkin menyebabkan reaksi penyesuaian",
+    "p": "Pada awal mengubah pemakanan, jika kurang minum air, segelintir orang (kira-kira 5 daripada 100) mungkin mengalami reaksi penyesuaian badan.",
+    "viz": [
+     {
+      "type": "bubbles",
+      "title": "Reaksi penyesuaian yang mungkin berlaku",
+      "items": [
+       "Pening",
+       "Sakit kepala",
+       "Loya",
+       "Ruam",
+       "Degupan jantung laju",
+       "Cirit-birit",
+       "Sembelit"
+      ],
+      "note": "Jika reaksi ini berlaku, ingat untuk minum lebih banyak air; ia reaksi semula jadi semasa badan menyesuaikan diri. Tetapi jangan anggap semua simptom sebagai reaksi penyesuaian; jika tidak sihat, segera berjumpa doktor."
+     }
+    ],
+    "list": [
+     "Paling penting, minum lebih banyak air",
+     "Teruskan makan mengikut pelan makan dan jangan hentikan shake nutrisi harian",
+     "Setiap badan berbeza; reaksi berbeza mengikut individu dan akan hilang perlahan-lahan selepas beberapa ketika"
+    ],
+    "after": "Namun, jangan anggap semua ketidakselesaan sebagai reaksi penyesuaian; jika tidak sihat, segera berjumpa doktor."
+   }
+  ],
+  "viz": [
+   {
+    "type": "cups",
+    "title": "Berapa cawan air sehari? (1 cawan = 400 ml)",
+    "rows": [
+     [
+      "Saranan umum",
+      10,
+      "8–10 cawan, kira-kira 3.2–4 liter"
+     ],
+     [
+      "Lelaki",
+      9,
+      "Kira-kira 3.7 liter"
+     ],
+     [
+      "Wanita",
+      7,
+      "Kira-kira 2.7 liter"
+     ]
+    ],
+    "note": "Saranan umum ialah kira-kira 8–10 cawan sehari. Angka untuk lelaki dan wanita daripada US National Academies of Sciences, Engineering, and Medicine; kira-kira 20% air boleh datang daripada makanan."
+   }
+  ],
+  "myth": {
+   "m": "Minum minuman bergas, kopi dan teh susu juga dikira sebagai minum air.",
+   "f": "Minuman bergula membawa banyak kalori, dan kafein juga bersifat diuretik. Cara terbaik untuk hidrasi masih air kosong, diikuti teh tanpa gula."
+  },
+  "fact": {
+   "num": "60",
+   "unit": "%",
+   "text": "Anggaran peratusan air dalam berat badan orang dewasa."
+  },
+  "tips": [
+   "Minum segelas air suam sebaik bangun tidur",
+   "Minum beberapa teguk air setiap kali selepas ke tandas",
+   "Tetapkan peringatan setiap jam di telefon untuk minum air"
+  ],
+  "task": "Gunakan kalkulator di bawah untuk mengira berapa banyak air perlu diminum setiap hari. Sediakan cawan 400 ml atau botol bersukat, dan catat berapa cawan yang anda minum hari ini.",
+  "share": "Adakah anda kenal sesiapa yang jarang minum air kosong?",
+  "calc": "water"
+ },
+ "quiz": {
+  "zh": {
+   "q": "觉得口渴的时候，身体处于什么状态？",
+   "opts": [
+    "水分刚刚好，提醒你可以喝了",
+    "已经轻微缺水了",
+    "身体水分太多"
+   ],
+   "a": 1,
+   "why": "口渴是身体缺水后才发出的信号。所以要定时喝水，不要等渴了才喝。"
+  },
+  "en": {
+   "q": "When you feel thirsty, what state is your body in?",
+   "opts": [
+    "Just right — a reminder that you can drink now",
+    "Already mildly dehydrated",
+    "Too much water in the body"
+   ],
+   "a": 1,
+   "why": "Thirst is a signal your body sends only after it's short of water. So drink regularly — don't wait until you're thirsty."
+  },
+  "ms": {
+   "q": "Apabila terasa dahaga, badan berada dalam keadaan apa?",
+   "opts": [
+    "Air badan cukup, sekadar peringatan boleh minum",
+    "Sudah sedikit kekurangan air",
+    "Terlalu banyak air dalam badan"
+   ],
+   "a": 1,
+   "why": "Dahaga ialah isyarat yang dihantar badan selepas kekurangan air. Jadi minum air secara berkala, jangan tunggu dahaga."
+  }
+ }
+}

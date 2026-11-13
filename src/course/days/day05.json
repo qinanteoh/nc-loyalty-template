@@ -1,0 +1,1307 @@
+{
+ "day": 5,
+ "zh": {
+  "t": "认识升糖指数",
+  "en": "Low Glycemic Index",
+  "tag": "营养",
+  "lead": "不吃甜食就不会得糖尿病？常吃高升糖食物才是真正的血糖杀手。",
+  "intro": "不只是糖果和蛋糕会让血糖升高。白饭、白面包、面条这些天天吃的主食，同样会让血糖快速上升。",
+  "points": [
+   {
+    "h": "什么是升糖指数（GI）？",
+    "p": "GI 反映碳水化合物食物被消化成葡萄糖、让血糖上升的速度。GI 越高，血糖升得越快。",
+    "foods": [
+     {
+      "h": "高升糖指数食品",
+      "sub": "70 或以上",
+      "cls": "hi",
+      "items": [
+       [
+        "chaomifen",
+        "炒米粉",
+        98
+       ],
+       [
+        "karipap",
+        "咖喱角",
+        87
+       ],
+       [
+        "fries",
+        "炸薯条",
+        85
+       ],
+       [
+        "soda",
+        "汽水",
+        85
+       ],
+       [
+        "tehtarik",
+        "拉茶",
+        73
+       ],
+       [
+        "roticanai",
+        "Roti canai",
+        71
+       ],
+       [
+        "bread",
+        "白面包",
+        70
+       ]
+      ]
+     },
+     {
+      "h": "中等升糖指数食品",
+      "sub": "56–69",
+      "cls": "mid",
+      "items": [
+       [
+        "burger",
+        "汉堡包",
+        67
+       ],
+       [
+        "sushi",
+        "寿司",
+        67
+       ],
+       [
+        "apricot",
+        "杏果",
+        61
+       ],
+       [
+        "mango",
+        "芒果",
+        60
+       ],
+       [
+        "udon",
+        "乌冬面",
+        58
+       ],
+       [
+        "papaya",
+        "木瓜",
+        58
+       ]
+      ]
+     },
+     {
+      "h": "低升糖指数食品",
+      "sub": "55 或以下",
+      "cls": "lo",
+      "items": [
+       [
+        "apple",
+        "苹果",
+        55
+       ],
+       [
+        "brownrice",
+        "糙米饭",
+        50
+       ],
+       [
+        "sweetpotato",
+        "番薯",
+        48
+       ],
+       [
+        "tomato",
+        "番茄",
+        30
+       ],
+       [
+        "corn",
+        "白玉米",
+        26
+       ],
+       [
+        "f1",
+        "F1 奶昔",
+        16
+       ],
+       [
+        "peanut",
+        "花生",
+        14
+       ],
+       [
+        "broccoli",
+        "花椰菜",
+        10
+       ],
+       [
+        "mushroom",
+        "菇类",
+        10
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "还记得第 4 天的血糖过山车吗？",
+    "p": "让血糖坐上过山车的，就是高 GI 食物。",
+    "list": [
+     "高 GI 食物：血糖冲得快、掉得快，很快又饿",
+     "低 GI 食物：血糖慢慢上升，平稳又持久"
+    ],
+    "after": "所以选对 GI，就能让血糖下车，不再上上下下。"
+   },
+   {
+    "h": "胰脏太辛苦，最后会「罢工」",
+    "p": "血糖升高时，胰脏要分泌胰岛素把血糖降下来。可以把胰脏想象成一个员工：",
+    "list": [
+     "常吃高 GI 食物：胰脏每天都要加班",
+     "身体对胰岛素越来越不敏感：胰脏要分泌更多胰岛素才压得住血糖，这就是「胰岛素抵抗」（insulin resistance）",
+     "长期过劳：胰脏累坏了，开始「罢工」，血糖就控制不住"
+    ],
+    "after": "这时候，二型糖尿病的风险就大大增加了。"
+   },
+   {
+    "h": "长期的风险",
+    "p": "长期血糖起伏大，最常见的是胰岛素抵抗和二型糖尿病，也可能影响身体这些部位：",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "长期血糖过高，可能影响",
+      "items": [
+       [
+        "眼睛",
+        "视力问题"
+       ],
+       [
+        "心脏",
+        "心脏病发作"
+       ],
+       [
+        "大脑",
+        "中风"
+       ],
+       [
+        "肾脏",
+        "肾脏损坏"
+       ],
+       [
+        "神经",
+        "神经损伤"
+       ],
+       [
+        "伤口",
+        "不易愈合"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "低 GI 的选择",
+    "p": "低 GI 的食物转化成血糖的速度较慢，好处很多：",
+    "viz": [
+     {
+      "type": "swap",
+      "title": "饮食转换：从高 GI 换成低 GI",
+      "rows": [
+       [
+        [
+         "白饭",
+         "92",
+         "hi",
+         "k_rice"
+        ],
+        [
+         "糙米饭",
+         "50",
+         "lo",
+         "k_brownrice_k"
+        ]
+       ],
+       [
+        [
+         "炒米粉",
+         "98",
+         "hi",
+         "food_chaomifen"
+        ],
+        [
+         "乌冬面",
+         "58",
+         "mid",
+         "food_udon"
+        ]
+       ],
+       [
+        [
+         "白面包",
+         "70",
+         "hi",
+         "food_bread"
+        ],
+        [
+         "全麦面包",
+         "64",
+         "mid"
+        ]
+       ],
+       [
+        [
+         "汽水",
+         "85",
+         "hi",
+         "food_soda"
+        ],
+        [
+         "白开水",
+         "",
+         "lo"
+        ]
+       ],
+       [
+        [
+         "拉茶",
+         "73",
+         "hi",
+         "food_tehtarik"
+        ],
+        [
+         "无糖茶",
+         "",
+         "lo"
+        ]
+       ],
+       [
+        [
+         "芒果",
+         "60",
+         "mid",
+         "food_mango"
+        ],
+        [
+         "苹果",
+         "55",
+         "lo",
+         "food_apple"
+        ]
+       ]
+      ],
+      "note": "数值来自课堂讲义。"
+     }
+    ],
+    "list": [
+     "饱足感更持久",
+     "能量稳定地输送到全身",
+     "特别适合正在管理体重的人"
+    ],
+    "after": "糙米、燕麦、豆类、大部分蔬菜都是好选择。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "scale",
+    "title": "本地常见食物的升糖指数",
+    "min": 0,
+    "max": 100,
+    "zones": [
+     [
+      0,
+      55,
+      "低 GI",
+      "lo"
+     ],
+     [
+      55,
+      70,
+      "中",
+      "mid"
+     ],
+     [
+      70,
+      100,
+      "高 GI",
+      "hi"
+     ]
+    ],
+    "marks": [
+     [
+      "炒米粉",
+      98
+     ],
+     [
+      "白饭",
+      92
+     ],
+     [
+      "咖喱角",
+      87
+     ],
+     [
+      "面条",
+      85
+     ],
+     [
+      "汽水",
+      85
+     ],
+     [
+      "炸薯条",
+      85
+     ],
+     [
+      "拉茶",
+      73
+     ],
+     [
+      "Roti canai",
+      71
+     ],
+     [
+      "白面包",
+      70
+     ],
+     [
+      "汉堡包",
+      67
+     ],
+     [
+      "全麦面包",
+      64
+     ],
+     [
+      "芒果",
+      60
+     ],
+     [
+      "香蕉",
+      52
+     ],
+     [
+      "糙米饭",
+      50
+     ],
+     [
+      "番薯",
+      48
+     ],
+     [
+      "番茄",
+      30
+     ],
+     [
+      "F1 奶昔",
+      16
+     ],
+     [
+      "花生",
+      14
+     ],
+     [
+      "花椰菜",
+      10
+     ]
+    ],
+    "note": "数值来自课堂讲义，实际数值会因品种和煮法而不同。"
+   }
+  ],
+  "myth": {
+   "m": "我不吃甜的，所以不会有血糖问题。",
+   "f": "白饭、白面包、粥等精致淀粉的 GI 也很高。控制血糖要看整体饮食，不只是甜食。"
+  },
+  "fact": {
+   "num": "≤55",
+   "unit": "",
+   "text": "GI 值 55 以下为低升糖，56–69 为中，70 以上为高升糖。"
+  },
+  "tips": [
+   "白饭换成一半糙米或杂粮饭",
+   "吃饭时先吃菜和肉，最后吃饭",
+   "水果直接吃，不要打成果汁"
+  ],
+  "task": "今天其中一餐，把白饭换成一半糙米，或者多加一份蔬菜、少吃半碗饭。",
+  "share": "你有认识谁不知道食物的升糖指数，也不知道高升糖食物的危害吗？"
+ },
+ "en": {
+  "t": "Understanding the glycaemic index",
+  "en": "Low Glycemic Index",
+  "tag": "Nutrition",
+  "lead": "Avoid sweets and you won't get diabetes? Frequent high-GI food is the real blood sugar killer.",
+  "intro": "It's not just sweets and cake that raise blood sugar. Everyday staples like white rice, white bread and noodles raise it quickly too.",
+  "points": [
+   {
+    "h": "What is the glycaemic index (GI)?",
+    "p": "GI shows how fast a carbohydrate food is digested into glucose and raises blood sugar. The higher the GI, the faster blood sugar rises.",
+    "foods": [
+     {
+      "h": "High-GI foods",
+      "sub": "70 or above",
+      "cls": "hi",
+      "items": [
+       [
+        "chaomifen",
+        "Fried bee hoon",
+        98
+       ],
+       [
+        "karipap",
+        "Curry puff",
+        87
+       ],
+       [
+        "fries",
+        "French fries",
+        85
+       ],
+       [
+        "soda",
+        "Soft drinks",
+        85
+       ],
+       [
+        "tehtarik",
+        "Teh tarik",
+        73
+       ],
+       [
+        "roticanai",
+        "Roti canai",
+        71
+       ],
+       [
+        "bread",
+        "White bread",
+        70
+       ]
+      ]
+     },
+     {
+      "h": "Medium-GI foods",
+      "sub": "56–69",
+      "cls": "mid",
+      "items": [
+       [
+        "burger",
+        "Burger",
+        67
+       ],
+       [
+        "sushi",
+        "Sushi",
+        67
+       ],
+       [
+        "apricot",
+        "Apricot",
+        61
+       ],
+       [
+        "mango",
+        "Mango",
+        60
+       ],
+       [
+        "udon",
+        "Udon",
+        58
+       ],
+       [
+        "papaya",
+        "Papaya",
+        58
+       ]
+      ]
+     },
+     {
+      "h": "Low-GI foods",
+      "sub": "55 or below",
+      "cls": "lo",
+      "items": [
+       [
+        "apple",
+        "Apple",
+        55
+       ],
+       [
+        "brownrice",
+        "Brown rice",
+        50
+       ],
+       [
+        "sweetpotato",
+        "Sweet potato",
+        48
+       ],
+       [
+        "tomato",
+        "Tomato",
+        30
+       ],
+       [
+        "corn",
+        "White corn",
+        26
+       ],
+       [
+        "f1",
+        "F1 shake",
+        16
+       ],
+       [
+        "peanut",
+        "Peanuts",
+        14
+       ],
+       [
+        "broccoli",
+        "Cauliflower",
+        10
+       ],
+       [
+        "mushroom",
+        "Mushrooms",
+        10
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Remember the blood sugar roller coaster from Day 4?",
+    "p": "High-GI foods are what put your blood sugar on that roller coaster.",
+    "list": [
+     "High-GI foods: blood sugar rises fast, falls fast, and you're soon hungry again",
+     "Low-GI foods: blood sugar rises slowly, steady and lasting"
+    ],
+    "after": "So choose the right GI to get off the roller coaster and stop the ups and downs."
+   },
+   {
+    "h": "An overworked pancreas will eventually \"go on strike\"",
+    "p": "When blood sugar rises, the pancreas releases insulin to bring it down. Think of the pancreas as an employee:",
+    "list": [
+     "Frequent high-GI food: the pancreas works overtime every day",
+     "The body becomes less and less sensitive to insulin: the pancreas must release more to control blood sugar — this is \"insulin resistance\"",
+     "Long-term overwork: the exhausted pancreas \"goes on strike\" and blood sugar gets out of control"
+    ],
+    "after": "At this point, the risk of type 2 diabetes rises sharply."
+   },
+   {
+    "h": "Long-term risks",
+    "p": "Large long-term blood sugar swings most commonly lead to insulin resistance and type 2 diabetes, and may also affect these parts of the body:",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "Long-term high blood sugar may affect",
+      "items": [
+       [
+        "Eyes",
+        "Vision problems"
+       ],
+       [
+        "Heart",
+        "Heart attack"
+       ],
+       [
+        "Brain",
+        "Stroke"
+       ],
+       [
+        "Kidneys",
+        "Kidney damage"
+       ],
+       [
+        "Nerves",
+        "Nerve damage"
+       ],
+       [
+        "Wounds",
+        "Slow to heal"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Low-GI choices",
+    "p": "Low-GI foods turn into blood sugar more slowly, with many benefits:",
+    "viz": [
+     {
+      "type": "swap",
+      "title": "Diet swap: from high GI to low GI",
+      "rows": [
+       [
+        [
+         "White rice",
+         "92",
+         "hi",
+         "k_rice"
+        ],
+        [
+         "Brown rice",
+         "50",
+         "lo",
+         "k_brownrice_k"
+        ]
+       ],
+       [
+        [
+         "Fried bee hoon",
+         "98",
+         "hi",
+         "food_chaomifen"
+        ],
+        [
+         "Udon",
+         "58",
+         "mid",
+         "food_udon"
+        ]
+       ],
+       [
+        [
+         "White bread",
+         "70",
+         "hi",
+         "food_bread"
+        ],
+        [
+         "Wholemeal bread",
+         "64",
+         "mid"
+        ]
+       ],
+       [
+        [
+         "Soft drinks",
+         "85",
+         "hi",
+         "food_soda"
+        ],
+        [
+         "Plain water",
+         "",
+         "lo"
+        ]
+       ],
+       [
+        [
+         "Teh tarik",
+         "73",
+         "hi",
+         "food_tehtarik"
+        ],
+        [
+         "Unsweetened tea",
+         "",
+         "lo"
+        ]
+       ],
+       [
+        [
+         "Mango",
+         "60",
+         "mid",
+         "food_mango"
+        ],
+        [
+         "Apple",
+         "55",
+         "lo",
+         "food_apple"
+        ]
+       ]
+      ],
+      "note": "Values from class handouts."
+     }
+    ],
+    "list": [
+     "Fullness lasts longer",
+     "Energy delivered steadily to the whole body",
+     "Especially good for people managing their weight"
+    ],
+    "after": "Brown rice, oats, beans and most vegetables are good choices."
+   }
+  ],
+  "viz": [
+   {
+    "type": "scale",
+    "title": "GI of common local foods",
+    "min": 0,
+    "max": 100,
+    "zones": [
+     [
+      0,
+      55,
+      "Low GI",
+      "lo"
+     ],
+     [
+      55,
+      70,
+      "Medium",
+      "mid"
+     ],
+     [
+      70,
+      100,
+      "High GI",
+      "hi"
+     ]
+    ],
+    "marks": [
+     [
+      "Fried bee hoon",
+      98
+     ],
+     [
+      "White rice",
+      92
+     ],
+     [
+      "Curry puff",
+      87
+     ],
+     [
+      "Noodles",
+      85
+     ],
+     [
+      "Soft drinks",
+      85
+     ],
+     [
+      "French fries",
+      85
+     ],
+     [
+      "Teh tarik",
+      73
+     ],
+     [
+      "Roti canai",
+      71
+     ],
+     [
+      "White bread",
+      70
+     ],
+     [
+      "Burger",
+      67
+     ],
+     [
+      "Wholemeal bread",
+      64
+     ],
+     [
+      "Mango",
+      60
+     ],
+     [
+      "Banana",
+      52
+     ],
+     [
+      "Brown rice",
+      50
+     ],
+     [
+      "Sweet potato",
+      48
+     ],
+     [
+      "Tomato",
+      30
+     ],
+     [
+      "F1 shake",
+      16
+     ],
+     [
+      "Peanuts",
+      14
+     ],
+     [
+      "Cauliflower",
+      10
+     ]
+    ],
+    "note": "Values from class handouts; actual values vary with variety and cooking method."
+   }
+  ],
+  "myth": {
+   "m": "I don't eat sweet things, so I won't have blood sugar problems.",
+   "f": "Refined starches like white rice, white bread and porridge also have a high GI. Controlling blood sugar depends on your overall diet, not just sweets."
+  },
+  "fact": {
+   "num": "≤55",
+   "unit": "",
+   "text": "A GI of 55 or below is low, 56–69 is medium, 70 or above is high."
+  },
+  "tips": [
+   "Replace white rice with half brown rice or mixed-grain rice",
+   "At meals, eat vegetables and meat first, rice last",
+   "Eat fruit whole instead of juicing it"
+  ],
+  "task": "At one meal today, replace white rice with half brown rice, or add a portion of vegetables and eat half a bowl less rice.",
+  "share": "Do you know anyone who doesn't know about the glycaemic index or the harm of high-GI foods?"
+ },
+ "ms": {
+  "t": "Mengenali indeks glisemik",
+  "en": "Low Glycemic Index",
+  "tag": "Nutrisi",
+  "lead": "Tidak makan manis maka tidak akan dapat diabetes? Kerap makan makanan GI tinggi ialah pembunuh gula darah yang sebenar.",
+  "intro": "Bukan hanya gula-gula dan kek yang menaikkan gula darah. Makanan ruji harian seperti nasi putih, roti putih dan mi juga menaikkan gula darah dengan cepat.",
+  "points": [
+   {
+    "h": "Apa itu indeks glisemik (GI)?",
+    "p": "GI menunjukkan kelajuan makanan karbohidrat dicerna menjadi glukosa dan menaikkan gula darah. Semakin tinggi GI, semakin cepat gula darah naik.",
+    "foods": [
+     {
+      "h": "Makanan GI tinggi",
+      "sub": "70 atau lebih",
+      "cls": "hi",
+      "items": [
+       [
+        "chaomifen",
+        "Bihun goreng",
+        98
+       ],
+       [
+        "karipap",
+        "Karipap",
+        87
+       ],
+       [
+        "fries",
+        "Kentang goreng",
+        85
+       ],
+       [
+        "soda",
+        "Minuman bergas",
+        85
+       ],
+       [
+        "tehtarik",
+        "Teh tarik",
+        73
+       ],
+       [
+        "roticanai",
+        "Roti canai",
+        71
+       ],
+       [
+        "bread",
+        "Roti putih",
+        70
+       ]
+      ]
+     },
+     {
+      "h": "Makanan GI sederhana",
+      "sub": "56–69",
+      "cls": "mid",
+      "items": [
+       [
+        "burger",
+        "Burger",
+        67
+       ],
+       [
+        "sushi",
+        "Sushi",
+        67
+       ],
+       [
+        "apricot",
+        "Aprikot",
+        61
+       ],
+       [
+        "mango",
+        "Mangga",
+        60
+       ],
+       [
+        "udon",
+        "Udon",
+        58
+       ],
+       [
+        "papaya",
+        "Betik",
+        58
+       ]
+      ]
+     },
+     {
+      "h": "Makanan GI rendah",
+      "sub": "55 atau kurang",
+      "cls": "lo",
+      "items": [
+       [
+        "apple",
+        "Epal",
+        55
+       ],
+       [
+        "brownrice",
+        "Nasi beras perang",
+        50
+       ],
+       [
+        "sweetpotato",
+        "Ubi keledek",
+        48
+       ],
+       [
+        "tomato",
+        "Tomato",
+        30
+       ],
+       [
+        "corn",
+        "Jagung putih",
+        26
+       ],
+       [
+        "f1",
+        "Shake F1",
+        16
+       ],
+       [
+        "peanut",
+        "Kacang tanah",
+        14
+       ],
+       [
+        "broccoli",
+        "Kubis bunga",
+        10
+       ],
+       [
+        "mushroom",
+        "Cendawan",
+        10
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Ingat roller coaster gula darah pada Hari 4?",
+    "p": "Makanan GI tinggi itulah yang membawa gula darah naik roller coaster.",
+    "list": [
+     "Makanan GI tinggi: gula darah cepat naik, cepat turun, cepat lapar semula",
+     "Makanan GI rendah: gula darah naik perlahan, stabil dan tahan lama"
+    ],
+    "after": "Jadi pilih GI yang betul untuk turun dari roller coaster, tiada lagi turun naik."
+   },
+   {
+    "h": "Pankreas yang terlalu penat akhirnya akan \"mogok\"",
+    "p": "Apabila gula darah naik, pankreas merembeskan insulin untuk menurunkannya. Bayangkan pankreas sebagai seorang pekerja:",
+    "list": [
+     "Kerap makan makanan GI tinggi: pankreas terpaksa kerja lebih masa setiap hari",
+     "Badan semakin kurang sensitif terhadap insulin: pankreas perlu merembeskan lebih banyak insulin untuk mengawal gula darah, inilah \"rintangan insulin\" (insulin resistance)",
+     "Terlalu penat dalam jangka panjang: pankreas keletihan dan mula \"mogok\", gula darah tidak terkawal"
+    ],
+    "after": "Pada tahap ini, risiko diabetes jenis 2 meningkat dengan ketara."
+   },
+   {
+    "h": "Risiko jangka panjang",
+    "p": "Turun naik gula darah yang besar dalam jangka panjang paling kerap membawa kepada rintangan insulin dan diabetes jenis 2, dan mungkin juga menjejaskan bahagian badan ini:",
+    "viz": [
+     {
+      "type": "chips",
+      "title": "Gula darah tinggi dalam jangka panjang mungkin menjejaskan",
+      "items": [
+       [
+        "Mata",
+        "Masalah penglihatan"
+       ],
+       [
+        "Jantung",
+        "Serangan jantung"
+       ],
+       [
+        "Otak",
+        "Strok"
+       ],
+       [
+        "Buah pinggang",
+        "Kerosakan buah pinggang"
+       ],
+       [
+        "Saraf",
+        "Kerosakan saraf"
+       ],
+       [
+        "Luka",
+        "Lambat sembuh"
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "h": "Pilihan GI rendah",
+    "p": "Makanan GI rendah lebih perlahan ditukar menjadi gula darah, dengan banyak kebaikan:",
+    "viz": [
+     {
+      "type": "swap",
+      "title": "Tukar pemakanan: daripada GI tinggi kepada GI rendah",
+      "rows": [
+       [
+        [
+         "Nasi putih",
+         "92",
+         "hi",
+         "k_rice"
+        ],
+        [
+         "Nasi beras perang",
+         "50",
+         "lo",
+         "k_brownrice_k"
+        ]
+       ],
+       [
+        [
+         "Bihun goreng",
+         "98",
+         "hi",
+         "food_chaomifen"
+        ],
+        [
+         "Udon",
+         "58",
+         "mid",
+         "food_udon"
+        ]
+       ],
+       [
+        [
+         "Roti putih",
+         "70",
+         "hi",
+         "food_bread"
+        ],
+        [
+         "Roti gandum penuh",
+         "64",
+         "mid"
+        ]
+       ],
+       [
+        [
+         "Minuman bergas",
+         "85",
+         "hi",
+         "food_soda"
+        ],
+        [
+         "Air kosong",
+         "",
+         "lo"
+        ]
+       ],
+       [
+        [
+         "Teh tarik",
+         "73",
+         "hi",
+         "food_tehtarik"
+        ],
+        [
+         "Teh tanpa gula",
+         "",
+         "lo"
+        ]
+       ],
+       [
+        [
+         "Mangga",
+         "60",
+         "mid",
+         "food_mango"
+        ],
+        [
+         "Epal",
+         "55",
+         "lo",
+         "food_apple"
+        ]
+       ]
+      ],
+      "note": "Nilai daripada nota kelas."
+     }
+    ],
+    "list": [
+     "Rasa kenyang lebih lama",
+     "Tenaga disalurkan secara stabil ke seluruh badan",
+     "Sangat sesuai untuk mereka yang sedang menguruskan berat badan"
+    ],
+    "after": "Beras perang, oat, kekacang dan kebanyakan sayur ialah pilihan yang baik."
+   }
+  ],
+  "viz": [
+   {
+    "type": "scale",
+    "title": "GI makanan tempatan biasa",
+    "min": 0,
+    "max": 100,
+    "zones": [
+     [
+      0,
+      55,
+      "GI rendah",
+      "lo"
+     ],
+     [
+      55,
+      70,
+      "Sederhana",
+      "mid"
+     ],
+     [
+      70,
+      100,
+      "GI tinggi",
+      "hi"
+     ]
+    ],
+    "marks": [
+     [
+      "Bihun goreng",
+      98
+     ],
+     [
+      "Nasi putih",
+      92
+     ],
+     [
+      "Karipap",
+      87
+     ],
+     [
+      "Mi",
+      85
+     ],
+     [
+      "Minuman bergas",
+      85
+     ],
+     [
+      "Kentang goreng",
+      85
+     ],
+     [
+      "Teh tarik",
+      73
+     ],
+     [
+      "Roti canai",
+      71
+     ],
+     [
+      "Roti putih",
+      70
+     ],
+     [
+      "Burger",
+      67
+     ],
+     [
+      "Roti gandum penuh",
+      64
+     ],
+     [
+      "Mangga",
+      60
+     ],
+     [
+      "Pisang",
+      52
+     ],
+     [
+      "Nasi beras perang",
+      50
+     ],
+     [
+      "Ubi keledek",
+      48
+     ],
+     [
+      "Tomato",
+      30
+     ],
+     [
+      "Shake F1",
+      16
+     ],
+     [
+      "Kacang tanah",
+      14
+     ],
+     [
+      "Kubis bunga",
+      10
+     ]
+    ],
+    "note": "Nilai daripada nota kelas; nilai sebenar berbeza mengikut jenis dan cara masakan."
+   }
+  ],
+  "myth": {
+   "m": "Saya tidak makan manis, jadi tidak akan ada masalah gula darah.",
+   "f": "Kanji halus seperti nasi putih, roti putih dan bubur juga mempunyai GI tinggi. Mengawal gula darah bergantung pada keseluruhan pemakanan, bukan hanya makanan manis."
+  },
+  "fact": {
+   "num": "≤55",
+   "unit": "",
+   "text": "GI 55 ke bawah ialah rendah, 56–69 sederhana, 70 ke atas tinggi."
+  },
+  "tips": [
+   "Gantikan nasi putih dengan separuh beras perang atau nasi bijirin campur",
+   "Semasa makan, makan sayur dan daging dahulu, nasi paling akhir",
+   "Makan buah terus, jangan dijadikan jus"
+  ],
+  "task": "Untuk salah satu hidangan hari ini, gantikan nasi putih dengan separuh beras perang, atau tambah satu hidangan sayur dan kurangkan separuh mangkuk nasi.",
+  "share": "Adakah anda kenal sesiapa yang tidak tahu tentang indeks glisemik atau bahaya makanan GI tinggi?"
+ },
+ "quiz": {
+  "zh": {
+   "q": "白米饭和一块蛋糕，哪一个让血糖升得比较快？",
+   "opts": [
+    "当然是蛋糕",
+    "白米饭的升糖指数其实也很高",
+    "两个都不会让血糖升高"
+   ],
+   "a": 1,
+   "why": "白饭属于高 GI 食物（课堂讲义列为 92），炒米粉更高达 98。不吃甜食，不代表血糖就不会飙升。"
+  },
+  "en": {
+   "q": "White rice or a slice of cake — which raises blood sugar faster?",
+   "opts": [
+    "The cake, of course",
+    "White rice actually has a high GI too",
+    "Neither raises blood sugar"
+   ],
+   "a": 1,
+   "why": "White rice is a high-GI food (92 in the class handout), and fried bee hoon is even higher at 98. Avoiding sweets doesn't mean your blood sugar won't spike."
+  },
+  "ms": {
+   "q": "Nasi putih atau sepotong kek, yang mana menaikkan gula darah lebih cepat?",
+   "opts": [
+    "Sudah tentu kek",
+    "Nasi putih sebenarnya juga mempunyai GI yang tinggi",
+    "Kedua-duanya tidak menaikkan gula darah"
+   ],
+   "a": 1,
+   "why": "Nasi putih ialah makanan GI tinggi (nota kelas menyenaraikan 92), bihun goreng lebih tinggi lagi iaitu 98. Tidak makan manis tidak bermakna gula darah tidak akan melonjak."
+  }
+ }
+}

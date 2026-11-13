@@ -1,0 +1,449 @@
+{
+ "day": 19,
+ "zh": {
+  "t": "为什么有信心",
+  "en": "What Makes Us Confident",
+  "tag": "信心",
+  "lead": "对产品、对公司、对自己的改变，都有信心。",
+  "intro": "走到第 19 天，你对营养已经有了扎实的认识。今天来谈谈信心：对产品、对公司，以及最重要的，对你自己。",
+  "points": [
+   {
+    "h": "产品信心",
+    "p": "根据国际市场调查机构 Euromonitor 2024 年的数据，康宝莱获得三个全球第一：",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "no1_three",
+      "cap": "三个全球第一（资料来源：Euromonitor，2025 年版，2024 年零售额数据）"
+     }
+    ],
+    "list": [
+     "全球第一的体重管理与健康品牌",
+     "全球第一的蛋白奶昔",
+     "全球第一的活跃生活营养品牌"
+    ],
+    "after": "再加上看成分、看品质检测，以及你自己和身边人真实的改变，这就是我们对产品的信心。"
+   },
+   {
+    "h": "公司信心",
+    "p": "康宝莱于 1980 年在美国洛杉矶创立，至今在全球 90 多个国家和地区营运，并在纽约证券交易所上市。"
+   },
+   {
+    "h": "国际第三方认证",
+    "p": "康宝莱的产品获得多个国际第三方机构认证，包括：",
+    "list": [
+     "低升糖指数（Low GI）认证",
+     "NSF 运动认证：不含运动员禁用物质",
+     "清真（Halal）认证",
+     "非转基因（Non-GMO）验证",
+     "素食、无麸质、美国有机等认证"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_cert",
+      "cap": "康宝莱产品获得的国际认证"
+     }
+    ]
+   },
+   {
+    "h": "亚太区 187 个卓越奖项",
+    "p": "2015 到 2024 年，康宝莱在亚太区获得 187 个卓越奖项，包括：",
+    "list": [
+     "韩国：连续 13 年最受信赖品牌奖（保健功能食品类）",
+     "台湾：连续 13 年国家品质标章",
+     "越南：连续 9 年公共健康金牌产品奖",
+     "泰国：连续 7 年获玛希隆大学营养研究所「健康选择」标志",
+     "马来西亚：2019 年健康与保健品牌奖"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_187",
+      "cap": "2015–2024 年亚太区 187 个卓越奖项"
+     },
+     {
+      "f": "sci_award1",
+      "cap": "亚太区产品品质奖项（韩国）"
+     },
+     {
+      "f": "sci_award2",
+      "cap": "亚太区产品品质奖项（越南、台湾、泰国、香港、马来西亚）"
+     }
+    ]
+   },
+   {
+    "h": "运动员也在用",
+    "p": "康宝莱的营养产品也用在运动领域。",
+    "list": [
+     "赞助了 190 多名运动员、球队和体育赛事",
+     "运动员用它来帮助保持运动时的体力"
+    ]
+   },
+   {
+    "h": "专注营养四十多年",
+    "p": "四十多年来专注于营养产品和营养教育，产品配方由营养和科学团队负责研发。"
+   },
+   {
+    "h": "系统信心",
+    "p": "有教练跟进、有课程、有团队支持，不是一个人孤单地减重。"
+   },
+   {
+    "h": "对自己的信心",
+    "p": "最重要的信心来自你自己。这 19 天，你已经在改变饮食、喝水和运动的习惯了。"
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "康宝莱小档案",
+    "items": [
+     [
+      "1980 年",
+      "创立于美国洛杉矶"
+     ],
+     [
+      "90 多个",
+      "营运的国家和地区"
+     ],
+     [
+      "纽约证交所",
+      "上市公司"
+     ],
+     [
+      "40 多年",
+      "专注营养领域"
+     ],
+     [
+      "190 多",
+      "赞助的运动员、球队和赛事"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "改变习惯太难了，我做不到。",
+   "f": "你已经坚持了 19 天。每一个小改变，都证明你做得到。"
+  },
+  "fact": {
+   "num": "1980",
+   "unit": "年",
+   "text": "康宝莱创立年份。"
+  },
+  "tips": [
+   "回顾第 1 天的记录",
+   "把进步写下来贴在显眼处",
+   "和教练分享你的改变"
+  ],
+  "task": "写下这 19 天你身体或习惯上最明显的一个改变，分享给教练。",
+  "share": "你有认识谁想要改变，却对自己没有信心的吗？"
+ },
+ "en": {
+  "t": "Why we're confident",
+  "en": "What Makes Us Confident",
+  "tag": "Confidence",
+  "lead": "Confidence in the products, the company, and your own change.",
+  "intro": "At Day 19 you have a solid understanding of nutrition. Today let's talk about confidence: in the products, in the company and, most importantly, in yourself.",
+  "points": [
+   {
+    "h": "Confidence in the products",
+    "p": "According to 2024 data from international market research firm Euromonitor, Herbalife holds three global #1 positions:",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "no1_three",
+      "cap": "Three global #1s (source: Euromonitor, 2025 edition, 2024 retail sales data)"
+     }
+    ],
+    "list": [
+     "World's #1 weight management and wellness brand",
+     "World's #1 protein shake",
+     "World's #1 active lifestyle nutrition brand"
+    ],
+    "after": "Add the ingredients, the quality testing, and the real changes in you and the people around you — that's our confidence in the products."
+   },
+   {
+    "h": "Confidence in the company",
+    "p": "Herbalife was founded in Los Angeles, USA in 1980, now operates in more than 90 countries and regions, and is listed on the New York Stock Exchange."
+   },
+   {
+    "h": "International third-party certifications",
+    "p": "Herbalife products are certified by several international third-party bodies, including:",
+    "list": [
+     "Low GI certification",
+     "NSF Certified for Sport: free of substances banned for athletes",
+     "Halal certification",
+     "Non-GMO verification",
+     "Vegetarian, gluten-free, USDA Organic and other certifications"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_cert",
+      "cap": "International certifications for Herbalife products"
+     }
+    ]
+   },
+   {
+    "h": "187 excellence awards in Asia Pacific",
+    "p": "From 2015 to 2024, Herbalife won 187 excellence awards in Asia Pacific, including:",
+    "list": [
+     "Korea: Most Trusted Brand award for 13 consecutive years (health functional foods)",
+     "Taiwan: National Quality Mark for 13 consecutive years",
+     "Vietnam: Gold Product for Public Health award for 9 consecutive years",
+     "Thailand: Mahidol University Institute of Nutrition \"Healthier Choice\" logo for 7 consecutive years",
+     "Malaysia: Health & Wellness Brand Award 2019"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_187",
+      "cap": "187 excellence awards in Asia Pacific, 2015–2024"
+     },
+     {
+      "f": "sci_award1",
+      "cap": "Asia Pacific product quality awards (Korea)"
+     },
+     {
+      "f": "sci_award2",
+      "cap": "Asia Pacific product quality awards (Vietnam, Taiwan, Thailand, Hong Kong, Malaysia)"
+     }
+    ]
+   },
+   {
+    "h": "Athletes use it too",
+    "p": "Herbalife nutrition products are also used in sport.",
+    "list": [
+     "Sponsors more than 190 athletes, teams and sporting events",
+     "Athletes use it to help maintain energy during exercise"
+    ]
+   },
+   {
+    "h": "Over 40 years focused on nutrition",
+    "p": "For over 40 years, focused on nutrition products and nutrition education, with formulas developed by nutrition and science teams."
+   },
+   {
+    "h": "Confidence in the system",
+    "p": "With coach follow-up, a course and team support, you're not losing weight alone."
+   },
+   {
+    "h": "Confidence in yourself",
+    "p": "The most important confidence comes from you. Over these 19 days, you've already been changing your eating, drinking and exercise habits."
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Herbalife at a glance",
+    "items": [
+     [
+      "1980",
+      "Founded in Los Angeles, USA"
+     ],
+     [
+      "90+",
+      "Countries and regions of operation"
+     ],
+     [
+      "NYSE",
+      "Listed company"
+     ],
+     [
+      "40+ years",
+      "Focused on nutrition"
+     ],
+     [
+      "190+",
+      "Athletes, teams and events sponsored"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Changing habits is too hard — I can't do it.",
+   "f": "You've kept going for 19 days. Every small change proves you can do it."
+  },
+  "fact": {
+   "num": "1980",
+   "unit": "",
+   "text": "The year Herbalife was founded."
+  },
+  "tips": [
+   "Look back at your Day 1 records",
+   "Write down your progress and put it somewhere visible",
+   "Share your changes with your coach"
+  ],
+  "task": "Write down the most noticeable change in your body or habits over these 19 days and share it with your coach.",
+  "share": "Do you know anyone who wants to change but lacks confidence in themselves?"
+ },
+ "ms": {
+  "t": "Kenapa kami yakin",
+  "en": "What Makes Us Confident",
+  "tag": "Keyakinan",
+  "lead": "Yakin dengan produk, syarikat, dan perubahan diri sendiri.",
+  "intro": "Sampai Hari 19, anda sudah mempunyai pengetahuan nutrisi yang kukuh. Hari ini kita bercakap tentang keyakinan: terhadap produk, syarikat, dan paling penting, diri anda sendiri.",
+  "points": [
+   {
+    "h": "Keyakinan terhadap produk",
+    "p": "Berdasarkan data 2024 daripada firma kajian pasaran antarabangsa Euromonitor, Herbalife meraih tiga kedudukan No.1 dunia:",
+    "imgFull": true,
+    "img": [
+     {
+      "f": "no1_three",
+      "cap": "Tiga No.1 dunia (sumber: Euromonitor, edisi 2025, data jualan runcit 2024)"
+     }
+    ],
+    "list": [
+     "Jenama pengurusan berat badan dan kesihatan No.1 dunia",
+     "Shake protein No.1 dunia",
+     "Jenama nutrisi gaya hidup aktif No.1 dunia"
+    ],
+    "after": "Ditambah dengan bahan, ujian kualiti, serta perubahan sebenar pada diri anda dan orang di sekeliling, itulah keyakinan kami terhadap produk."
+   },
+   {
+    "h": "Keyakinan terhadap syarikat",
+    "p": "Herbalife diasaskan pada tahun 1980 di Los Angeles, Amerika Syarikat, kini beroperasi di lebih 90 negara dan wilayah, dan disenaraikan di Bursa Saham New York."
+   },
+   {
+    "h": "Pensijilan pihak ketiga antarabangsa",
+    "p": "Produk Herbalife diiktiraf oleh beberapa badan pihak ketiga antarabangsa, termasuk:",
+    "list": [
+     "Pensijilan GI Rendah (Low GI)",
+     "NSF Certified for Sport: bebas bahan terlarang untuk atlet",
+     "Pensijilan Halal",
+     "Pengesahan Bukan GMO (Non-GMO)",
+     "Pensijilan vegetarian, bebas gluten, organik AS dan lain-lain"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_cert",
+      "cap": "Pensijilan antarabangsa produk Herbalife"
+     }
+    ]
+   },
+   {
+    "h": "187 anugerah kecemerlangan di Asia Pasifik",
+    "p": "Dari 2015 hingga 2024, Herbalife memenangi 187 anugerah kecemerlangan di Asia Pasifik, termasuk:",
+    "list": [
+     "Korea: Anugerah Jenama Paling Dipercayai 13 tahun berturut-turut (kategori makanan kesihatan berfungsi)",
+     "Taiwan: Tanda Kualiti Kebangsaan 13 tahun berturut-turut",
+     "Vietnam: Anugerah Produk Emas Kesihatan Awam 9 tahun berturut-turut",
+     "Thailand: Logo \"Pilihan Lebih Sihat\" Institut Nutrisi Universiti Mahidol 7 tahun berturut-turut",
+     "Malaysia: Anugerah Jenama Kesihatan dan Kesejahteraan 2019"
+    ],
+    "imgFull": true,
+    "img": [
+     {
+      "f": "sci_187",
+      "cap": "187 anugerah kecemerlangan di Asia Pasifik, 2015–2024"
+     },
+     {
+      "f": "sci_award1",
+      "cap": "Anugerah kualiti produk Asia Pasifik (Korea)"
+     },
+     {
+      "f": "sci_award2",
+      "cap": "Anugerah kualiti produk Asia Pasifik (Vietnam, Taiwan, Thailand, Hong Kong, Malaysia)"
+     }
+    ]
+   },
+   {
+    "h": "Atlet juga menggunakannya",
+    "p": "Produk nutrisi Herbalife juga digunakan dalam bidang sukan.",
+    "list": [
+     "Menaja lebih 190 atlet, pasukan dan acara sukan",
+     "Atlet menggunakannya untuk membantu mengekalkan tenaga semasa bersukan"
+    ]
+   },
+   {
+    "h": "Lebih 40 tahun memberi tumpuan kepada nutrisi",
+    "p": "Lebih 40 tahun memberi tumpuan kepada produk dan pendidikan nutrisi, dengan formula dibangunkan oleh pasukan nutrisi dan sains."
+   },
+   {
+    "h": "Keyakinan terhadap sistem",
+    "p": "Ada susulan jurulatih, ada kursus, ada sokongan pasukan; anda tidak berseorangan menurunkan berat badan."
+   },
+   {
+    "h": "Keyakinan terhadap diri sendiri",
+    "p": "Keyakinan paling penting datang daripada diri anda. Dalam 19 hari ini, anda sudah mula mengubah tabiat makan, minum air dan bersenam."
+   }
+  ],
+  "viz": [
+   {
+    "type": "chips",
+    "title": "Fakta ringkas Herbalife",
+    "items": [
+     [
+      "1980",
+      "Diasaskan di Los Angeles, AS"
+     ],
+     [
+      "90+",
+      "Negara dan wilayah beroperasi"
+     ],
+     [
+      "NYSE",
+      "Syarikat tersenarai"
+     ],
+     [
+      "40+ tahun",
+      "Fokus dalam bidang nutrisi"
+     ],
+     [
+      "190+",
+      "Atlet, pasukan dan acara yang ditaja"
+     ]
+    ]
+   }
+  ],
+  "myth": {
+   "m": "Mengubah tabiat terlalu sukar, saya tidak mampu.",
+   "f": "Anda sudah bertahan selama 19 hari. Setiap perubahan kecil membuktikan anda mampu."
+  },
+  "fact": {
+   "num": "1980",
+   "unit": "",
+   "text": "Tahun Herbalife diasaskan."
+  },
+  "tips": [
+   "Imbas kembali catatan Hari 1",
+   "Tulis kemajuan anda dan tampal di tempat yang mudah dilihat",
+   "Kongsi perubahan anda dengan jurulatih"
+  ],
+  "task": "Tulis satu perubahan paling ketara pada badan atau tabiat anda dalam 19 hari ini, dan kongsikan dengan jurulatih.",
+  "share": "Adakah anda kenal sesiapa yang mahu berubah tetapi kurang yakin dengan diri sendiri?"
+ },
+ "quiz": {
+  "zh": {
+   "q": "这 19 天以来，你觉得自己最大的改变是什么？",
+   "opts": [
+    "饮食习惯",
+    "喝水习惯",
+    "运动习惯"
+   ],
+   "a": -1,
+   "why": "不管你选了哪一个，都是值得骄傲的进步。最重要的信心，来自你自己的改变。"
+  },
+  "en": {
+   "q": "Over these 19 days, what do you feel is your biggest change?",
+   "opts": [
+    "Eating habits",
+    "Water-drinking habits",
+    "Exercise habits"
+   ],
+   "a": -1,
+   "why": "Whichever you chose, it's progress to be proud of. The most important confidence comes from your own change."
+  },
+  "ms": {
+   "q": "Dalam 19 hari ini, apakah perubahan terbesar yang anda rasa?",
+   "opts": [
+    "Tabiat makan",
+    "Tabiat minum air",
+    "Tabiat bersenam"
+   ],
+   "a": -1,
+   "why": "Apa pun pilihan anda, ia kemajuan yang patut dibanggakan. Keyakinan paling penting datang daripada perubahan diri anda sendiri."
+  }
+ }
+}
