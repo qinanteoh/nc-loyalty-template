@@ -22,6 +22,10 @@ const DAILY_PTS = { Silver: 10, Gold: 20, Platinum: 30 };
 // Tier: a 30-day card counts as three 10+1 cards. Every card opened (paid or not) plus cards bought before the app.
 // More than 9 → Gold, more than 18 → Platinum, otherwise Silver. A manual tier (tierOverride) wins.
 const TIER_RULE = { gold: 9, platinum: 18 };
+// 21-day course: days 1..COURSE_FREE are open to every member; later days need the coach to open them.
+// Members who already read past this day before the rule keep their access unless the coach closes it.
+const COURSE_FREE = 11;
+const courseOpen = h => !!h && (h.open === true || (h.open !== false && Object.keys(h.done || {}).some(k => +k > COURSE_FREE)));
 const kindOf = c => c.kind || (/daily/i.test(c.name || '') ? 'daily' : /30/.test(c.name || '') ? '30' : /10\s*\+\s*1/.test(c.name || '') ? '10+1' : 'other');
 async function tierOf(s, m) {
   if (!m) return 'Silver';

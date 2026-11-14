@@ -2,6 +2,14 @@
 /* ---------- languages: 中文 / English / Bahasa Melayu ---------- */
 var LANG = (function(){ try{ var l = localStorage.getItem("h21_lang"); if(l==="zh"||l==="en"||l==="ms") return l; }catch(e){} return "zh"; })();
 var I18N = {
+"要教练开通":["Ask your coach to open","Minta jurulatih buka"],
+"你已经读完前 {0} 天，做得很好！第 {1} 天起，要教练开通后才能继续读。":["Great job finishing the first {0} days! From day {1}, your coach needs to open the rest for you.","Syabas, anda sudah habis {0} hari pertama! Mulai hari {1}, jurulatih perlu membukanya untuk anda."],
+"已申请，教练开通后会通知你。":["Request sent. You'll get a message when your coach opens it.","Permohonan dihantar. Anda akan dimaklumkan apabila jurulatih membukanya."],
+"申请继续读第 {0}–21 天":["Ask to continue days {0}–21","Mohon teruskan hari {0}–21"],
+"请在会员 App 里申请。":["Please ask in the member app.","Sila mohon dalam app ahli."],
+"按下后，第 {0} 天起要教练开通。":["After this, your coach needs to open day {0} onwards.","Selepas ini, jurulatih perlu membuka hari {0} dan seterusnya."],
+"已申请继续读，等教练开通 {0}":["Request sent — waiting for your coach to open {0}","Permohonan dihantar — menunggu jurulatih membuka {0}"],
+"读完前 {0} 天了！要教练开通才能继续":["You've finished the first {0} days! Ask your coach to open the rest","Anda sudah habis {0} hari pertama! Minta jurulatih buka yang seterusnya"],
 "21 DAYS · 每天一则健康资讯":["21 DAYS · One health lesson a day","21 HARI · Satu info kesihatan sehari"],
 "21天健康营养课":["21-Day Health & Nutrition Course","Kursus Kesihatan & Nutrisi 21 Hari"],
 "每天解锁一则。读完今天的内容，明天就能看下一则。":["One lesson unlocks each day. Finish today's lesson and the next one opens tomorrow.","Satu pelajaran dibuka setiap hari. Habiskan pelajaran hari ini, esok pelajaran seterusnya dibuka."],
@@ -212,7 +220,11 @@ function saveLocal(){ if(ADMIN) return; try{ localStorage.setItem(KEY, JSON.stri
 function merge(a,b){ const out = {...a}; for(const k in b){ if(typeof b[k]!=="string") continue; if(!out[k] || b[k] < out[k]) out[k] = b[k]; } return out; }
 async function saveRemote(){ if(!dbRef) return; try{ await dbRef.set({done, updated: Date.now()}); }catch(e){} }
 
-function isUnlocked(n){ if(n===1) return true; const prev = done[n-1]; return !!prev && today() > prev; }
+/* The member app writes h21_gate = {max, pending}: days after max need the coach to open them. No gate = all 21 days. */
+function gate(){ if(ADMIN) return {max:21}; try{ const g = JSON.parse(localStorage.getItem("h21_gate")||"null"); if(g && g.max>=1) return g; }catch(e){} return {max:21}; }
+function gated(n){ return n > gate().max; }
+window.h21Refresh = function(){ selected = null; renderAll(); };
+function isUnlocked(n){ if(gated(n)) return false; if(n===1) return true; const prev = done[n-1]; return !!prev && today() > prev; }
 function state(n){ if(done[n]) return "done"; if(isUnlocked(n)) return "today"; return "locked"; }
 function nextDay(){ for(let n=1;n<=21;n++) if(!done[n]) return n; return null; }
 function msToMidnight(){ const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()+1) - d; }
@@ -430,7 +442,7 @@ function lessonHTML(n){
     h += '<section class="tmpl"><div class="eyebrow">'+T('拍照模板')+'</div><h3>'+esc(tp.title)+'</h3><button type="button" data-zoom="fig/'+tp.img+'.jpg" aria-label="'+T("放大查看：")+esc(tp.title)+'"><img loading="lazy" src="fig/'+tp.img+'.jpg" alt="'+esc(tp.title)+'" width="960" height="960"></button><ol>'+tp.tips.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol><p>'+esc(tp.note)+'</p></section>'; }
   h += videoHTML(n);
   if(s==="today"){
-    h += ADMIN ? '<div class="actions"><p class="note">'+T('管理员预览不记录进度')+'</p></div>' : '<div class="actions"><button class="btn" id="finishBtn" type="button">'+T('我已读完第 {0} 天', n)+'</button><p class="note">'+(n<21?T('按下后，第 {0} 天会在明天凌晨 00:00 解锁。', n+1):T('按下后就完成全部 21 天课程。'))+'</p></div>';
+    h += ADMIN ? '<div class="actions"><p class="note">'+T('管理员预览不记录进度')+'</p></div>' : '<div class="actions"><button class="btn" id="finishBtn" type="button">'+T('我已读完第 {0} 天', n)+'</button><p class="note">'+(n<21&&gated(n+1)?T('按下后，第 {0} 天起要教练开通。', n+1):n<21?T('按下后，第 {0} 天会在明天凌晨 00:00 解锁。', n+1):T('按下后就完成全部 21 天课程。'))+'</p></div>';
   } else if(s==="done"){
     h += '<p class="note">'+T('你在 {0} 读完了这一天。', done[n])+'</p>';
   }
@@ -444,6 +456,7 @@ function renderHeader(){
   for(let n=1;n<=21;n++){ const i = document.createElement("i"); if(done[n]) i.className="on"; bar.appendChild(i); }
   const st = document.getElementById("status"), nd = nextDay();
   if(nd===null) st.innerHTML = T("恭喜你完成全部 21 天课程！所有内容可以随时回看。");
+  else if(gated(nd)) st.innerHTML = T(gate().pending ? "已申请继续读，等教练开通 {0}" : "读完前 {0} 天了！要教练开通才能继续", gate().pending ? DN(nd) : gate().max);
   else if(isUnlocked(nd)) st.innerHTML = T("今天可以阅读：")+"<b>"+DN(nd)+"</b> · "+esc(DAYS[nd-1].t);
   else st.innerHTML = T("今天的已经读完了。{0} 将在 {1} 后解锁", DN(nd), "<b class=\"cd\">"+fmt(msToMidnight())+"</b>");
 }
@@ -536,6 +549,16 @@ function renderLesson(){
   const el = document.getElementById("lesson"), nd = nextDay();
   if(selected===null) selected = nd===null ? 21 : nd;
   const n = selected, s = state(n);
+  if(s==="locked" && !preview && gated(n)){
+    const g = gate(), inApp = !!(window.parent && window.parent !== window && window.parent.h21Ask);
+    el.className = "lesson locked-card";
+    el.innerHTML = '<div class="eyebrow">'+T('要教练开通')+'</div><h2>'+DN(n)+'</h2><p class="lead">'+T('你已经读完前 {0} 天，做得很好！第 {1} 天起，要教练开通后才能继续读。', g.max, g.max+1)+'</p>'+
+      (g.pending ? '<p class="note">'+T('已申请，教练开通后会通知你。')+'</p>'
+        : inApp ? '<button class="btn" id="askOpen" type="button">'+T('申请继续读第 {0}–21 天', g.max+1)+'</button>' : '<p class="note">'+T('请在会员 App 里申请。')+'</p>');
+    const ab = document.getElementById("askOpen");
+    if(ab) ab.onclick = ()=>{ ab.disabled = true; window.parent.h21Ask(); };
+    return;
+  }
   if(s==="locked" && !preview){
     el.className = "lesson locked-card";
     el.innerHTML = done[n-1]

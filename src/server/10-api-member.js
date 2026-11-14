@@ -5,7 +5,7 @@ async function handleApi(req, env, path, ctx) {
 
   if (path === 'data') {
     const settings = (await s.get('settings', 'home')) || {};
-    const pub = { rewards: await s.all('rewards'), tasks: await s.all('tasks') };
+    const pub = { rewards: await s.all('rewards'), tasks: await s.all('tasks'), courseFree: COURSE_FREE };
     if (who.admin) {
       const data = { ...pub, settings };
       for (const c of ['members', 'cards', 'checkins', 'requests', 'ledger']) data[c] = await s.all(c);
@@ -45,9 +45,10 @@ async function handleApi(req, env, path, ctx) {
     h.scans = Array.isArray(h.scans) ? h.scans : []; h.done = h.done || {}; h.profile = h.profile || {};
     const op = body.op;
     if (op === 'done') {
+      const max = courseOpen(h) ? 21 : COURSE_FREE;
       for (const [n, d] of Object.entries(body.done || {})) {
         const k = parseInt(n, 10);
-        if (k >= 1 && k <= 21 && /^\d{4}-\d{2}-\d{2}$/.test(String(d)) && (!h.done[k] || d < h.done[k])) h.done[k] = d;
+        if (k >= 1 && k <= max && /^\d{4}-\d{2}-\d{2}$/.test(String(d)) && (!h.done[k] || d < h.done[k])) h.done[k] = d;
       }
     } else if (op === 'profile') {
       h.profile = cleanProfile(body.profile || {});
@@ -180,6 +181,15 @@ async function handleApi(req, env, path, ctx) {
       const name = String(body.cardName || 'NCP').slice(0, 60);
       await s.put('requests', uid(), { ...base, type: 'renew', title: name, cardName: name, kind: ['10+1', '30', 'daily'].includes(body.kind) ? body.kind : null, total, points: 0 });
       await later(s, notifyAdmin(s, 'renew', { name: m.name, title: name }));
+      return json({ ok: true });
+    }
+    if (body.type === 'course') {
+      if (courseOpen(await s.get('health', m.id))) return fail('课程已经开通了');
+      const rq = await s.where('requests', 'phone', m.id);
+      if (rq.some(r => r.type === 'course' && r.status === 'pending')) return fail('你已经申请了，请等教练开通');
+      const title = `21 天课程 · 第 ${COURSE_FREE + 1}–21 天`;
+      await s.put('requests', uid(), { ...base, type: 'course', title, points: 0 });
+      await later(s, notifyAdmin(s, 'course', { name: m.name, title }));
       return json({ ok: true });
     }
     return fail('未知的申请');

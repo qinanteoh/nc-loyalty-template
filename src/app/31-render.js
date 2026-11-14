@@ -13,7 +13,7 @@ function render(){
   nav.innerHTML=`<div class="tabs-in">${tabs.slice(0,2).map(tb).join('')}<button class="tab scan" data-act="scanQR" aria-label="扫码打卡"><span class="bub">${ic('qr',28)}</span>扫码打卡</button>${tabs.slice(2).map(tb).join('')}</div>`;
   const cf=document.getElementById('cframe');
   if(view!=='course') courseAdmin=false;
-  if(view==='course'&&(me()||courseAdmin)){ const want=courseAdmin?'/course/?admin=1':'/course/'; if(cf.getAttribute('src')!==want) cf.setAttribute('src',want); window.scrollTo(0,0); const bb=document.querySelector('.backbar'); const t=Math.round(bb?bb.getBoundingClientRect().bottom+6:0); cf.style.top=t+'px'; cf.style.height='calc(100% - '+(t+nav.offsetHeight)+'px)'; cf.hidden=false; } else cf.hidden=true;
+  if(view==='course'&&(me()||courseAdmin)){ pushGate(); const want=courseAdmin?'/course/?admin=1':'/course/'; if(cf.getAttribute('src')!==want) cf.setAttribute('src',want); window.scrollTo(0,0); const bb=document.querySelector('.backbar'); const t=Math.round(bb?bb.getBoundingClientRect().bottom+6:0); cf.style.top=t+'px'; cf.style.height='calc(100% - '+(t+nav.offsetHeight)+'px)'; cf.hidden=false; } else cf.hidden=true;
   if(reSheet) reSheet();
   const jb=document.getElementById('joinbox'); if(jb&&window.QRCode){ new QRCode(jb,{text:joinLink(),width:440,height:440,colorDark:'#561226',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M}); }
   const qb=document.getElementById('qrbox'); if(qb&&qrLink()&&window.QRCode){ new QRCode(qb,{text:qrLink(),width:440,height:440,colorDark:'#561226',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M}); }

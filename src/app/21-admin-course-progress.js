@@ -4,22 +4,23 @@ let courseFilter='all', courseAdmin=false;
 function courseStat(m){
   const done=hOf(m.phone).done||{}, n=doneN(done), dates=Object.values(done).filter(Boolean).sort(), last=dates[dates.length-1]||null;
   const idle=last?Math.round((parseD(today())-parseD(last))/DAY):null;
-  const state=n>=21?'done':!n?'none':idle>=3?'idle':'going';
-  return {n,last,idle,state,next:nextDay(done)};
+  const open=isCourseOpen(hOf(m.phone)), wait=!open&&n>=CFREE();
+  const state=n>=21?'done':!n?'none':wait?'wait':idle>=3?'idle':'going';
+  return {n,last,idle,state,open,pending:coursePending(m.phone),next:nextDay(done)};
 }
-const COURSE_STATES={none:['还没开始','pending'],going:['进行中','approved'],idle:['停了好几天','rejected'],done:['已读完','approved']};
+const COURSE_STATES={wait:['等开通','pending'],none:['还没开始','pending'],going:['进行中','approved'],idle:['停了好几天','rejected'],done:['已读完','approved']};
 function adminCourse(){
   const all=S.members.filter(m=>!m.pending).map(m=>({m,c:courseStat(m)}));
   const cnt=k=>all.filter(r=>k==='all'||r.c.state===k).length;
-  const rank={idle:0,going:1,none:2,done:3};
+  const rank={wait:0,idle:1,going:2,none:3,done:4};
   const list=all.filter(r=>(courseFilter==='all'||r.c.state===courseFilter)&&qMatch(r.m.name,r.m.phone)).sort((a,b)=>rank[a.c.state]-rank[b.c.state]||(b.c.idle||0)-(a.c.idle||0)||b.c.n-a.c.n);
   return `<button class="btn" data-act="coursePreview" style="width:100%;margin-bottom:12px">${ic('book',18)} 打开完整 21 天课程</button>
-  <p class="sub" style="margin:-4px 0 12px">每位会员 21 天健康课程读到哪里。会员打开 App 后，阅读进度才会更新到这里。</p>
+  <p class="sub" style="margin:-4px 0 12px">每位会员 21 天健康课程读到哪里。会员打开 App 后，阅读进度才会更新到这里。<span>第 ${CFREE()+1} 天起要你开通：在「审核」按通过，或点会员进去按「开通」。</span></p>
   <div class="stat-tiles" style="grid-template-columns:repeat(4,1fr);margin-bottom:12px">${['none','going','idle','done'].map(k=>`<div><span class="num big">${cnt(k)}</span><span class="sub">${COURSE_STATES[k][0]}</span></div>`).join('')}</div>
-  <div class="chips">${[['all','全部'],['idle','停了好几天'],['going','进行中'],['none','还没开始'],['done','已读完']].map(([k,l])=>`<button class="chip ${courseFilter===k?'on':''}" data-act="courseFilter" data-v="${k}">${l} ${cnt(k)}</button>`).join('')}</div>
+  <div class="chips">${[['all','全部'],['wait','等开通'],['idle','停了好几天'],['going','进行中'],['none','还没开始'],['done','已读完']].map(([k,l])=>`<button class="chip ${courseFilter===k?'on':''}" data-act="courseFilter" data-v="${k}">${l} ${cnt(k)}</button>`).join('')}</div>
   ${qBox()}${list.length?`<div class="list">${list.map(({m,c})=>`<button class="arow" data-act="csheet" data-id="${esc(m.phone)}" style="text-align:left">
      <div class="tx" style="flex:1;min-width:0"><b>${nt(m.name)}</b> <span class="badge ${COURSE_STATES[c.state][1]}">${COURSE_STATES[c.state][0]}</span>
-       <span>${c.last?`最近读：${esc(sd(c.last))}${c.idle?`（${c.idle} 天前）`:'（今天）'}`:'还没读过'}${c.next&&c.n?` · 下一课第 ${c.next} 天`:''}</span>
+       <span>${c.last?`最近读：${esc(sd(c.last))}${c.idle?`（${c.idle} 天前）`:'（今天）'}`:'还没读过'}${c.state==='wait'?(c.pending?'<span> · 已申请开通</span>':'<span> · 免费的天数读完了</span>'):c.next&&c.n?` · 下一课第 ${c.next} 天`:''}</span>
        <span class="cprog" style="display:block;max-width:220px"><i style="width:${Math.round(c.n/21*100)}%"></i></span></div>
      <div class="num" style="font-weight:800;font-size:20px;flex:none">${c.n}<small style="font-size:14px;color:var(--muted)">/21</small></div></button>`).join('')}</div>`:(qOf()?noMatch():'<div class="empty">没有符合的会员。</div>')}`;
 }
@@ -27,8 +28,10 @@ function courseSheet(phone){
   const m=S.members.find(x=>x.phone===phone); if(!m) return; const done=hOf(phone).done||{}, c=courseStat(m);
   openSheet(`<h3>${nt(m.name)} · 21 天课程</h3>
    <div class="ncp-stats" style="margin-bottom:12px"><div><span class="num big">${c.n}<small style="font-size:16px">/21</small></span><span class="sub">已读天数</span></div><div><span class="num big" style="font-size:22px">${c.last?esc(sd(c.last)):'—'}</span><span class="sub">最近一次读</span></div></div>
+   <div class="card" style="margin-bottom:12px;padding:12px 14px"><b>第 ${CFREE()+1}–21 天：${c.open?'<span class="badge approved">已开通</span>':c.pending?'<span class="badge pending">已申请，等你开通</span>':'<span class="badge rejected">还没开通</span>'}</b>
+     <div class="btnrow" style="justify-content:flex-start;margin-top:8px">${c.open?`<button class="btn sm ghost" data-act="courseOpen" data-id="${esc(phone)}" data-v="0">收回开通</button>`:`<button class="btn sm ok" data-act="courseOpen" data-id="${esc(phone)}" data-v="1">开通第 ${CFREE()+1}–21 天</button>`}</div></div>
    <div class="list">${Array.from({length:21},(_,i)=>i+1).map(n=>`<div class="arow" style="padding:8px 12px"><div class="tx" style="flex:1;min-width:0"><b>第 ${n} 天</b><span translate="no">${esc(dayTitle(n))}</span></div>
-     ${done[n]?`<span class="badge approved" style="white-space:nowrap">${ic('check',14)} ${esc(sd(done[n]))}</span>`:'<span class="badge pending" style="white-space:nowrap">还没读</span>'}</div>`).join('')}</div>`);
+     ${done[n]?`<span class="badge approved" style="white-space:nowrap">${ic('check',14)} ${esc(sd(done[n]))}</span>`:n>CFREE()&&!c.open?'<span class="badge rejected" style="white-space:nowrap">未开通</span>':'<span class="badge pending" style="white-space:nowrap">还没读</span>'}</div>`).join('')}</div>`);
   reSheet=()=>courseSheet(phone);
 }
 function adminHealth(){

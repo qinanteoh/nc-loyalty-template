@@ -31,6 +31,15 @@ function hOf(phone){
 }
 const nextDay=done=>{for(let n=1;n<=21;n++) if(!done[n]) return n; return null;};
 const doneN=done=>Object.keys(done||{}).filter(n=>+n>=1&&+n<=21).length;
+// Days after CFREE() need the coach to open them (same rule as the server's courseOpen).
+const CFREE=()=>+(S.courseFree||11);
+const isCourseOpen=h=>!!h&&(h.open===true||(h.open!==false&&Object.keys(h.done||{}).some(k=>+k>CFREE())));
+const coursePending=phone=>(S.requests||[]).some(r=>r.phone===phone&&r.type==='course'&&r.status==='pending');
+function gateFor(phone){ return {max:isCourseOpen(hOf(phone))?21:CFREE(), pending:coursePending(phone)}; }
+// Tell the course page how far this member may read; it re-draws when this changes.
+function pushGate(){ try{ const m=me(); if(!m||courseAdmin) return; const g=JSON.stringify(gateFor(m.phone));
+  if(localStorage.getItem('h21_gate')!==g){ localStorage.setItem('h21_gate',g); const w=document.getElementById('cframe').contentWindow; if(w&&w.h21Refresh) w.h21Refresh(); } }catch(e){} }
+window.h21Ask=async()=>{ try{ await api('request',{type:'course'}); toast('已申请，教练开通后会通知你'); }catch(e){ toast('没有成功：'+(e.message||'请稍后再试')); } try{ await refresh(); }catch(_){} pushGate(); };
 let hBusy=Promise.resolve();
 function saveHealth(body){ hBusy=hBusy.then(async()=>{ const r=await api('health',body); const i=(S.health||[]).findIndex(x=>x.id===r.health.id); if(i>=0) S.health[i]=r.health; else (S.health=S.health||[]).push(r.health); render(); return r; }); return hBusy; }
 // The course page keeps progress on this device; copy anything new into the member's record.
@@ -42,6 +51,7 @@ function syncCourse(){
 // Before the course opens, give it the progress saved on the server (e.g. from another phone) and the app's language.
 function primeCourse(){
   try{ const m=me(); if(m){ const h=hOf(m.phone); localStorage.setItem(CKEY,JSON.stringify({done:h.done})); } localStorage.setItem('h21_lang',LANG); }catch(e){}
+  pushGate();
 }
 window.addEventListener('storage',e=>{ if(e.key===CKEY){ syncCourse(); } });
 const f1=(v,k)=>{const x=+v; if(!isFinite(x)) return '–'; const M=MET.find(m=>m.k===k); return (M&&M.int)?String(Math.round(x)):(Math.round(x*10)/10).toString();};
@@ -194,7 +204,7 @@ function profileForm(){
 function healthBlock(m){
   const h=hOf(m.phone), nx=nextDay(h.done), sc=h.scans, last=sc[sc.length-1], first=sc.find(s=>has(s.weight)), dn=doneN(h.done);
   return `<div class="sec blk b-health"><div class="sec-h"><h2>我的健康旅程</h2></div><div class="hgrid">
-   <button class="dcard" data-act="go" data-v="course"><span class="eb">21 天课程 · <span class="num">${dn}/21</span></span><b>${nx?`<span>第 ${nx} 天</span><span style="display:block" translate="no">${esc(dayTitle(nx))}</span>`:'全部完成！'}</b><span class="cprog"><i style="width:${Math.round(dn/21*100)}%"></i></span></button>
+   <button class="dcard" data-act="go" data-v="course"><span class="eb">21 天课程 · <span class="num">${dn}/21</span></span><b>${nx?`<span>第 ${nx} 天</span>`+(nx>gateFor(m.phone).max?`<span style="display:block;font-size:16px;color:var(--warn,#B5761A)">${gateFor(m.phone).pending?'已申请，等教练开通':'要教练开通'}</span>`:`<span style="display:block" translate="no">${esc(dayTitle(nx))}</span>`):'全部完成！'}</b><span class="cprog"><i style="width:${Math.round(dn/21*100)}%"></i></span></button>
    <button class="dcard" data-act="go" data-v="health"><span class="eb" style="color:var(--k4)">健康检测表 · ${sc.length} 次</span><b>${last&&has(last.weight)?`<span class="num">${f1(last.weight,'weight')} kg</span>`:'新增第一次记录'}</b>${last&&first&&sc.length>1&&first!==last?`<span translate="no">${delta('weight',+first.weight,+last.weight)}</span>`:''}</button>
   </div></div>`;
 }

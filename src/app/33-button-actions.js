@@ -66,6 +66,7 @@ document.addEventListener('click',async e=>{
   if(a==='courseFilter'){ courseFilter=v; render(); return; }
   if(a==='coursePreview'){ courseAdmin=true; goView('course'); render(); window.scrollTo(0,0); return; }
   if(a==='csheet'){ courseSheet(id); return; }
+  if(a==='courseOpen'){ b.disabled=true; await run(()=>api('admin/courseOpen',{phone:id,open:v==='1'}),v==='1'?'课程已开通，已通知会员':'已收回'); return; }
   if(a==='repDay'){ reportDate=v; render(); return; }
   if(a==='repPdf'){ shareReportPdf(); return; }
   if(a==='statRange'){ statRange=+v; if(statRange===0){ const r={from:dt(parseD(today())-29*DAY),to:today()}; statFrom=statFrom||r.from; statTo=statTo||r.to; } render(); return; }
@@ -80,7 +81,7 @@ document.addEventListener('click',async e=>{
   if(a==='undoCheckin'){ const k=cardInfo(S.cards.find(x=>x.id===id)||{}); const last=k.ins&&k.ins[k.ins.length-1]; if(!last) return; if(!confirmTwice(a+id,b)) {b.textContent='再按一次撤销 '+last.date; return;} await run(()=>del('checkins',last.id),'已撤销 '+last.date+' 的打卡'+(last.points?'，并扣回 '+last.points+' 分':'')); return; }
   if(a==='delCard'&&confirmTwice(a+id,b)){ await run(()=>del('cards',id),'卡已删除（已赚到的积分会保留）'); return; }
   if(a==='approve'){ const r=S.requests.find(x=>x.id===id); if(!r) return; b.disabled=true;
-    await run(()=>api('admin/approve',{id:r.id}),r.type==='renew'?'已通过，新卡已开通，已通知会员':'已通过，已通知会员'); return; }
+    await run(()=>api('admin/approve',{id:r.id}),r.type==='renew'?'已通过，新卡已开通，已通知会员':r.type==='course'?'课程已开通，已通知会员':'已通过，已通知会员'); return; }
   if(a==='reject'){ b.disabled=true; await run(()=>api('admin/reject',{id}),'已拒绝，已通知会员'); return; }
   if(a==='delNotice'){ if(!confirmTwice(a+id,b)){ b.textContent='再按一次确认删除'; return; } await run(()=>del('notices',id),'公告已删除'); return; }
   if(a==='editReward'){ rewardForm(S.rewards.find(x=>x.id===id)); return; }

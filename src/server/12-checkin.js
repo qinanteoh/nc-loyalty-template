@@ -1,3 +1,8 @@
+async function setCourseOpen(s, m, open) {
+  const cur = (await s.get('health', m.id)) || { scans: [], done: {}, profile: {} };
+  const { id: _drop, ...h } = cur;
+  await s.put('health', m.id, { ...h, name: m.name, open, updated: Date.now() });
+}
 async function doCheckin(s, card, force, by) {
   const ins = (await s.where('checkins', 'cardId', card.id)).sort((a, b) => a.ts - b.ts);
   // Daily Pass is given once and never runs out; each self check-in waits for the shop's approval before points are added.

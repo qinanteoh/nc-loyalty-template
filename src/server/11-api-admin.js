@@ -36,6 +36,8 @@
       if (r.type === 'checkin') {
         const ck = await s.get('checkins', r.checkinId);
         if (ck) { const { pend, due, ...rest } = ck; await s.put('checkins', ck.id, { ...rest, points: +r.points || 0, approvedAt: Date.now() }); }
+      } else if (r.type === 'course') {
+        await setCourseOpen(s, m, true);
       } else if (r.type === 'renew') {
         await s.put('cards', uid(), { phone: r.phone, name: r.cardName || r.title, kind: r.kind || null, total: +r.total || 11, days: null, start: today(), ts: Date.now(), paid: false, paidAt: null });
       } else if (r.type === 'redeem') {
@@ -48,7 +50,17 @@
       }
       await s.put('requests', r.id, { ...r, status: 'approved', doneAt: Date.now() });
       const card = { zh: cardLabel({ kind: r.kind, name: r.cardName }, 'zh'), en: cardLabel({ kind: r.kind, name: r.cardName }, 'en'), ms: cardLabel({ kind: r.kind, name: r.cardName }, 'ms') };
-      await later(s, notifyMember(s, r.phone, r.type === 'renew' ? 'renew' : r.type === 'redeem' ? 'redeem' : 'earn', { title: r.title, points: r.points, card }));
+      await later(s, notifyMember(s, r.phone, r.type === 'renew' ? 'renew' : r.type === 'course' ? 'course' : r.type === 'redeem' ? 'redeem' : 'earn', { title: r.title, points: r.points, card }));
+      return json({ ok: true });
+    }
+    // Coach opens or closes days after COURSE_FREE for one member (also settles a waiting request).
+    if (act === 'courseOpen') {
+      const m = await s.get('members', String(body.phone || '')); if (!m) return fail('找不到这位会员');
+      const open = body.open === true;
+      await setCourseOpen(s, m, open);
+      for (const r of (await s.where('requests', 'phone', m.id)).filter(r => r.type === 'course' && r.status === 'pending'))
+        await s.put('requests', r.id, { ...r, status: open ? 'approved' : 'rejected', doneAt: Date.now() });
+      if (open) await later(s, notifyMember(s, m.id, 'course', {}));
       return json({ ok: true });
     }
     if (act === 'approveMember') {
