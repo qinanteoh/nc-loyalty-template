@@ -13,6 +13,21 @@ function cleanScan(x) {
   for (const k of HEALTH_KEYS) { const v = parseFloat(x[k]); if (x[k] !== '' && x[k] != null && isFinite(v) && v >= 0 && v < 10000) { out[k] = Math.round(v * 100) / 100; n++; } }
   return n ? out : null;
 }
+// Record edits shared by the member (own record) and the coach (any member): details, add/change a scan, delete a scan.
+function healthEdit(h, body) {
+  const op = body.op;
+  if (op === 'profile') {
+    h.profile = cleanProfile(body.profile || {});
+  } else if (op === 'scan') {
+    const sc = cleanScan(body.scan || {}); if (!sc) return '请填写量身日期和至少一项数字';
+    const i = h.scans.findIndex(x => x.id === sc.id);
+    if (i >= 0) h.scans[i] = { ...sc, ts: h.scans[i].ts || Date.now() }; else { if (h.scans.length >= 300) return '记录太多了'; h.scans.push({ ...sc, ts: Date.now() }); }
+    h.scans.sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : (a.ts || 0) - (b.ts || 0));
+  } else if (op === 'delScan') {
+    h.scans = h.scans.filter(x => x.id !== String(body.id || ''));
+  } else return '不明操作';
+  return null;
+}
 function cleanProfile(p) {
   const t = (v, n) => String(v == null ? '' : v).trim().slice(0, n), num = v => { const f = parseFloat(v); return isFinite(f) && f > 0 && f < 1000 ? Math.round(f * 10) / 10 : ''; };
   return { age: num(p.age), height: num(p.height), gender: t(p.gender, 20), program: ['WLP', 'WGP', 'WMP'].includes(p.program) ? p.program : '', target: num(p.target),

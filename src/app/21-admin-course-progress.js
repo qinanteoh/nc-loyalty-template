@@ -35,8 +35,8 @@ function courseSheet(phone){
   reSheet=()=>courseSheet(phone);
 }
 function adminHealth(){
-  const rows=S.members.map(m=>({m,h:hOf(m.phone)})).filter(r=>(r.h.scans.length||doneN(r.h.done))&&qMatch(r.m.name,r.m.phone)).sort((a,b)=>{const la=(a.h.scans.at(-1)||{}).date||'',lb=(b.h.scans.at(-1)||{}).date||'';return lb.localeCompare(la)||doneN(b.h.done)-doneN(a.h.done);});
-  return `<p class="sub" style="margin:-4px 0 12px">会员自己输入的健康检测表和 21 天课程进度（只能看，不能改）。</p>
+  const rows=S.members.map(m=>({m,h:hOf(m.phone)})).filter(r=>(qOf()||r.h.scans.length||doneN(r.h.done))&&!r.m.pending&&qMatch(r.m.name,r.m.phone)).sort((a,b)=>{const la=(a.h.scans.at(-1)||{}).date||'',lb=(b.h.scans.at(-1)||{}).date||'';return lb.localeCompare(la)||doneN(b.h.done)-doneN(a.h.done);});
+  return `<p class="sub" style="margin:-4px 0 12px">会员的健康检测表和 21 天课程进度。点进去可以帮会员填记录。<span>要帮还没有记录的会员填，在下面搜他的名字。</span></p>
   ${qBox()}${rows.length?`<div class="list">${rows.map(({m,h})=>{const sc=h.scans,l=sc.at(-1),f=sc.find(s=>has(s.weight));return `<button class="arow" data-act="hsheet" data-id="${esc(m.id)}" style="text-align:left"><div class="tx"><b>${nt(m.name)}</b><span>21 天 ${doneN(h.done)}/21 · 检测 ${sc.length} 次${l?` · 最近 ${esc(sd(l.date))}`:''}</span></div><div style="text-align:right">${l&&has(l.weight)?`<div class="num" style="font-weight:700">${f1(l.weight,'weight')} kg</div>`:''}${f&&l&&sc.length>1&&f!==l?`<span translate="no">${delta('weight',+f.weight,+l.weight)}</span>`:''}</div></button>`}).join('')}</div>`:(qOf()?noMatch():'<div class="empty">还没有会员输入健康记录。</div>')}`;
 }
 function showTip(t){ const box=t.closest('.chartbox'), tip=box&&box.querySelector('.ctip'); if(!tip) return; const svg=box.querySelector('svg'), r=svg.getBoundingClientRect(), sc=r.width/svg.viewBox.baseVal.width;

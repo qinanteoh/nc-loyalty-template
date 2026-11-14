@@ -50,16 +50,7 @@ async function handleApi(req, env, path, ctx) {
         const k = parseInt(n, 10);
         if (k >= 1 && k <= max && /^\d{4}-\d{2}-\d{2}$/.test(String(d)) && (!h.done[k] || d < h.done[k])) h.done[k] = d;
       }
-    } else if (op === 'profile') {
-      h.profile = cleanProfile(body.profile || {});
-    } else if (op === 'scan') {
-      const sc = cleanScan(body.scan || {}); if (!sc) return fail('请填写量身日期和至少一项数字');
-      const i = h.scans.findIndex(x => x.id === sc.id);
-      if (i >= 0) h.scans[i] = { ...sc, ts: h.scans[i].ts || Date.now() }; else { if (h.scans.length >= 300) return fail('记录太多了'); h.scans.push({ ...sc, ts: Date.now() }); }
-      h.scans.sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : (a.ts || 0) - (b.ts || 0));
-    } else if (op === 'delScan') {
-      h.scans = h.scans.filter(x => x.id !== String(body.id || ''));
-    } else return fail('不明操作');
+    } else { const err = healthEdit(h, body); if (err) return fail(err); }
     h.name = m.name; h.updated = Date.now();
     await s.put('health', m.id, h);
     return json({ ok: true, health: { id: m.id, ...h } });

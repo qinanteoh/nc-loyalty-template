@@ -102,16 +102,16 @@ function wfHeader(m,h,admin){
     ${c('Name','姓名','Nama',m.name)}${c('Sponsor','引荐人','Penaja',p.sponsor)}${c('Coach','教练','Jurulatih',p.coach)}${c('Contact','电话','Telefon',m.phone)}
     ${c('Age','年龄','Umur',p.age)}${c('Height','身高','Tinggi',has(p.height)?p.height+' cm':'')}${c('Gender','性别','Jantina',g)}${c('Program','计划','Program',progName(p.program))}
     ${c('Target','目标','Sasaran',tgt)}${c('Birthday','生日','Hari lahir',p.birthday)}
-  </div>${admin?'':`<button class="link" data-act="editProfile" style="margin:6px 0 0">${L3('编辑个人资料 →','Edit my details →','Ubah maklumat saya →')}</button>`}`;
+  </div>${admin===true?'':`<button class="link" data-act="editProfile" data-ph="${admin?esc(m.phone):''}" style="margin:6px 0 0">${admin?'编辑个人资料 →':L3('编辑个人资料 →','Edit my details →','Ubah maklumat saya →')}</button>`}`;
 }
-function wfTable(h,admin){
+function wfTable(h,admin,ph){
   const sc=h.scans, base=sc[0];
   const rows=MET.filter(M=>sc.some(s=>val(s,M.k)!=null));
   const th=sc.map((s,i)=>`<th>${i===0?`<small>${L3('Base-Line 基线','Base-line','Garis asas')}</small>`:''}${esc(sd(s.date))}</th>`).join('');
   const lab=M=>LANG==='zh'?`<b>${M.en}</b>${M.zh}${M.u?' ('+M.u+')':''}${M.auto?'<small style="display:block;font-size:11px;color:var(--muted)">自动计算</small>':''}`:`${metName(M)}${M.u&&!metName(M).includes(M.u)?' ('+M.u+')':''}`;
   const body=rows.map(M=>`<tr><th>${lab(M)}</th>${sc.map((s,i)=>{const v=val(s,M.k), pv=i?val(sc[i-1],M.k):null; return `<td>${v==null?'':f1(v,M.k)}${i?arrow(M.k,pv,v):''}</td>`}).join('')}</tr>`).join('');
   const tot=(k,zh,en,ms)=>{const b=val(base,k); return `<tr class="tot"><th>${LANG==='zh'?`<b>${en.toUpperCase()}</b>${zh}`:L3(zh,en,ms)}</th>${sc.map((s,i)=>{ if(!i) return '<td>—</td>'; const v=val(s,k); if(b==null||v==null) return '<td></td>'; const d=Math.round((b-v)*10)/10; return `<td class="${d>0?'pos':d<0?'neg':''}">${d}</td>`}).join('')}</tr>`;};
-  const act=admin?'':`<tr class="act"><th>${L3('修改 / 删除','Edit / delete','Ubah / padam')}</th>${sc.map(s=>`<td><button data-act="editScan" data-id="${esc(s.id)}">${L3('修改','Edit','Ubah')}</button></td>`).join('')}</tr>`;
+  const act=admin===true?'':`<tr class="act"><th>${L3('修改 / 删除','Edit / delete','Ubah / padam')}</th>${sc.map(s=>`<td><button data-act="editScan" data-id="${esc(s.id)}" data-ph="${admin?esc(ph||''):''}">${L3('修改','Edit','Ubah')}</button></td>`).join('')}</tr>`;
   return `<div class="wf-scroll"><table class="wf"><thead><tr><th>${LANG==='zh'?'<b>WEIGH-IN DATE</b>量身日期':L3('','Weigh-in date','Tarikh timbang')}</th>${th}</tr></thead>
     <tbody>${body}${tot('weight','共减重量(kg)','Total weight loss (kg)','Jumlah turun berat (kg)')}${tot('fatMass','共减脂肪(kg)','Total fat loss (kg)','Jumlah turun lemak (kg)')}${act}</tbody></table></div>
     ${!curHeight&&sc.some(s=>has(s.weight))?`<div class="wf-legend" style="color:var(--k4)">${L3('在「个人资料」填上身高，就会自动算出 BMI 身体质量指数。','Add your height in "My details" and BMI will be worked out automatically.','Isi tinggi dalam "Maklumat saya" dan BMI akan dikira secara automatik.')}</div>`:''}
@@ -151,9 +151,9 @@ function wfCharts(h){
 }
 function healthBody(h,admin,m){
   curHeight=has((h.profile||{}).height)?+h.profile.height:null;
-  const empty=!h.scans.length?`<div class="empty" style="margin-top:12px">${L3('还没有 Tanita 记录。','No Tanita records yet.','Belum ada rekod Tanita.')}${admin?'':'<br>'+L3('每次量完体脂秤，按上面的「新增记录」把数字输入进来。','After each body-composition scan, tap "Add record" above and key in the numbers.','Selepas setiap imbasan, tekan "Tambah rekod" di atas dan masukkan nombor.')}</div>`:'';
+  const empty=!h.scans.length?`<div class="empty" style="margin-top:12px">${L3('还没有 Tanita 记录。','No Tanita records yet.','Belum ada rekod Tanita.')}${admin===true?'':'<br>'+L3('每次量完体脂秤，按上面的「新增记录」把数字输入进来。','After each body-composition scan, tap "Add record" above and key in the numbers.','Selepas setiap imbasan, tekan "Tambah rekod" di atas dan masukkan nombor.')}</div>`:'';
   return `<div translate="no"><div class="wf-card"><div class="wf-title"><b>${L3('健康评估及检测表','Wellness Evaluation & Monitoring Form','Borang Penilaian & Pemantauan Kesihatan')}</b>${LANG==='zh'?'<small>WELLNESS EVALUATION AND MONITORING FORM</small>':''}</div>
-    ${wfHeader(m,h,admin)}${h.scans.length?wfTable(h,admin):''}</div>${empty}${wfNotes(h)}${wfCharts(h)}</div>`;
+    ${wfHeader(m,h,admin)}${h.scans.length?wfTable(h,admin,m.phone):''}</div>${empty}${wfNotes(h)}${wfCharts(h)}</div>`;
 }
 function vHealth(){
   const m=me(); if(!m) return loginView();
@@ -165,8 +165,15 @@ function vCourse(){ const m=me(); return (m||courseAdmin)?'':`<div class="sec-h"
 // Metrics the member keys in, one at a time. Fat mass and muscle % are worked out, so they are not asked.
 const ASK=['weight','fat','visceral','bone','bmr','age','muscle','physique','water'];
 let sfShown=1;
-function scanForm(sid){
-  const m=me(); if(!m) return; const s=sid?hOf(m.phone).scans.find(x=>x.id===sid):{date:today()}; if(!s) return;
+// Whose record a form saves to: null = the member using this phone; a phone = the coach keying in for that member.
+let hFor=null;
+function saveHealthFor(body){
+  if(!hFor) return saveHealth(body);
+  const ph=hFor; return api('admin/health',{phone:ph,...body}).then(r=>{ const i=(S.health||[]).findIndex(x=>x.id===ph); if(i>=0) S.health[i]=r.health; else (S.health=S.health||[]).push(r.health); return r; });
+}
+function scanForm(sid,phone){
+  hFor=(isAdmin&&phone)||null; const ph=hFor||(me()||{}).phone; if(!ph) return;
+  const s=sid?hOf(ph).scans.find(x=>x.id===sid):{date:today()}; if(!s) return;
   // When editing, open every item up to the last one that has a number, plus the next.
   let last=-1; ASK.forEach((k,i)=>{ if(has(s[k])) last=i; }); sfShown=Math.min(ASK.length,Math.max(1,last+2));
   const step=(k,i)=>{ const x=MET.find(M=>M.k===k); return `<div class="sfstep" data-i="${i}" ${i<sfShown?'':'hidden'}>
@@ -174,7 +181,8 @@ function scanForm(sid){
       <div class="sfrow"><input class="inp num" id="s_${k}" type="number" inputmode="decimal" step="${x.step}" min="0" enterkeyhint="next" value="${has(s[k])?esc(s[k]):''}">
       ${i<ASK.length-1?`<button type="button" class="btn sm ghost" data-act="sfNext" data-i="${i}">${has(s[k])?'下一项':'跳过'}</button>`:''}</div></div>`; };
   const keep=['fatMass','musclePct'].filter(k=>has(s[k])).map(k=>`<input type="hidden" id="s_${k}" value="${esc(s[k])}">`).join('');
-  openSheet(`<h3>${s.id?'修改记录':'新增记录'}</h3><form id="sf" data-id="${esc(s.id||'')}">
+  const who=hFor?`<p class="sub" style="margin:-6px 0 10px">帮 <b>${nt((S.members.find(x=>x.phone===hFor)||{}).name||hFor)}</b> 填，会员登入后就看得到。</p>`:'';
+  openSheet(`<h3>${s.id?'修改记录':'新增记录'}</h3>${who}<form id="sf" data-id="${esc(s.id||'')}">
    <div class="field"><label for="s_date">量身日期</label><input class="inp" id="s_date" type="date" required value="${esc(s.date)}" max="${today()}"></div>
    <div class="sfsteps">${ASK.map(step).join('')}</div>${keep}
    <p class="sub" style="margin:4px 0 12px">一项一项填，没有的按「跳过」。体脂肪、肌肉 % 和 BMI 会自动算。</p>
@@ -190,8 +198,8 @@ function sfNext(i){
 }
 document.addEventListener('input',e=>{ const st=e.target.closest&&e.target.closest('.sfstep'); if(!st) return; const b=st.querySelector('[data-act="sfNext"]'); if(b) b.textContent=e.target.value.trim()?'下一项':'跳过'; });
 document.addEventListener('keydown',e=>{ const st=e.target.closest&&e.target.closest('.sfstep'); if(st&&e.key==='Enter'){ e.preventDefault(); sfNext(+st.dataset.i); } });
-function profileForm(){
-  const m=me(); if(!m) return; const p=hOf(m.phone).profile||{};
+function profileForm(phone){
+  hFor=(isAdmin&&phone)||null; const ph=hFor||(me()||{}).phone; if(!ph) return; const p=hOf(ph).profile||{};
   const f=(id,lab,v,type='text',extra='')=>`<div class="field"><label for="p_${id}">${lab}</label><input class="inp" id="p_${id}" type="${type}" value="${esc(v??'')}" ${extra}></div>`;
   openSheet(`<h3>个人资料</h3><form id="pfm">
    <div class="row2">${f('age','年龄',p.age,'number','inputmode="numeric" min="1"')}${f('height','身高 (cm)',p.height,'number','inputmode="decimal" step="0.1"')}</div>
@@ -212,7 +220,8 @@ function healthSheet(phone){
   const m=S.members.find(x=>x.phone===phone); if(!m) return; const h=hOf(phone), nx=nextDay(h.done);
   openSheet(`<h3>${nt(m.name)} · 健康旅程</h3>
    <div class="ncp-stats" style="margin-bottom:14px"><div><span class="num big">${doneN(h.done)}<small style="font-size:16px">/21</small></span><span class="sub">${nx?`21 天课程 · 下一课第 ${nx} 天`:'21 天课程 · 已完成'}</span></div><div><span class="num big">${h.scans.length}</span><span class="sub">检测次数</span></div></div>
-   <button class="btn block" data-act="healthPdf" data-id="${esc(phone)}" style="margin-bottom:12px">${ic('history',18)} 导出 PDF / 分享</button>
-   ${healthBody(h,true,m)}`);
+   <div class="btnrow" style="margin-bottom:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px"><button class="btn" data-act="editScan" data-ph="${esc(phone)}">${ic('plus',18)} 新增记录</button><button class="btn ghost" data-act="healthPdf" data-id="${esc(phone)}">${ic('history',18)} 导出 PDF / 分享</button></div>
+   <p class="sub" style="margin:-4px 0 12px">你填的记录，会员登入后在「健康检测表」就看得到；会员自己也可以继续加。</p>
+   ${healthBody(h,'edit',m)}`);
   reSheet=()=>healthSheet(phone);
 }

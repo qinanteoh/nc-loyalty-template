@@ -10,11 +10,11 @@ document.addEventListener('click',async e=>{
   if(a==='close'){ if(e.target===b||b.tagName==='BUTTON') closeSheet(); return; }
   if(a==='go'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } goView(v); render(); window.scrollTo(0,0); return; }
   if(a==='back'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } if(view==='course') syncCourse(); view=navStack.pop()||'home'; if(view==='admin'&&!isAdmin) view='home'; render(); window.scrollTo(0,0); return; }
-  if(a==='editScan'){ scanForm(id); return; }
+  if(a==='editScan'){ scanForm(id,b.dataset.ph); return; }
   if(a==='healthPdf'){ if(id!==myPhone&&!isAdmin) return; shareHealthPdf(id); return; }
   if(a==='sfNext'){ sfNext(+b.dataset.i); return; }
-  if(a==='delScan'){ if(b.dataset.sure!=='1'){ b.dataset.sure='1'; b.textContent='再按一次确认删除'; return; } closeSheet(); await run(()=>saveHealth({op:'delScan',id}),'记录已删除'); return; }
-  if(a==='editProfile'){ profileForm(); return; }
+  if(a==='delScan'){ if(b.dataset.sure!=='1'){ b.dataset.sure='1'; b.textContent='再按一次确认删除'; return; } const ph=hFor; closeSheet(); await run(()=>saveHealthFor({op:'delScan',id}),'记录已删除'); if(ph) healthSheet(ph); return; }
+  if(a==='editProfile'){ profileForm(b.dataset.ph); return; }
   if(a==='hsheet'){ healthSheet(id); return; }
   if(a==='lang'){ openSheet(`<h3>语言 · Language · Bahasa</h3><div class="list">${LANGS.map(([k,l])=>`<button class="task" data-act="setLang" data-v="${k}" style="text-align:left"><div class="tx" translate="no"><b>${l}</b></div>${LANG===k?ic('check',20):''}</button>`).join('')}</div>`); return; }
   if(a==='setLang'){ setLang(v); return; }
@@ -114,9 +114,9 @@ document.addEventListener('submit',async e=>{
   if(f.id==='adminForm'){ try{ const r=await api('admin/login',{password:document.getElementById('apw').value}); adminToken=r.token; ls.set('vw_admin',adminToken); closeSheet(); view='admin'; await refresh(); toast('已登入管理后台'); }catch(err){ toast(err.message); } return; }
   if(f.id==='sf'){ const sc={id:f.dataset.id||undefined,date:g('s_date'),note:g('s_note')}; MET.forEach(x=>{ const el=document.getElementById('s_'+x.k); sc[x.k]=el?el.value.trim():''; });
     if(!MET.some(x=>has(sc[x.k]))) return toast('至少输入一项数字');
-    closeSheet(); await run(()=>saveHealth({op:'scan',scan:sc}),'记录已保存'); return; }
+    const ph=hFor; closeSheet(); await run(()=>saveHealthFor({op:'scan',scan:sc}),'记录已保存'); if(ph) healthSheet(ph); return; }
   if(f.id==='pfm'){ const pr={age:g('p_age'),height:g('p_height'),gender:g('p_gender'),program:g('p_program'),target:g('p_target'),birthday:g('p_birthday'),coach:g('p_coach'),sponsor:g('p_sponsor')};
-    closeSheet(); await run(()=>saveHealth({op:'profile',profile:pr}),'个人资料已保存'); return; }
+    const ph=hFor; closeSheet(); await run(()=>saveHealthFor({op:'profile',profile:pr}),'个人资料已保存'); if(ph) healthSheet(ph); return; }
   if(!isAdmin) return;
   if(f.id==='rf'){ const id=f.dataset.id||null; const old=S.rewards.find(x=>x.id===id)||{};
     const data={name:g('f_n'),en:g('f_en'),cat:g('f_c'),points:+g('f_p')||0,stock:g('f_s')===''?null:+g('f_s'),active:g('f_a')==='1',desc:g('f_d'),

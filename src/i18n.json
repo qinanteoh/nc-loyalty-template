@@ -48,8 +48,8 @@
 "S"
 ],
 "帮": [
-"C",
-"J"
+"For",
+"Untuk"
 ],
 "/次": [
 "/visit",
@@ -2838,6 +2838,38 @@
 "课程 ·": [
 "Course ·",
 "Kursus ·"
+],
+"会员的健康检测表和 {0} 天课程进度。点进去可以帮会员填记录。": [
+"Members' wellness forms and {0}-day course progress. Tap a member to key in records for them.",
+"Borang kesihatan ahli dan kemajuan kursus {0} hari. Tekan ahli untuk isi rekod bagi pihak mereka."
+],
+"要帮还没有记录的会员填，在下面搜他的名字。": [
+"To key in for a member with no records yet, search their name below.",
+"Untuk isi bagi ahli yang belum ada rekod, cari nama mereka di bawah."
+],
+"健康表": [
+"Wellness",
+"Kesihatan"
+],
+"共 {0} 张卡 · 累计打卡 {1} 次 · 最近 {2} · 目前第 {3} 张剩 {4} 次": [
+"{0} cards · {1} check-ins · last {2} · card #{3} has {4} left",
+"{0} kad · {1} daftar masuk · terakhir {2} · kad ke-{3} tinggal {4}"
+],
+"{0} 天 {1}/{2} · 检测 {3} 次": [
+"{0}-day course {1}/{2} · {3} scans",
+"Kursus {0} hari {1}/{2} · {3} imbasan"
+],
+"帮他新增记录": [
+"Add record for them",
+"Tambah rekod untuk mereka"
+],
+"你填的记录，会员登入后在「健康检测表」就看得到；会员自己也可以继续加。": [
+"Records you key in show up in the member's wellness form when they log in; they can keep adding too.",
+"Rekod yang anda isi akan kelihatan dalam borang kesihatan ahli apabila mereka log masuk; mereka juga boleh terus menambah."
+],
+"填，会员登入后就看得到。": [
+"— they'll see it when they log in.",
+"— mereka akan nampak apabila log masuk."
 ],
 "等开通": [
 "Waiting to open",

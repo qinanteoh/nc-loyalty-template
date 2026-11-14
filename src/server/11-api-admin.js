@@ -63,6 +63,17 @@
       if (open) await later(s, notifyMember(s, m.id, 'course', {}));
       return json({ ok: true });
     }
+    // Coach keys in a member's wellness form (works before the member has ever logged in; they see it once they do).
+    if (act === 'health') {
+      const m = await s.get('members', String(body.phone || '')); if (!m) return fail('找不到这位会员');
+      const cur = (await s.get('health', m.id)) || { scans: [], done: {}, profile: {} };
+      const { id: _drop, ...h } = cur;
+      h.scans = Array.isArray(h.scans) ? h.scans : []; h.done = h.done || {}; h.profile = h.profile || {};
+      const err = healthEdit(h, body); if (err) return fail(err);
+      h.name = m.name; h.updated = Date.now();
+      await s.put('health', m.id, h);
+      return json({ ok: true, health: { id: m.id, ...h } });
+    }
     if (act === 'approveMember') {
       const m = await s.get('members', cleanPhone(body.phone)); if (!m) return fail('找不到这位会员');
       if (!m.pending) return fail('这位会员已经核准了');
