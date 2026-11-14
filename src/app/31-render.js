@@ -20,7 +20,9 @@ function render(){
   const rd=document.getElementById('repDate'); if(rd) rd.onchange=e=>{ if(e.target.value){ reportDate=e.target.value; render(); } };
   const qm=document.getElementById('qm'); if(qm) qm.onchange=e=>run(()=>putSettings({...S.settings,qrMode:e.target.value}),'打卡方式已更新');
   if(view==='scan') setTimeout(autoScanCheckin,0);
-  const mq=document.getElementById('mq'); if(mq){ mq.oninput=e=>{memberQ=e.target.value; const p=mq.selectionStart; render(); const n=document.getElementById('mq'); n.focus(); n.setSelectionRange(p,p);} }
+  for(const id of ['mq','aq']){ const el=document.getElementById(id); if(!el) continue;
+    const go=()=>{ if(id==='mq') memberQ=el.value; else adminQ[adminTab]=el.value; const p=el.selectionStart; render(); const n=document.getElementById(id); if(n){ n.focus(); try{n.setSelectionRange(p,p);}catch(_){} } };
+    el.oninput=e=>{ if(!e.isComposing) go(); }; el.addEventListener('compositionend',go); }
   const lf=document.getElementById('lfile'); if(lf) lf.onchange=async e=>{const f=e.target.files[0]; if(!f) return; toast('正在上传 Logo…'); try{ const data=await squarePng(f,512); const r=await api('admin/photo',{data}); await putSettings({...S.settings,logo:r.id}); await refresh(); toast('Logo 已更新'); }catch(err){ toast('上传失败：'+(err.message||'请稍后再试')); } };
   document.title=brand().name;
   const nf=document.getElementById('nfile'); if(nf) nf.onchange=async e=>{const f=e.target.files[0]; if(!f) return; const keep=['n_t','n_b','n_et','n_eb','n_mt','n_mb'].map(x=>[x,(document.getElementById(x)||{}).value]); toast('正在上传照片…'); try{ noticePhoto=(await uploadPhoto(f)).photo; render(); setTimeout(()=>keep.forEach(([x,v])=>{const el=document.getElementById(x); if(el&&v!=null) el.value=v;}),0); toast('照片已加上'); }catch(err){ toast('上传失败：'+(err.message||'请稍后再试')); } };

@@ -28,11 +28,11 @@ function adminReport(){
   <div class="stat-tiles rep-tiles"><div><span class="num big">${R.people}</span><span class="sub">打卡总人数</span></div><div><span class="num big">${R.ncp}</span><span class="sub">用 NCP 卡打卡</span></div>
     <div><span class="num big">${R.daily}</span><span class="sub">Daily Pass</span></div><div><span class="num big">${fmt(R.pts)}</span><span class="sub">打卡积分总数</span></div></div>
   <div class="btnrow" style="justify-content:flex-start;margin:14px 0"><button class="btn" data-act="repPdf" ${R.rows.length?'':'disabled'}>${ic('history',18)} 导出 PDF</button></div>
-  ${R.rows.length?`<div class="card" style="padding:4px 14px">${R.rows.map(r=>`<div class="reprow">
+  ${R.rows.length?qBox():''}${(()=>{const rows=R.rows.filter(r=>qMatch(r.name,r.phone)); return rows.length?`<div class="card" style="padding:4px 14px">${rows.map(r=>`<div class="reprow">
       <div class="rt num">${r.time}</div>
       <div style="flex:1;min-width:0"><b>${nt(r.name)}</b> <span class="tier ${esc(r.tier)}" style="font-size:13px;padding:1px 8px">${esc(r.tier)}</span>
         <div class="sub"><span class="num">${esc(r.phone)}</span> · ${esc(r.card)}${r.left!=null?` · <span>剩 ${r.left} 次</span>`:''}</div></div>
-      <div style="flex:none;text-align:right">${r.pend?'<span class="badge pending">待核准</span>':`<span class="num d-plus">+${r.pts}</span>`}</div></div>`).join('')}</div>`:'<div class="empty">这一天没有人打卡。</div>'}`;
+      <div style="flex:none;text-align:right">${r.pend?'<span class="badge pending">待核准</span>':`<span class="num d-plus">+${r.pts}</span>`}</div></div>`).join('')}</div>`:R.rows.length?noMatch():'<div class="empty">这一天没有人打卡。</div>';})()}`;
 }
 /* PDF: each A4 page is drawn on a canvas (so Chinese names print correctly), then packed into a small PDF file. */
 function reportPdfBytes(R){

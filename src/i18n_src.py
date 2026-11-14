@@ -398,5 +398,6 @@ T = [
 ("没有符合的会员。", "No matching members.", "Tiada ahli yang sepadan."),
 ("· {0} 天课程", "· {0}-day course", "· Kursus {0} hari"),
 ("已读天数", "Days read", "Hari dibaca"), ("最近一次读", "Last read", "Terakhir dibaca"),
+("找不到：", "No match:", "Tiada padanan:"),
 ("打开完整 21 天课程", "Open the full 21-day course", "Buka kursus 21 hari penuh"),
 ]

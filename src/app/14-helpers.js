@@ -2,6 +2,13 @@
 let noticePhoto=null;
 let statRange=7, statFrom=null, statTo=null, cardFilter='all';
 let view='home', cat='all', adminTab='requests', memberQ='';
+// Admin name search: each admin page keeps its own search words.
+const adminQ={};
+const qOf=()=>String(adminTab==='members'?memberQ:(adminQ[adminTab]||'')).trim().toLowerCase();
+function qMatch(name,phone){ const q=qOf(); if(!q) return true; const d=q.replace(/\D/g,'');
+  return String(name||'').toLowerCase().includes(q)||(d.length>=2&&String(phone||'').replace(/\D/g,'').includes(d)); }
+function qBox(){ return `<div class="qbox">${ic('search',18)}<input class="inp" id="aq" type="search" enterkeyhint="search" autocomplete="off" placeholder="搜索名字或电话" value="${esc(adminQ[adminTab]||'')}"></div>`; }
+const noMatch=()=>`<div class="empty"><span>找不到：</span><b>${esc(qOf())}</b></div>`;
 let myPhone=null, loginPhone='', loginStep='phone', loginName='';
 
 /* ---------- helpers ---------- */

@@ -21,6 +21,7 @@ const I = {
   crown:'<path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/>',
   ticket:'<path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 1 0 4v2h18v-2a2 2 0 0 1 0-4 2 2 0 0 0 0-4V6H3z"/><path d="M14 6v12" stroke-dasharray="2 2"/>',
   history:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
   plus:'<path d="M12 5v14M5 12h14"/>',
   upload:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',
   check:'<path d="M5 12l5 5 9-10"/>',

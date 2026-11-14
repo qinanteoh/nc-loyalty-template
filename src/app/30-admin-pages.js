@@ -4,11 +4,11 @@ function vAdmin(){
   const tabs=[['requests',`审核${pend?' ('+pend+')':''}`],['notify','通知'],['rewards','礼物'],['tasks','任务'],['report','打卡报告'],['stats','每日统计'],['members','会员'],['course','课程'],['health','健康'],['cards','NCP卡'],['home','首页']];
   let body='';
   if(adminTab==='requests'){
-    const list=S.requests.slice().sort((a,b)=>(a.status==='pending'?0:1)-(b.status==='pending'?0:1)||b.ts-a.ts).slice(0,40);
-    const pm=pendMembers();
-    body=adminPushCard()+(pm.length?`<div class="sec-h" style="margin-top:6px"><h2>新会员等待核准（${pm.length}）</h2></div><div class="list" style="margin-bottom:18px">${pm.map(m=>`<div class="arow"><div class="tx"><b>${nt(m.name)}</b><span>${esc(m.phone)} · 注册于 ${dt(m.regTs||Date.now())}</span></div><div style="display:flex;gap:6px"><button class="btn sm danger" data-act="rejectMember" data-id="${esc(m.id)}">拒绝</button><button class="btn sm ok" data-act="approveMember" data-id="${esc(m.id)}">核准</button></div></div>`).join('')}</div><div class="sec-h"><h2>兑换 / 赚分 / 续卡申请</h2></div>`:'')+(list.length?`<div class="list">${list.map(r=>`<div class="arow"><div class="tx"><b>${({redeem:'兑换',earn:'赚分',renew:'续卡',checkin:'打卡'})[r.type]} · ${nt(r.title)}</b><span>${nt(r.name)} · ${esc(r.phone)} · ${dt(r.ts)}${r.note?' · '+esc(r.note):''}</span></div>
+    const list=S.requests.filter(r=>qMatch(r.name,r.phone)).sort((a,b)=>(a.status==='pending'?0:1)-(b.status==='pending'?0:1)||b.ts-a.ts).slice(0,40);
+    const pm=pendMembers().filter(m=>qMatch(m.name,m.phone));
+    body=adminPushCard()+qBox()+(pm.length?`<div class="sec-h" style="margin-top:6px"><h2>新会员等待核准（${pm.length}）</h2></div><div class="list" style="margin-bottom:18px">${pm.map(m=>`<div class="arow"><div class="tx"><b>${nt(m.name)}</b><span>${esc(m.phone)} · 注册于 ${dt(m.regTs||Date.now())}</span></div><div style="display:flex;gap:6px"><button class="btn sm danger" data-act="rejectMember" data-id="${esc(m.id)}">拒绝</button><button class="btn sm ok" data-act="approveMember" data-id="${esc(m.id)}">核准</button></div></div>`).join('')}</div><div class="sec-h"><h2>兑换 / 赚分 / 续卡申请</h2></div>`:'')+(list.length?`<div class="list">${list.map(r=>`<div class="arow"><div class="tx"><b>${({redeem:'兑换',earn:'赚分',renew:'续卡',checkin:'打卡'})[r.type]} · ${nt(r.title)}</b><span>${nt(r.name)} · ${esc(r.phone)} · ${dt(r.ts)}${r.note?' · '+esc(r.note):''}</span></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">${r.type==='renew'?`<span class="sub">${r.total} 次</span>`:`<span class="num ${r.type==='redeem'?'d-minus':'d-plus'}">${r.type==='redeem'?'−':'+'}${fmt(r.points)}</span>`}
-      ${r.status==='pending'?`<div style="display:flex;gap:6px"><button class="btn sm danger" data-act="reject" data-id="${esc(r.id)}">拒绝</button><button class="btn sm ok" data-act="approve" data-id="${esc(r.id)}">通过</button></div>`:`<span class="badge ${r.status}">${r.status==='approved'?'已通过':'未通过'}</span>`}</div></div>`).join('')}</div>`:'<div class="empty">目前没有待审核的申请。</div>');
+      ${r.status==='pending'?`<div style="display:flex;gap:6px"><button class="btn sm danger" data-act="reject" data-id="${esc(r.id)}">拒绝</button><button class="btn sm ok" data-act="approve" data-id="${esc(r.id)}">通过</button></div>`:`<span class="badge ${r.status}">${r.status==='approved'?'已通过':'未通过'}</span>`}</div></div>`).join('')}</div>`:(qOf()?noMatch():'<div class="empty">目前没有待审核的申请。</div>'));
   } else if(adminTab==='rewards'){
     const list=S.rewards.slice().sort((a,b)=>a.points-b.points);
     body=`<button class="btn block" data-act="editReward" style="margin-bottom:12px">${ic('plus',18)} 新增礼物</button>
@@ -18,11 +18,11 @@ function vAdmin(){
       ${S.tasks.length?`<div class="list">${activeTasksAll().map(t=>`<button class="arow" data-act="editTask" data-id="${esc(t.id)}" style="text-align:left"><span class="ph" style="background:var(--wine-soft);color:var(--wine);display:grid;place-items:center">${ic(t.icon||'star',22)}</span><div class="tx"><b>${nt(nameOf(t))}</b><span><span class="num">+${fmt(t.points)}</span> · ${nt(subOf(t))}${t.active===false?' · 已停用':''}</span></div>${ic('cog',18)}</button>`).join('')}</div>`:'<div class="empty">还没有任务。</div>'}`;
   } else if(adminTab==='members'){
     const q=memberQ.trim().toLowerCase();
-    const list=S.members.filter(m=>!q||m.name.toLowerCase().includes(q)||m.phone.includes(q)).sort((a,b)=>totalPts(b)-totalPts(a));
+    const list=S.members.filter(m=>qMatch(m.name,m.phone)).sort((a,b)=>totalPts(b)-totalPts(a));
     body=`<div class="btnrow" style="justify-content:flex-start;margin-bottom:12px"><button class="btn sm" data-act="exportPdf">导出 PDF 报表</button><button class="btn sm ghost" data-act="exportCsv">导出 Excel</button></div>
-    <div style="display:flex;gap:8px;margin-bottom:12px"><input class="inp" id="mq" placeholder="搜索名字或电话" value="${esc(memberQ)}"><button class="btn" data-act="editMember">${ic('plus',18)}</button></div>
+    <div style="display:flex;gap:8px;margin-bottom:12px"><div class="qbox" style="flex:1;margin:0">${ic('search',18)}<input class="inp" id="mq" type="search" enterkeyhint="search" autocomplete="off" placeholder="搜索名字或电话" value="${esc(memberQ)}"></div><button class="btn" data-act="editMember">${ic('plus',18)}</button></div>
       ${list.length?`<div class="list">${list.map(m=>`<div class="arow mem"><div class="tx"><b>${nt(m.name)} <span class="tier ${esc(m.tier)}">${esc(m.tier)}</span>${tierInfo(m).manual?' <span class="badge pending">手动</span>':''}${m.pending?' <span class="badge pending">待核准</span>':''}${dpTag(m.phone)}</b><span>${esc(m.phone)} · <span class="num">${fmt(totalPts(m))}</span> pts</span>${(st=>`<span style="display:block">共 ${st.nCards} 张卡 · 累计打卡 ${st.nCheckins} 次${st.last?' · 最近 '+st.last:''}${st.curInfo&&st.curInfo.status==='active'?` · 目前第 ${st.nCards?cardNo(st.cur):0} 张剩 ${st.curInfo.left} 次`:''}${unpaidOf(m.phone)?` · <b style="color:var(--warn)">未付款 ${unpaidOf(m.phone)} 张</b>`:''}</span>`)(memberStats(m))}</div>
-        <div class="btnrow"><button class="btn sm ghost" data-act="editMember" data-id="${esc(m.id)}">编辑</button><button class="btn sm ghost" data-act="ncp" data-id="${esc(m.id)}">NCP卡</button><button class="btn sm" data-act="addPts" data-id="${esc(m.id)}">加/减分</button></div></div>`).join('')}</div>`:'<div class="empty">还没有会员。按 + 新增会员。</div>'}`;
+        <div class="btnrow"><button class="btn sm ghost" data-act="editMember" data-id="${esc(m.id)}">编辑</button><button class="btn sm ghost" data-act="ncp" data-id="${esc(m.id)}">NCP卡</button><button class="btn sm" data-act="addPts" data-id="${esc(m.id)}">加/减分</button></div></div>`).join('')}</div>`:(q?noMatch():'<div class="empty">还没有会员。按 + 新增会员。</div>')}`;
   } else if(adminTab==='notify'){
     const P=S.push||{devices:0,members:0};
     body=`<div class="card"><b style="display:block;font-size:20px;margin-bottom:6px">发公告给全部会员</b>
@@ -65,7 +65,7 @@ function vAdmin(){
     body=adminHealth();
   } else if(adminTab==='cards'){
     const unpaidN=S.cards.filter(c=>!c.paid).length;
-    const rows=S.cards.filter(c=>cardFilter!=='unpaid'||!c.paid).map(c=>({c,k:cardInfo(c),m:S.members.find(x=>x.phone===c.phone)})).sort((a,b)=>(a.k.status==='active'?0:1)-(b.k.status==='active'?0:1)||a.k.left-b.k.left);
+    const rows=S.cards.filter(c=>cardFilter!=='unpaid'||!c.paid).map(c=>({c,k:cardInfo(c),m:S.members.find(x=>x.phone===c.phone)})).filter(r=>qMatch(r.m?r.m.name:'',r.c.phone)).sort((a,b)=>(a.k.status==='active'?0:1)-(b.k.status==='active'?0:1)||a.k.left-b.k.left);
     const todayN=S.checkins.filter(x=>x.date===today()).length;
     const st=S.settings||{}; const link=qrLink();
     const qrPanel=`<div class="card" style="margin-bottom:14px">
@@ -80,7 +80,7 @@ function vAdmin(){
     </div>`;
     body=qrPanel+`<p class="sub" style="margin:-4px 0 12px">今天共有 <b class="num">${todayN}</b> 人次打卡。开新卡请到「会员」按「NCP卡」。</p>
     <div class="chips"><button class="chip ${cardFilter==='all'?'on':''}" data-act="cardFilter" data-v="all">全部卡 ${S.cards.length}</button><button class="chip ${cardFilter==='unpaid'?'on':''}" data-act="cardFilter" data-v="unpaid">未付款 ${unpaidN}</button></div>
-    ${rows.length?`<div class="list">${rows.map(({c,k,m})=>`<button class="arow" data-act="ncp" data-id="${esc(m?m.id:'')}" style="text-align:left"><div class="tx"><b>${nt(m?m.name:c.phone)} · 第 ${cardNo(c)} 张 · ${esc(c.name)}</b><span style="display:block;margin:2px 0">${payTag(c)}</span><span>剩 <span class="num">${k.left}</span> / ${+c.total||0} 次${k.daysLeft!=null?' · 剩 '+k.daysLeft+' 天':''}${k.todayN?' · 今天打了 '+k.todayN+' 次':''}</span></div><span class="badge ${{active:'approved',done:'pending',expired:'rejected'}[k.status]}">${{active:'进行中',done:'已用完',expired:'已过期'}[k.status]}</span></button>`).join('')}</div>`:'<div class="empty">还没有 NCP 卡。到「会员」为会员开卡。</div>'}`;
+    ${qBox()}${rows.length?`<div class="list">${rows.map(({c,k,m})=>`<button class="arow" data-act="ncp" data-id="${esc(m?m.id:'')}" style="text-align:left"><div class="tx"><b>${nt(m?m.name:c.phone)} · 第 ${cardNo(c)} 张 · ${esc(c.name)}</b><span style="display:block;margin:2px 0">${payTag(c)}</span><span>剩 <span class="num">${k.left}</span> / ${+c.total||0} 次${k.daysLeft!=null?' · 剩 '+k.daysLeft+' 天':''}${k.todayN?' · 今天打了 '+k.todayN+' 次':''}</span></div><span class="badge ${{active:'approved',done:'pending',expired:'rejected'}[k.status]}">${{active:'进行中',done:'已用完',expired:'已过期'}[k.status]}</span></button>`).join('')}</div>`:qOf()?noMatch():'<div class="empty">还没有 NCP 卡。到「会员」为会员开卡。</div>'}`;
   } else {
     const st=S.settings||{};
     const B=brand();
