@@ -4,8 +4,12 @@ let live=true, isAdmin=false, loaded=false;
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}};
 let token=ls.get('vw_token'), adminToken=ls.get('vw_admin');
+// Branches: STAFF = who is signed in to the back office; VIEW = the branch being looked at (own = may change it);
+// TREE = own branch and every branch below; STAFFS = managers / operators of the viewed branch.
+let STAFF=null, VIEW={branch:'hq',own:true}, TREE=[], STAFFS=[], adminView=ls.get('vw_view');
 async function api(path,body){
   const h={'content-type':'application/json'}; if(token) h['x-token']=token; if(adminToken) h['x-admin']=adminToken;
+  const vb=adminToken?adminView:ls.get('vw_branch'); if(vb) h['x-branch']=vb;
   let r; try{ r=await fetch('/api/'+path,{method:body?'POST':'GET',headers:h,body:body?JSON.stringify(body):undefined}); }catch(e){ throw new Error('网络不稳定，请再试一次'); }
   const j=await r.json().catch(()=>({error:'系统暂时没有回应，请稍后再试'}));
   if(!r.ok||j.error){ const e=new Error(j.error||'请稍后再试'); e.code=j.code; throw e; }
@@ -32,6 +36,15 @@ function courseCookies(){ try{
   const m=myPhone&&S.members.find(x=>x.phone===myPhone);
   set('vw_t', token&&m&&!m.pending?token:''); set('vw_a', isAdmin?adminToken:'');
 }catch(e){} }
+// Which branch's name and logo the screen shows: the one being managed, or the member's own shop.
+const curBranch=()=>isAdmin?VIEW.branch:(S.branch||'hq');
+const isRO=()=>isAdmin&&view==='admin'&&!VIEW.own;
+const isOperator=()=>isAdmin&&STAFF&&STAFF.role==='operator';
+const logoUrl=(sz=192)=>`/icon-${sz}.png?${curBranch()!=='hq'?'b='+curBranch()+'&':''}v=${encodeURIComponent((S.settings&&S.settings.logo)||'d')}`;
+// Home-screen name and icon follow the member's shop.
+function shopIcons(){ try{ const b=isAdmin?'hq':(S.branch||'hq'), q=b!=='hq'?'?b='+b:'';
+  const mf=document.querySelector('link[rel="manifest"]'); if(mf&&mf.getAttribute('href')!=='/manifest.webmanifest'+q) mf.setAttribute('href','/manifest.webmanifest'+q);
+  const ap=document.querySelector('link[rel="apple-touch-icon"]'); if(ap&&ap.getAttribute('href')!=='/icon-180.png'+q) ap.setAttribute('href','/icon-180.png'+q); }catch(e){} }
 async function refresh(){
   const j=await api('data'); lastRefresh=Date.now(); maybeUpdate(j.ver);
   Object.assign(S,{members:[],requests:[],ledger:[],cards:[],checkins:[],health:[]},j.data);
@@ -39,6 +52,9 @@ async function refresh(){
   isAdmin=!!j.admin; if(!isAdmin&&adminToken){ adminToken=null; ls.set('vw_admin',null); }
   if(token&&!j.me){ token=null; ls.set('vw_token',null); }
   myPhone=j.me||null;
+  STAFF=j.staff||null; VIEW=j.view||{branch:'hq',own:true}; TREE=j.tree||[]; STAFFS=j.staffList||[]; S.branch=j.data.branch||'hq';
+  if(isAdmin&&adminView&&adminView!==VIEW.branch){ adminView=VIEW.branch; ls.set('vw_view',adminView); }
+  shopIcons();
   courseCookies();
   S.feed=j.admin?(j.data.myNotices||(j.me?[]:j.data.notices||[])):(j.data.notices||[]);
   S.bcasts=j.admin?(j.data.notices||[]):[]; S.push=j.data.push||null;

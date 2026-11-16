@@ -27,7 +27,7 @@ const ART_URL=location.origin+'/';
 function h36(str){let h=2166136261>>>0;for(const ch of str){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)>>>0;}return h.toString(36);}
 const qrMode=()=>(S.settings&&S.settings.qrMode)||'fixed';
 function qrCodeFor(date){const st=S.settings||{}; if(!st.qrKey||qrMode()==='off') return null; return h36(st.qrKey+'|'+(qrMode()==='fixed'?'fixed':date));}
-const qrLink=()=>{const c=qrCodeFor(today());return c?ART_URL+'#checkin-'+c:null;};
+const qrLink=()=>{const c=qrCodeFor(today());return c?ART_URL+'#checkin-'+c+(curBranch()!=='hq'?'-'+curBranch():''):null;};
 let scanCode=null, scanResult=null, scanBad=false;
 const parseD=x=>{const [y,m,d]=String(x||'').split('-').map(Number);return new Date(y,(m||1)-1,d||1).getTime()};
 const today=()=>dt(Date.now());

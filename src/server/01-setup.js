@@ -9,10 +9,10 @@ const ICONS = __ICONS__;
 const BRAND = __BRAND__;
 const brandOf = st => ({ name: (st && st.brandName) || BRAND.name, sub: (st && st.brandSub) || BRAND.sub, short: (st && st.brandShort) || BRAND.short });
 const escHtml = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const manifestFor = st => { const b = brandOf(st); return JSON.stringify({
+const manifestFor = (st, b0) => { const b = brandOf(st), q = b0 && b0 !== 'hq' ? '?b=' + b0 : ''; return JSON.stringify({
   name: b.name, short_name: b.short, start_url: '/', display: 'standalone',
   background_color: '#FBF5F3', theme_color: '#7A1E3A', lang: 'zh',
-  icons: [{ src: '/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: '/icon-512.png', sizes: '512x512', type: 'image/png' }]
+  icons: [{ src: '/icon-192.png' + q, sizes: '192x192', type: 'image/png' }, { src: '/icon-512.png' + q, sizes: '512x512', type: 'image/png' }]
 }); };
 
 const TZ_OFFSET_H = 8; // Malaysia / Singapore

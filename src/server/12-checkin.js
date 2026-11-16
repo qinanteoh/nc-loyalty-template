@@ -20,7 +20,7 @@ async function doCheckin(s, card, force, by) {
   if (daily && by !== 'staff') {
     await s.put('checkins', cid, { cardId: card.id, phone: card.phone, date: today(), ts: Date.now(), by, points: 0, due: points, pend: true });
     await s.put('requests', uid(), { phone: card.phone, name: m ? m.name : '', status: 'pending', ts: Date.now(), type: 'checkin', checkinId: cid, cardId: card.id, title: 'Daily Pass 打卡', points });
-    await later(s, notifyAdmin(s, 'checkin', { name: m ? m.name : card.phone }));
+    await later(s, notifyAdmin(s, 'checkin', { name: m ? m.name : card.phone }, bOf(m)));
     return json({ ok: true, pending: true, points, left: null });
   }
   await s.put('checkins', cid, { cardId: card.id, phone: card.phone, date: today(), ts: Date.now(), by, points });

@@ -1,7 +1,9 @@
 /* ---------- admin ---------- */
 function vAdmin(){
   const pend=S.requests.filter(r=>r.status==='pending').length+pendMembers().length;
-  const tabs=[['requests',`审核${pend?' ('+pend+')':''}`],['notify','通知'],['rewards','礼物'],['tasks','任务'],['report','打卡报告'],['stats','每日统计'],['members','会员'],['course','课程'],['health','健康'],['cards','NCP卡'],['home','首页']];
+  let tabs=[['requests',`审核${pend?' ('+pend+')':''}`],['notify','通知'],['rewards','礼物'],['tasks','任务'],['report','打卡报告'],['stats','每日统计'],['members','会员'],['course','课程'],['health','健康'],['cards','NCP卡'],['branch','分店'],['home','首页']];
+  if(isOperator()) tabs=tabs.filter(([k])=>!['notify','rewards','tasks','home'].includes(k));
+  if(!tabs.some(([k])=>k===adminTab)) adminTab='requests';
   let body='';
   if(adminTab==='requests'){
     const list=S.requests.filter(r=>qMatch(r.name,r.phone)).sort((a,b)=>(a.status==='pending'?0:1)-(b.status==='pending'?0:1)||b.ts-a.ts).slice(0,40);
@@ -9,6 +11,8 @@ function vAdmin(){
     body=adminPushCard()+qBox()+(pm.length?`<div class="sec-h" style="margin-top:6px"><h2>新会员等待核准（${pm.length}）</h2></div><div class="list" style="margin-bottom:18px">${pm.map(m=>`<div class="arow"><div class="tx"><b>${nt(m.name)}</b><span>${esc(m.phone)} · 注册于 ${dt(m.regTs||Date.now())}</span></div><div style="display:flex;gap:6px"><button class="btn sm danger" data-act="rejectMember" data-id="${esc(m.id)}">拒绝</button><button class="btn sm ok" data-act="approveMember" data-id="${esc(m.id)}">核准</button></div></div>`).join('')}</div><div class="sec-h"><h2>兑换 / 赚分 / 续卡 / 课程申请</h2></div>`:'')+(list.length?`<div class="list">${list.map(r=>`<div class="arow"><div class="tx"><b>${({redeem:'兑换',earn:'赚分',renew:'续卡',checkin:'打卡',course:'课程'})[r.type]} · ${nt(r.title)}</b><span>${nt(r.name)} · ${esc(r.phone)} · ${dt(r.ts)}${r.note?' · '+esc(r.note):''}</span></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">${r.type==='renew'?`<span class="sub">${r.total} 次</span>`:r.type==='course'?'<span class="sub">开通课程</span>':`<span class="num ${r.type==='redeem'?'d-minus':'d-plus'}">${r.type==='redeem'?'−':'+'}${fmt(r.points)}</span>`}
       ${r.status==='pending'?`<div style="display:flex;gap:6px"><button class="btn sm danger" data-act="reject" data-id="${esc(r.id)}">拒绝</button><button class="btn sm ok" data-act="approve" data-id="${esc(r.id)}">通过</button></div>`:`<span class="badge ${r.status}">${r.status==='approved'?'已通过':'未通过'}</span>`}</div></div>`).join('')}</div>`:(qOf()?noMatch():'<div class="empty">目前没有待审核的申请。</div>'));
+  } else if(adminTab==='branch'){
+    body=adminBranch();
   } else if(adminTab==='rewards'){
     const list=S.rewards.slice().sort((a,b)=>a.points-b.points);
     body=`<button class="btn block" data-act="editReward" style="margin-bottom:12px">${ic('plus',18)} 新增礼物</button>
@@ -22,7 +26,7 @@ function vAdmin(){
     body=`<div class="btnrow" style="justify-content:flex-start;margin-bottom:12px"><button class="btn sm" data-act="exportPdf">导出 PDF 报表</button><button class="btn sm ghost" data-act="exportCsv">导出 Excel</button></div>
     <div style="display:flex;gap:8px;margin-bottom:12px"><div class="qbox" style="flex:1;margin:0">${ic('search',18)}<input class="inp" id="mq" type="search" enterkeyhint="search" autocomplete="off" placeholder="搜索名字或电话" value="${esc(memberQ)}"></div><button class="btn" data-act="editMember">${ic('plus',18)}</button></div>
       ${list.length?`<div class="list">${list.map(m=>`<div class="arow mem"><div class="tx"><b>${nt(m.name)} <span class="tier ${esc(m.tier)}">${esc(m.tier)}</span>${tierInfo(m).manual?' <span class="badge pending">手动</span>':''}${m.pending?' <span class="badge pending">待核准</span>':''}${dpTag(m.phone)}</b><span>${esc(m.phone)} · <span class="num">${fmt(totalPts(m))}</span> pts</span>${(st=>`<span style="display:block">共 ${st.nCards} 张卡 · 累计打卡 ${st.nCheckins} 次${st.last?' · 最近 '+st.last:''}${st.curInfo&&st.curInfo.status==='active'?` · 目前第 ${st.nCards?cardNo(st.cur):0} 张剩 ${st.curInfo.left} 次`:''}${unpaidOf(m.phone)?` · <b style="color:var(--warn)">未付款 ${unpaidOf(m.phone)} 张</b>`:''}</span>`)(memberStats(m))}</div>
-        <div class="btnrow"><button class="btn sm ghost" data-act="editMember" data-id="${esc(m.id)}">编辑</button><button class="btn sm ghost" data-act="ncp" data-id="${esc(m.id)}">NCP卡</button><button class="btn sm ghost" data-act="hsheet" data-id="${esc(m.id)}">健康表</button><button class="btn sm" data-act="addPts" data-id="${esc(m.id)}">加/减分</button></div></div>`).join('')}</div>`:(q?noMatch():'<div class="empty">还没有会员。按 + 新增会员。</div>')}`;
+        <div class="btnrow"><button class="btn sm ghost" data-act="editMember" data-id="${esc(m.id)}">编辑</button><button class="btn sm ghost" data-act="ncp" data-id="${esc(m.id)}">NCP卡</button><button class="btn sm ghost" data-act="hsheet" data-id="${esc(m.id)}">健康表</button><button class="btn sm" data-act="addPts" data-id="${esc(m.id)}">加/减分</button></div></div>`).join('')}</div>`:(q?noMatch():VIEW.own?'<div class="empty">还没有会员。按 + 新增会员。</div>':'<div class="empty">这家店还没有会员。</div>')}`;
   } else if(adminTab==='notify'){
     const P=S.push||{devices:0,members:0};
     body=`<div class="card"><b style="display:block;font-size:20px;margin-bottom:6px">发公告给全部会员</b>
@@ -90,7 +94,7 @@ function vAdmin(){
       <div class="sub" style="word-break:break-all">${esc(joinLink())}</div>
       <div class="btnrow" style="justify-content:center"><button class="btn sm" data-act="joinPoster">下载注册海报</button><button class="btn sm ghost" data-act="joinCopy">复制注册链接</button></div></div></div>
     <form id="brandForm" class="card" style="margin-bottom:14px"><b style="display:block;margin-bottom:10px;font-size:20px">俱乐部资料</b>
-      <div class="field"><label>Logo / App 图标（正方形效果最好）</label><div class="uploader"><img src="/icon-192.png?v=${esc(st.logo||'d')}" alt="" style="width:84px;height:84px;border-radius:18px;flex:none">
+      <div class="field"><label>Logo / App 图标（正方形效果最好）</label><div class="uploader"><img src="${logoUrl()}" alt="" style="width:84px;height:84px;border-radius:18px;flex:none">
         <div style="display:flex;flex-direction:column;gap:6px"><label class="btn sm ghost" for="lfile">上传 Logo</label><input type="file" id="lfile" accept="image/*" hidden>${st.logo?'<button type="button" class="btn sm danger" data-act="clearLogo">改回默认图标</button>':''}</div></div></div>
       <div class="field"><label for="b_n">俱乐部名称</label><input class="inp" id="b_n" value="${esc(B.name)}"></div>
       <div class="field"><label for="b_s">副标题（显示在名称下面）</label><input class="inp" id="b_s" value="${esc(B.sub)}"></div>
@@ -108,8 +112,104 @@ function vAdmin(){
       <div class="field"><label for="h_terms">兑换须知（一行一条）</label><textarea class="inp" id="h_terms" rows="6">${esc(termsText())}</textarea></div>
       <button class="btn block" type="submit">保存首页</button></form>`;
   }
+  if((adminTab==='rewards'||adminTab==='tasks')&&VIEW.branch!=='hq') body=`<div class="note-hq">${adminTab==='rewards'?'礼物':'任务'}目前跟总店一样，由总店设定。</div>`+body;
   return `<div class="sec-h"><h2 style="font-family:var(--f-display);font-size:30px">管理后台</h2><button class="link" data-act="adminLogout">退出管理</button></div>
+  ${branchBar()}
   <div class="seg">${tabs.map(([k,l])=>`<button class="${adminTab===k?'on':''}" data-act="atab" data-v="${k}">${l}</button>`).join('')}</div>${body}`;
 }
 const activeTasksAll=()=>S.tasks.slice().sort((a,b)=>(a.order??0)-(b.order??0));
 
+
+/* ---------- branches (分店) ---------- */
+const ROLE_NAME={manager:'店长',operator:'操作员'};
+const shopName=id=>(TREE.find(b=>b.id===id)||{}).name||(id==='hq'?'总店':'分店');
+// Branches in tree order with their depth (own branch first).
+function treeRows(){ const root=TREE.find(b=>!b.parent); if(!root) return []; const out=[];
+  const walk=(b,d)=>{ out.push({...b,depth:d}); TREE.filter(x=>x.parent===b.id).sort((a,c)=>(a.created||0)-(c.created||0)).forEach(x=>walk(x,d+1)); };
+  walk(root,0); return out; }
+// Who is signed in, which branch is shown, and a picker for branches below.
+function branchBar(){
+  const who=STAFF?`${nt(STAFF.name)} · <span>${ROLE_NAME[STAFF.role]||''}</span> · ${nt(shopName(STAFF.branch))}`:'';
+  const rows=treeRows();
+  const pick=rows.length>1?`<label class="vpick"><span>正在看</span><select id="vsel" translate="no">${rows.map(r=>`<option value="${esc(r.id)}"${r.id===VIEW.branch?' selected':''}>${'— '.repeat(r.depth)}${esc(r.name)}${r.depth?'':' ★'}</option>`).join('')}</select></label>`:'';
+  const ro=VIEW.own?'':`<div class="robanner">${ic('lock',18)}<span><span>这是下线分店，你只能看，不能改：</span>${nt(shopName(VIEW.branch))}</span></div>`;
+  return `<div class="vbar"><div class="sub">${who}</div>${pick}</div>${ro}`;
+}
+function adminBranch(){
+  const mgr=STAFF&&STAFF.role==='manager';
+  const meCard=`<div class="card" style="margin-bottom:14px"><b style="display:block;font-size:20px;margin-bottom:4px">我的账号</b>
+    <div class="sub">${nt(STAFF.name)} · <span>${ROLE_NAME[STAFF.role]}</span> · ${nt(shopName(STAFF.branch))}${STAFF.phone?' · '+esc(STAFF.phone):''}</div>
+    ${STAFF.owner?'<p class="sub" style="margin:6px 0 0">你用总店的后台密码登入。可以在下面为自己新增一个店长账号，用手机号码登入。</p>':`<div class="btnrow" style="justify-content:flex-start;margin-top:8px"><button class="btn sm ghost" data-act="myPw">改我的密码</button></div>`}</div>`;
+  const own=VIEW.own&&mgr;
+  const staffCard=`<div class="card" style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px"><b style="font-size:20px"><span>管理员</span> · ${nt(shopName(VIEW.branch))}</b>${own?'<button class="btn sm" data-act="staffEdit">+ 新增</button>':''}</div>
+    <p class="sub" style="margin:0 0 8px">店长什么都能改，也可以开下线分店；操作员只能核准和打卡。每个人用自己的手机号码和密码登入。</p>
+    <div class="list">${VIEW.branch==='hq'?`<div class="arow"><div style="flex:1"><b>总店老板</b><div class="sub">用 Cloudflare 里的后台密码登入（电话留空）</div></div><span class="badge approved">店长</span></div>`:''}
+    ${STAFFS.map(x=>`<div class="arow"><div style="flex:1;min-width:0"><b>${nt(x.name)}</b><div class="sub">${esc(x.phone)}</div></div><span class="badge ${x.role==='manager'?'approved':'pending'}">${ROLE_NAME[x.role]}</span>
+      ${own?`<div class="btnrow"><button class="btn sm ghost" data-act="staffEdit" data-id="${esc(x.id)}">修改</button>${STAFF.id!==x.id?`<button class="btn sm danger" data-act="staffDel" data-id="${esc(x.id)}">删除</button>`:''}</div>`:''}</div>`).join('')||(VIEW.branch==='hq'?'':'<div class="empty">还没有管理员。</div>')}</div></div>`;
+  const rows=treeRows();
+  const treeCard=`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px"><b style="font-size:20px">分店图</b>${mgr?'<button class="btn sm" data-act="branchAdd">+ 开新分店</button>':''}</div>
+    <p class="sub" style="margin:0 0 8px">你的店和下线分店。点店名可以看那家店的资料（下线只能看，不能改）。</p>
+    <div class="tree">${rows.map(r=>`<div class="trow" style="--d:${r.depth}"><img src="/icon-64.png?${r.id!=='hq'?'b='+esc(r.id)+'&':''}v=${esc(r.logo||'d')}" alt="" width="32" height="32">
+      <div class="tinfo"><button class="link tname" data-act="shopView" data-id="${esc(r.id)}" translate="no">${esc(r.name)}</button><span class="sub">${r.members} 位会员${r.id===VIEW.branch?' · <b>正在看</b>':''}</span></div>
+      ${mgr&&r.depth>0?`<button class="btn sm ghost" data-act="branchMove" data-id="${esc(r.id)}">搬店</button>`:''}</div>`).join('')}</div></div>`;
+  return meCard+staffCard+treeCard;
+}
+function staffForm(id){
+  const x=id?STAFFS.find(s=>s.id===id):null;
+  openSheet(`<h3>${x?'修改管理员':'新增管理员'}</h3><form id="stf" data-id="${esc(x?x.id:'')}">
+    <div class="field"><label for="st_n">名字</label><input class="inp" id="st_n" value="${esc(x?x.name:'')}"></div>
+    <div class="field"><label for="st_p">手机号码（用来登入）</label><input class="inp" id="st_p" inputmode="tel" value="${esc(x?x.phone:'')}"${x?' readonly':''}></div>
+    <div class="field"><label for="st_r">身份</label><select class="inp" id="st_r"><option value="manager"${!x||x.role==='manager'?' selected':''}>店长：什么都能改</option><option value="operator"${x&&x.role==='operator'?' selected':''}>操作员：只能核准和打卡</option></select></div>
+    <div class="field"><label for="st_w">${x?'新密码（不改就留空）':'密码（至少 6 个字）'}</label><input class="inp" id="st_w" type="text" autocomplete="off"></div>
+    <p class="sub" style="margin:0 0 10px">请把手机号码和密码告诉他。他到「店家登入」输入就可以进后台。</p>
+    <button class="btn block" type="submit">保存</button></form>`);
+}
+function branchAddForm(){
+  openSheet(`<h3>开新分店</h3><p class="sub" style="margin:-6px 0 10px"><span>新分店会开在这家店下面：</span>${nt(shopName(STAFF.branch))}<br><span>分店的会员、积分、打卡都归那家店。</span></p><form id="brf">
+    <div class="field"><label for="br_n">分店名称</label><input class="inp" id="br_n" placeholder="例如 Cheras 分店"></div>
+    <div class="field"><label for="br_mn">店长名字</label><input class="inp" id="br_mn"></div>
+    <div class="field"><label for="br_mp">店长手机号码（用来登入）</label><input class="inp" id="br_mp" inputmode="tel"></div>
+    <div class="field"><label for="br_mw">店长密码（至少 6 个字）</label><input class="inp" id="br_mw" type="text" autocomplete="off"></div>
+    <p class="sub" style="margin:0 0 10px">店长用这个手机号码和密码在「店家登入」进后台，可以改自己的店名、Logo、打卡二维码，也可以再开下线分店。</p>
+    <button class="btn block" type="submit">开店</button></form>`);
+}
+function branchMoveForm(id){
+  const rows=treeRows(), b=rows.find(r=>r.id===id); if(!b) return;
+  const under=new Set([id]); let grow=true; while(grow){ grow=false; for(const r of rows) if(r.parent&&under.has(r.parent)&&!under.has(r.id)){ under.add(r.id); grow=true; } }
+  const opts=rows.filter(r=>!under.has(r.id));
+  openSheet(`<h3><span>搬店</span> · ${nt(b.name)}</h3><p class="sub" style="margin:-6px 0 10px"><span>现在的上线：</span>${nt(shopName(b.parent))}<br>搬过去后，它的会员、积分、设定都不变，它下面的分店也一起搬。新的上线可以看它的资料（只能看，不能改）。</p>
+    <form id="mvf" data-id="${esc(id)}"><div class="field"><label for="mv_to">搬到这家店下面</label><select class="inp" id="mv_to" translate="no">${opts.map(r=>`<option value="${esc(r.id)}"${r.id===b.parent?' selected':''}>${'— '.repeat(r.depth)}${esc(r.name)}</option>`).join('')}</select></div>
+    <button class="btn block" type="submit">确定搬店</button></form>`);
+}
+function myPwForm(){
+  openSheet(`<h3>改我的密码</h3><form id="mpf"><div class="field"><label for="mp1">新密码（至少 6 个字）</label><input class="inp" id="mp1" type="password" autocomplete="new-password"></div>
+    <div class="field"><label for="mp2">再输入一次</label><input class="inp" id="mp2" type="password" autocomplete="new-password"></div><button class="btn block" type="submit">保存</button></form>`);
+}
+// What a person may press in the back office: downline branches are view-only; operators approve and check in.
+const VIEW_ACTS=new Set(['atab','go','back','close','adminLogout','cardFilter','courseFilter','coursePreview','csheet','hsheet','healthPdf','ncp','backNcp','exportCsv','exportDailyCsv','exportDailyPdf','exportPdf','repDay','repPdf','statRange','joinCopy','joinPoster','shopView','myPw','sfNext']);
+const OP_ACTS=new Set(['approve','reject','approveMember','rejectMember','staffCheckin','checkin','undoCheckin','courseOpen','editScan','editProfile','delScan']);
+const HQ_ACTS=new Set(['editReward','delReward','editTask','delTask']);
+function adminActWhy(a){
+  if(!isAdmin||view!=='admin'||VIEW_ACTS.has(a)) return '';
+  if(a==='branchAdd'||a==='branchMove') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
+  if(!VIEW.own) return '这是下线分店，只能看，不能改';
+  if(isOperator()&&!OP_ACTS.has(a)) return '操作员不能做这个，请找店长';
+  if(HQ_ACTS.has(a)&&VIEW.branch!=='hq') return '礼物和任务目前由总店设定';
+  return '';
+}
+const OP_FORMS=['sf','pfm','mpf'], ANY_FORMS=['mpf','adminForm','loginForm','pinForm','regForm','setPinForm'];
+function adminFormWhy(id){
+  if(!isAdmin||view!=='admin'||ANY_FORMS.includes(id)) return '';
+  if(id==='brf'||id==='mvf') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
+  if((id==='sf'||id==='pfm')&&!hFor) return '';
+  if(!VIEW.own) return '这是下线分店，只能看，不能改';
+  if(isOperator()&&!OP_FORMS.includes(id)) return '操作员不能做这个，请找店长';
+  return '';
+}
+// Hide what cannot be used, so nobody presses a button that will be refused.
+function lockAdmin(){
+  if(!isAdmin||view!=='admin') return;
+  document.querySelectorAll('#app [data-act], #layer [data-act]').forEach(el=>{ if(adminActWhy(el.dataset.act)) el.style.display='none'; });
+  document.querySelectorAll('#app form, #layer form').forEach(f=>{ if(adminFormWhy(f.id)){ f.querySelectorAll('input,select,textarea').forEach(i=>i.disabled=true); f.querySelectorAll('button[type=submit],label.btn').forEach(x=>x.style.display='none'); } });
+  if(!VIEW.own||isOperator()) ['qm','lfile','hfile','nfile'].forEach(id=>{ const el=document.getElementById(id); if(el) el.disabled=true; });
+}

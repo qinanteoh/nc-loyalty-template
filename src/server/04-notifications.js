@@ -52,9 +52,9 @@ const ADMIN_TEXT = {
   course: { zh: ['课程开通申请', v => `${v.name} 读完前 ${COURSE_FREE} 天，申请继续看 ${v.title}`], en: ['Course access request', v => `${v.name} finished the first ${COURSE_FREE} days and asks to continue: ${v.title}`], ms: ['Permohonan akses kursus', v => `${v.name} sudah habis ${COURSE_FREE} hari pertama dan mahu teruskan: ${v.title}`] },
   renew: { zh: ['续卡申请等待核准', v => `${v.name} 申请续卡：${v.title}`], en: ['Card renewal waiting for approval', v => `${v.name} applied to renew: ${v.title}`], ms: ['Pembaharuan kad menunggu kelulusan', v => `${v.name} memohon pembaharuan: ${v.title}`] }
 };
-async function notifyAdmin(s, kind, v) {
+async function notifyAdmin(s, kind, v, branch) {
   try {
-    const subs = (await s.where('pushsubs', 'phone', ADMIN_SUB)).slice(0, 10); if (!subs.length) return;
+    const subs = (await s.where('pushsubs', 'phone', adminSubKey(branch || HQ))).slice(0, 10); if (!subs.length) return;
     const vapid = await s.get('meta', 'vapid'); if (!vapid) return;
     const sender = await makeSenderKey(), cache = {}, T = ADMIN_TEXT[kind];
     for (const sub of subs) {
@@ -74,8 +74,8 @@ async function notifyMember(s, phone, kind, vars) {
   } catch (e) { /* a failed notification must not undo the action */ }
 }
 const later = (s, p) => { if (s.ctx && s.ctx.waitUntil) s.ctx.waitUntil(p); else return p; };
-async function noticesFor(s, phone) {
-  const all = await s.where('notices', 'phone', '*');
+async function noticesFor(s, phone, branch) {
+  const all = (await s.where('notices', 'phone', '*')).filter(n => bOf(n) === (branch || HQ));
   const mine = phone ? await s.where('notices', 'phone', phone) : [];
   return all.concat(mine).sort((a, b) => b.ts - a.ts).slice(0, 40);
 }

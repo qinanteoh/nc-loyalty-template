@@ -4,7 +4,7 @@ let camStream=null, camTimer=null;
 function stopCam(){ if(camTimer){ cancelAnimationFrame(camTimer); camTimer=null; } if(camStream){ camStream.getTracks().forEach(t=>t.stop()); camStream=null; } }
 function loadJsQR(){ return window.jsQR?Promise.resolve():new Promise((res,rej)=>{const sc=document.createElement('script'); sc.src='https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc);}); }
 function gotCode(text){
-  const mt=String(text||'').match(/#checkin-([a-z0-9]+)/);
+  const mt=String(text||'').match(/#checkin-([a-z0-9]+(?:-[a-z0-9]+)?)/);
   if(!mt){ toast('这不是 '+brand().name+' 的打卡二维码'); return false; }
   stopCam(); closeSheet(); scanCode=mt[1]; scanResult=null; scanBad=false; goView('scan'); render(); window.scrollTo(0,0); return true;
 }
@@ -36,7 +36,7 @@ async function openScanner(){
   };
   tick();
 }
-function openSheet(html){ reSheet=null; const l=document.getElementById('layer'); l.innerHTML=`<div class="scrim" data-act="close"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><button class="sheet-x" data-act="close" aria-label="关闭">✕</button>${html}</div></div>`; }
+function openSheet(html){ reSheet=null; const l=document.getElementById('layer'); l.innerHTML=`<div class="scrim" data-act="close"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div><button class="sheet-x" data-act="close" aria-label="关闭">✕</button>${html}</div></div>`; lockAdmin(); }
 function closeSheet(){ stopCam(); reSheet=null; document.getElementById('layer').innerHTML=''; }
 let tt; function toast(t){ let el=document.querySelector('.toast'); if(!el){el=document.createElement('div');el.className='toast';document.body.appendChild(el);} el.textContent=t; clearTimeout(tt); tt=setTimeout(()=>el.remove(),2600); }
 

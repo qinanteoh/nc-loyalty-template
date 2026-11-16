@@ -96,7 +96,7 @@ function loginView(){
 // What visitors and not-yet-approved members see: only the welcome, register / log in, or "waiting for approval".
 function gateView(){
   const gateFoot=`<div class="sec" style="text-align:center"><button class="link sub" data-act="adminLogin">店家登入</button></div>`;
-  const m=me(), logo=`<img class="logo" src="/icon-192.png?v=${esc((S.settings&&S.settings.logo)||'d')}" alt="" width="72" height="72" style="width:72px;height:72px;border-radius:18px;margin:6px auto 10px;display:block">`;
+  const m=me(), logo=`<img class="logo" src="${logoUrl()}" alt="" width="72" height="72" style="width:72px;height:72px;border-radius:18px;margin:6px auto 10px;display:block">`;
   if(m) return `<div class="scan-ok">${logo}<h2 style="font-family:var(--f-display);font-size:28px">${nt(m.name)}，注册成功！</h2>
     <p class="sub" style="margin:4px 0 0">请等店里核准你的会员资料。核准后，你就可以进来看所有会员内容，手机也会收到通知。</p></div>
     <div class="sec" style="display:grid;gap:10px"><button class="btn block" data-act="recheck">我已经被核准了，进去看看</button><button class="link" data-act="logout">换一个号码登入</button></div>${gateFoot}`;
@@ -154,8 +154,11 @@ async function autoScanCheckin(){
   catch(e){ scanResult=null; if(e.code==='bad_qr') scanBad=true; else toast(e.message); render(); }
   finally{ scanBusy=false; }
 }
-function readHash(){ const mt=(location.hash||'').match(/^#checkin-([a-z0-9]+)$/); if(mt){ scanCode=mt[1]; scanResult=null; scanBad=false; view='scan'; }
-  if(location.hash==='#join'){ joining=true; view='me'; if(!token){ loginStep='phone'; } try{ history.replaceState(null,'',location.pathname+location.search); }catch(_){} } }
+// A shop's link or QR remembers that shop for visitors, so they register into it and see its name.
+function rememberShop(b){ if(!token&&b) ls.set('vw_branch',b==='hq'?null:b); }
+function readHash(){ const mt=(location.hash||'').match(/^#checkin-([a-z0-9]+(?:-[a-z0-9]+)?)$/); if(mt){ scanCode=mt[1]; scanResult=null; scanBad=false; view='scan'; const i=scanCode.indexOf('-'); rememberShop(i>0?scanCode.slice(i+1):'hq'); }
+  const jm=(location.hash||'').match(/^#join(?:=([a-z0-9]+))?$/);
+  if(jm){ joining=true; view='me'; rememberShop(jm[1]||'hq'); if(!token){ loginStep='phone'; } try{ history.replaceState(null,'',location.pathname+location.search); }catch(_){} } }
 let joining=false;
-const joinLink=()=>ART_URL+'#join';
+const joinLink=()=>ART_URL+'#join'+(curBranch()!=='hq'?'='+curBranch():'');
 

@@ -1,7 +1,7 @@
 /* ---------- render ---------- */
 function render(){
   const app=document.getElementById('app');
-  const top=`<header class="top"><div class="brand"><img class="logo" src="/icon-192.png?v=${esc((S.settings&&S.settings.logo)||'d')}" alt="" width="40" height="40"><div><b>${nt(brand().name)}</b><small>${esc(brand().sub)}</small></div></div><div style="display:flex;gap:8px;align-items:center">${isAdmin?'<span class="demo">管理员</span>':''}<button class="bellbtn" data-act="notices" aria-label="通知">${ic('bell',20)}${unreadN()?`<span class="dot">${unreadN()>9?'9+':unreadN()}</span>`:''}</button><button class="langbtn" data-act="lang" aria-label="语言 Language"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span translate="no">${({zh:'中文',en:'EN',ms:'BM'})[LANG]}</span></button></div></header>`;
+  const top=`<header class="top"><div class="brand"><img class="logo" src="${logoUrl()}" alt="" width="40" height="40"><div><b>${nt(brand().name)}</b><small>${esc(brand().sub)}</small></div></div><div style="display:flex;gap:8px;align-items:center">${isAdmin?'<span class="demo">管理员</span>':''}<button class="bellbtn" data-act="notices" aria-label="通知">${ic('bell',20)}${unreadN()?`<span class="dot">${unreadN()>9?'9+':unreadN()}</span>`:''}</button><button class="langbtn" data-act="lang" aria-label="语言 Language"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span translate="no">${({zh:'中文',en:'EN',ms:'BM'})[LANG]}</span></button></div></header>`;
   if(!loaded) return;
   if(view==='admin'&&!isAdmin) view='home';
   const locked=!isAdmin&&(!me()||me().pending);
@@ -22,6 +22,8 @@ function render(){
   const rd=document.getElementById('repDate'); if(rd) rd.onchange=e=>{ if(e.target.value){ reportDate=e.target.value; render(); } };
   const qm=document.getElementById('qm'); if(qm) qm.onchange=e=>run(()=>putSettings({...S.settings,qrMode:e.target.value}),'打卡方式已更新');
   if(view==='scan') setTimeout(autoScanCheckin,0);
+  const vs=document.getElementById('vsel'); if(vs) vs.onchange=e=>setAdminView(e.target.value);
+  lockAdmin();
   for(const id of ['mq','aq']){ const el=document.getElementById(id); if(!el) continue;
     const go=()=>{ if(id==='mq') memberQ=el.value; else adminQ[adminTab]=el.value; const p=el.selectionStart; render(); const n=document.getElementById(id); if(n){ n.focus(); try{n.setSelectionRange(p,p);}catch(_){} } };
     el.oninput=e=>{ if(!e.isComposing) go(); }; el.addEventListener('compositionend',go); }

@@ -17,11 +17,11 @@ async function addLedger(s, phone, delta, reason) {
 }
 
 async function session(env, req) {
-  const out = { phone: null, admin: false };
+  const out = { phone: null, admin: false, adminId: null };
   const t = req.headers.get('x-token'), a = req.headers.get('x-admin');
   const now = Date.now();
   if (t) { const r = await env.DB.prepare('SELECT phone, exp FROM sessions WHERE token = ? AND admin = 0 AND exp > ?').bind(t, now).first(); if (r) { out.phone = r.phone; await renew(env, t, r.exp, CUSTOMER_DAYS); } }
-  if (a) { const r = await env.DB.prepare('SELECT exp FROM sessions WHERE token = ? AND admin = 1 AND exp > ?').bind(a, now).first(); if (r) { out.admin = true; await renew(env, a, r.exp, ADMIN_DAYS); } }
+  if (a) { const r = await env.DB.prepare('SELECT phone, exp FROM sessions WHERE token = ? AND admin = 1 AND exp > ?').bind(a, now).first(); if (r) { out.admin = true; out.adminId = r.phone || null; await renew(env, a, r.exp, ADMIN_DAYS); } }
   return out;
 }
 // The course pages are opened by the browser directly (no app headers), so the app leaves its sign-in in a cookie for /course.

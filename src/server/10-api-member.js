@@ -4,37 +4,52 @@ async function handleApi(req, env, path, ctx) {
   const who = await session(env, req);
 
   if (path === 'data') {
-    const settings = (await s.get('settings', 'home')) || {};
     const pub = { rewards: await s.all('rewards'), tasks: await s.all('tasks'), courseFree: COURSE_FREE };
     if (who.admin) {
+      const me_ = await staffOf(s, who);
+      if (!me_) return fail('这个管理员账号已经被删除了，请重新登入', 'no_admin', 401);
+      const list = await branchList(s), mine = subtree(list, me_.branch);
+      const want = req.headers.get('x-branch'), vb = mine.includes(want) ? want : me_.branch;
+      const allSettings = await s.all('settings'), stOf = b => allSettings.find(x => x.id === settingsId(b)) || {};
+      const settings = stOf(vb);
+      const allMembers = await s.all('members');
       const data = { ...pub, settings };
-      for (const c of ['members', 'cards', 'checkins', 'requests', 'ledger']) data[c] = await s.all(c);
-      data.health = await s.all('health');
+      data.members = allMembers.filter(m => bOf(m) === vb);
+      const ph = new Set(data.members.map(m => m.id));
+      for (const c of ['cards', 'checkins', 'requests', 'ledger']) data[c] = (await s.all(c)).filter(x => ph.has(x.phone));
+      data.health = (await s.all('health')).filter(h => ph.has(h.id));
       const pins = new Set((await s.all('pins')).map(p => p.id));
       data.members = data.members.map(m => ({ ...m, hasPin: pins.has(m.id) }));
-      data.notices = (await s.where('notices', 'phone', '*')).sort((a, b) => b.ts - a.ts).slice(0, 60);
-      const pc = await env.DB.prepare("SELECT COUNT(*) AS n, COUNT(DISTINCT json_extract(data, '$.phone')) AS m FROM docs WHERE col = 'pushsubs' AND json_extract(data, '$.phone') != '#admin'").first();
-      data.push = { devices: pc ? pc.n : 0, members: pc ? pc.m : 0 };
-      const ac = await env.DB.prepare("SELECT COUNT(*) AS n FROM docs WHERE col = 'pushsubs' AND json_extract(data, '$.phone') = '#admin'").first();
-      data.adminPush = ac ? ac.n : 0;
+      data.notices = (await s.where('notices', 'phone', '*')).filter(n => bOf(n) === vb).sort((a, b) => b.ts - a.ts).slice(0, 60);
+      const subs = await s.all('pushsubs');
+      const msubs = subs.filter(x => ph.has(x.phone));
+      data.push = { devices: msubs.length, members: new Set(msubs.map(x => x.phone)).size };
+      data.adminPush = subs.filter(x => x.phone === adminSubKey(vb)).length;
+      // Branch tree this person may look at, with member counts; staff of the branch being viewed.
+      const counts = {}; for (const m of allMembers) counts[bOf(m)] = (counts[bOf(m)] || 0) + 1;
+      const tree = list.filter(b => mine.includes(b.id)).map(b => ({ id: b.id, parent: b.id === me_.branch ? null : b.parent, name: branchName(b.id, stOf(b.id)), logo: stOf(b.id).logo || null, members: counts[b.id] || 0, created: b.created || null }));
+      const staff = (await s.all('staff')).filter(x => x.branch === vb).map(({ hash, ...x }) => x);
       let me = null;
-      if (who.phone) { me = who.phone; data.myNotices = await noticesFor(s, who.phone); }
-      return json({ data, admin: true, me, ver: APP_VER });
+      if (who.phone) { me = who.phone; const mm = await s.get('members', who.phone); data.myNotices = await noticesFor(s, who.phone, bOf(mm)); }
+      return json({ data, admin: true, me, ver: APP_VER, staff: me_, view: { branch: vb, own: vb === me_.branch }, tree, staffList: staff });
     }
-    const { qrKey, ...publicSettings } = settings;
     // Visitors and members still waiting for approval only get the shop name and look, nothing inside.
-    const data = { rewards: [], tasks: [], courseFree: COURSE_FREE, settings: publicSettings, members: [], cards: [], checkins: [], requests: [], ledger: [], health: [] };
+    // A visitor's shop comes from the link or QR they opened (x-branch); a member's from their record.
+    let branch = HQ;
+    const hint = req.headers.get('x-branch');
+    if (okBranchId(hint) && hint !== HQ && await s.get('branches', hint)) branch = hint;
+    let m = null;
+    if (who.phone) { m = await s.get('members', who.phone); if (m) branch = bOf(m); }
+    const { qrKey, ...publicSettings } = await settingsOf(s, branch);
+    const data = { rewards: [], tasks: [], courseFree: COURSE_FREE, settings: publicSettings, branch, members: [], cards: [], checkins: [], requests: [], ledger: [], health: [] };
     let me = null, approved = false;
-    if (who.phone) {
-      const m = await s.get('members', who.phone);
-      if (m) {
-        me = who.phone; data.members = [m]; approved = !m.pending;
-        if (approved) { data.rewards = pub.rewards; data.tasks = pub.tasks; }
-        for (const c of ['cards', 'checkins', 'requests', 'ledger']) data[c] = await s.where(c, 'phone', who.phone);
-        { const h = await s.get('health', who.phone); data.health = h ? [h] : []; }
-      }
+    if (m) {
+      me = who.phone; data.members = [m]; approved = !m.pending;
+      if (approved) { data.rewards = pub.rewards; data.tasks = pub.tasks; }
+      for (const c of ['cards', 'checkins', 'requests', 'ledger']) data[c] = await s.where(c, 'phone', who.phone);
+      { const h = await s.get('health', who.phone); data.health = h ? [h] : []; }
     }
-    data.notices = approved ? await noticesFor(s, me) : [];
+    data.notices = approved ? await noticesFor(s, me, branch) : [];
     return json({ data, admin: false, me, ver: APP_VER });
   }
 
@@ -67,12 +82,14 @@ async function handleApi(req, env, path, ctx) {
     if (asAdmin ? !who.admin : !who.phone) return fail('请先登入', 'no_login', 401);
     const ep = String(body.endpoint || ''), k = body.keys || {};
     if (!/^https:\/\//.test(ep) || ep.length > 1000 || !k.p256dh || !k.auth) return fail('通知设定不正确', 'bad_sub');
-    const id = (await sha(ep + (asAdmin ? ADMIN_SUB : ''))).slice(0, 32);
-    await s.put('pushsubs', id, { phone: asAdmin ? ADMIN_SUB : who.phone, endpoint: ep, p256dh: String(k.p256dh).slice(0, 200), auth: String(k.auth).slice(0, 100), lang: ['zh', 'en', 'ms'].includes(body.lang) ? body.lang : 'zh', ts: Date.now() });
+    const key = asAdmin ? adminSubKey(bOf(await staffOf(s, who))) : who.phone;
+    const id = (await sha(ep + (asAdmin ? key : ''))).slice(0, 32);
+    await s.put('pushsubs', id, { phone: key, endpoint: ep, p256dh: String(k.p256dh).slice(0, 200), auth: String(k.auth).slice(0, 100), lang: ['zh', 'en', 'ms'].includes(body.lang) ? body.lang : 'zh', ts: Date.now() });
     return json({ ok: true });
   }
   if (path === 'push/unsubscribe') {
-    const ep = String(body.endpoint || ''); if (ep) await s.del('pushsubs', (await sha(ep + (body.admin ? ADMIN_SUB : ''))).slice(0, 32));
+    const ep = String(body.endpoint || '');
+    if (ep) await s.del('pushsubs', (await sha(ep + (body.admin ? adminSubKey(bOf(await staffOf(s, who))) : ''))).slice(0, 32));
     return json({ ok: true });
   }
 
@@ -90,11 +107,13 @@ async function handleApi(req, env, path, ctx) {
     if (!name) return fail('请输入你的名字');
     if (!/^\d{4}$/.test(pin)) return fail('密码要是 4 个数字');
     if (await s.get('members', phone)) return fail('这个号码已经注册过了，请直接登入', 'exists');
+    // The member joins the shop whose link or QR they opened.
+    const branch = okBranchId(body.branch) && body.branch !== HQ && await s.get('branches', body.branch) ? body.branch : HQ;
     await env.DB.batch([
-      s.putStmt('members', phone, { name, phone, tier: 'Silver', points: 0, joined: today(), self: true, pending: true, regTs: Date.now() }),
+      s.putStmt('members', phone, { name, phone, tier: 'Silver', points: 0, joined: today(), self: true, pending: true, regTs: Date.now(), ...(branch !== HQ ? { branch } : {}) }),
       s.putStmt('pins', phone, { hash: await sha(`vw143|${phone}|${pin}`), at: Date.now() })
     ]);
-    await later(s, notifyAdmin(s, 'signup', { name, phone }));
+    await later(s, notifyAdmin(s, 'signup', { name, phone }, branch));
     return json({ token: await newSession(env, phone, false), name, pending: true });
   }
 
@@ -125,12 +144,14 @@ async function handleApi(req, env, path, ctx) {
 
   if (path === 'checkin') {
     if (!who.phone) return fail('请先登入', 'no_login', 401);
-    if (((await s.get('members', who.phone)) || {}).pending) return fail(PENDING_MSG, 'pending');
+    const mem = (await s.get('members', who.phone)) || {};
+    if (mem.pending) return fail(PENDING_MSG, 'pending');
     const card = await s.get('cards', body.cardId);
     if (!card || card.phone !== who.phone) return fail('找不到这张卡');
-    const settings = (await s.get('settings', 'home')) || {};
+    const b = bOf(mem), settings = await settingsOf(s, b);
+    if (body.code && codeBranch(body.code) !== b) return fail('这是别家店的二维码，只能在你自己的店打卡', 'other_shop');
     if ((settings.qrMode || 'fixed') !== 'off') {
-      const expected = qrCodeFor(settings, today());
+      const expected = qrFor(settings, b, today());
       if (!expected || body.code !== expected) return fail('这个二维码已失效，请扫描店内的打卡二维码', 'bad_qr');
     }
     return doCheckin(s, card, body.force, 'qr');
@@ -148,7 +169,7 @@ async function handleApi(req, env, path, ctx) {
       const avail = (await memberTotal(s, m.id)) - (await pendingRedeem(s, m.id));
       if (avail < r.points) return fail('积分不足');
       await s.put('requests', uid(), { ...base, type: 'redeem', rewardId: r.id, title: r.name, points: +r.points });
-      await later(s, notifyAdmin(s, 'redeem', { name: m.name, title: r.name }));
+      await later(s, notifyAdmin(s, 'redeem', { name: m.name, title: r.name }), bOf(m));
       return json({ ok: true });
     }
     if (body.type === 'earn') {
@@ -164,7 +185,7 @@ async function handleApi(req, env, path, ctx) {
         if (opt && mine.some(r => r.opt === opt)) return fail(`今天的「${opt}」已经申请了`, 'opt_done');
       }
       await s.put('requests', uid(), { ...base, type: 'earn', taskId: t.id, opt: opt || null, title: t.name + (opt ? ' · ' + opt : '') + (t.en ? ' ' + t.en : ''), points: +t.points, note: String(body.note || '').slice(0, 300) });
-      await later(s, notifyAdmin(s, 'earn', { name: m.name, title: t.name }));
+      await later(s, notifyAdmin(s, 'earn', { name: m.name, title: t.name }), bOf(m));
       return json({ ok: true });
     }
     if (body.type === 'renew') {
@@ -173,7 +194,7 @@ async function handleApi(req, env, path, ctx) {
       const total = Math.max(1, Math.min(200, parseInt(body.total, 10) || 11));
       const name = String(body.cardName || 'NCP').slice(0, 60);
       await s.put('requests', uid(), { ...base, type: 'renew', title: name, cardName: name, kind: ['10+1', '30', 'daily'].includes(body.kind) ? body.kind : null, total, points: 0 });
-      await later(s, notifyAdmin(s, 'renew', { name: m.name, title: name }));
+      await later(s, notifyAdmin(s, 'renew', { name: m.name, title: name }), bOf(m));
       return json({ ok: true });
     }
     if (body.type === 'course') {
@@ -182,13 +203,27 @@ async function handleApi(req, env, path, ctx) {
       if (rq.some(r => r.type === 'course' && r.status === 'pending')) return fail('你已经申请了，请等教练开通');
       const title = `21 天课程 · 第 ${COURSE_FREE + 1}–21 天`;
       await s.put('requests', uid(), { ...base, type: 'course', title, points: 0 });
-      await later(s, notifyAdmin(s, 'course', { name: m.name, title }));
+      await later(s, notifyAdmin(s, 'course', { name: m.name, title }), bOf(m));
       return json({ ok: true });
     }
     return fail('未知的申请');
   }
 
   if (path === 'admin/login') {
+    // Shop managers and operators sign in with their phone number and their own password.
+    const sp = cleanPhone(body.phone);
+    if (sp) {
+      const lk = (await s.get('pinfail', 'staff:' + sp)) || { n: 0, until: 0 };
+      if (lk.until > Date.now()) return fail('密码错误太多次，请 15 分钟后再试', 'locked', 429);
+      const st = await s.get('staff', sp);
+      if (!st || st.hash !== await staffHash(sp, String(body.password || ''))) {
+        const n = (lk.n || 0) + 1;
+        await s.put('pinfail', 'staff:' + sp, n >= 8 ? { n: 0, until: Date.now() + 15 * 60e3 } : { n, until: 0 });
+        return fail('电话号码或密码不对', 'bad_password', 401);
+      }
+      await s.del('pinfail', 'staff:' + sp);
+      return json({ token: await newSession(env, sp, true), name: st.name });
+    }
     if (!env.ADMIN_PASSWORD) return fail('还没有设定管理员密码（ADMIN_PASSWORD）', 'no_password', 500);
     const lock = (await s.get('pinfail', '__admin')) || { n: 0, until: 0 };
     if (lock.until > Date.now()) return fail('密码错误太多次，请 15 分钟后再试', 'locked', 429);

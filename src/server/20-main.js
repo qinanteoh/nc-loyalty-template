@@ -5,8 +5,10 @@ export default {
       if (!ready) ready = init(env).catch(e => { ready = null; throw e; });
       await ready;
       const im = url.pathname.match(/^\/(?:icon-(\d+)\.png|apple-touch-icon(?:-precomposed)?\.png|favicon\.ico)$/);
+      // ?b=<branch> gives that branch's logo / home-screen name (members see their own shop).
+      const qb = url.searchParams.get('b'), ib = okBranchId(qb) ? qb : HQ;
       if (im) {
-        const st = (await new Store(env.DB).get('settings', 'home')) || {};
+        const st = await settingsOf(new Store(env.DB), ib);
         if (st.logo) {
           const r = await env.DB.prepare('SELECT type, data FROM photos WHERE id = ?').bind(st.logo).first();
           if (r) return new Response(b64ToBytes(r.data), { headers: { 'content-type': r.type, 'cache-control': 'public, max-age=3600' } });
@@ -15,8 +17,8 @@ export default {
         return new Response(b64ToBytes(ICONS[size]), { headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=3600' } });
       }
       if (url.pathname === '/manifest.webmanifest') {
-        const st = (await new Store(env.DB).get('settings', 'home')) || {};
-        return new Response(manifestFor(st), { headers: { 'content-type': 'application/manifest+json', 'cache-control': 'no-cache' } });
+        const st = await settingsOf(new Store(env.DB), ib);
+        return new Response(manifestFor(st, ib), { headers: { 'content-type': 'application/manifest+json', 'cache-control': 'no-cache' } });
       }
       if (url.pathname.startsWith('/img/')) {
         const id = url.pathname.slice(5);

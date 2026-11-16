@@ -4,10 +4,18 @@ function confirmTwice(key,btn){ if(armed===key) {armed=null; return true;} armed
 async function adjust(phone,delta,reason){ await api('admin/adjust',{phone,delta,reason}); }
 async function run(fn,ok){ try{ await fn(); if(ok) toast(ok); try{ await refresh(); }catch(_){} }catch(e){ if(e.code==='no_admin'){ adminToken=null; ls.set('vw_admin',null); isAdmin=false; } toast('没有成功：'+(e.message||'请稍后再试')); try{ await refresh(); }catch(_){} } }
 
+async function setAdminView(b){ adminView=b||null; ls.set('vw_view',adminView); adminQ[adminTab]=''; try{ await refresh(); }catch(e){ toast(e.message); } window.scrollTo(0,0); }
 document.addEventListener('click',async e=>{
   const b=e.target.closest('[data-act]'); if(!b) return;
   const a=b.dataset.act, id=b.dataset.id, v=b.dataset.v;
   if(a==='close'){ if(e.target===b||b.tagName==='BUTTON') closeSheet(); return; }
+  { const why=adminActWhy(a); if(why){ toast(why); return; } }
+  if(a==='shopView'){ closeSheet(); await setAdminView(id); return; }
+  if(a==='myPw'){ myPwForm(); return; }
+  if(a==='staffEdit'){ staffForm(id); return; }
+  if(a==='staffDel'){ if(!confirmTwice(a+id,b)) return; await run(()=>api('admin/staffDel',{phone:id}),'已删除，他不能再登入后台'); return; }
+  if(a==='branchAdd'){ branchAddForm(); return; }
+  if(a==='branchMove'){ branchMoveForm(id); return; }
   if(a==='go'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } goView(v); render(); window.scrollTo(0,0); return; }
   if(a==='back'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } if(view==='course') syncCourse(); view=navStack.pop()||'home'; if(view==='admin'&&!isAdmin) view='home'; render(); window.scrollTo(0,0); return; }
   if(a==='editScan'){ scanForm(id,b.dataset.ph); return; }
@@ -32,8 +40,8 @@ document.addEventListener('click',async e=>{
   if(a==='recheck'){ b.disabled=true; try{ await refresh(); }catch(_){ render(); } if(me()&&me().pending) toast('还在等店里核准，核准后会通知你'); return; }
   if(a==='logout'){ await unlinkPush(); try{ await api('logout',{}); }catch(_){} token=null; ls.set('vw_token',null); myPhone=null; loginStep='phone'; await refresh().catch(()=>render()); return; }
   if(a==='loginBack'){ loginStep='phone'; render(); return; }
-  if(a==='adminLogin'){ openSheet(`<h3>店家登入</h3><form id="adminForm"><div class="field"><label for="apw">管理员密码</label><input class="inp" id="apw" type="password" autocomplete="current-password"></div><button class="btn block" type="submit">登入管理后台</button></form>`); setTimeout(()=>document.getElementById('apw')?.focus(),50); return; }
-  if(a==='adminLogout'){ try{ await api('admin/logout',{}); }catch(_){} adminToken=null; ls.set('vw_admin',null); isAdmin=false; view='home'; await refresh().catch(()=>render()); return; }
+  if(a==='adminLogin'){ openSheet(`<h3>店家登入</h3><form id="adminForm"><div class="field"><label for="aph">手机号码</label><input class="inp" id="aph" inputmode="tel" autocomplete="username" placeholder="总店老板用后台密码登入，这里留空"></div><div class="field"><label for="apw">密码</label><input class="inp" id="apw" type="password" autocomplete="current-password"></div><button class="btn block" type="submit">登入管理后台</button></form>`); setTimeout(()=>document.getElementById('apw')?.focus(),50); return; }
+  if(a==='adminLogout'){ try{ await api('admin/logout',{}); }catch(_){} adminToken=null; ls.set('vw_admin',null); adminView=null; ls.set('vw_view',null); isAdmin=false; STAFF=null; view='home'; await refresh().catch(()=>render()); return; }
   if(a==='reward'){ const r=S.rewards.find(x=>x.id===id); if(r) rewardSheet(r); return; }
   if(a==='claim'){ const t=S.tasks.find(x=>x.id===id); if(t) claimSheet(t); return; }
   if(a==='redeem'){ const r=S.rewards.find(x=>x.id===id), m=me(); if(!r||!m) return; if(avail(m)<r.points) return toast('积分不足');
@@ -102,6 +110,14 @@ document.addEventListener('change',e=>{
 });
 document.addEventListener('submit',async e=>{
   e.preventDefault(); const f=e.target; const g=id=>document.getElementById(id).value.trim();
+  { const why=adminFormWhy(f.id); if(why){ toast(why); return; } }
+  if(f.id==='stf'){ const pw=g('st_w'); if(!f.dataset.id&&pw.length<6) return toast('请设定至少 6 个字的密码'); if(pw&&pw.length<6) return toast('密码至少 6 个字');
+    const body={name:g('st_n'),phone:g('st_p'),role:g('st_r'),password:pw}; closeSheet(); await run(()=>api('admin/staffSave',body),'已保存'); return; }
+  if(f.id==='brf'){ if(g('br_mw').length<6) return toast('请设定至少 6 个字的密码');
+    const btn=f.querySelector('button[type=submit]'); btn.disabled=true;
+    try{ await api('admin/branchAdd',{name:g('br_n'),mname:g('br_mn'),phone:g('br_mp'),password:g('br_mw')}); closeSheet(); toast('分店开好了！请把店长的手机号码和密码告诉他'); await refresh(); }catch(err){ btn.disabled=false; toast(err.message); } return; }
+  if(f.id==='mvf'){ const to=g('mv_to'), id=f.dataset.id; closeSheet(); await run(()=>api('admin/branchMove',{id,parent:to}),'已搬店'); return; }
+  if(f.id==='mpf'){ const p1=g('mp1'); if(p1.length<6) return toast('密码至少 6 个字'); if(p1!==g('mp2')) return toast('两次输入的密码不一样'); closeSheet(); await run(()=>api('admin/myPassword',{password:p1}),'密码已更新'); return; }
   if(f.id==='loginForm'){ loginPhone=g('ph').replace(/\D/g,''); if(!loginPhone) return toast('请输入手机号码');
     try{ const r=await api('login/check',{phone:loginPhone}); if(!r.exists){ loginStep='register'; render(); setTimeout(()=>document.getElementById('rname')?.focus(),50); return; } loginName=r.name; loginStep=r.hasPin?'pin':'setpin'; render(); setTimeout(()=>document.getElementById('pin1')?.focus(),50); }
     catch(err){ toast(err.message); } return; }
@@ -110,9 +126,9 @@ document.addEventListener('submit',async e=>{
     try{ const r=await api('login',{phone:loginPhone,pin:p1,setPin:f.id==='setPinForm'}); token=r.token; ls.set('vw_token',token); loginStep='phone'; await refresh(); toast('欢迎，'+r.name); }
     catch(err){ toast(err.message); if(err.code==='need_pin'){ loginStep='setpin'; render(); } } return; }
   if(f.id==='regForm'){ const nm=g('rname'), p1=g('pin1'); if(!nm) return toast('请输入你的名字'); if(!/^\d{4}$/.test(p1)) return toast('密码要是 4 个数字'); if(p1!==g('pin2')) return toast('两次输入的密码不一样');
-    try{ const r=await api('register',{phone:loginPhone,name:nm,pin:p1}); token=r.token; ls.set('vw_token',token); loginStep='phone'; await refresh(); toast(r.pending?'注册成功！请等待店里核准':'注册成功，欢迎 '+r.name+'！'); }
+    try{ const r=await api('register',{phone:loginPhone,name:nm,pin:p1,branch:ls.get('vw_branch')||undefined}); token=r.token; ls.set('vw_token',token); loginStep='phone'; await refresh(); toast(r.pending?'注册成功！请等待店里核准':'注册成功，欢迎 '+r.name+'！'); }
     catch(err){ toast(err.message); if(err.code==='exists'){ loginStep='phone'; render(); } } return; }
-  if(f.id==='adminForm'){ try{ const r=await api('admin/login',{password:document.getElementById('apw').value}); adminToken=r.token; ls.set('vw_admin',adminToken); closeSheet(); view='admin'; await refresh(); toast('已登入管理后台'); }catch(err){ toast(err.message); } return; }
+  if(f.id==='adminForm'){ try{ const r=await api('admin/login',{phone:document.getElementById('aph').value,password:document.getElementById('apw').value}); adminToken=r.token; ls.set('vw_admin',adminToken); adminView=null; ls.set('vw_view',null); closeSheet(); view='admin'; await refresh(); toast('已登入管理后台'); }catch(err){ toast(err.message); } return; }
   if(f.id==='sf'){ const sc={id:f.dataset.id||undefined,date:g('s_date'),note:g('s_note')}; MET.forEach(x=>{ const el=document.getElementById('s_'+x.k); sc[x.k]=el?el.value.trim():''; });
     if(!MET.some(x=>has(sc[x.k]))) return toast('至少输入一项数字');
     const ph=hFor; closeSheet(); await run(()=>saveHealthFor({op:'scan',scan:sc}),'记录已保存'); if(ph) healthSheet(ph); return; }

@@ -328,8 +328,8 @@
 "Kad ke-"
 ],
 "管理员": [
-"Admin",
-"Admin"
+"Staff",
+"Kakitangan"
 ],
 "自/帮": [
 "S/C",
@@ -844,8 +844,8 @@
 "Tetapkan PIN {0} digit"
 ],
 "再输入一次": [
-"Enter it again",
-"Masukkan sekali lagi"
+"Type it again",
+"Taip sekali lagi"
 ],
 "设定密码并登入": [
 "Set PIN and log in",
@@ -2850,6 +2850,226 @@
 "健康表": [
 "Wellness",
 "Kesihatan"
+],
+"分店": [
+"Branches",
+"Cawangan"
+],
+"{0} 位会员 ·": [
+"{0} members ·",
+"{0} ahli ·"
+],
+"这家店还没有会员。": [
+"This branch has no members yet.",
+"Cawangan ini belum ada ahli."
+],
+"分店图": [
+"Branch map",
+"Peta cawangan"
+],
+"+ 开新分店": [
+"+ Open a branch",
+"+ Buka cawangan"
+],
+"开新分店": [
+"Open a branch",
+"Buka cawangan"
+],
+"开店": [
+"Open branch",
+"Buka cawangan"
+],
+"{0} 位会员": [
+"{0} members",
+"{0} ahli"
+],
+"店长": [
+"Manager",
+"Pengurus"
+],
+"操作员": [
+"Operator",
+"Operator"
+],
+"+ 新增": [
+"+ Add",
+"+ Tambah"
+],
+"正在看": [
+"Viewing",
+"Melihat"
+],
+"我的账号": [
+"My account",
+"Akaun saya"
+],
+"改我的密码": [
+"Change my password",
+"Tukar kata laluan saya"
+],
+"总店老板": [
+"Head office owner",
+"Pemilik ibu pejabat"
+],
+"这是下线分店，你只能看，不能改：": [
+"This is a branch below yours. You can look but not change anything:",
+"Ini cawangan di bawah anda. Anda boleh lihat sahaja, tidak boleh ubah:"
+],
+"你用总店的后台密码登入。可以在下面为自己新增一个店长账号，用手机号码登入。": [
+"You signed in with the head office password. You can add a manager account for yourself below and sign in with your phone number.",
+"Anda log masuk dengan kata laluan ibu pejabat. Anda boleh tambah akaun pengurus untuk diri sendiri di bawah dan log masuk dengan nombor telefon."
+],
+"店长什么都能改，也可以开下线分店；操作员只能核准和打卡。每个人用自己的手机号码和密码登入。": [
+"Managers can change everything and open branches; operators can only approve and check in. Everyone signs in with their own phone number and password.",
+"Pengurus boleh ubah semua dan buka cawangan; operator hanya boleh lulus dan daftar masuk. Setiap orang log masuk dengan nombor telefon dan kata laluan sendiri."
+],
+"用 Cloudflare 里的后台密码登入（电话留空）": [
+"Signs in with the back-office password in Cloudflare (leave phone empty)",
+"Log masuk dengan kata laluan dalam Cloudflare (biarkan telefon kosong)"
+],
+"还没有管理员。": [
+"No staff yet.",
+"Belum ada kakitangan."
+],
+"你的店和下线分店。点店名可以看那家店的资料（下线只能看，不能改）。": [
+"Your branch and the branches below it. Tap a name to see that branch (branches below are view-only).",
+"Cawangan anda dan cawangan di bawahnya. Tekan nama untuk melihat (cawangan di bawah hanya boleh dilihat)."
+],
+"搬店": [
+"Move",
+"Pindah"
+],
+"现在的上线：": [
+"Current upline:",
+"Upline sekarang:"
+],
+"搬到这家店下面": [
+"Move under this branch",
+"Pindah ke bawah cawangan ini"
+],
+"确定搬店": [
+"Move branch",
+"Pindahkan cawangan"
+],
+"搬过去后，它的会员、积分、设定都不变，它下面的分店也一起搬。新的上线可以看它的资料（只能看，不能改）。": [
+"Its members, points and settings stay the same, and the branches below it move too. The new upline can see its data (view only).",
+"Ahli, mata dan tetapannya kekal, dan cawangan di bawahnya turut berpindah. Upline baharu boleh melihat datanya (lihat sahaja)."
+],
+"新分店会开在这家店下面：": [
+"The new branch will be under:",
+"Cawangan baharu akan berada di bawah:"
+],
+"分店的会员、积分、打卡都归那家店。": [
+"Its members, points and check-ins belong to that branch.",
+"Ahli, mata dan daftar masuknya milik cawangan itu."
+],
+"分店名称": [
+"Branch name",
+"Nama cawangan"
+],
+"例如 Cheras 分店": [
+"e.g. Cheras branch",
+"cth. Cawangan Cheras"
+],
+"店长名字": [
+"Manager's name",
+"Nama pengurus"
+],
+"店长手机号码（用来登入）": [
+"Manager's phone (to sign in)",
+"Telefon pengurus (untuk log masuk)"
+],
+"店长密码（至少 {0} 个字）": [
+"Manager's password (at least {0} characters)",
+"Kata laluan pengurus (sekurang-kurangnya {0} aksara)"
+],
+"店长用这个手机号码和密码在「店家登入」进后台，可以改自己的店名、Logo、打卡二维码，也可以再开下线分店。": [
+"The manager signs in at Shop login with this phone and password, and can change the shop name, logo and check-in QR, and open more branches.",
+"Pengurus log masuk di Log masuk kedai dengan telefon dan kata laluan ini, dan boleh ubah nama kedai, logo, kod QR dan buka cawangan lain."
+],
+"新增管理员": [
+"Add staff",
+"Tambah kakitangan"
+],
+"修改管理员": [
+"Edit staff",
+"Ubah kakitangan"
+],
+"手机号码（用来登入）": [
+"Phone (to sign in)",
+"Telefon (untuk log masuk)"
+],
+"身份": [
+"Role",
+"Peranan"
+],
+"店长：什么都能改": [
+"Manager: can change everything",
+"Pengurus: boleh ubah semua"
+],
+"操作员：只能核准和打卡": [
+"Operator: approve and check in only",
+"Operator: lulus dan daftar masuk sahaja"
+],
+"密码（至少 {0} 个字）": [
+"Password (at least {0} characters)",
+"Kata laluan (sekurang-kurangnya {0} aksara)"
+],
+"新密码（不改就留空）": [
+"New password (leave empty to keep)",
+"Kata laluan baharu (biarkan kosong jika tidak tukar)"
+],
+"请把手机号码和密码告诉他。他到「店家登入」输入就可以进后台。": [
+"Give them the phone number and password. They sign in at Shop login.",
+"Berikan nombor telefon dan kata laluan. Mereka log masuk di Log masuk kedai."
+],
+"新密码（至少 {0} 个字）": [
+"New password (at least {0} characters)",
+"Kata laluan baharu (sekurang-kurangnya {0} aksara)"
+],
+"手机号码": [
+"Phone number",
+"Nombor telefon"
+],
+"密码": [
+"Password",
+"Kata laluan"
+],
+"总店老板用后台密码登入，这里留空": [
+"Head office owner: leave empty and use the back-office password",
+"Pemilik ibu pejabat: biarkan kosong dan guna kata laluan"
+],
+"礼物目前跟总店一样，由总店设定。": [
+"Gifts are the same as head office for now, set by head office.",
+"Hadiah sama seperti ibu pejabat buat masa ini."
+],
+"任务目前跟总店一样，由总店设定。": [
+"Tasks are the same as head office for now, set by head office.",
+"Tugasan sama seperti ibu pejabat buat masa ini."
+],
+"这是下线分店，只能看，不能改": [
+"This branch is below yours: view only",
+"Cawangan ini di bawah anda: lihat sahaja"
+],
+"操作员不能做这个，请找店长": [
+"Operators can't do this. Please ask a manager.",
+"Operator tidak boleh buat ini. Sila minta pengurus."
+],
+"礼物和任务目前由总店设定": [
+"Gifts and tasks are set by head office for now",
+"Hadiah dan tugasan ditetapkan oleh ibu pejabat buat masa ini"
+],
+"分店开好了！请把店长的手机号码和密码告诉他": [
+"Branch opened! Give the manager the phone number and password.",
+"Cawangan dibuka! Berikan nombor telefon dan kata laluan kepada pengurus."
+],
+"已搬店": [
+"Branch moved",
+"Cawangan dipindah"
+],
+"这是别家店的二维码，只能在你自己的店打卡": [
+"This QR belongs to another branch. You can only check in at your own branch.",
+"Kod QR ini milik cawangan lain. Anda hanya boleh daftar masuk di cawangan sendiri."
 ],
 "欢迎来到": [
 "Welcome to",
