@@ -26,6 +26,7 @@ document.addEventListener('click',async e=>{
   if(a==='chartMode'){ chartMode=v; render(); return; }
   if(a==='photoView'){ photoSheet(id); return; }
   if(a==='profileEdit'){ chartReturn=null; profileForm(); return; }
+  if(a==='profAvaDel'){ profDraft.intro=document.getElementById('pf_intro').value; profDraft.avatar=null; profileForm(true); return; }
   if(a==='profDel'){ profDraft.intro=document.getElementById('pf_intro').value; profDraft[id].splice(+v,1); profileForm(true); return; }
   if(a==='go'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } goView(v); render(); window.scrollTo(0,0); return; }
   if(a==='back'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } if(view==='course') syncCourse(); view=navStack.pop()||'home'; if(view==='admin'&&!isAdmin) view='home'; render(); window.scrollTo(0,0); return; }
@@ -134,7 +135,7 @@ document.addEventListener('submit',async e=>{
   if(f.id==='ctf'){ const types=readTypes(); if(types.some(t=>!t.n)) return toast('每种卡都要有名称'); if(types.some(t=>t.mode==='count'&&!(t.total>0))) return toast('有次数的卡要填次数');
     closeSheet(); await run(()=>api('admin/cardTypes',{types}),'卡种已保存'); return; }
   if(f.id==='mmf'){ const to=g('mm_to'), ph=f.dataset.id; closeSheet(); await run(()=>api('admin/memberMove',{phone:ph,to}),'已换店，积分和卡都带过去了'); return; }
-  if(f.id==='prf'){ const body={intro:g('pf_intro'),shop:profDraft.shop,bna:profDraft.bna}; closeSheet(); await run(()=>api('admin/profile',body),'已保存，所有店长都看得到了'); return; }
+  if(f.id==='prf'){ const body={intro:g('pf_intro'),shop:profDraft.shop,bna:profDraft.bna,avatar:profDraft.avatar}; closeSheet(); await run(()=>api('admin/profile',body),'已保存，所有店长都看得到了'); return; }
   if(f.id==='mpf'){ const p1=g('mp1'); if(p1.length<6) return toast('密码至少 6 个字'); if(p1!==g('mp2')) return toast('两次输入的密码不一样'); closeSheet(); await run(()=>api('admin/myPassword',{password:p1}),'密码已更新'); return; }
   if(f.id==='loginForm'){ loginPhone=g('ph').replace(/\D/g,''); if(!loginPhone) return toast('请输入手机号码');
     try{ const r=await api('login/check',{phone:loginPhone}); if(!r.exists){ loginStep='register'; render(); setTimeout(()=>document.getElementById('rname')?.focus(),50); return; } loginName=r.name; loginStep=r.hasPin?'pin':'setpin'; render(); setTimeout(()=>document.getElementById('pin1')?.focus(),50); }

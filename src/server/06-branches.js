@@ -81,7 +81,7 @@ function cleanTypes(list) {
 }
 /* Photos: kept in R2 (binding PHOTOS) when the shop has turned it on, otherwise in the D1 photos table.
    Pictures are made small on the phone before upload (about 150–250 KB each). */
-const PROFILE_MAX = { shop: 10, bna: 20 };
+const PROFILE_MAX = { shop: 5, bna: 5 };
 async function savePhoto(env, id, type, b64) {
   if (env.PHOTOS) await env.PHOTOS.put(id, b64ToBytes(b64), { httpMetadata: { contentType: type } });
   else await env.DB.prepare('INSERT INTO photos (id, type, data) VALUES (?, ?, ?)').bind(id, type, b64).run();
@@ -100,6 +100,6 @@ async function branchChart(s, bc) {
   const staff = await s.all('staff');
   return bc.list.map(b => { const st = bc.stOf(b.id), p = st.profile || {};
     return { id: b.id, parent: b.parent, name: branchName(b.id, st), logo: st.logo || null, address: st.address || '', created: b.created || null,
-      managers: staff.filter(x => x.branch === b.id && x.role !== 'operator').map(x => x.name), intro: p.intro || '', shop: p.shop || [], bna: p.bna || [] }; });
+      managers: staff.filter(x => x.branch === b.id && x.role !== 'operator').map(x => x.name), intro: p.intro || '', shop: p.shop || [], bna: p.bna || [], avatar: p.avatar || null }; });
 }
 const branchName = (b, st) => brandOf(st).name || (b === HQ ? '总店' : '分店');

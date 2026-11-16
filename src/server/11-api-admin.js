@@ -93,12 +93,12 @@
       const ids = (x, max) => Array.isArray(x) ? [...new Set(x.map(String).filter(v => /^u[a-z0-9]{6,40}$/.test(v)))].slice(0, max) : [];
       const st = { ...(await settingsOf(s, me_.branch)) }; delete st.id;
       const old = st.profile || {};
-      const p = { intro: String(body.intro || '').trim().slice(0, 600), shop: ids(body.shop, PROFILE_MAX.shop), bna: ids(body.bna, PROFILE_MAX.bna) };
+      const p = { intro: String(body.intro || '').trim().slice(0, 600), shop: ids(body.shop, PROFILE_MAX.shop), bna: ids(body.bna, PROFILE_MAX.bna), avatar: ids([body.avatar || ''], 1)[0] || null };
       st.profile = p;
       await s.put('settings', settingsId(me_.branch), st);
       // Photos taken off the profile are deleted so they don't take up space.
-      const keep = new Set([...p.shop, ...p.bna]);
-      for (const id of [...(old.shop || []), ...(old.bna || [])]) if (!keep.has(id)) await dropPhoto(env, id);
+      const keep = new Set([...p.shop, ...p.bna, p.avatar]);
+      for (const id of [...(old.shop || []), ...(old.bna || []), old.avatar]) if (id && !keep.has(id)) await dropPhoto(env, id);
       return json({ ok: true });
     }
     // Follow the upline or set it ourselves. Switching to "own" starts from a copy of what the upline has now.

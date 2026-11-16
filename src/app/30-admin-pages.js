@@ -197,7 +197,7 @@ const followOn=k=>!!(S.rules&&S.rules.follow&&S.rules.follow[k]&&S.rules.follow[
 const followFrom=k=>(S.rules&&S.rules.follow&&S.rules.follow[k]&&S.rules.follow[k].from)||'';
 function adminActWhy(a){
   if(!isAdmin||view!=='admin'||VIEW_ACTS.has(a)) return '';
-  if(a==='branchAdd'||a==='branchMove'||a==='profileEdit'||a==='profDel') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
+  if(a==='branchAdd'||a==='branchMove'||a==='profileEdit'||a==='profDel'||a==='profAvaDel') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
   if(!VIEW.own) return '这是下线分店，只能看，不能改';
   if(isOperator()&&!OP_ACTS.has(a)) return '操作员不能做这个，请找店长';
   if(HQ_ACTS.has(a)&&followOn(/Reward/.test(a)?'rewards':'tasks')) return '现在跟上线，要先到「分店」改成「自己设」';
@@ -277,12 +277,12 @@ let chartMode='tree';
 function orgTree(){ const all=S.chart||[], mine=STAFF&&STAFF.branch; const root=all.find(b=>!b.parent)||all.find(b=>b.id==='hq'); if(!root) return '';
   const kids=id=>all.filter(x=>x.parent===id).sort((a,c)=>(a.created||0)-(c.created||0));
   const node=(b,d)=>{ const ch=kids(b.id);
-    return `<li><button class="onode d${d%5}${b.id===mine?' mine':''}" data-act="chartShop" data-id="${esc(b.id)}"><img src="${chartLogo(b)}" alt="" width="34" height="34"><b translate="no">${esc(b.name)}</b>${b.managers.length?`<small translate="no">${esc(b.managers.join('、'))}</small>`:''}</button>${ch.length?`<ul>${ch.map(x=>node(x,d+1)).join('')}</ul>`:''}</li>`; };
+    return `<li><button class="onode d${d%5}${b.id===mine?' mine':''}" data-act="chartShop" data-id="${esc(b.id)}">${b.avatar?`<img class="ava" src="${imgUrl(b.avatar)}" alt="" width="48" height="48">`:`<img src="${chartLogo(b)}" alt="" width="34" height="34">`}<b translate="no">${esc(b.name)}</b>${b.managers.length?`<small translate="no">${esc(b.managers.join('、'))}</small>`:''}</button>${ch.length?`<ul>${ch.map(x=>node(x,d+1)).join('')}</ul>`:''}</li>`; };
   return `<div class="org"><div class="org-in"><ul class="org-root">${node(root,0)}</ul></div></div>`; }
 function adminChart(){
   const rows=chartRows(), mine=STAFF&&STAFF.branch;
   const list=`<div class="chart">${rows.map(b=>`<button class="cnode${b.id===mine?' mine':''}" data-act="chartShop" data-id="${esc(b.id)}" style="--d:${b.depth}">
-    <img src="${chartLogo(b)}" alt="" width="48" height="48"><span class="cn-t"><b translate="no">${esc(b.name)}</b>
+    <img src="${b.avatar?imgUrl(b.avatar):chartLogo(b)}" alt="" width="48" height="48"${b.avatar?' class="ava"':''}><span class="cn-t"><b translate="no">${esc(b.name)}</b>
     <span class="sub">${b.managers.length?`<span>店长</span> ${nt(b.managers.join('、'))}`:''}${b.shop.length+b.bna.length?` · ${ic('camera',14)} ${b.shop.length+b.bna.length}`:''}</span></span>${b.id===mine?'<span class="badge approved">我的店</span>':''}</button>`).join('')}</div>`;
   return `<p class="sub" style="margin:-4px 0 12px"><span>所有分店和店长，每位店长都看得到（没有会员资料）。点一家店看它的介绍和照片。</span><br><span>一共</span> <b>${rows.length}</b> <span>家店</span></p>
   ${STAFF&&STAFF.role==='manager'?`<button class="btn block" data-act="profileEdit" style="margin-bottom:12px">${ic('camera',18)} 编辑我的店的介绍和照片</button>`:''}
@@ -293,7 +293,7 @@ function gallery(ids,label){ return ids.length?`<b style="display:block;margin:1
 let chartReturn=null;
 function chartShopSheet(id){
   const b=(S.chart||[]).find(x=>x.id===id); if(!b) return; const up=(S.chart||[]).find(x=>x.id===b.parent);
-  openSheet(`<div class="prof-h"><img src="${chartLogo(b)}" alt="" width="72" height="72"><div><h3 style="margin:0" translate="no">${esc(b.name)}</h3>
+  openSheet(`<div class="prof-h">${b.avatar?`<img class="ava" src="${imgUrl(b.avatar)}" alt="" width="72" height="72">`:''}<img src="${chartLogo(b)}" alt="" width="${b.avatar?44:72}" height="${b.avatar?44:72}"${b.avatar?' style="width:44px;height:44px;align-self:flex-end;margin-left:-26px;border:2px solid var(--surface)"':''}><div><h3 style="margin:0" translate="no">${esc(b.name)}</h3>
      ${b.managers.length?`<div class="sub"><span>店长</span> ${nt(b.managers.join('、'))}</div>`:''}${up?`<div class="sub"><span>上线</span> ${nt(up.name)}</div>`:''}</div></div>
    ${b.address?`<a class="shopaddr" style="margin:12px 0 0" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.address)}" target="_blank" rel="noopener">${ic('pin',18)}<span translate="no">${esc(b.address)}</span></a>`:''}
    ${b.intro?`<p style="white-space:pre-line;margin:12px 0 0" translate="no">${esc(b.intro)}</p>`:''}
@@ -303,21 +303,35 @@ function chartShopSheet(id){
 }
 function photoSheet(id){ openSheet(`<div style="text-align:center"><img src="${imgUrl(id)}" alt="" style="max-width:100%;max-height:75vh;border-radius:12px"></div>${chartReturn?`<button class="btn block ghost" data-act="chartShop" data-id="${esc(chartReturn)}" style="margin-top:12px">${ic('back',18)} 返回</button>`:''}`); }
 let profDraft=null;
-const PROF_MAX={shop:10,bna:20};
+const PROF_MAX={shop:5,bna:5};
 function profileForm(keep){
   const b=(S.chart||[]).find(x=>x.id===STAFF.branch)||{intro:'',shop:[],bna:[]};
-  if(!keep) profDraft={intro:b.intro||'',shop:[...(b.shop||[])],bna:[...(b.bna||[])]};
+  if(!keep) profDraft={intro:b.intro||'',shop:[...(b.shop||[])],bna:[...(b.bna||[])],avatar:b.avatar||null};
   const grid=k=>`<div class="gal edit">${profDraft[k].map((id,i)=>`<div class="gph"><img src="${imgUrl(id)}" alt=""><button type="button" class="gx" data-act="profDel" data-id="${k}" data-v="${i}" aria-label="删除">✕</button></div>`).join('')}
      ${profDraft[k].length<PROF_MAX[k]?`<label class="gph add" for="pf_${k}">${ic('plus',22)}<span>加照片</span></label><input type="file" id="pf_${k}" data-k="${k}" accept="image/*" multiple hidden>`:''}</div>`;
   openSheet(`<h3>编辑我的店的介绍和照片</h3><p class="sub" style="margin:-6px 0 10px">所有店长都看得到。店名、Logo、地址在「首页」→「俱乐部资料」改。</p>
-   <form id="prf"><div class="field"><label for="pf_intro">介绍（几句话就好）</label><textarea class="inp" id="pf_intro" rows="4" maxlength="600">${esc(profDraft.intro)}</textarea></div>
+   <form id="prf"><b style="display:block;margin:0 0 6px">店长头像 <span class="sub">（店长图上会用这张）</span></b>
+   <div class="ava-pick">${profDraft.avatar?`<img class="ava" src="${imgUrl(profDraft.avatar)}" alt="" width="88" height="88">`:`<span class="ava empty">${ic('user',36)}</span>`}
+     <div class="btnrow" style="justify-content:flex-start"><label class="btn sm" for="pf_ava">${profDraft.avatar?'换照片':'上传头像'}</label>${profDraft.avatar?'<button type="button" class="btn sm ghost" data-act="profAvaDel">删除</button>':''}</div>
+     <input type="file" id="pf_ava" accept="image/*" hidden></div>
+   <div class="field" style="margin-top:12px"><label for="pf_intro">介绍（几句话就好）</label><textarea class="inp" id="pf_intro" rows="4" maxlength="600">${esc(profDraft.intro)}</textarea></div>
    <b style="display:block;margin:6px 0">店面照片 <span class="sub">（最多 ${PROF_MAX.shop} 张）</span></b>${grid('shop')}
    <b style="display:block;margin:14px 0 6px">我的前后对比照 <span class="sub">（最多 ${PROF_MAX.bna} 张）</span></b>${grid('bna')}
    <p class="sub" style="margin:10px 0">照片会自动缩小再上传，不会拖慢 App。</p>
    <button class="btn block" type="submit">保存</button></form>`);
+  const ai=document.getElementById('pf_ava');
+  if(ai) ai.onchange=async e=>{ const f=e.target.files[0]; if(!f) return; profDraft.intro=document.getElementById('pf_intro').value; toast('正在上传头像…');
+    try{ const data=await squareJpg(f,480); const r=await api('admin/photo',{data}); profDraft.avatar=r.id; }catch(err){ toast('头像上传失败：'+err.message); } profileForm(true); };
   for(const k of ['shop','bna']){ const inp=document.getElementById('pf_'+k); if(!inp) continue;
     inp.onchange=async e=>{ profDraft.intro=document.getElementById('pf_intro').value; const files=[...e.target.files].slice(0,PROF_MAX[k]-profDraft[k].length); if(!files.length) return;
       toast(`正在上传 ${files.length} 张照片…`);
       for(const f of files){ try{ const data=await shrink(f,1200); const r=await api('admin/photo',{data}); profDraft[k].push(r.id); }catch(err){ toast('有一张照片上传失败：'+err.message); } }
       profileForm(true); }; }
 }
+
+// Head shot: centre square of the photo, 480 x 480 JPEG (about 40 KB).
+function squareJpg(file,size){ return new Promise((ok,bad)=>{ const url=URL.createObjectURL(file), im=new Image();
+  im.onload=()=>{ const s=Math.min(im.naturalWidth,im.naturalHeight), cv=document.createElement('canvas'); cv.width=cv.height=size;
+    const cx=cv.getContext('2d'); cx.fillStyle='#fff'; cx.fillRect(0,0,size,size);
+    cx.drawImage(im,(im.naturalWidth-s)/2,(im.naturalHeight-s)/2.6,s,s,0,0,size,size); URL.revokeObjectURL(url); ok(cv.toDataURL('image/jpeg',0.85)); };
+  im.onerror=()=>{ URL.revokeObjectURL(url); bad(new Error('看不懂这张照片')); }; im.src=url; }); }
