@@ -407,7 +407,7 @@ T = [
 ("健康表", "Wellness", "Kesihatan"),
 ("分店", "Branches", "Cawangan"),
 ("累计开卡", "Cards opened:", "Kad dibuka:"),
-("店长图", "Branch chart", "Carta cawangan"), ("所有分店和店长，每位店长都看得到（没有会员资料）。点一家店看它的介绍和照片。", "All branches and managers, visible to every manager (no member data). Tap a branch for its intro and photos.", "Semua cawangan dan pengurus, boleh dilihat oleh setiap pengurus (tiada data ahli). Tekan cawangan untuk pengenalan dan foto."),
+("店长图", "Branch chart", "Carta cawangan"), ("组织图", "Chart", "Carta"), ("列表", "List", "Senarai"), ("分店多的时候，可以左右滑动看完整的图。金色框是你的店。", "With many branches, swipe sideways to see the whole chart. The gold frame is your branch.", "Jika banyak cawangan, leret ke tepi untuk melihat seluruh carta. Bingkai emas ialah cawangan anda."), ("所有分店和店长，每位店长都看得到（没有会员资料）。点一家店看它的介绍和照片。", "All branches and managers, visible to every manager (no member data). Tap a branch for its intro and photos.", "Semua cawangan dan pengurus, boleh dilihat oleh setiap pengurus (tiada data ahli). Tekan cawangan untuk pengenalan dan foto."),
 ("一共", "In total", "Jumlah"), ("家店", "branches", "cawangan"), ("编辑我的店的介绍和照片", "Edit my branch intro and photos", "Ubah pengenalan dan foto cawangan saya"), ("我的店", "My branch", "Cawangan saya"), ("上线", "Upline", "Upline"),
 ("店面照片", "Shop photos", "Foto kedai"), ("店长的前后对比照", "Manager's before & after", "Sebelum & selepas pengurus"), ("这家店还没有放介绍和照片。", "This branch has no intro or photos yet.", "Cawangan ini belum ada pengenalan atau foto."), ("返回", "Back", "Kembali"),
 ("所有店长都看得到。店名、Logo、地址在「首页」→「俱乐部资料」改。", "Every manager can see this. Change the name, logo and address in Home → Club details.", "Setiap pengurus boleh melihat ini. Tukar nama, logo dan alamat di Utama → Maklumat kelab."),

@@ -23,6 +23,7 @@ document.addEventListener('click',async e=>{
   if(a==='typeDel'){ typeDraft=readTypes(); typeDraft.splice(+v,1); cardTypesForm(true); return; }
   if(a==='memberMove'){ memberMoveForm(id); return; }
   if(a==='chartShop'){ chartShopSheet(id); return; }
+  if(a==='chartMode'){ chartMode=v; render(); return; }
   if(a==='photoView'){ photoSheet(id); return; }
   if(a==='profileEdit'){ chartReturn=null; profileForm(); return; }
   if(a==='profDel'){ profDraft.intro=document.getElementById('pf_intro').value; profDraft[id].splice(+v,1); profileForm(true); return; }

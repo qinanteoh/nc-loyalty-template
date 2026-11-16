@@ -190,7 +190,7 @@ function myPwForm(){
     <div class="field"><label for="mp2">再输入一次</label><input class="inp" id="mp2" type="password" autocomplete="new-password"></div><button class="btn block" type="submit">保存</button></form>`);
 }
 // What a person may press in the back office: downline branches are view-only; operators approve and check in.
-const VIEW_ACTS=new Set(['viewTier','viewCards','chartShop','photoView','atab','go','back','close','adminLogout','cardFilter','courseFilter','coursePreview','csheet','hsheet','healthPdf','ncp','backNcp','exportCsv','exportDailyCsv','exportDailyPdf','exportPdf','repDay','repPdf','statRange','joinCopy','joinPoster','shopView','myPw','sfNext']);
+const VIEW_ACTS=new Set(['viewTier','viewCards','chartShop','photoView','chartMode','atab','go','back','close','adminLogout','cardFilter','courseFilter','coursePreview','csheet','hsheet','healthPdf','ncp','backNcp','exportCsv','exportDailyCsv','exportDailyPdf','exportPdf','repDay','repPdf','statRange','joinCopy','joinPoster','shopView','myPw','sfNext']);
 const OP_ACTS=new Set(['approve','reject','approveMember','rejectMember','staffCheckin','checkin','undoCheckin','courseOpen','editScan','editProfile','delScan']);
 const HQ_ACTS=new Set(['editReward','delReward','editTask','delTask']);
 const followOn=k=>!!(S.rules&&S.rules.follow&&S.rules.follow[k]&&S.rules.follow[k].on);
@@ -272,13 +272,22 @@ const imgUrl=id=>'/img/'+encodeURIComponent(id);
 const chartLogo=b=>`/icon-128.png?${b.id!=='hq'?'b='+encodeURIComponent(b.id)+'&':''}v=${encodeURIComponent(b.logo||'d')}`;
 function chartRows(){ const all=S.chart||[], out=[]; const root=all.find(b=>!b.parent)||all.find(b=>b.id==='hq'); if(!root) return out;
   const walk=(b,d)=>{ out.push({...b,depth:d}); all.filter(x=>x.parent===b.id).sort((a,c)=>(a.created||0)-(c.created||0)).forEach(x=>walk(x,d+1)); }; walk(root,0); return out; }
+// Org-chart style: head office on top, lines down to each layer of branches, one colour per layer.
+let chartMode='tree';
+function orgTree(){ const all=S.chart||[], mine=STAFF&&STAFF.branch; const root=all.find(b=>!b.parent)||all.find(b=>b.id==='hq'); if(!root) return '';
+  const kids=id=>all.filter(x=>x.parent===id).sort((a,c)=>(a.created||0)-(c.created||0));
+  const node=(b,d)=>{ const ch=kids(b.id);
+    return `<li><button class="onode d${d%5}${b.id===mine?' mine':''}" data-act="chartShop" data-id="${esc(b.id)}"><img src="${chartLogo(b)}" alt="" width="34" height="34"><b translate="no">${esc(b.name)}</b>${b.managers.length?`<small translate="no">${esc(b.managers.join('、'))}</small>`:''}</button>${ch.length?`<ul>${ch.map(x=>node(x,d+1)).join('')}</ul>`:''}</li>`; };
+  return `<div class="org"><div class="org-in"><ul class="org-root">${node(root,0)}</ul></div></div>`; }
 function adminChart(){
   const rows=chartRows(), mine=STAFF&&STAFF.branch;
-  return `<p class="sub" style="margin:-4px 0 12px"><span>所有分店和店长，每位店长都看得到（没有会员资料）。点一家店看它的介绍和照片。</span><br><span>一共</span> <b>${rows.length}</b> <span>家店</span></p>
-  ${STAFF&&STAFF.role==='manager'?`<button class="btn block" data-act="profileEdit" style="margin-bottom:14px">${ic('camera',18)} 编辑我的店的介绍和照片</button>`:''}
-  <div class="chart">${rows.map(b=>`<button class="cnode${b.id===mine?' mine':''}" data-act="chartShop" data-id="${esc(b.id)}" style="--d:${b.depth}">
+  const list=`<div class="chart">${rows.map(b=>`<button class="cnode${b.id===mine?' mine':''}" data-act="chartShop" data-id="${esc(b.id)}" style="--d:${b.depth}">
     <img src="${chartLogo(b)}" alt="" width="48" height="48"><span class="cn-t"><b translate="no">${esc(b.name)}</b>
     <span class="sub">${b.managers.length?`<span>店长</span> ${nt(b.managers.join('、'))}`:''}${b.shop.length+b.bna.length?` · ${ic('camera',14)} ${b.shop.length+b.bna.length}`:''}</span></span>${b.id===mine?'<span class="badge approved">我的店</span>':''}</button>`).join('')}</div>`;
+  return `<p class="sub" style="margin:-4px 0 12px"><span>所有分店和店长，每位店长都看得到（没有会员资料）。点一家店看它的介绍和照片。</span><br><span>一共</span> <b>${rows.length}</b> <span>家店</span></p>
+  ${STAFF&&STAFF.role==='manager'?`<button class="btn block" data-act="profileEdit" style="margin-bottom:12px">${ic('camera',18)} 编辑我的店的介绍和照片</button>`:''}
+  <div class="chips" style="margin-bottom:10px"><button class="chip ${chartMode==='tree'?'on':''}" data-act="chartMode" data-v="tree">组织图</button><button class="chip ${chartMode==='list'?'on':''}" data-act="chartMode" data-v="list">列表</button></div>
+  ${chartMode==='tree'?orgTree()+'<p class="sub" style="text-align:center;margin:6px 0 0">分店多的时候，可以左右滑动看完整的图。金色框是你的店。</p>':list}`;
 }
 function gallery(ids,label){ return ids.length?`<b style="display:block;margin:14px 0 6px">${label}</b><div class="gal">${ids.map(id=>`<button class="gph" data-act="photoView" data-id="${esc(id)}"><img src="${imgUrl(id)}" alt="" loading="lazy"></button>`).join('')}</div>`:''; }
 let chartReturn=null;
