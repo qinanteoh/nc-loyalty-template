@@ -407,6 +407,13 @@ T = [
 ("健康表", "Wellness", "Kesihatan"),
 ("分店", "Branches", "Cawangan"),
 ("累计开卡", "Cards opened:", "Kad dibuka:"),
+("店长图", "Branch chart", "Carta cawangan"), ("所有分店和店长，每位店长都看得到（没有会员资料）。点一家店看它的介绍和照片。", "All branches and managers, visible to every manager (no member data). Tap a branch for its intro and photos.", "Semua cawangan dan pengurus, boleh dilihat oleh setiap pengurus (tiada data ahli). Tekan cawangan untuk pengenalan dan foto."),
+("一共", "In total", "Jumlah"), ("家店", "branches", "cawangan"), ("编辑我的店的介绍和照片", "Edit my branch intro and photos", "Ubah pengenalan dan foto cawangan saya"), ("我的店", "My branch", "Cawangan saya"), ("上线", "Upline", "Upline"),
+("店面照片", "Shop photos", "Foto kedai"), ("店长的前后对比照", "Manager's before & after", "Sebelum & selepas pengurus"), ("这家店还没有放介绍和照片。", "This branch has no intro or photos yet.", "Cawangan ini belum ada pengenalan atau foto."), ("返回", "Back", "Kembali"),
+("所有店长都看得到。店名、Logo、地址在「首页」→「俱乐部资料」改。", "Every manager can see this. Change the name, logo and address in Home → Club details.", "Setiap pengurus boleh melihat ini. Tukar nama, logo dan alamat di Utama → Maklumat kelab."),
+("介绍（几句话就好）", "Intro (a few sentences)", "Pengenalan (beberapa ayat)"), ("店面照片", "Shop photos", "Foto kedai"), ("我的前后对比照", "My before & after photos", "Foto sebelum & selepas saya"), ("（最多 {0} 张）", "(up to {0})", "(maksimum {0})"),
+("加照片", "Add photos", "Tambah foto"), ("照片会自动缩小再上传，不会拖慢 App。", "Photos are made smaller before upload, so the app stays fast.", "Foto dikecilkan sebelum dimuat naik, jadi app kekal laju."), ("已保存，所有店长都看得到了", "Saved — every manager can see it now", "Disimpan — semua pengurus boleh melihatnya"),
+
 ("换上线", "Change upline", "Tukar upline"), ("俱乐部积分奖励", "Club rewards", "Ganjaran kelab"), ("新的上线", "New upline", "Upline baharu"), ("确定换上线", "Change upline", "Tukar upline"), ("已换上线", "Upline changed", "Upline ditukar"),
 ("换了之后，它的会员、积分、设定都不变，它下面的分店也跟着一起。新的上线可以看它的资料（只能看，不能改）。", "Its members, points and settings stay the same, and the branches below it come along. The new upline can see its data (view only).", "Ahli, mata dan tetapannya kekal, dan cawangan di bawahnya turut ikut. Upline baharu boleh melihat datanya (lihat sahaja)."),
 ("店的地址（会员在首页看得到；店搬了，在这里改就好）", "Shop address (members see it on the home page; if the shop moves, just change it here)", "Alamat kedai (ahli nampak di halaman utama; jika kedai berpindah, tukar di sini sahaja)"), ("或", "or", "atau"), ("再续", "Renew", "Perbaharui"), ("就能升级", "to reach", "untuk naik ke"), ("还差等级分", "Tier points needed:", "Mata tahap diperlukan:"), ("等级分超过", "Tier points over", "Mata tahap melebihi"),

@@ -110,6 +110,11 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .out{opacity:.55}
 
 .shopaddr{display:flex;gap:8px;align-items:flex-start;margin:-6px 0 14px;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:15px;line-height:1.45}.shopaddr svg{flex:none;margin-top:2px;color:var(--wine,#7A1E3A)}
+.chart{display:flex;flex-direction:column;gap:8px}.cnode{display:flex;align-items:center;gap:10px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-left:calc(var(--d)*18px);font:inherit;color:inherit;cursor:pointer}
+.cnode.mine{border-color:var(--wine,#7A1E3A);box-shadow:0 0 0 1px var(--wine,#7A1E3A)}.cnode img{width:48px;height:48px;border-radius:12px;flex:none}.cn-t{flex:1;min-width:0;display:flex;flex-direction:column}.cn-t b{font-size:17px}
+.prof-h{display:flex;gap:12px;align-items:center}.prof-h img{width:72px;height:72px;border-radius:16px;flex:none}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.gph{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--surface);padding:0;cursor:pointer}.gph img{width:100%;height:100%;object-fit:cover;display:block}
+.gph.add{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--muted);font-size:14px;border-style:dashed}.gx{position:absolute;top:4px;right:4px;width:28px;height:28px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:14px;cursor:pointer}
 .vbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:-6px 0 10px}
 .vpick{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--muted)}.vpick select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:6px 10px;max-width:62vw}
 .robanner{display:flex;gap:8px;align-items:center;background:#FFF1C9;color:#5a4300;border-radius:12px;padding:10px 12px;margin:0 0 12px;font-weight:600}

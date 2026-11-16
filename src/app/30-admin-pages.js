@@ -1,7 +1,7 @@
 /* ---------- admin ---------- */
 function vAdmin(){
   const pend=S.requests.filter(r=>r.status==='pending').length+pendMembers().length;
-  let tabs=[['requests',`审核${pend?' ('+pend+')':''}`],['notify','通知'],['rewards','礼物'],['tasks','任务'],['report','打卡报告'],['stats','每日统计'],['members','会员'],['course','课程'],['health','健康'],['cards','NCP卡'],['branch','分店'],['home','首页']];
+  let tabs=[['requests',`审核${pend?' ('+pend+')':''}`],['notify','通知'],['rewards','礼物'],['tasks','任务'],['report','打卡报告'],['stats','每日统计'],['members','会员'],['course','课程'],['health','健康'],['cards','NCP卡'],['branch','分店'],['chart','店长图'],['home','首页']];
   if(isOperator()) tabs=tabs.filter(([k])=>!['notify','rewards','tasks','home'].includes(k));
   if(!tabs.some(([k])=>k===adminTab)) adminTab='requests';
   let body='';
@@ -13,6 +13,8 @@ function vAdmin(){
       ${r.status==='pending'?`<div style="display:flex;gap:6px"><button class="btn sm danger" data-act="reject" data-id="${esc(r.id)}">拒绝</button><button class="btn sm ok" data-act="approve" data-id="${esc(r.id)}">通过</button></div>`:`<span class="badge ${r.status}">${r.status==='approved'?'已通过':'未通过'}</span>`}</div></div>`).join('')}</div>`:(qOf()?noMatch():'<div class="empty">目前没有待审核的申请。</div>'));
   } else if(adminTab==='branch'){
     body=adminBranch();
+  } else if(adminTab==='chart'){
+    body=adminChart();
   } else if(adminTab==='rewards'){
     const list=S.rewards.slice().sort((a,b)=>a.points-b.points);
     body=`<button class="btn block" data-act="editReward" style="margin-bottom:12px">${ic('plus',18)} 新增礼物</button>
@@ -188,14 +190,14 @@ function myPwForm(){
     <div class="field"><label for="mp2">再输入一次</label><input class="inp" id="mp2" type="password" autocomplete="new-password"></div><button class="btn block" type="submit">保存</button></form>`);
 }
 // What a person may press in the back office: downline branches are view-only; operators approve and check in.
-const VIEW_ACTS=new Set(['viewTier','viewCards','atab','go','back','close','adminLogout','cardFilter','courseFilter','coursePreview','csheet','hsheet','healthPdf','ncp','backNcp','exportCsv','exportDailyCsv','exportDailyPdf','exportPdf','repDay','repPdf','statRange','joinCopy','joinPoster','shopView','myPw','sfNext']);
+const VIEW_ACTS=new Set(['viewTier','viewCards','chartShop','photoView','atab','go','back','close','adminLogout','cardFilter','courseFilter','coursePreview','csheet','hsheet','healthPdf','ncp','backNcp','exportCsv','exportDailyCsv','exportDailyPdf','exportPdf','repDay','repPdf','statRange','joinCopy','joinPoster','shopView','myPw','sfNext']);
 const OP_ACTS=new Set(['approve','reject','approveMember','rejectMember','staffCheckin','checkin','undoCheckin','courseOpen','editScan','editProfile','delScan']);
 const HQ_ACTS=new Set(['editReward','delReward','editTask','delTask']);
 const followOn=k=>!!(S.rules&&S.rules.follow&&S.rules.follow[k]&&S.rules.follow[k].on);
 const followFrom=k=>(S.rules&&S.rules.follow&&S.rules.follow[k]&&S.rules.follow[k].from)||'';
 function adminActWhy(a){
   if(!isAdmin||view!=='admin'||VIEW_ACTS.has(a)) return '';
-  if(a==='branchAdd'||a==='branchMove') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
+  if(a==='branchAdd'||a==='branchMove'||a==='profileEdit'||a==='profDel') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
   if(!VIEW.own) return '这是下线分店，只能看，不能改';
   if(isOperator()&&!OP_ACTS.has(a)) return '操作员不能做这个，请找店长';
   if(HQ_ACTS.has(a)&&followOn(/Reward/.test(a)?'rewards':'tasks')) return '现在跟上线，要先到「分店」改成「自己设」';
@@ -204,7 +206,7 @@ function adminActWhy(a){
 const OP_FORMS=['sf','pfm','mpf'], ANY_FORMS=['mpf','adminForm','loginForm','pinForm','regForm','setPinForm'];
 function adminFormWhy(id){
   if(!isAdmin||view!=='admin'||ANY_FORMS.includes(id)) return '';
-  if(id==='brf'||id==='mvf') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
+  if(id==='brf'||id==='mvf'||id==='prf') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
   if((id==='sf'||id==='pfm')&&!hFor) return '';
   if(!VIEW.own) return '这是下线分店，只能看，不能改';
   if(isOperator()&&!OP_FORMS.includes(id)) return '操作员不能做这个，请找店长';
@@ -263,4 +265,50 @@ function memberMoveForm(phone){
   openSheet(`<h3><span>换店</span> · ${nt(m.name)}</h3><p class="sub" style="margin:-6px 0 10px">会员的积分、卡、打卡记录、健康表都会一起带过去。转出后，这位会员就归新的店，你这里看不到了。</p>
    ${opts.length?`<form id="mmf" data-id="${esc(phone)}"><div class="field"><label for="mm_to">转到哪一家店</label><select class="inp" id="mm_to" translate="no">${opts.map(b=>`<option value="${esc(b.id)}">${esc(b.name)}</option>`).join('')}</select></div>
    <button class="btn block" type="submit">确定换店</button></form>`:'<div class="empty">还没有其他分店。</div>'}`);
+}
+
+/* ---------- branch chart (all shops) and shop profiles (stage 3) ---------- */
+const imgUrl=id=>'/img/'+encodeURIComponent(id);
+const chartLogo=b=>`/icon-128.png?${b.id!=='hq'?'b='+encodeURIComponent(b.id)+'&':''}v=${encodeURIComponent(b.logo||'d')}`;
+function chartRows(){ const all=S.chart||[], out=[]; const root=all.find(b=>!b.parent)||all.find(b=>b.id==='hq'); if(!root) return out;
+  const walk=(b,d)=>{ out.push({...b,depth:d}); all.filter(x=>x.parent===b.id).sort((a,c)=>(a.created||0)-(c.created||0)).forEach(x=>walk(x,d+1)); }; walk(root,0); return out; }
+function adminChart(){
+  const rows=chartRows(), mine=STAFF&&STAFF.branch;
+  return `<p class="sub" style="margin:-4px 0 12px"><span>所有分店和店长，每位店长都看得到（没有会员资料）。点一家店看它的介绍和照片。</span><br><span>一共</span> <b>${rows.length}</b> <span>家店</span></p>
+  ${STAFF&&STAFF.role==='manager'?`<button class="btn block" data-act="profileEdit" style="margin-bottom:14px">${ic('camera',18)} 编辑我的店的介绍和照片</button>`:''}
+  <div class="chart">${rows.map(b=>`<button class="cnode${b.id===mine?' mine':''}" data-act="chartShop" data-id="${esc(b.id)}" style="--d:${b.depth}">
+    <img src="${chartLogo(b)}" alt="" width="48" height="48"><span class="cn-t"><b translate="no">${esc(b.name)}</b>
+    <span class="sub">${b.managers.length?`<span>店长</span> ${nt(b.managers.join('、'))}`:''}${b.shop.length+b.bna.length?` · ${ic('camera',14)} ${b.shop.length+b.bna.length}`:''}</span></span>${b.id===mine?'<span class="badge approved">我的店</span>':''}</button>`).join('')}</div>`;
+}
+function gallery(ids,label){ return ids.length?`<b style="display:block;margin:14px 0 6px">${label}</b><div class="gal">${ids.map(id=>`<button class="gph" data-act="photoView" data-id="${esc(id)}"><img src="${imgUrl(id)}" alt="" loading="lazy"></button>`).join('')}</div>`:''; }
+let chartReturn=null;
+function chartShopSheet(id){
+  const b=(S.chart||[]).find(x=>x.id===id); if(!b) return; const up=(S.chart||[]).find(x=>x.id===b.parent);
+  openSheet(`<div class="prof-h"><img src="${chartLogo(b)}" alt="" width="72" height="72"><div><h3 style="margin:0" translate="no">${esc(b.name)}</h3>
+     ${b.managers.length?`<div class="sub"><span>店长</span> ${nt(b.managers.join('、'))}</div>`:''}${up?`<div class="sub"><span>上线</span> ${nt(up.name)}</div>`:''}</div></div>
+   ${b.address?`<a class="shopaddr" style="margin:12px 0 0" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.address)}" target="_blank" rel="noopener">${ic('pin',18)}<span translate="no">${esc(b.address)}</span></a>`:''}
+   ${b.intro?`<p style="white-space:pre-line;margin:12px 0 0" translate="no">${esc(b.intro)}</p>`:''}
+   ${gallery(b.shop,'店面照片')}${gallery(b.bna,'店长的前后对比照')}
+   ${!b.intro&&!b.shop.length&&!b.bna.length?'<div class="empty" style="margin-top:12px">这家店还没有放介绍和照片。</div>':''}`);
+  chartReturn=id;
+}
+function photoSheet(id){ openSheet(`<div style="text-align:center"><img src="${imgUrl(id)}" alt="" style="max-width:100%;max-height:75vh;border-radius:12px"></div>${chartReturn?`<button class="btn block ghost" data-act="chartShop" data-id="${esc(chartReturn)}" style="margin-top:12px">${ic('back',18)} 返回</button>`:''}`); }
+let profDraft=null;
+const PROF_MAX={shop:10,bna:20};
+function profileForm(keep){
+  const b=(S.chart||[]).find(x=>x.id===STAFF.branch)||{intro:'',shop:[],bna:[]};
+  if(!keep) profDraft={intro:b.intro||'',shop:[...(b.shop||[])],bna:[...(b.bna||[])]};
+  const grid=k=>`<div class="gal edit">${profDraft[k].map((id,i)=>`<div class="gph"><img src="${imgUrl(id)}" alt=""><button type="button" class="gx" data-act="profDel" data-id="${k}" data-v="${i}" aria-label="删除">✕</button></div>`).join('')}
+     ${profDraft[k].length<PROF_MAX[k]?`<label class="gph add" for="pf_${k}">${ic('plus',22)}<span>加照片</span></label><input type="file" id="pf_${k}" data-k="${k}" accept="image/*" multiple hidden>`:''}</div>`;
+  openSheet(`<h3>编辑我的店的介绍和照片</h3><p class="sub" style="margin:-6px 0 10px">所有店长都看得到。店名、Logo、地址在「首页」→「俱乐部资料」改。</p>
+   <form id="prf"><div class="field"><label for="pf_intro">介绍（几句话就好）</label><textarea class="inp" id="pf_intro" rows="4" maxlength="600">${esc(profDraft.intro)}</textarea></div>
+   <b style="display:block;margin:6px 0">店面照片 <span class="sub">（最多 ${PROF_MAX.shop} 张）</span></b>${grid('shop')}
+   <b style="display:block;margin:14px 0 6px">我的前后对比照 <span class="sub">（最多 ${PROF_MAX.bna} 张）</span></b>${grid('bna')}
+   <p class="sub" style="margin:10px 0">照片会自动缩小再上传，不会拖慢 App。</p>
+   <button class="btn block" type="submit">保存</button></form>`);
+  for(const k of ['shop','bna']){ const inp=document.getElementById('pf_'+k); if(!inp) continue;
+    inp.onchange=async e=>{ profDraft.intro=document.getElementById('pf_intro').value; const files=[...e.target.files].slice(0,PROF_MAX[k]-profDraft[k].length); if(!files.length) return;
+      toast(`正在上传 ${files.length} 张照片…`);
+      for(const f of files){ try{ const data=await shrink(f,1200); const r=await api('admin/photo',{data}); profDraft[k].push(r.id); }catch(err){ toast('有一张照片上传失败：'+err.message); } }
+      profileForm(true); }; }
 }

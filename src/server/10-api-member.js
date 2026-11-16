@@ -33,6 +33,7 @@ async function handleApi(req, env, path, ctx) {
       const staff = (await s.all('staff')).filter(x => x.branch === vb).map(({ hash, ...x }) => x);
       // Every branch's name, so a manager can move a member to any branch.
       if (me_.role === 'manager') data.allBranches = list.map(b => ({ id: b.id, name: branchName(b.id, stOf(b.id)) }));
+      data.chart = await branchChart(s, bc);
       let me = null;
       if (who.phone) { me = who.phone; const mm = await s.get('members', who.phone); data.myNotices = await noticesFor(s, who.phone, bOf(mm)); }
       return json({ data, admin: true, me, ver: APP_VER, staff: me_, view: { branch: vb, own: vb === me_.branch }, tree, staffList: staff });

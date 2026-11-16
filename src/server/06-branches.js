@@ -79,4 +79,27 @@ function cleanTypes(list) {
     return { id: String(t.id || uid()).slice(0, 20), n: String(t.n || '卡').trim().slice(0, 40) || '卡', mode, total, days, kind, tw: Math.max(0, Math.min(100, +t.tw || 0)) };
   });
 }
+/* Photos: kept in R2 (binding PHOTOS) when the shop has turned it on, otherwise in the D1 photos table.
+   Pictures are made small on the phone before upload (about 150–250 KB each). */
+const PROFILE_MAX = { shop: 10, bna: 20 };
+async function savePhoto(env, id, type, b64) {
+  if (env.PHOTOS) await env.PHOTOS.put(id, b64ToBytes(b64), { httpMetadata: { contentType: type } });
+  else await env.DB.prepare('INSERT INTO photos (id, type, data) VALUES (?, ?, ?)').bind(id, type, b64).run();
+}
+async function loadPhoto(env, id) {
+  if (env.PHOTOS) { const o = await env.PHOTOS.get(id); if (o) return { type: (o.httpMetadata && o.httpMetadata.contentType) || 'image/jpeg', body: o.body }; }
+  const r = await env.DB.prepare('SELECT type, data FROM photos WHERE id = ?').bind(id).first();
+  return r ? { type: r.type, body: b64ToBytes(r.data) } : null;
+}
+async function dropPhoto(env, id) {
+  if (env.PHOTOS) await env.PHOTOS.delete(id);
+  await env.DB.prepare('DELETE FROM photos WHERE id = ?').bind(id).run();
+}
+// The chart every staff member can see: all branches with name, logo, address, managers and profile. No member data.
+async function branchChart(s, bc) {
+  const staff = await s.all('staff');
+  return bc.list.map(b => { const st = bc.stOf(b.id), p = st.profile || {};
+    return { id: b.id, parent: b.parent, name: branchName(b.id, st), logo: st.logo || null, address: st.address || '', created: b.created || null,
+      managers: staff.filter(x => x.branch === b.id && x.role !== 'operator').map(x => x.name), intro: p.intro || '', shop: p.shop || [], bna: p.bna || [] }; });
+}
 const branchName = (b, st) => brandOf(st).name || (b === HQ ? '总店' : '分店');

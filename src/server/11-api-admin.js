@@ -38,7 +38,7 @@
     if (act === 'settings') {
       const cur = await settingsOf(s, me_.branch), d = { ...(body.data || {}) };
       if (!d.qrKey && cur.qrKey) d.qrKey = cur.qrKey;
-      for (const k of ['follow', 'tierRule', 'cardTypes']) { if (cur[k] !== undefined) d[k] = cur[k]; else delete d[k]; }
+      for (const k of ['follow', 'tierRule', 'cardTypes', 'profile']) { if (cur[k] !== undefined) d[k] = cur[k]; else delete d[k]; }
       await s.put('settings', settingsId(me_.branch), d);
       if (me_.branch !== HQ) { const b = await s.get('branches', me_.branch); if (b && d.brandName) await s.put('branches', b.id, { ...b, name: String(d.brandName).slice(0, 60) }); }
       return json({ ok: true });
@@ -87,6 +87,19 @@
         s.putStmt('staff', phone, { name: mname, phone, branch: id, role: 'manager', hash: await staffHash(phone, pw), created: Date.now(), by: me_.id })
       ]);
       return json({ ok: true, id });
+    }
+    // A branch's profile on the branch chart: intro, shop photos, the manager's before / after photos.
+    if (act === 'profile') {
+      const ids = (x, max) => Array.isArray(x) ? [...new Set(x.map(String).filter(v => /^u[a-z0-9]{6,40}$/.test(v)))].slice(0, max) : [];
+      const st = { ...(await settingsOf(s, me_.branch)) }; delete st.id;
+      const old = st.profile || {};
+      const p = { intro: String(body.intro || '').trim().slice(0, 600), shop: ids(body.shop, PROFILE_MAX.shop), bna: ids(body.bna, PROFILE_MAX.bna) };
+      st.profile = p;
+      await s.put('settings', settingsId(me_.branch), st);
+      // Photos taken off the profile are deleted so they don't take up space.
+      const keep = new Set([...p.shop, ...p.bna]);
+      for (const id of [...(old.shop || []), ...(old.bna || [])]) if (!keep.has(id)) await dropPhoto(env, id);
+      return json({ ok: true });
     }
     // Follow the upline or set it ourselves. Switching to "own" starts from a copy of what the upline has now.
     if (act === 'follow') {
@@ -147,7 +160,7 @@
       if (!mt) return fail('照片格式不支持');
       if (mt[2].length > 1_400_000) return fail('照片太大了，请换一张小一点的');
       const id = 'u' + uid();
-      await env.DB.prepare('INSERT INTO photos (id, type, data) VALUES (?, ?, ?)').bind(id, mt[1], mt[2]).run();
+      await savePhoto(env, id, mt[1], mt[2]);
       return json({ ok: true, id });
     }
     if (act === 'adjust') {

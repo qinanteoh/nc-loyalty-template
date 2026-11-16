@@ -22,9 +22,9 @@ export default {
       }
       if (url.pathname.startsWith('/img/')) {
         const id = url.pathname.slice(5);
-        const r = await env.DB.prepare('SELECT type, data FROM photos WHERE id = ?').bind(id).first();
+        const r = await loadPhoto(env, id);
         if (!r) return new Response('Not found', { status: 404 });
-        return new Response(b64ToBytes(r.data), { headers: { 'content-type': r.type, 'cache-control': 'public, max-age=31536000, immutable' } });
+        return new Response(r.body, { headers: { 'content-type': r.type, 'cache-control': 'public, max-age=31536000, immutable' } });
       }
       if (url.pathname.startsWith('/api/')) return await handleApi(req, env, url.pathname.slice(5), ctx);
       // 21-day course. Apps set up with static files serve it themselves; older partner apps that only
