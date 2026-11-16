@@ -29,6 +29,7 @@ document.addEventListener('click',async e=>{
   if(a==='cat'){ cat=v; render(); return; }
   if(a==='atab'){ adminTab=v; render(); return; }
   if(a==='history'){ goView('me'); render(); document.getElementById('ledgerSec')?.scrollIntoView({block:'start'}); return; }
+  if(a==='recheck'){ b.disabled=true; try{ await refresh(); }catch(_){ render(); } if(me()&&me().pending) toast('还在等店里核准，核准后会通知你'); return; }
   if(a==='logout'){ await unlinkPush(); try{ await api('logout',{}); }catch(_){} token=null; ls.set('vw_token',null); myPhone=null; loginStep='phone'; await refresh().catch(()=>render()); return; }
   if(a==='loginBack'){ loginStep='phone'; render(); return; }
   if(a==='adminLogin'){ openSheet(`<h3>店家登入</h3><form id="adminForm"><div class="field"><label for="apw">管理员密码</label><input class="inp" id="apw" type="password" autocomplete="current-password"></div><button class="btn block" type="submit">登入管理后台</button></form>`); setTimeout(()=>document.getElementById('apw')?.focus(),50); return; }

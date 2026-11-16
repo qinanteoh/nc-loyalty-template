@@ -26,6 +26,12 @@ let lastRefresh=Date.now();
 function wake(){ if(document.visibilityState!=='visible'||!loaded) return; if(Date.now()-lastRefresh<5000) return; refresh().catch(()=>{}); }
 document.addEventListener('visibilitychange',wake); window.addEventListener('focus',wake); window.addEventListener('pageshow',e=>{ if(e.persisted) wake(); });
 setInterval(()=>{ if(document.visibilityState==='visible'&&loaded&&Date.now()-lastRefresh>120000) refresh().catch(()=>{}); },30000);
+// Let the browser open /course only while signed in as an approved member or as the coach.
+function courseCookies(){ try{
+  const set=(k,v)=>{ document.cookie=k+'='+(v?encodeURIComponent(v):'')+'; Path=/course; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'')+'; Max-Age='+(v?31536000:0); };
+  const m=myPhone&&S.members.find(x=>x.phone===myPhone);
+  set('vw_t', token&&m&&!m.pending?token:''); set('vw_a', isAdmin?adminToken:'');
+}catch(e){} }
 async function refresh(){
   const j=await api('data'); lastRefresh=Date.now(); maybeUpdate(j.ver);
   Object.assign(S,{members:[],requests:[],ledger:[],cards:[],checkins:[],health:[]},j.data);
@@ -33,6 +39,7 @@ async function refresh(){
   isAdmin=!!j.admin; if(!isAdmin&&adminToken){ adminToken=null; ls.set('vw_admin',null); }
   if(token&&!j.me){ token=null; ls.set('vw_token',null); }
   myPhone=j.me||null;
+  courseCookies();
   S.feed=j.admin?(j.data.myNotices||(j.me?[]:j.data.notices||[])):(j.data.notices||[]);
   S.bcasts=j.admin?(j.data.notices||[]):[]; S.push=j.data.push||null;
   loaded=true; render(); syncPush(); syncAdminPush(); syncCourse();

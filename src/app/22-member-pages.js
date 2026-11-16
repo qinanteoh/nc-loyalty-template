@@ -93,6 +93,16 @@ function loginView(){
       <p class="sub" style="margin-top:12px">第一次使用？输入手机号码按「下一步」就可以注册。</p>`;
   return `<div class="sec-h"><h2 style="font-family:var(--f-display);font-size:30px">${loginStep==='register'?'会员注册':joining?'欢迎加入会员':'会员登入 / 注册'}</h2></div>${joining&&loginStep==='phone'?`<p class="sub" style="margin:-4px 0 12px">欢迎加入 ${nt(brand().name)}！输入你的手机号码，按「下一步」就可以注册。</p>`:''}<div class="card">${body}</div>`;
 }
+// What visitors and not-yet-approved members see: only the welcome, register / log in, or "waiting for approval".
+function gateView(){
+  const gateFoot=`<div class="sec" style="text-align:center"><button class="link sub" data-act="adminLogin">店家登入</button></div>`;
+  const m=me(), logo=`<img class="logo" src="/icon-192.png?v=${esc((S.settings&&S.settings.logo)||'d')}" alt="" width="72" height="72" style="width:72px;height:72px;border-radius:18px;margin:6px auto 10px;display:block">`;
+  if(m) return `<div class="scan-ok">${logo}<h2 style="font-family:var(--f-display);font-size:28px">${nt(m.name)}，注册成功！</h2>
+    <p class="sub" style="margin:4px 0 0">请等店里核准你的会员资料。核准后，你就可以进来看所有会员内容，手机也会收到通知。</p></div>
+    <div class="sec" style="display:grid;gap:10px"><button class="btn block" data-act="recheck">我已经被核准了，进去看看</button><button class="link" data-act="logout">换一个号码登入</button></div>${gateFoot}`;
+  return `<div class="scan-ok">${logo}<h2 style="font-family:var(--f-display);font-size:28px">欢迎来到 ${nt(brand().name)}</h2>
+    <p class="sub" style="margin:4px 0 0">这里是会员专属。<b>第一次来？</b>输入手机号码按「下一步」注册，店里核准后就可以进来。</p><p class="sub" style="margin:4px 0 0">已经是会员？输入号码登入。</p></div>${(()=>{ const j=joining; joining=false; const lv=loginView(); joining=j; return lv; })()}${gateFoot}`;
+}
 function vMe(){
   const m=me();
   if(!m) return loginView();

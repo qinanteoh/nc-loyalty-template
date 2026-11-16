@@ -24,6 +24,18 @@ async function session(env, req) {
   if (a) { const r = await env.DB.prepare('SELECT exp FROM sessions WHERE token = ? AND admin = 1 AND exp > ?').bind(a, now).first(); if (r) { out.admin = true; await renew(env, a, r.exp, ADMIN_DAYS); } }
   return out;
 }
+// The course pages are opened by the browser directly (no app headers), so the app leaves its sign-in in a cookie for /course.
+async function courseAllowed(env, req) {
+  const ck = {};
+  for (const x of (req.headers.get('cookie') || '').split(/;\s*/)) { const i = x.indexOf('='); if (i > 0) ck[x.slice(0, i)] = decodeURIComponent(x.slice(i + 1)); }
+  const now = Date.now();
+  if (ck.vw_a && await env.DB.prepare('SELECT 1 FROM sessions WHERE token = ? AND admin = 1 AND exp > ?').bind(ck.vw_a, now).first()) return true;
+  if (ck.vw_t) {
+    const r = await env.DB.prepare('SELECT phone FROM sessions WHERE token = ? AND admin = 0 AND exp > ?').bind(ck.vw_t, now).first();
+    if (r) { const m = await new Store(env.DB).get('members', r.phone); if (m && !m.pending) return true; }
+  }
+  return false;
+}
 // Push the expiry forward when a session is used, so people stay signed in until they log out.
 async function renew(env, token, exp, days) {
   const target = Date.now() + days * DAY;

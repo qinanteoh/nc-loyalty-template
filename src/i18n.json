@@ -2851,6 +2851,42 @@
 "Wellness",
 "Kesihatan"
 ],
+"欢迎来到": [
+"Welcome to",
+"Selamat datang ke"
+],
+"这里是会员专属。": [
+"This app is for members only.",
+"App ini untuk ahli sahaja."
+],
+"输入手机号码按「下一步」注册，店里核准后就可以进来。": [
+"Enter your phone number and tap Next to register. You can come in once the shop approves you.",
+"Masukkan nombor telefon dan tekan Seterusnya untuk mendaftar. Anda boleh masuk selepas kedai meluluskan anda."
+],
+"已经是会员？输入号码登入。": [
+"Already a member? Enter your number to log in.",
+"Sudah ahli? Masukkan nombor untuk log masuk."
+],
+"，注册成功！": [
+", you're registered!",
+", pendaftaran berjaya!"
+],
+"请等店里核准你的会员资料。核准后，你就可以进来看所有会员内容，手机也会收到通知。": [
+"Please wait for the shop to approve you. Once approved, you can see everything inside and your phone will get a message.",
+"Sila tunggu kedai meluluskan anda. Selepas diluluskan, anda boleh melihat semua kandungan ahli dan telefon anda akan menerima mesej."
+],
+"我已经被核准了，进去看看": [
+"I've been approved — let me in",
+"Saya sudah diluluskan — masuk"
+],
+"换一个号码登入": [
+"Log in with another number",
+"Log masuk dengan nombor lain"
+],
+"还在等店里核准，核准后会通知你": [
+"Still waiting for approval. You'll get a message when it's done.",
+"Masih menunggu kelulusan. Anda akan dimaklumkan."
+],
 "共 {0} 张卡 · 累计打卡 {1} 次 · 最近 {2} · 目前第 {3} 张剩 {4} 次": [
 "{0} cards · {1} check-ins · last {2} · card #{3} has {4} left",
 "{0} kad · {1} daftar masuk · terakhir {2} · kad ke-{3} tinggal {4}"

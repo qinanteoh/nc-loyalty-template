@@ -29,6 +29,10 @@ export default {
       // replaced worker.js fetch the same files from the public template repo and keep them in Cloudflare's cache.
       if (url.pathname === '/course' || url.pathname.startsWith('/course/')) {
         if (url.pathname === '/course') return Response.redirect(url.origin + '/course/', 301);
+        if (!(await courseAllowed(env, req))) {
+          if (/\.(jpg|png)$/.test(url.pathname)) return new Response('Members only', { status: 403 });
+          return new Response('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Members only</title><body style="font-family:system-ui,sans-serif;padding:32px 20px;text-align:center;line-height:1.6"><p>这是会员专属内容。请先注册，店里核准后就可以看。<br>Members only. Please register; you can read this once the shop approves you.</p><p><a href="/#join" target="_top" style="font-size:18px">注册 / 登入 · Register / Log in</a></p></body>', { status: 403, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
+        }
         if (env.ASSETS) { const r = await env.ASSETS.fetch(req); if (r.status !== 404) return r; }
         const rel = url.pathname.slice('/course/'.length) || 'index.html';
         if (!/^(index\.html|fig\/[a-z0-9_]+\.jpg)$/.test(rel)) return new Response('Not found', { status: 404 });

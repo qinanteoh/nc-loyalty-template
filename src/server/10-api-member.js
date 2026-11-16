@@ -22,17 +22,19 @@ async function handleApi(req, env, path, ctx) {
       return json({ data, admin: true, me, ver: APP_VER });
     }
     const { qrKey, ...publicSettings } = settings;
-    const data = { ...pub, settings: publicSettings, members: [], cards: [], checkins: [], requests: [], ledger: [], health: [] };
-    let me = null;
+    // Visitors and members still waiting for approval only get the shop name and look, nothing inside.
+    const data = { rewards: [], tasks: [], courseFree: COURSE_FREE, settings: publicSettings, members: [], cards: [], checkins: [], requests: [], ledger: [], health: [] };
+    let me = null, approved = false;
     if (who.phone) {
       const m = await s.get('members', who.phone);
       if (m) {
-        me = who.phone; data.members = [m];
+        me = who.phone; data.members = [m]; approved = !m.pending;
+        if (approved) { data.rewards = pub.rewards; data.tasks = pub.tasks; }
         for (const c of ['cards', 'checkins', 'requests', 'ledger']) data[c] = await s.where(c, 'phone', who.phone);
         { const h = await s.get('health', who.phone); data.health = h ? [h] : []; }
       }
     }
-    data.notices = await noticesFor(s, me);
+    data.notices = approved ? await noticesFor(s, me) : [];
     return json({ data, admin: false, me, ver: APP_VER });
   }
 

@@ -4,6 +4,8 @@ function render(){
   const top=`<header class="top"><div class="brand"><img class="logo" src="/icon-192.png?v=${esc((S.settings&&S.settings.logo)||'d')}" alt="" width="40" height="40"><div><b>${nt(brand().name)}</b><small>${esc(brand().sub)}</small></div></div><div style="display:flex;gap:8px;align-items:center">${isAdmin?'<span class="demo">管理员</span>':''}<button class="bellbtn" data-act="notices" aria-label="通知">${ic('bell',20)}${unreadN()?`<span class="dot">${unreadN()>9?'9+':unreadN()}</span>`:''}</button><button class="langbtn" data-act="lang" aria-label="语言 Language"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span translate="no">${({zh:'中文',en:'EN',ms:'BM'})[LANG]}</span></button></div></header>`;
   if(!loaded) return;
   if(view==='admin'&&!isAdmin) view='home';
+  const locked=!isAdmin&&(!me()||me().pending);
+  if(locked){ document.getElementById('cframe').hidden=true; app.innerHTML=top+gateView(); document.getElementById('tabs').hidden=true; if(reSheet) reSheet(); document.title=brand().name; return; }
   const v=({home:vHome,earn:vEarn,shop:vShop,me:vMe,admin:vAdmin,scan:vScan,course:vCourse,health:vHealth}[view]||vHome)();
   const back=view!=='home'?`<button class="backbar" data-act="back">${ic('back',20)} 返回上一页</button>`:'';
   const y=window.scrollY; app.innerHTML=top+back+v; window.scrollTo(0,y);
