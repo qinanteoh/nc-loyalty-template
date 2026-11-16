@@ -27,12 +27,23 @@ const TIER_RULE = { gold: 9, platinum: 18 };
 const COURSE_FREE = 11;
 const courseOpen = h => !!h && (h.open === true || (h.open !== false && Object.keys(h.done || {}).some(k => +k > COURSE_FREE)));
 const kindOf = c => c.kind || (/daily/i.test(c.name || '') ? 'daily' : /30/.test(c.name || '') ? '30' : /10\s*\+\s*1/.test(c.name || '') ? '10+1' : 'other');
-async function tierOf(s, m) {
+// Each branch can set its own tier rule and card types (or follow its upline). These are the head-office defaults.
+const DEFAULT_RULE = { gold: TIER_RULE.gold, platinum: TIER_RULE.platinum, pts: { ...DAILY_PTS } };
+const DEFAULT_CARD_TYPES = [
+  { id: 't10', n: '10+1 Program', mode: 'count', total: 11, days: null, kind: '10+1', tw: 1 },
+  { id: 't30', n: '30 天 Program', mode: 'count', total: 30, days: null, kind: '30', tw: 3 },
+  { id: 'tdp', n: 'Daily Pass', mode: 'daily', total: null, days: null, kind: 'daily', tw: 0 }];
+// Tier points a card adds: set on the card type; older cards count 10+1 as 1 and 30-day as 3.
+const cardTW = c => c.tw != null ? (+c.tw || 0) : kindOf(c) === '10+1' ? 1 : kindOf(c) === '30' ? 3 : 0;
+// Cards with no limit on check-ins: Daily Pass (each check-in approved) and 'unl' (points straight away).
+const unlimited = c => kindOf(c) === 'daily' || kindOf(c) === 'unl';
+async function tierOf(s, m, rule) {
   if (!m) return 'Silver';
-  if (m.tierOverride && DAILY_PTS[m.tierOverride]) return m.tierOverride;
+  rule = rule || DEFAULT_RULE;
+  if (m.tierOverride && rule.pts[m.tierOverride] != null) return m.tierOverride;
   const cs = await s.where('cards', 'phone', m.id);
-  const score = (+m.prior10 || 0) + cs.filter(c => kindOf(c) === '10+1').length + 3 * ((+m.prior30 || 0) + cs.filter(c => kindOf(c) === '30').length);
-  return score > TIER_RULE.platinum ? 'Platinum' : score > TIER_RULE.gold ? 'Gold' : 'Silver';
+  const score = (+m.prior10 || 0) + 3 * (+m.prior30 || 0) + cs.reduce((a, c) => a + cardTW(c), 0);
+  return score > rule.platinum ? 'Platinum' : score > rule.gold ? 'Gold' : 'Silver';
 }
 const ADMIN_COLS = ['rewards', 'tasks', 'members', 'cards', 'checkins', 'requests', 'ledger', 'notices'];
 const CUSTOMER_DAYS = 365, ADMIN_DAYS = 365; // stays signed in; renewed on every visit

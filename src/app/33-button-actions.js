@@ -16,6 +16,12 @@ document.addEventListener('click',async e=>{
   if(a==='staffDel'){ if(!confirmTwice(a+id,b)) return; await run(()=>api('admin/staffDel',{phone:id}),'已删除，他不能再登入后台'); return; }
   if(a==='branchAdd'){ branchAddForm(); return; }
   if(a==='branchMove'){ branchMoveForm(id); return; }
+  if(a==='followSet'){ b.disabled=true; await run(()=>api('admin/follow',{key:id,on:v==='1'}),v==='1'?'已改成跟上线':'已改成自己设，可以开始改了'); return; }
+  if(a==='viewTier'){ tierForm(); return; }
+  if(a==='viewCards'){ cardTypesForm(); return; }
+  if(a==='typeAdd'){ typeDraft=readTypes(); typeDraft.push({id:'t'+Date.now().toString(36),n:'',mode:'count',total:10,days:null,kind:'other',tw:0}); cardTypesForm(true); return; }
+  if(a==='typeDel'){ typeDraft=readTypes(); typeDraft.splice(+v,1); cardTypesForm(true); return; }
+  if(a==='memberMove'){ memberMoveForm(id); return; }
   if(a==='go'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } goView(v); render(); window.scrollTo(0,0); return; }
   if(a==='back'){ closeSheet(); if(view==='scan'){ scanCode=null; scanResult=null; try{history.replaceState(null,'',location.pathname+location.search)}catch(_){} } if(view==='course') syncCourse(); view=navStack.pop()||'home'; if(view==='admin'&&!isAdmin) view='home'; render(); window.scrollTo(0,0); return; }
   if(a==='editScan'){ scanForm(id,b.dataset.ph); return; }
@@ -59,9 +65,9 @@ document.addEventListener('click',async e=>{
     await refresh().catch(()=>render()); return; }
   if(a==='renew'){ const m=me(); if(!m) return;
     openSheet(`<h3>申请续卡</h3><p class="sub" style="margin-top:-6px">选择你要的配套，教练确认后新卡就会开通。</p>
-      <div class="list" style="margin-top:12px">${CARD_TYPES.map((t,i)=>t.kind==='daily'?'':`<button class="task" data-act="doRenew" data-v="${i}" style="text-align:left"><span class="ic">${ic('ticket',22)}</span><div class="tx"><b>${esc(t.n)}</b><span>${t.total} 次打卡</span></div>${ic('plus',18)}</button>`).join('')}</div>`); return; }
-  if(a==='doRenew'){ const m=me(), t=CARD_TYPES[+v]; if(!m||!t) return;  if(hasPendingRenew(m.phone)){ closeSheet(); return toast('你已经有一个续卡申请在审核中'); }
-    b.disabled=true; closeSheet(); await run(()=>api('request',{type:'renew',cardName:t.n,total:t.total,kind:t.kind}),'续卡申请已提交，等待教练确认'); return; }
+      <div class="list" style="margin-top:12px">${cardTypes().map((t,i)=>t.mode==='daily'?'':`<button class="task" data-act="doRenew" data-v="${i}" style="text-align:left"><span class="ic">${ic('ticket',22)}</span><div class="tx"><b>${esc(t.n)}</b><span>${t.mode==='unl'?'不限次打卡':t.total+' 次打卡'}${t.days?' · '+t.days+' 天':''}</span></div>${ic('plus',18)}</button>`).join('')}</div>`); return; }
+  if(a==='doRenew'){ const m=me(), t=cardTypes()[+v]; if(!m||!t) return;  if(hasPendingRenew(m.phone)){ closeSheet(); return toast('你已经有一个续卡申请在审核中'); }
+    b.disabled=true; closeSheet(); await run(()=>api('request',{type:'renew',typeId:t.id,cardName:t.n}),'续卡申请已提交，等待教练确认'); return; }
   if(!isAdmin) return;
   if(a==='qrInit'||a==='qrReset'){ if(a==='qrReset'&&!confirmTwice(a,b)){ b.textContent='再按一次作废旧二维码'; return; }
     await run(()=>putSettings({...S.settings,qrKey:uid()+uid(),qrMode:qrMode()}),a==='qrInit'?'打卡二维码已生成':'旧二维码已作废，请重新下载'); return; }
@@ -116,7 +122,13 @@ document.addEventListener('submit',async e=>{
   if(f.id==='brf'){ if(g('br_mw').length<6) return toast('请设定至少 6 个字的密码');
     const btn=f.querySelector('button[type=submit]'); btn.disabled=true;
     try{ await api('admin/branchAdd',{name:g('br_n'),mname:g('br_mn'),phone:g('br_mp'),password:g('br_mw')}); closeSheet(); toast('分店开好了！请把店长的手机号码和密码告诉他'); await refresh(); }catch(err){ btn.disabled=false; toast(err.message); } return; }
-  if(f.id==='mvf'){ const to=g('mv_to'), id=f.dataset.id; closeSheet(); await run(()=>api('admin/branchMove',{id,parent:to}),'已搬店'); return; }
+  if(f.id==='mvf'){ const to=g('mv_to'), id=f.dataset.id; closeSheet(); await run(()=>api('admin/branchMove',{id,parent:to}),'已换上线'); return; }
+  if(f.id==='tierf'){ const n=x=>parseInt(g(x),10); const rule={gold:n('tr_g'),platinum:n('tr_p'),pts:{Silver:n('tr_Silver'),Gold:n('tr_Gold'),Platinum:n('tr_Platinum')}};
+    if([rule.gold,rule.platinum,rule.pts.Silver,rule.pts.Gold,rule.pts.Platinum].some(x=>isNaN(x)||x<0)) return toast('请填写数字'); if(rule.platinum<rule.gold) return toast('Platinum 的门槛要比 Gold 高');
+    closeSheet(); await run(()=>api('admin/tierRule',{rule}),'等级规则已保存'); return; }
+  if(f.id==='ctf'){ const types=readTypes(); if(types.some(t=>!t.n)) return toast('每种卡都要有名称'); if(types.some(t=>t.mode==='count'&&!(t.total>0))) return toast('有次数的卡要填次数');
+    closeSheet(); await run(()=>api('admin/cardTypes',{types}),'卡种已保存'); return; }
+  if(f.id==='mmf'){ const to=g('mm_to'), ph=f.dataset.id; closeSheet(); await run(()=>api('admin/memberMove',{phone:ph,to}),'已换店，积分和卡都带过去了'); return; }
   if(f.id==='mpf'){ const p1=g('mp1'); if(p1.length<6) return toast('密码至少 6 个字'); if(p1!==g('mp2')) return toast('两次输入的密码不一样'); closeSheet(); await run(()=>api('admin/myPassword',{password:p1}),'密码已更新'); return; }
   if(f.id==='loginForm'){ loginPhone=g('ph').replace(/\D/g,''); if(!loginPhone) return toast('请输入手机号码');
     try{ const r=await api('login/check',{phone:loginPhone}); if(!r.exists){ loginStep='register'; render(); setTimeout(()=>document.getElementById('rname')?.focus(),50); return; } loginName=r.name; loginStep=r.hasPin?'pin':'setpin'; render(); setTimeout(()=>document.getElementById('pin1')?.focus(),50); }
@@ -148,9 +160,9 @@ document.addEventListener('submit',async e=>{
   if(f.id==='pf'){ const m=S.members.find(x=>x.id===f.dataset.id); const v=parseInt(g('p_v'),10); if(!m||!v) return toast('请输入积分');
     const reason=g('p_r')||(v>0?'教练加分':'教练扣分'); closeSheet(); await run(()=>adjust(m.phone,v,reason),v>0?`已加 ${v} 分`:`已扣 ${-v} 分`); return; }
   if(f.id==='cf'){ const phone=f.dataset.phone; const t=+g('c_t'), d=+g('c_d')||null; if(!t||!g('c_s')) return toast('请填写次数和开始日期');
-    const fresh={n:CARD_TYPES[0].n,t:CARD_TYPES[0].total,d:'',s:today()};
+    const T0=cardTypes()[0], fresh={n:T0.n,t:T0.total||1,d:T0.days||'',s:today()}, ty=g('c_ty')==='x'?null:cardTypes()[+g('c_ty')];
     const paidNow=g('c_pay')==='1';
-    await run(()=>put('cards',null,{phone,name:g('c_n')||'NCP',kind:(g('c_ty')==='x'?'other':(CARD_TYPES[+g('c_ty')]||{}).kind)||'other',total:t,days:d,start:g('c_s'),ts:Date.now(),paid:paidNow,paidAt:paidNow?today():null}),paidNow?'新卡已开通（已付款）':'新卡已开通，记得收款后按「确认已付款」');
+    await run(()=>put('cards',null,{phone,name:g('c_n')||'NCP',kind:ty?ty.kind:'other',...(ty?{tw:+ty.tw||0}:{}),total:t,days:d,start:g('c_s'),ts:Date.now(),paid:paidNow,paidAt:paidNow?today():null}),paidNow?'新卡已开通（已付款）':'新卡已开通，记得收款后按「确认已付款」');
     ['c_n','c_t','c_d','c_s'].forEach((x,i)=>{const el=document.getElementById(x); if(el) el.value=[fresh.n,fresh.t,fresh.d,fresh.s][i];}); return; }
   if(f.id==='payForm'){ const c=S.cards.find(x=>x.id===f.dataset.id); if(!c) return; const d={paid:true,paidAt:g('pa_d')||today(),paidAmount:g('pa_a').replace(/[^0-9.]/g,'')||null,payMethod:g('pa_m'),paidNote:g('pa_n')||null};
     ncpSheet(c.phone); await run(()=>patch('cards',c.id,d),'已确认付款 '+d.paidAt); return; }
@@ -162,7 +174,7 @@ document.addEventListener('submit',async e=>{
       f.reset(); noticePhoto=null; toast(r.total?`公告已发出，${sent} 部手机收到通知`:'公告已发出，会员打开 App 就会看到'); }
     catch(err){ toast('没有成功：'+(err.message||'请稍后再试')); }
     btn.disabled=false; await refresh().catch(()=>{}); return; }
-  if(f.id==='brandForm'){ const d={brandName:g('b_n')||null,brandSub:g('b_s')||null,brandShort:g('b_sh')||null}; await run(()=>putSettings({...S.settings,...d}),'俱乐部资料已更新'); return; }
+  if(f.id==='brandForm'){ const d={brandName:g('b_n')||null,brandSub:g('b_s')||null,brandShort:g('b_sh')||null,address:g('b_addr')||null}; await run(()=>putSettings({...S.settings,...d}),'俱乐部资料已更新'); return; }
   if(f.id==='homeForm'){ await run(()=>putSettings({...S.settings,eyebrow:g('h_e'),title:g('h_t'),sub:g('h_s'),title_en:g('h_ten')||null,title_ms:g('h_tms')||null,sub_en:g('h_sen')||null,sub_ms:g('h_sms')||null,terms:g('h_terms')||null}),'首页已更新'); return; }
 });
 

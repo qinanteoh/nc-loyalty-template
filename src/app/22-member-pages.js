@@ -13,6 +13,7 @@ function vHome(){
     <p>${st['sub_'+LANG]&&LANG!=='zh'?nt(heroOf(st,'sub')):esc(st.sub||'')}</p>
     <svg class="coins" viewBox="0 0 150 150" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="2"><circle cx="90" cy="90" r="56"/><circle cx="90" cy="90" r="40"/><circle cx="34" cy="40" r="16"/></g><text x="90" y="104" text-anchor="middle" font-family="Sora,sans-serif" font-weight="800" font-size="40" fill="currentColor" fill-opacity=".3">P</text></svg>
   </section>
+  ${st.address?`<a class="shopaddr" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.address)}" target="_blank" rel="noopener">${ic('pin',18)}<span translate="no">${esc(st.address)}</span></a>`:''}
   <div class="card mcard">
   ${m?`<div class="mrow"><div><div class="mname">${nt(m.name)} <span class="tier ${esc(m.tier)}">${esc(m.tier)} · ${TIERS[m.tier]?.zh||''}</span>${dpTag(m.phone)}</div>
       <div class="sub">可用积分 Available points</div>${tierProgress(m)?`<div class="sub" style="color:var(--gold);margin-top:4px">${tierProgress(m)}</div>`:''}</div>
@@ -52,11 +53,11 @@ function taskRow(t,i){
 }
 function tierRulesCard(m){
   const t=m?tierInfo(m):null;
-  const rows=[['Silver','银卡','新卡、Daily Pass',DAILY_PTS.Silver],['Gold','金卡','第 10 张 10+1 卡开始，或第 4 张 30 天卡开始',DAILY_PTS.Gold],['Platinum','白金卡','第 19 张 10+1 卡开始，或第 7 张 30 天卡开始',DAILY_PTS.Platinum]];
+  const R=RULE(), rows=[['Silver','银卡','新会员',R.pts.Silver],['Gold','金卡',tierCond(R.gold),R.pts.Gold],['Platinum','白金卡',tierCond(R.platinum),R.pts.Platinum]];
   return `<div class="card tiers"><b style="font-size:20px">会员等级说明</b>
     <p class="sub" style="margin:4px 0 10px">持续续卡，就能累积升级成为 Gold 或 Platinum，每次扫码打卡可以获得更多积分。</p>
     ${rows.map(([k,zh,cond,pts])=>`<div class="trow ${t&&t.tier===k?'me':''}"><span class="tier ${k}">${k} · ${zh}</span><span class="cond">${cond}</span><span class="tp num">+${pts}<small>/次</small></span></div>`).join('')}
-    ${t?`<div class="myprog"><div>你目前是 <b>${t.tier}</b>，已经累计 10+1 卡 <b>${t.n10}</b> 张、30 天卡 <b>${t.n30}</b> 张。</div>${nextSteps(m).map(x=>`<div class="step ${x.tier}">${stepText(x)}</div>`).join('')}${!t.manual&&t.auto==='Platinum'?'<div class="step Platinum">你已经是最高等级 Platinum，谢谢你一直以来的支持！</div>':''}</div>`:''}
+    ${t?`<div class="myprog"><div><span>你目前是</span> <b>${t.tier}</b> · <span>等级分</span> <b>${t.score}</b></div>${nextSteps(m).map(x=>`<div class="step ${x.tier}">${stepText(x)}</div>`).join('')}${!t.manual&&t.auto==='Platinum'?'<div class="step Platinum">你已经是最高等级 Platinum，谢谢你一直以来的支持！</div>':''}</div>`:''}
   </div>`;
 }
 function vEarn(){

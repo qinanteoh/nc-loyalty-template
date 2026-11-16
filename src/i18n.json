@@ -592,8 +592,8 @@
 "Teruskan memperbaharui kad untuk naik ke Gold atau Platinum dan dapatkan lebih mata setiap kali daftar masuk."
 ],
 "你目前是": [
-"You are now ",
-"Anda kini "
+"You are",
+"Anda kini"
 ],
 "，已经累计": [
 ", with",
@@ -2854,6 +2854,234 @@
 "分店": [
 "Branches",
 "Cawangan"
+],
+"累计开卡": [
+"Cards opened:",
+"Kad dibuka:"
+],
+"换上线": [
+"Change upline",
+"Tukar upline"
+],
+"俱乐部积分奖励": [
+"Club rewards",
+"Ganjaran kelab"
+],
+"新的上线": [
+"New upline",
+"Upline baharu"
+],
+"确定换上线": [
+"Change upline",
+"Tukar upline"
+],
+"已换上线": [
+"Upline changed",
+"Upline ditukar"
+],
+"换了之后，它的会员、积分、设定都不变，它下面的分店也跟着一起。新的上线可以看它的资料（只能看，不能改）。": [
+"Its members, points and settings stay the same, and the branches below it come along. The new upline can see its data (view only).",
+"Ahli, mata dan tetapannya kekal, dan cawangan di bawahnya turut ikut. Upline baharu boleh melihat datanya (lihat sahaja)."
+],
+"店的地址（会员在首页看得到；店搬了，在这里改就好）": [
+"Shop address (members see it on the home page; if the shop moves, just change it here)",
+"Alamat kedai (ahli nampak di halaman utama; jika kedai berpindah, tukar di sini sahaja)"
+],
+"或": [
+"or",
+"atau"
+],
+"再续": [
+"Renew",
+"Perbaharui"
+],
+"就能升级": [
+"to reach",
+"untuk naik ke"
+],
+"还差等级分": [
+"Tier points needed:",
+"Mata tahap diperlukan:"
+],
+"等级分超过": [
+"Tier points over",
+"Mata tahap melebihi"
+],
+"等级分": [
+"Tier points",
+"Mata tahap"
+],
+"新会员": [
+"New members",
+"Ahli baharu"
+],
+"修改": [
+"Edit",
+"Ubah"
+],
+"公告": [
+"Notices",
+"Notis"
+],
+"本店设定": [
+"Branch settings",
+"Tetapan cawangan"
+],
+"跟上线": [
+"Follow upline",
+"Ikut upline"
+],
+"自己设": [
+"Own",
+"Sendiri"
+],
+"改成自己设": [
+"Set my own",
+"Tetapkan sendiri"
+],
+"改成跟上线": [
+"Follow upline",
+"Ikut upline"
+],
+"赚分任务": [
+"Tasks",
+"Tugasan"
+],
+"等级规则": [
+"Tier rules",
+"Peraturan tahap"
+],
+"卡种和天数": [
+"Card types",
+"Jenis kad"
+],
+"看看": [
+"View",
+"Lihat"
+],
+"「跟上线」：上线改了，这里也跟着变。「自己设」：从上线现在的样子复制一份，之后自己改。公告选「跟上线」时，会员也会看到上线的公告。": [
+"Follow upline: changes made by the upline show here too. Own: starts as a copy of the upline's, then you change it. With notices on Follow upline, members also see the upline's notices.",
+"Ikut upline: perubahan upline turut berlaku di sini. Sendiri: bermula dengan salinan upline, kemudian anda ubah sendiri. Jika notis ikut upline, ahli juga nampak notis upline."
+],
+"总店没有上线，全部自己设。下线分店可以选择跟你一样。": [
+"Head office has no upline, so everything is its own. Branches below can choose to follow you.",
+"Ibu pejabat tiada upline, jadi semuanya sendiri. Cawangan di bawah boleh pilih untuk ikut anda."
+],
+"每张卡有「等级分」（在「卡种和天数」里设）。会员累计的等级分超过门槛就升级。": [
+"Each card type gives tier points (set in Card types). Members move up when their total passes the threshold.",
+"Setiap jenis kad memberi mata tahap (ditetapkan dalam Jenis kad). Ahli naik tahap apabila jumlahnya melepasi had."
+],
+"等级分超过几分升 Gold": [
+"Tier points over this → Gold",
+"Mata tahap melebihi ini → Gold"
+],
+"超过几分升 Platinum": [
+"Over this → Platinum",
+"Melebihi ini → Platinum"
+],
+"每次打卡加几分": [
+"Points per check-in",
+"Mata setiap daftar masuk"
+],
+"开卡和会员续卡时，可以选这些卡。有效天数留空 = 不限期。": [
+"These cards can be chosen when opening a card or renewing. Leave days empty for no expiry.",
+"Kad ini boleh dipilih semasa membuka atau memperbaharui kad. Biarkan hari kosong jika tiada tamat tempoh."
+],
+"打卡次数": [
+"Check-ins",
+"Daftar masuk"
+],
+"有次数": [
+"Fixed number",
+"Bilangan tetap"
+],
+"不限次（自动加分）": [
+"Unlimited (points straight away)",
+"Tanpa had (mata terus)"
+],
+"不限次（每次要核准，像 Daily Pass）": [
+"Unlimited (each check-in approved, like Daily Pass)",
+"Tanpa had (setiap daftar masuk diluluskan, seperti Daily Pass)"
+],
+"次数": [
+"Times",
+"Kali"
+],
+"有效天数": [
+"Valid days",
+"Hari sah"
+],
+"+ 加一种卡": [
+"+ Add a card type",
+"+ Tambah jenis kad"
+],
+"删除这种卡": [
+"Remove this card type",
+"Buang jenis kad ini"
+],
+"例如 运动卡 {0} 天": [
+"e.g. Fitness card {0} days",
+"cth. Kad senaman {0} hari"
+],
+"换店": [
+"Move branch",
+"Tukar cawangan"
+],
+"转到哪一家店": [
+"Move to which branch",
+"Pindah ke cawangan mana"
+],
+"确定换店": [
+"Move member",
+"Pindahkan ahli"
+],
+"还没有其他分店。": [
+"No other branches yet.",
+"Belum ada cawangan lain."
+],
+"会员的积分、卡、打卡记录、健康表都会一起带过去。转出后，这位会员就归新的店，你这里看不到了。": [
+"Points, cards, check-ins and the wellness form all move with the member. After that the member belongs to the new branch and you won't see them here.",
+"Mata, kad, daftar masuk dan borang kesihatan berpindah bersama ahli. Selepas itu ahli milik cawangan baharu dan anda tidak lagi nampak mereka di sini."
+],
+"礼物现在跟上线：": [
+"Gifts follow upline:",
+"Hadiah ikut upline:"
+],
+"任务现在跟上线：": [
+"Tasks follow upline:",
+"Tugasan ikut upline:"
+],
+"要自己设，到「分店」→「本店设定」改成「自己设」。": [
+"To set your own, go to Branches → Branch settings and choose Own.",
+"Untuk tetapkan sendiri, pergi ke Cawangan → Tetapan cawangan dan pilih Sendiri."
+],
+"现在跟上线：": [
+"Now following upline:",
+"Kini ikut upline:"
+],
+"· 把餐单照片私下传给教练，再按申请": [
+"· Send your meal photo to your coach privately, then tap Apply",
+"· Hantar foto makanan kepada jurulatih secara peribadi, kemudian tekan Mohon"
+],
+"已改成跟上线": [
+"Now following upline",
+"Kini ikut upline"
+],
+"已改成自己设，可以开始改了": [
+"Set to own — you can change it now",
+"Ditetapkan sendiri — anda boleh ubah sekarang"
+],
+"等级规则已保存": [
+"Tier rules saved",
+"Peraturan tahap disimpan"
+],
+"卡种已保存": [
+"Card types saved",
+"Jenis kad disimpan"
+],
+"已换店，积分和卡都带过去了": [
+"Moved, with points and cards",
+"Dipindahkan bersama mata dan kad"
 ],
 "{0} 位会员 ·": [
 "{0} members ·",

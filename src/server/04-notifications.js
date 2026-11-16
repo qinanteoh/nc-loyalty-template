@@ -17,6 +17,7 @@ function noticeText(kind, v) {
     renew: { zh: ['新卡已开通 ✅', `你的 ${v.card.zh} 已开通，可以继续扫码打卡了。`], en: ['New card opened ✅', `Your ${v.card.en} is ready. You can check in again.`], ms: ['Kad baharu dibuka ✅', `${v.card.ms} anda sudah dibuka. Anda boleh daftar masuk semula.`] },
     reject: { zh: ['申请未通过', `你的「${v.title}」申请未通过，有疑问请联系教练。`], en: ['Request not approved', `Your request for “${v.title}” was not approved. Please ask your coach if you have questions.`], ms: ['Permohonan tidak diluluskan', `Permohonan “${v.title}” anda tidak diluluskan. Sila tanya jurulatih jika ada soalan.`] },
     course: { zh: ['课程已开通 📖', `教练已为你开通 21 天课程第 ${COURSE_FREE + 1}–21 天，打开 App 继续读吧！`], en: ['Course opened 📖', `Your coach opened days ${COURSE_FREE + 1}–21 of the 21-day course. Open the app to keep reading!`], ms: ['Kursus dibuka 📖', `Jurulatih telah membuka hari ${COURSE_FREE + 1}–21 kursus 21 hari. Buka app untuk teruskan membaca!`] },
+    moved: { zh: ['你已转到新的分店', `你的会员资料、积分和卡已经转到「${v.to}」，以后请到这家店打卡。`], en: ['You moved to a new branch', `Your membership, points and cards are now at "${v.to}". Please check in there from now on.`], ms: ['Anda telah berpindah cawangan', `Keahlian, mata dan kad anda kini di "${v.to}". Sila daftar masuk di sana mulai sekarang.`] },
     welcome: { zh: ['会员资料已核准 🎉', '欢迎加入！现在可以开始打卡、赚分和兑换礼物了。'], en: ['Your membership is approved 🎉', 'Welcome! You can now check in, earn points and redeem gifts.'], ms: ['Keahlian anda diluluskan 🎉', 'Selamat datang! Anda kini boleh daftar masuk, kumpul mata dan tebus hadiah.'] },
     low: { zh: ['NCP 卡快用完了', `你的 ${v.card.zh} 只剩 ${v.left} 次，记得续卡哦！`], en: ['Your NCP card is running low', `Your ${v.card.en} has only ${v.left} visits left. Remember to renew!`], ms: ['Kad NCP hampir habis', `${v.card.ms} anda tinggal ${v.left} lawatan sahaja. Jangan lupa perbaharui!`] },
     used: { zh: ['NCP 卡已用完', `你的 ${v.card.zh} 已经用完，打开 App 申请续卡。`], en: ['Your NCP card is used up', `Your ${v.card.en} is used up. Open the app to renew.`], ms: ['Kad NCP sudah habis', `${v.card.ms} anda sudah habis. Buka app untuk perbaharui.`] }
@@ -49,6 +50,7 @@ const ADMIN_TEXT = {
   redeem: { zh: ['兑换申请等待核准', v => `${v.name} 想兑换：${v.title}`], en: ['Redemption waiting for approval', v => `${v.name} wants to redeem: ${v.title}`], ms: ['Penebusan menunggu kelulusan', v => `${v.name} mahu menebus: ${v.title}`] },
   earn: { zh: ['赚分申请等待核准', v => `${v.name} 申请赚分：${v.title}`], en: ['Points request waiting for approval', v => `${v.name} requested points: ${v.title}`], ms: ['Permohonan mata menunggu kelulusan', v => `${v.name} memohon mata: ${v.title}`] },
   checkin: { zh: ['Daily Pass 打卡等待核准', v => `${v.name} 用 Daily Pass 打卡了，请到后台核准加分。`], en: ['Daily Pass check-in waiting', v => `${v.name} checked in with a Daily Pass. Please approve the points.`], ms: ['Daftar masuk Daily Pass menunggu', v => `${v.name} daftar masuk dengan Daily Pass. Sila luluskan mata.`] },
+  moved: { zh: ['有会员转到你的店', v => `${v.name} 从「${v.from}」转到你的店，积分和卡也一起带过来了`], en: ['A member moved to your branch', v => `${v.name} moved from "${v.from}" with their points and cards`], ms: ['Ahli berpindah ke cawangan anda', v => `${v.name} berpindah dari "${v.from}" bersama mata dan kad`] },
   course: { zh: ['课程开通申请', v => `${v.name} 读完前 ${COURSE_FREE} 天，申请继续看 ${v.title}`], en: ['Course access request', v => `${v.name} finished the first ${COURSE_FREE} days and asks to continue: ${v.title}`], ms: ['Permohonan akses kursus', v => `${v.name} sudah habis ${COURSE_FREE} hari pertama dan mahu teruskan: ${v.title}`] },
   renew: { zh: ['续卡申请等待核准', v => `${v.name} 申请续卡：${v.title}`], en: ['Card renewal waiting for approval', v => `${v.name} applied to renew: ${v.title}`], ms: ['Pembaharuan kad menunggu kelulusan', v => `${v.name} memohon pembaharuan: ${v.title}`] }
 };
@@ -75,7 +77,9 @@ async function notifyMember(s, phone, kind, vars) {
 }
 const later = (s, p) => { if (s.ctx && s.ctx.waitUntil) s.ctx.waitUntil(p); else return p; };
 async function noticesFor(s, phone, branch) {
-  const all = (await s.where('notices', 'phone', '*')).filter(n => bOf(n) === (branch || HQ));
+  // A branch that follows its upline's notices also shows them.
+  const ch = (await branchCtx(s)).chain(branch || HQ, 'notices');
+  const all = (await s.where('notices', 'phone', '*')).filter(n => ch.includes(bOf(n)));
   const mine = phone ? await s.where('notices', 'phone', phone) : [];
   return all.concat(mine).sort((a, b) => b.ts - a.ts).slice(0, 40);
 }

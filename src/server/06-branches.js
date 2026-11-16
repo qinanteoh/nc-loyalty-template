@@ -40,4 +40,43 @@ async function memberSubs(s, b) {
   const ph = new Set((await s.all('members')).filter(m => bOf(m) === b).map(m => m.id));
   return (await s.all('pushsubs')).filter(x => ph.has(x.phone)).sort((a, c) => a.id < c.id ? -1 : 1);
 }
+/* What a branch can set itself or take from its upline ("follow"; a new branch follows everything).
+   rewards / tasks: the list shown; notices: members also see the upline's notices; tiers / cards: rule and card types. */
+const FOLLOW_KEYS = ['rewards', 'tasks', 'notices', 'tiers', 'cards'];
+const follows = (st, k) => !(st.follow && st.follow[k] === false);
+async function branchCtx(s) {
+  const list = await branchList(s), all = await s.all('settings');
+  const stOf = b => all.find(x => x.id === settingsId(b)) || {};
+  const parentOf = b => (list.find(x => x.id === b) || {}).parent || null;
+  // The branch whose list / rule this branch uses for k (itself when it sets its own).
+  const src = (b, k) => { let cur = b; const seen = new Set(); while (cur !== HQ && !seen.has(cur) && follows(stOf(cur), k)) { seen.add(cur); const p = parentOf(cur); if (!p) break; cur = p; } return cur; };
+  // Branch plus the uplines whose notices it shows.
+  const chain = (b, k) => { const out = [b]; let cur = b; while (cur !== HQ && follows(stOf(cur), k)) { const p = parentOf(cur); if (!p || out.includes(p)) break; out.push(p); cur = p; } return out; };
+  const rule = b => cleanRule(stOf(src(b, 'tiers')).tierRule);
+  const cardTypes = b => cleanTypes(stOf(src(b, 'cards')).cardTypes);
+  return { list, stOf, parentOf, src, chain, rule, cardTypes };
+}
+// Rules a member's or viewed branch uses, and where each setting comes from (for the back office).
+function rulesFor(bc, b) {
+  const follow = {};
+  for (const k of FOLLOW_KEYS) { const on = b !== HQ && follows(bc.stOf(b), k), from = bc.src(b, k); follow[k] = { on, from: branchName(from, bc.stOf(from)), parent: b === HQ ? null : branchName(bc.parentOf(b), bc.stOf(bc.parentOf(b))) }; }
+  return { tier: bc.rule(b), cardTypes: bc.cardTypes(b), follow };
+}
+function cleanRule(r) {
+  if (!r) return DEFAULT_RULE;
+  const n = (x, d) => { const v = parseInt(x, 10); return v >= 0 && v <= 100000 ? v : d; };
+  const gold = n(r.gold, DEFAULT_RULE.gold), platinum = Math.max(gold, n(r.platinum, DEFAULT_RULE.platinum));
+  const p = r.pts || {};
+  return { gold, platinum, pts: { Silver: n(p.Silver, 10), Gold: n(p.Gold, 20), Platinum: n(p.Platinum, 30) } };
+}
+function cleanTypes(list) {
+  if (!Array.isArray(list) || !list.length) return DEFAULT_CARD_TYPES;
+  return list.slice(0, 20).map(t => {
+    const mode = ['count', 'unl', 'daily'].includes(t.mode) ? t.mode : 'count';
+    const total = mode === 'count' ? Math.max(1, Math.min(500, parseInt(t.total, 10) || 1)) : null;
+    const days = Math.max(0, Math.min(3650, parseInt(t.days, 10) || 0)) || null;
+    const kind = mode === 'daily' ? 'daily' : mode === 'unl' ? 'unl' : (['10+1', '30'].includes(t.kind) ? t.kind : 'other');
+    return { id: String(t.id || uid()).slice(0, 20), n: String(t.n || '卡').trim().slice(0, 40) || '卡', mode, total, days, kind, tw: Math.max(0, Math.min(100, +t.tw || 0)) };
+  });
+}
 const branchName = (b, st) => brandOf(st).name || (b === HQ ? '总店' : '分店');

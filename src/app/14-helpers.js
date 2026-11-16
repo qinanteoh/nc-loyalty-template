@@ -14,8 +14,10 @@ let myPhone=null, loginPhone='', loginStep='phone', loginName='';
 /* ---------- helpers ---------- */
 const me=()=>S.members.find(m=>m.phone===myPhone)||null;
 const pendingRedeem=p=>S.requests.filter(r=>r.phone===p&&r.type==='redeem'&&r.status==='pending').reduce((a,r)=>a+(+r.points||0),0);
-const DAILY_PTS={Silver:10,Gold:20,Platinum:30};
-const ckPts=phone=>{const m=S.members.find(x=>x.phone===phone); return DAILY_PTS[m&&m.tier]||10;};
+// Tier rule and card types of the member's (or the viewed) branch; the server sends them, these are the defaults.
+const RULE=()=>(S.rules&&S.rules.tier)||{gold:9,platinum:18,pts:{Silver:10,Gold:20,Platinum:30}};
+const PTS=()=>RULE().pts;
+const ckPts=phone=>{const m=S.members.find(x=>x.phone===phone); const p=PTS()[m&&m.tier]; return p!=null?p:10;};
 const totalPts=m=>m?(+m.points||0)+S.checkins.filter(x=>x.phone===m.phone).reduce((a,x)=>a+(+x.points||0),0):0;
 const avail=m=>m?totalPts(m)-pendingRedeem(m.phone):0;
 const activeRewards=()=>S.rewards.filter(r=>r.active!==false).sort((a,b)=>(a.points-b.points));
@@ -31,35 +33,43 @@ const qrLink=()=>{const c=qrCodeFor(today());return c?ART_URL+'#checkin-'+c+(cur
 let scanCode=null, scanResult=null, scanBad=false;
 const parseD=x=>{const [y,m,d]=String(x||'').split('-').map(Number);return new Date(y,(m||1)-1,d||1).getTime()};
 const today=()=>dt(Date.now());
-const CARD_TYPES=[{n:'10+1 Program',total:11,kind:'10+1'},{n:'30 天 Program',total:30,kind:'30'},{n:'Daily Pass',total:1,kind:'daily'}];
-/* 等级规则：10+1 卡算 1 张，30 天卡算 3 张（9 张 10+1 = 3 张 30 天）。App 里开过的卡（不论有没有付款）+ 以前买过的卡一起算。
-   超过 9 → Gold，超过 18 → Platinum，其余（新卡、Daily Pass）→ Silver。 */
-const TIER_RULE={gold:9,platinum:18};
+const DEFAULT_TYPES=[{id:'t10',n:'10+1 Program',mode:'count',total:11,kind:'10+1',tw:1},{id:'t30',n:'30 天 Program',mode:'count',total:30,kind:'30',tw:3},{id:'tdp',n:'Daily Pass',mode:'daily',total:null,kind:'daily',tw:0}];
+const cardTypes=()=>(S.rules&&S.rules.cardTypes&&S.rules.cardTypes.length)?S.rules.cardTypes:DEFAULT_TYPES;
+/* 等级规则：每张卡有「等级分」（默认 10+1 = 1 分、30 天 = 3 分、Daily Pass = 0）。App 里开过的卡 + 以前买过的卡一起算。
+   等级分超过 gold → Gold，超过 platinum → Platinum。每家店可以自己设，或跟上线。 */
 const kindOf=c=>c.kind||(/daily/i.test(c.name||'')?'daily':/30/.test(c.name||'')?'30':/10\s*\+\s*1/.test(c.name||'')?'10+1':'other');
+const cardTW=c=>c.tw!=null?(+c.tw||0):kindOf(c)==='10+1'?1:kindOf(c)==='30'?3:0;
+const unlimited=c=>kindOf(c)==='daily'||kindOf(c)==='unl';
 function tierInfo(m){
-  const cs=S.cards.filter(c=>c.phone===m.phone);
+  const R=RULE(), cs=S.cards.filter(c=>c.phone===m.phone);
   const n10=(+m.prior10||0)+cs.filter(c=>kindOf(c)==='10+1').length, n30=(+m.prior30||0)+cs.filter(c=>kindOf(c)==='30').length;
-  const score=n10+3*n30;
-  const auto=score>TIER_RULE.platinum?'Platinum':score>TIER_RULE.gold?'Gold':'Silver';
+  const score=(+m.prior10||0)+3*(+m.prior30||0)+cs.reduce((a,c)=>a+cardTW(c),0);
+  const auto=score>R.platinum?'Platinum':score>R.gold?'Gold':'Silver';
   const tier=m.tierOverride&&TIERS[m.tierOverride]?m.tierOverride:auto;
-  const nextAt=auto==='Silver'?TIER_RULE.gold+1:auto==='Gold'?TIER_RULE.platinum+1:null;
+  const nextAt=auto==='Silver'?R.gold+1:auto==='Gold'?R.platinum+1:null;
   return {tier,auto,manual:!!m.tierOverride,n10,n30,score,next:auto==='Silver'?'Gold':auto==='Gold'?'Platinum':null,need:nextAt?nextAt-score:0};
 }
-const TIER_STEPS=[{tier:'Gold',n10:TIER_RULE.gold+1,n30:Math.floor(TIER_RULE.gold/3)+1},{tier:'Platinum',n10:TIER_RULE.platinum+1,n30:Math.floor(TIER_RULE.platinum/3)+1}];
-function nextSteps(m){ const t=tierInfo(m); if(t.manual) return []; const rank={Silver:0,Gold:1,Platinum:2}; return TIER_STEPS.filter(x=>rank[x.tier]>rank[t.auto]).map(x=>({...x,left10:Math.max(0,x.n10-t.n10),left30:Math.max(0,x.n30-t.n30)})); }
-function stepText(x){ return `10+1 卡续到<b>第 ${x.n10} 张</b>${x.left10?`（还差 ${x.left10} 张）`:''}，或 30 天卡续到<b>第 ${x.n30} 张</b>${x.left30?`（还差 ${x.left30} 张）`:''}，就能升级 <b>${x.tier}</b>`; }
+// Card types that count toward tiers, e.g. "第 10 张 10+1 Program" to reach Gold.
+const tierTypes=()=>cardTypes().filter(t=>+t.tw>0);
+function nextSteps(m){ const t=tierInfo(m); if(t.manual) return []; const R=RULE(), rank={Silver:0,Gold:1,Platinum:2};
+  return [{tier:'Gold',at:R.gold+1},{tier:'Platinum',at:R.platinum+1}].filter(x=>rank[x.tier]>rank[t.auto]).map(x=>{ const need=Math.max(0,x.at-t.score);
+    return {...x,need,ways:tierTypes().map(ty=>{ const have=S.cards.filter(c=>c.phone===m.phone&&c.name===ty.n).length, more=Math.ceil(need/ty.tw); return {n:ty.n,more,nth:have+more}; })}; }); }
+const OR='<span> 或 </span>';
+function stepText(x){ const w=x.ways.map(y=>`${nt(y.n)} <b>×${y.more}</b>`); return (w.length?`<span>再续</span> ${w.join(OR)}`:`<span>还差等级分</span> <b>${x.need}</b>`)+` · <span>就能升级</span> <b>${x.tier}</b>`; }
 function tierProgress(m){ const n=nextSteps(m)[0]; return n?stepText(n):''; }
+// "第 10 张 10+1 Program 开始，或第 4 张 30 天 Program 开始" for a tier threshold.
+function tierCond(th){ const w=tierTypes().map(ty=>`${nt(ty.n)} <b>×${Math.floor(th/ty.tw)+1}</b>`); return w.length?`<span>累计开卡</span> ${w.join(OR)}`:`<span>等级分超过</span> <b>${th}</b>`; }
 const RECENT=3*60e3;
 function cardInfo(c){
   const ins=S.checkins.filter(x=>x.cardId===c.id).sort((a,b)=>a.ts-b.ts);
-  const used=ins.length, daily=kindOf(c)==='daily', left=daily?Infinity:Math.max(0,(+c.total||0)-used);
+  const used=ins.length, daily=kindOf(c)==='daily', unl=unlimited(c), left=unl?Infinity:Math.max(0,(+c.total||0)-used);
   const hasExp=(+c.days||0)>0, st=parseD(c.start), endT=hasExp?st+((+c.days)-1)*DAY:Infinity, t=parseD(today());
   const notStarted=t<st, daysLeft=hasExp?(t>endT?0:Math.round((endT-Math.max(t,st))/DAY)+1):null;
   const todayN=ins.filter(x=>x.date===today()).length;
   const last=ins[ins.length-1]; const recent=!!last&&Date.now()-last.ts<RECENT;
   const status=left===0?'done':t>endT?'expired':'active';
   const pend=ins.filter(x=>x.pend).length;
-  return {ins,used,left,end:hasExp?dt(endT):null,daysLeft,todayN,recent,status,notStarted,daily,pend};
+  return {ins,used,left,end:hasExp?dt(endT):null,daysLeft,todayN,recent,status,notStarted,daily,unl,pend};
 }
 const cardsOf=p=>S.cards.filter(c=>c.phone===p).sort((a,b)=>(b.ts||0)-(a.ts||0));
 const isDP=p=>S.cards.some(c=>c.phone===p&&kindOf(c)==='daily');
@@ -92,8 +102,8 @@ function cardBlock(c,admin){
   ${k.daily?`<div class="promo" style="padding:10px 14px"><span class="plus num" style="font-size:22px">+${ckPts(c.phone)}</span><span>每次打卡由教练核准后<b>加 ${ckPts(c.phone)} 分</b></span></div>
   <div class="ncp-stats"><div><span class="num big">∞</span><span class="sub">不限次数</span></div><div><span class="num big">${k.used}</span><span class="sub">已打卡次数${k.pend?`（<b>${k.pend}</b> 次等待核准）`:''}</span></div></div>`
   :`${k.status==='active'?`<div class="promo" style="padding:10px 14px"><span class="plus num" style="font-size:22px">+${ckPts(c.phone)}</span><span>每次打卡<b>自动加 ${ckPts(c.phone)} 分</b>（每日消费积分），不用申请</span></div>`:''}
-  <div class="ncp-stats"><div><span class="num big">${k.left}</span><span class="sub">剩余次数（共 ${+c.total||0} 次）</span></div>${second}</div>
-  <div class="stamps" aria-label="已打卡 ${k.used} 次">${Array.from({length:+c.total||0},(_,i)=>`<i class="${i<k.used?'on':''}" title="${i<k.used?esc(k.ins[i].date):''}">${i<k.used?ic('check',12):i+1}</i>`).join('')}</div>`}${btn}</div>`;
+  ${k.unl?`<div class="ncp-stats"><div><span class="num big">∞</span><span class="sub">不限次数</span></div>${second}</div>`:`<div class="ncp-stats"><div><span class="num big">${k.left}</span><span class="sub">剩余次数（共 ${+c.total||0} 次）</span></div>${second}</div>
+  <div class="stamps" aria-label="已打卡 ${k.used} 次">${Array.from({length:+c.total||0},(_,i)=>`<i class="${i<k.used?'on':''}" title="${i<k.used?esc(k.ins[i].date):''}">${i<k.used?ic('check',12):i+1}</i>`).join('')}</div>`}`}${btn}</div>`;
 }
 const ckId=c=>c.id+'_'+today()+'_'+Date.now().toString(36);
 const leftMsg=(c,k)=>`${c.name} 还剩 ${k.left-1} 次${k.daysLeft!=null?'，'+k.daysLeft+' 天':''}。`;

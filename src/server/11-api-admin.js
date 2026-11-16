@@ -16,7 +16,10 @@
       const old = await s.get(col, id);
       const data = { ...(body.data || {}) }; delete data.branch;
       if (col === 'rewards' || col === 'tasks') {
-        if (me_.branch !== HQ) return fail('礼物和任务现在由总店设定');
+        const bc = await branchCtx(s);
+        if (bc.src(me_.branch, col) !== me_.branch) return fail(col === 'rewards' ? '礼物现在跟上线，要先改成「自己设」' : '任务现在跟上线，要先改成「自己设」');
+        if (old && bOf(old) !== me_.branch) return fail(NOT_MINE);
+        if (me_.branch !== HQ) data.branch = me_.branch;
       } else if (col === 'members') {
         if (old && bOf(old) !== me_.branch) return fail(act === 'put' ? '这个号码已经是别家店的会员' : NOT_MINE);
         if (old && old.branch) data.branch = old.branch; else if (me_.branch !== HQ) data.branch = me_.branch;
@@ -35,6 +38,7 @@
     if (act === 'settings') {
       const cur = await settingsOf(s, me_.branch), d = { ...(body.data || {}) };
       if (!d.qrKey && cur.qrKey) d.qrKey = cur.qrKey;
+      for (const k of ['follow', 'tierRule', 'cardTypes']) { if (cur[k] !== undefined) d[k] = cur[k]; else delete d[k]; }
       await s.put('settings', settingsId(me_.branch), d);
       if (me_.branch !== HQ) { const b = await s.get('branches', me_.branch); if (b && d.brandName) await s.put('branches', b.id, { ...b, name: String(d.brandName).slice(0, 60) }); }
       return json({ ok: true });
@@ -84,6 +88,48 @@
       ]);
       return json({ ok: true, id });
     }
+    // Follow the upline or set it ourselves. Switching to "own" starts from a copy of what the upline has now.
+    if (act === 'follow') {
+      const key = String(body.key || ''), on = body.on === true;
+      if (!FOLLOW_KEYS.includes(key)) return fail('不明设定');
+      if (me_.branch === HQ) return fail('总店没有上线，都是自己设');
+      const bc = await branchCtx(s), st = { ...bc.stOf(me_.branch) }, from = bc.src(me_.branch, key);
+      if (!on) {
+        if (key === 'rewards' || key === 'tasks') {
+          const mineNow = (await s.all(key)).filter(x => bOf(x) === me_.branch);
+          if (!mineNow.length) for (const x of (await s.all(key)).filter(x => bOf(x) === from)) { const { id, ...rest } = x; await s.put(key, uid(), { ...rest, branch: me_.branch }); }
+        }
+        if (key === 'tiers' && !st.tierRule) st.tierRule = bc.rule(me_.branch);
+        if (key === 'cards' && !st.cardTypes) st.cardTypes = bc.cardTypes(me_.branch);
+      }
+      st.follow = { ...(st.follow || {}), [key]: on };
+      delete st.id;
+      await s.put('settings', settingsId(me_.branch), st);
+      return json({ ok: true });
+    }
+    if (act === 'tierRule' || act === 'cardTypes') {
+      const bc = await branchCtx(s), key = act === 'tierRule' ? 'tiers' : 'cards';
+      if (bc.src(me_.branch, key) !== me_.branch) return fail('现在跟上线，要先改成「自己设」');
+      const st = { ...bc.stOf(me_.branch) }; delete st.id;
+      if (act === 'tierRule') st.tierRule = cleanRule(body.rule || {});
+      else { if (!Array.isArray(body.types) || !body.types.length) return fail('最少要有一种卡'); st.cardTypes = cleanTypes(body.types); }
+      await s.put('settings', settingsId(me_.branch), st);
+      return json({ ok: true });
+    }
+    // Only a manager of the member's own branch moves them to another branch; points, cards and records go with them.
+    if (act === 'memberMove') {
+      const m = await mineMember(body.phone);
+      const to = String(body.to || ''), list = await branchList(s);
+      if (!list.some(b => b.id === to)) return fail('找不到这家店');
+      if (to === bOf(m)) return fail('会员已经在这家店了');
+      const { id: _drop, ...rest } = m;
+      if (to === HQ) delete rest.branch; else rest.branch = to;
+      await s.put('members', m.id, { ...rest, movedAt: Date.now(), movedFrom: bOf(m) });
+      const toName = branchName(to, await settingsOf(s, to)), fromName = branchName(bOf(m), await settingsOf(s, bOf(m)));
+      await later(s, notifyAdmin(s, 'moved', { name: m.name, from: fromName }, to));
+      await later(s, notifyMember(s, m.id, 'moved', { to: toName }));
+      return json({ ok: true });
+    }
     // Move a branch (with everything under it) to sit under another branch. Only someone above both may do it.
     if (act === 'branchMove') {
       const list = await branchList(s), mine = subtree(list, me_.branch);
@@ -126,7 +172,7 @@
       } else if (r.type === 'course') {
         await setCourseOpen(s, m, true);
       } else if (r.type === 'renew') {
-        await s.put('cards', uid(), { phone: r.phone, name: r.cardName || r.title, kind: r.kind || null, total: +r.total || 11, days: null, start: today(), ts: Date.now(), paid: false, paidAt: null });
+        await s.put('cards', uid(), { phone: r.phone, name: r.cardName || r.title, kind: r.kind || null, total: +r.total || 11, days: +r.days || null, ...(r.tw != null ? { tw: +r.tw } : {}), start: today(), ts: Date.now(), paid: false, paidAt: null });
       } else if (r.type === 'redeem') {
         if ((await memberTotal(s, r.phone)) < r.points) return fail('会员积分不足');
         await addLedger(s, r.phone, -r.points, '兑换 ' + r.title);

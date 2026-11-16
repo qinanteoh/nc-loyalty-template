@@ -8,12 +8,14 @@ async function handleApi(req, env, path, ctx) {
     if (who.admin) {
       const me_ = await staffOf(s, who);
       if (!me_) return fail('这个管理员账号已经被删除了，请重新登入', 'no_admin', 401);
-      const list = await branchList(s), mine = subtree(list, me_.branch);
+      const bc = await branchCtx(s), list = bc.list, stOf = bc.stOf, mine = subtree(list, me_.branch);
       const want = req.headers.get('x-branch'), vb = mine.includes(want) ? want : me_.branch;
-      const allSettings = await s.all('settings'), stOf = b => allSettings.find(x => x.id === settingsId(b)) || {};
       const settings = stOf(vb);
       const allMembers = await s.all('members');
       const data = { ...pub, settings };
+      data.rewards = pub.rewards.filter(r => bOf(r) === bc.src(vb, 'rewards'));
+      data.tasks = pub.tasks.filter(t => bOf(t) === bc.src(vb, 'tasks'));
+      data.rules = rulesFor(bc, vb);
       data.members = allMembers.filter(m => bOf(m) === vb);
       const ph = new Set(data.members.map(m => m.id));
       for (const c of ['cards', 'checkins', 'requests', 'ledger']) data[c] = (await s.all(c)).filter(x => ph.has(x.phone));
@@ -29,6 +31,8 @@ async function handleApi(req, env, path, ctx) {
       const counts = {}; for (const m of allMembers) counts[bOf(m)] = (counts[bOf(m)] || 0) + 1;
       const tree = list.filter(b => mine.includes(b.id)).map(b => ({ id: b.id, parent: b.id === me_.branch ? null : b.parent, name: branchName(b.id, stOf(b.id)), logo: stOf(b.id).logo || null, members: counts[b.id] || 0, created: b.created || null }));
       const staff = (await s.all('staff')).filter(x => x.branch === vb).map(({ hash, ...x }) => x);
+      // Every branch's name, so a manager can move a member to any branch.
+      if (me_.role === 'manager') data.allBranches = list.map(b => ({ id: b.id, name: branchName(b.id, stOf(b.id)) }));
       let me = null;
       if (who.phone) { me = who.phone; const mm = await s.get('members', who.phone); data.myNotices = await noticesFor(s, who.phone, bOf(mm)); }
       return json({ data, admin: true, me, ver: APP_VER, staff: me_, view: { branch: vb, own: vb === me_.branch }, tree, staffList: staff });
@@ -36,6 +40,7 @@ async function handleApi(req, env, path, ctx) {
     // Visitors and members still waiting for approval only get the shop name and look, nothing inside.
     // A visitor's shop comes from the link or QR they opened (x-branch); a member's from their record.
     let branch = HQ;
+    const bc = await branchCtx(s);
     const hint = req.headers.get('x-branch');
     if (okBranchId(hint) && hint !== HQ && await s.get('branches', hint)) branch = hint;
     let m = null;
@@ -45,7 +50,7 @@ async function handleApi(req, env, path, ctx) {
     let me = null, approved = false;
     if (m) {
       me = who.phone; data.members = [m]; approved = !m.pending;
-      if (approved) { data.rewards = pub.rewards; data.tasks = pub.tasks; }
+      if (approved) { data.rewards = pub.rewards.filter(r => bOf(r) === bc.src(branch, 'rewards')); data.tasks = pub.tasks.filter(t => bOf(t) === bc.src(branch, 'tasks')); data.rules = rulesFor(bc, branch); }
       for (const c of ['cards', 'checkins', 'requests', 'ledger']) data[c] = await s.where(c, 'phone', who.phone);
       { const h = await s.get('health', who.phone); data.health = h ? [h] : []; }
     }
@@ -163,18 +168,18 @@ async function handleApi(req, env, path, ctx) {
     if (m.pending) return fail(PENDING_MSG, 'pending');
     const base = { phone: m.id, name: m.name, status: 'pending', ts: Date.now() };
     if (body.type === 'redeem') {
-      const r = await s.get('rewards', body.rewardId);
-      if (!r || r.active === false) return fail('这个礼物已下架');
+      const r = await s.get('rewards', body.rewardId), bc = await branchCtx(s);
+      if (!r || r.active === false || bOf(r) !== bc.src(bOf(m), 'rewards')) return fail('这个礼物已下架');
       if (r.stock != null && r.stock <= 0) return fail('这个礼物已兑完');
       const avail = (await memberTotal(s, m.id)) - (await pendingRedeem(s, m.id));
       if (avail < r.points) return fail('积分不足');
       await s.put('requests', uid(), { ...base, type: 'redeem', rewardId: r.id, title: r.name, points: +r.points });
-      await later(s, notifyAdmin(s, 'redeem', { name: m.name, title: r.name }), bOf(m));
+      await later(s, notifyAdmin(s, 'redeem', { name: m.name, title: r.name }, bOf(m)));
       return json({ ok: true });
     }
     if (body.type === 'earn') {
-      const t = await s.get('tasks', body.taskId);
-      if (!t || t.active === false || t.auto) return fail('这个任务不能申请');
+      const t = await s.get('tasks', body.taskId), bc = await branchCtx(s);
+      if (!t || t.active === false || t.auto || bOf(t) !== bc.src(bOf(m), 'tasks')) return fail('这个任务不能申请');
       // Optional per-task rules: a daily cap, and a list of choices (e.g. breakfast / lunch) each allowed once a day.
       const opts = taskOpts(t), opt = String(body.opt || '').trim(), cap = Math.max(0, parseInt(t.daily, 10) || 0);
       if (opts.length && !opts.includes(opt)) return fail('请先选择一项', 'need_opt');
@@ -185,16 +190,19 @@ async function handleApi(req, env, path, ctx) {
         if (opt && mine.some(r => r.opt === opt)) return fail(`今天的「${opt}」已经申请了`, 'opt_done');
       }
       await s.put('requests', uid(), { ...base, type: 'earn', taskId: t.id, opt: opt || null, title: t.name + (opt ? ' · ' + opt : '') + (t.en ? ' ' + t.en : ''), points: +t.points, note: String(body.note || '').slice(0, 300) });
-      await later(s, notifyAdmin(s, 'earn', { name: m.name, title: t.name }), bOf(m));
+      await later(s, notifyAdmin(s, 'earn', { name: m.name, title: t.name }, bOf(m)));
       return json({ ok: true });
     }
     if (body.type === 'renew') {
       const rq = await s.where('requests', 'phone', m.id);
       if (rq.some(r => r.type === 'renew' && r.status === 'pending')) return fail('你已经有一个续卡申请在审核中');
-      const total = Math.max(1, Math.min(200, parseInt(body.total, 10) || 11));
-      const name = String(body.cardName || 'NCP').slice(0, 60);
-      await s.put('requests', uid(), { ...base, type: 'renew', title: name, cardName: name, kind: ['10+1', '30', 'daily'].includes(body.kind) ? body.kind : null, total, points: 0 });
-      await later(s, notifyAdmin(s, 'renew', { name: m.name, title: name }), bOf(m));
+      // The member picks one of their shop's card types.
+      const types = (await branchCtx(s)).cardTypes(bOf(m));
+      const ty = types.find(t => t.id === body.typeId) || types.find(t => t.n === body.cardName && t.mode !== 'daily');
+      if (!ty || ty.mode === 'daily') return fail('请选择一种卡');
+      const name = ty.n;
+      await s.put('requests', uid(), { ...base, type: 'renew', title: name, cardName: name, kind: ty.kind, total: ty.total || 1, days: ty.days || null, tw: ty.tw, points: 0 });
+      await later(s, notifyAdmin(s, 'renew', { name: m.name, title: name }, bOf(m)));
       return json({ ok: true });
     }
     if (body.type === 'course') {
@@ -203,7 +211,7 @@ async function handleApi(req, env, path, ctx) {
       if (rq.some(r => r.type === 'course' && r.status === 'pending')) return fail('你已经申请了，请等教练开通');
       const title = `21 天课程 · 第 ${COURSE_FREE + 1}–21 天`;
       await s.put('requests', uid(), { ...base, type: 'course', title, points: 0 });
-      await later(s, notifyAdmin(s, 'course', { name: m.name, title }), bOf(m));
+      await later(s, notifyAdmin(s, 'course', { name: m.name, title }, bOf(m)));
       return json({ ok: true });
     }
     return fail('未知的申请');

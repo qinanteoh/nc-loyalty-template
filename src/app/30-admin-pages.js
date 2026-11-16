@@ -26,7 +26,7 @@ function vAdmin(){
     body=`<div class="btnrow" style="justify-content:flex-start;margin-bottom:12px"><button class="btn sm" data-act="exportPdf">导出 PDF 报表</button><button class="btn sm ghost" data-act="exportCsv">导出 Excel</button></div>
     <div style="display:flex;gap:8px;margin-bottom:12px"><div class="qbox" style="flex:1;margin:0">${ic('search',18)}<input class="inp" id="mq" type="search" enterkeyhint="search" autocomplete="off" placeholder="搜索名字或电话" value="${esc(memberQ)}"></div><button class="btn" data-act="editMember">${ic('plus',18)}</button></div>
       ${list.length?`<div class="list">${list.map(m=>`<div class="arow mem"><div class="tx"><b>${nt(m.name)} <span class="tier ${esc(m.tier)}">${esc(m.tier)}</span>${tierInfo(m).manual?' <span class="badge pending">手动</span>':''}${m.pending?' <span class="badge pending">待核准</span>':''}${dpTag(m.phone)}</b><span>${esc(m.phone)} · <span class="num">${fmt(totalPts(m))}</span> pts</span>${(st=>`<span style="display:block">共 ${st.nCards} 张卡 · 累计打卡 ${st.nCheckins} 次${st.last?' · 最近 '+st.last:''}${st.curInfo&&st.curInfo.status==='active'?` · 目前第 ${st.nCards?cardNo(st.cur):0} 张剩 ${st.curInfo.left} 次`:''}${unpaidOf(m.phone)?` · <b style="color:var(--warn)">未付款 ${unpaidOf(m.phone)} 张</b>`:''}</span>`)(memberStats(m))}</div>
-        <div class="btnrow"><button class="btn sm ghost" data-act="editMember" data-id="${esc(m.id)}">编辑</button><button class="btn sm ghost" data-act="ncp" data-id="${esc(m.id)}">NCP卡</button><button class="btn sm ghost" data-act="hsheet" data-id="${esc(m.id)}">健康表</button><button class="btn sm" data-act="addPts" data-id="${esc(m.id)}">加/减分</button></div></div>`).join('')}</div>`:(q?noMatch():VIEW.own?'<div class="empty">还没有会员。按 + 新增会员。</div>':'<div class="empty">这家店还没有会员。</div>')}`;
+        <div class="btnrow"><button class="btn sm ghost" data-act="editMember" data-id="${esc(m.id)}">编辑</button><button class="btn sm ghost" data-act="ncp" data-id="${esc(m.id)}">NCP卡</button><button class="btn sm ghost" data-act="hsheet" data-id="${esc(m.id)}">健康表</button><button class="btn sm ghost" data-act="memberMove" data-id="${esc(m.id)}">换店</button><button class="btn sm" data-act="addPts" data-id="${esc(m.id)}">加/减分</button></div></div>`).join('')}</div>`:(q?noMatch():VIEW.own?'<div class="empty">还没有会员。按 + 新增会员。</div>':'<div class="empty">这家店还没有会员。</div>')}`;
   } else if(adminTab==='notify'){
     const P=S.push||{devices:0,members:0};
     body=`<div class="card"><b style="display:block;font-size:20px;margin-bottom:6px">发公告给全部会员</b>
@@ -99,6 +99,7 @@ function vAdmin(){
       <div class="field"><label for="b_n">俱乐部名称</label><input class="inp" id="b_n" value="${esc(B.name)}"></div>
       <div class="field"><label for="b_s">副标题（显示在名称下面）</label><input class="inp" id="b_s" value="${esc(B.sub)}"></div>
       <div class="field"><label for="b_sh">手机主画面上的短名称（建议 12 个字以内）</label><input class="inp" id="b_sh" maxlength="20" value="${esc(B.short)}"></div>
+      <div class="field"><label for="b_addr">店的地址（会员在首页看得到；店搬了，在这里改就好）</label><textarea class="inp" id="b_addr" rows="2" maxlength="200">${esc(st.address||'')}</textarea></div>
       <button class="btn block" type="submit">保存俱乐部资料</button></form>
     <form id="homeForm" class="card"><b style="display:block;margin-bottom:10px;font-size:20px">首页横幅</b><div class="field"><label>横幅照片（建议横向 16:9）</label><div class="uploader wide"><div class="ph" id="hp">${imgSrc(st)?`<img src="${esc(imgSrc(st))}" alt="">`:ic('upload',26)}</div>
       <div style="display:flex;flex-direction:column;gap:6px"><label class="btn sm ghost" for="hfile">上传照片</label><input type="file" id="hfile" accept="image/*" hidden>${imgSrc(st)?'<button type="button" class="btn sm danger" data-act="clearHomePhoto">移除照片</button>':''}</div></div></div>
@@ -112,7 +113,7 @@ function vAdmin(){
       <div class="field"><label for="h_terms">兑换须知（一行一条）</label><textarea class="inp" id="h_terms" rows="6">${esc(termsText())}</textarea></div>
       <button class="btn block" type="submit">保存首页</button></form>`;
   }
-  if((adminTab==='rewards'||adminTab==='tasks')&&VIEW.branch!=='hq') body=`<div class="note-hq">${adminTab==='rewards'?'礼物':'任务'}目前跟总店一样，由总店设定。</div>`+body;
+  if((adminTab==='rewards'||adminTab==='tasks')&&followOn(adminTab)) body=`<div class="note-hq"><span>${adminTab==='rewards'?'礼物':'任务'}现在跟上线：</span>${nt(followFrom(adminTab))}<br><span>要自己设，到「分店」→「本店设定」改成「自己设」。</span></div>`+body;
   return `<div class="sec-h"><h2 style="font-family:var(--f-display);font-size:30px">管理后台</h2><button class="link" data-act="adminLogout">退出管理</button></div>
   ${branchBar()}
   <div class="seg">${tabs.map(([k,l])=>`<button class="${adminTab===k?'on':''}" data-act="atab" data-v="${k}">${l}</button>`).join('')}</div>${body}`;
@@ -147,12 +148,13 @@ function adminBranch(){
     ${STAFFS.map(x=>`<div class="arow"><div style="flex:1;min-width:0"><b>${nt(x.name)}</b><div class="sub">${esc(x.phone)}</div></div><span class="badge ${x.role==='manager'?'approved':'pending'}">${ROLE_NAME[x.role]}</span>
       ${own?`<div class="btnrow"><button class="btn sm ghost" data-act="staffEdit" data-id="${esc(x.id)}">修改</button>${STAFF.id!==x.id?`<button class="btn sm danger" data-act="staffDel" data-id="${esc(x.id)}">删除</button>`:''}</div>`:''}</div>`).join('')||(VIEW.branch==='hq'?'':'<div class="empty">还没有管理员。</div>')}</div></div>`;
   const rows=treeRows();
+  const setCard=branchSettingsCard();
   const treeCard=`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px"><b style="font-size:20px">分店图</b>${mgr?'<button class="btn sm" data-act="branchAdd">+ 开新分店</button>':''}</div>
     <p class="sub" style="margin:0 0 8px">你的店和下线分店。点店名可以看那家店的资料（下线只能看，不能改）。</p>
-    <div class="tree">${rows.map(r=>`<div class="trow" style="--d:${r.depth}"><img src="/icon-64.png?${r.id!=='hq'?'b='+esc(r.id)+'&':''}v=${esc(r.logo||'d')}" alt="" width="32" height="32">
+    <div class="tree">${rows.map(r=>`<div class="brow" style="--d:${r.depth}"><img src="/icon-64.png?${r.id!=='hq'?'b='+esc(r.id)+'&':''}v=${esc(r.logo||'d')}" alt="" width="32" height="32">
       <div class="tinfo"><button class="link tname" data-act="shopView" data-id="${esc(r.id)}" translate="no">${esc(r.name)}</button><span class="sub">${r.members} 位会员${r.id===VIEW.branch?' · <b>正在看</b>':''}</span></div>
-      ${mgr&&r.depth>0?`<button class="btn sm ghost" data-act="branchMove" data-id="${esc(r.id)}">搬店</button>`:''}</div>`).join('')}</div></div>`;
-  return meCard+staffCard+treeCard;
+      ${mgr&&r.depth>0?`<button class="btn sm ghost" data-act="branchMove" data-id="${esc(r.id)}">换上线</button>`:''}</div>`).join('')}</div></div>`;
+  return meCard+setCard+staffCard+treeCard;
 }
 function staffForm(id){
   const x=id?STAFFS.find(s=>s.id===id):null;
@@ -177,24 +179,26 @@ function branchMoveForm(id){
   const rows=treeRows(), b=rows.find(r=>r.id===id); if(!b) return;
   const under=new Set([id]); let grow=true; while(grow){ grow=false; for(const r of rows) if(r.parent&&under.has(r.parent)&&!under.has(r.id)){ under.add(r.id); grow=true; } }
   const opts=rows.filter(r=>!under.has(r.id));
-  openSheet(`<h3><span>搬店</span> · ${nt(b.name)}</h3><p class="sub" style="margin:-6px 0 10px"><span>现在的上线：</span>${nt(shopName(b.parent))}<br>搬过去后，它的会员、积分、设定都不变，它下面的分店也一起搬。新的上线可以看它的资料（只能看，不能改）。</p>
-    <form id="mvf" data-id="${esc(id)}"><div class="field"><label for="mv_to">搬到这家店下面</label><select class="inp" id="mv_to" translate="no">${opts.map(r=>`<option value="${esc(r.id)}"${r.id===b.parent?' selected':''}>${'— '.repeat(r.depth)}${esc(r.name)}</option>`).join('')}</select></div>
-    <button class="btn block" type="submit">确定搬店</button></form>`);
+  openSheet(`<h3><span>换上线</span> · ${nt(b.name)}</h3><p class="sub" style="margin:-6px 0 10px"><span>现在的上线：</span>${nt(shopName(b.parent))}<br>换了之后，它的会员、积分、设定都不变，它下面的分店也跟着一起。新的上线可以看它的资料（只能看，不能改）。</p>
+    <form id="mvf" data-id="${esc(id)}"><div class="field"><label for="mv_to">新的上线</label><select class="inp" id="mv_to" translate="no">${opts.map(r=>`<option value="${esc(r.id)}"${r.id===b.parent?' selected':''}>${'— '.repeat(r.depth)}${esc(r.name)}</option>`).join('')}</select></div>
+    <button class="btn block" type="submit">确定换上线</button></form>`);
 }
 function myPwForm(){
   openSheet(`<h3>改我的密码</h3><form id="mpf"><div class="field"><label for="mp1">新密码（至少 6 个字）</label><input class="inp" id="mp1" type="password" autocomplete="new-password"></div>
     <div class="field"><label for="mp2">再输入一次</label><input class="inp" id="mp2" type="password" autocomplete="new-password"></div><button class="btn block" type="submit">保存</button></form>`);
 }
 // What a person may press in the back office: downline branches are view-only; operators approve and check in.
-const VIEW_ACTS=new Set(['atab','go','back','close','adminLogout','cardFilter','courseFilter','coursePreview','csheet','hsheet','healthPdf','ncp','backNcp','exportCsv','exportDailyCsv','exportDailyPdf','exportPdf','repDay','repPdf','statRange','joinCopy','joinPoster','shopView','myPw','sfNext']);
+const VIEW_ACTS=new Set(['viewTier','viewCards','atab','go','back','close','adminLogout','cardFilter','courseFilter','coursePreview','csheet','hsheet','healthPdf','ncp','backNcp','exportCsv','exportDailyCsv','exportDailyPdf','exportPdf','repDay','repPdf','statRange','joinCopy','joinPoster','shopView','myPw','sfNext']);
 const OP_ACTS=new Set(['approve','reject','approveMember','rejectMember','staffCheckin','checkin','undoCheckin','courseOpen','editScan','editProfile','delScan']);
 const HQ_ACTS=new Set(['editReward','delReward','editTask','delTask']);
+const followOn=k=>!!(S.rules&&S.rules.follow&&S.rules.follow[k]&&S.rules.follow[k].on);
+const followFrom=k=>(S.rules&&S.rules.follow&&S.rules.follow[k]&&S.rules.follow[k].from)||'';
 function adminActWhy(a){
   if(!isAdmin||view!=='admin'||VIEW_ACTS.has(a)) return '';
   if(a==='branchAdd'||a==='branchMove') return STAFF&&STAFF.role==='manager'?'':'操作员不能做这个，请找店长';
   if(!VIEW.own) return '这是下线分店，只能看，不能改';
   if(isOperator()&&!OP_ACTS.has(a)) return '操作员不能做这个，请找店长';
-  if(HQ_ACTS.has(a)&&VIEW.branch!=='hq') return '礼物和任务目前由总店设定';
+  if(HQ_ACTS.has(a)&&followOn(/Reward/.test(a)?'rewards':'tasks')) return '现在跟上线，要先到「分店」改成「自己设」';
   return '';
 }
 const OP_FORMS=['sf','pfm','mpf'], ANY_FORMS=['mpf','adminForm','loginForm','pinForm','regForm','setPinForm'];
@@ -212,4 +216,51 @@ function lockAdmin(){
   document.querySelectorAll('#app [data-act], #layer [data-act]').forEach(el=>{ if(adminActWhy(el.dataset.act)) el.style.display='none'; });
   document.querySelectorAll('#app form, #layer form').forEach(f=>{ if(adminFormWhy(f.id)){ f.querySelectorAll('input,select,textarea').forEach(i=>i.disabled=true); f.querySelectorAll('button[type=submit],label.btn').forEach(x=>x.style.display='none'); } });
   if(!VIEW.own||isOperator()) ['qm','lfile','hfile','nfile'].forEach(id=>{ const el=document.getElementById(id); if(el) el.disabled=true; });
+}
+
+/* ---------- each branch's own settings (stage 2) ---------- */
+const FOLLOW_ROWS=[['rewards','礼物'],['tasks','赚分任务'],['notices','公告'],['tiers','等级规则'],['cards','卡种和天数']];
+function branchSettingsCard(){
+  const F=(S.rules&&S.rules.follow)||{}, hq=VIEW.branch==='hq', can=VIEW.own&&STAFF&&STAFF.role==='manager';
+  const rows=FOLLOW_ROWS.map(([k,l])=>{ const f=F[k]||{}, on=!hq&&f.on;
+    const state=on?`<span class="badge pending">跟上线</span> ${k==='notices'?'':nt(f.from)}`:'<span class="badge approved">自己设</span>';
+    const tog=!hq&&can?`<button class="btn sm ghost" data-act="followSet" data-id="${k}" data-v="${on?'0':'1'}">${on?'改成自己设':'改成跟上线'}</button>`:'';
+    const edit=(k==='tiers'||k==='cards')?`<button class="btn sm ghost" data-act="${k==='tiers'?'viewTier':'viewCards'}">${!on&&can?'编辑':'看看'}</button>`:'';
+    return `<div class="arow"><div style="flex:1;min-width:0"><b>${l}</b><div class="sub">${state}</div></div><div class="btnrow">${edit}${tog}</div></div>`; }).join('');
+  return `<div class="card" style="margin-bottom:14px"><b style="display:block;font-size:20px;margin-bottom:4px"><span>本店设定</span> · ${nt(shopName(VIEW.branch))}</b>
+    <p class="sub" style="margin:0 0 8px">${hq?'总店没有上线，全部自己设。下线分店可以选择跟你一样。':'「跟上线」：上线改了，这里也跟着变。「自己设」：从上线现在的样子复制一份，之后自己改。公告选「跟上线」时，会员也会看到上线的公告。'}</p>
+    <div class="list">${rows}</div></div>`;
+}
+const TIER_ZH={Silver:'银卡',Gold:'金卡',Platinum:'白金卡'};
+function tierForm(){
+  const R=RULE(), can=VIEW.own&&STAFF&&STAFF.role==='manager'&&!followOn('tiers'), dis=can?'':' disabled';
+  openSheet(`<h3>等级规则</h3><p class="sub" style="margin:-6px 0 10px">${followOn('tiers')?'<span>现在跟上线：</span>'+nt(followFrom('tiers'))+'<br>':''}每张卡有「等级分」（在「卡种和天数」里设）。会员累计的等级分超过门槛就升级。</p>
+   <form id="tierf"><div class="row2"><div class="field"><label for="tr_g">等级分超过几分升 Gold</label><input class="inp num" id="tr_g" type="number" min="0" value="${R.gold}"${dis}></div>
+   <div class="field"><label for="tr_p">超过几分升 Platinum</label><input class="inp num" id="tr_p" type="number" min="0" value="${R.platinum}"${dis}></div></div>
+   <b style="display:block;margin:6px 0">每次打卡加几分</b>
+   <div class="row3">${['Silver','Gold','Platinum'].map(k=>`<div class="field"><label for="tr_${k}">${k} · ${TIER_ZH[k]}</label><input class="inp num" id="tr_${k}" type="number" min="0" value="${R.pts[k]}"${dis}></div>`).join('')}</div>
+   ${can?'<button class="btn block" type="submit">保存</button>':''}</form>`);
+}
+let typeDraft=null;
+const MODE_ZH={count:'有次数',unl:'不限次（自动加分）',daily:'不限次（每次要核准，像 Daily Pass）'};
+function cardTypesForm(keepDraft){
+  const can=VIEW.own&&STAFF&&STAFF.role==='manager'&&!followOn('cards'), dis=can?'':' disabled';
+  if(!keepDraft) typeDraft=cardTypes().map(t=>({...t}));
+  openSheet(`<h3>卡种和天数</h3><p class="sub" style="margin:-6px 0 10px">${followOn('cards')?'<span>现在跟上线：</span>'+nt(followFrom('cards'))+'<br>':''}开卡和会员续卡时，可以选这些卡。有效天数留空 = 不限期。</p>
+   <form id="ctf">${typeDraft.map((t,i)=>`<div class="card" style="padding:12px 14px;margin-bottom:10px">
+     <div class="field"><label for="ct_n${i}">卡名称</label><input class="inp" id="ct_n${i}" value="${esc(t.n)}" placeholder="例如 运动卡 20 天"${dis}></div>
+     <div class="field"><label for="ct_m${i}">打卡次数</label><select class="inp" id="ct_m${i}"${dis}>${Object.keys(MODE_ZH).map(k=>`<option value="${k}"${t.mode===k?' selected':''}>${MODE_ZH[k]}</option>`).join('')}</select></div>
+     <div class="row3"><div class="field"><label for="ct_t${i}">次数</label><input class="inp num" id="ct_t${i}" type="number" min="1" value="${t.total||''}"${dis}></div>
+     <div class="field"><label for="ct_d${i}">有效天数</label><input class="inp num" id="ct_d${i}" type="number" min="1" value="${t.days||''}"${dis}></div>
+     <div class="field"><label for="ct_w${i}">等级分</label><input class="inp num" id="ct_w${i}" type="number" min="0" value="${+t.tw||0}"${dis}></div></div>
+     ${can&&typeDraft.length>1?`<button type="button" class="btn sm danger" data-act="typeDel" data-v="${i}">删除这种卡</button>`:''}</div>`).join('')}
+   ${can?'<button type="button" class="btn block ghost" data-act="typeAdd" style="margin-bottom:10px">+ 加一种卡</button><button class="btn block" type="submit">保存</button>':''}</form>`);
+}
+function readTypes(){ return typeDraft.map((t,i)=>{ const g=x=>(document.getElementById(x+i)||{}).value; return {...t,n:(g('ct_n')||'').trim(),mode:g('ct_m'),total:+g('ct_t')||null,days:+g('ct_d')||null,tw:+g('ct_w')||0}; }); }
+function memberMoveForm(phone){
+  const m=S.members.find(x=>x.phone===phone); if(!m) return;
+  const opts=(S.allBranches||[]).filter(b=>b.id!==VIEW.branch);
+  openSheet(`<h3><span>换店</span> · ${nt(m.name)}</h3><p class="sub" style="margin:-6px 0 10px">会员的积分、卡、打卡记录、健康表都会一起带过去。转出后，这位会员就归新的店，你这里看不到了。</p>
+   ${opts.length?`<form id="mmf" data-id="${esc(phone)}"><div class="field"><label for="mm_to">转到哪一家店</label><select class="inp" id="mm_to" translate="no">${opts.map(b=>`<option value="${esc(b.id)}">${esc(b.name)}</option>`).join('')}</select></div>
+   <button class="btn block" type="submit">确定换店</button></form>`:'<div class="empty">还没有其他分店。</div>'}`);
 }

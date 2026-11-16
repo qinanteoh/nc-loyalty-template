@@ -77,15 +77,15 @@ function ncpSheet(phone){
   openSheet(`<h3>${nt(m.name)} · NCP 卡</h3>
    ${cs.map(c=>{const k=cardInfo(c);return cardBlock(c,true)+(k.ins.length?`<details style="margin-top:8px"><summary class="sub" style="cursor:pointer">打卡记录（${k.ins.length} 次 · 自 ${k.ins.filter(x=>x.by!=='staff').length} · 帮 ${k.ins.filter(x=>x.by==='staff').length}）</summary><div class="card" style="padding:4px 12px;margin-top:6px"><div class="sub" style="font-size:14px;padding-top:6px">${HOW_LEGEND}</div>${k.ins.slice().reverse().map((x,i)=>{const d=new Date(x.ts);return `<div class="hist" style="font-size:15px"><span>第 ${k.ins.length-i} 次 · ${x.date} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}</span>${howTag(x.by)}</div>`}).join('')}</div></details>`:'')+`<div class="btnrow" style="margin:8px 0 16px">${c.paid?`<button class="btn sm ghost" data-act="payCard" data-id="${esc(c.id)}">修改付款</button>`:`<button class="btn sm ok" data-act="payCard" data-id="${esc(c.id)}">确认已付款</button>`}<button class="btn sm danger" data-act="delCard" data-id="${esc(c.id)}">删除这张卡</button><button class="btn sm ghost" data-act="undoCheckin" data-id="${esc(c.id)}" ${k.used?'':'disabled'}>撤销最后一次打卡</button><button class="btn sm" data-act="staffCheckin" data-id="${esc(c.id)}" ${k.status!=='active'||k.notStarted?'disabled':''}>帮他打卡</button></div>`}).join('')||'<div class="empty" style="margin-bottom:14px">这位会员还没有 NCP 卡。</div>'}
    <form id="cf" data-phone="${esc(phone)}" class="card"><b style="display:block;margin-bottom:10px">开新卡</b>
-    <div class="field"><label for="c_ty">卡种</label><select class="inp" id="c_ty">${CARD_TYPES.map((t,i)=>`<option value="${i}">${t.n}（${t.kind==='daily'?'不限次':t.total+' 次'}）</option>`).join('')}<option value="x">自定义</option></select></div>
-    <div class="field"><label for="c_n">卡名称</label><input class="inp" id="c_n" required value="${esc(keep?keep.n:CARD_TYPES[0].n)}"></div>
-    <div class="row2"><div class="field"><label for="c_t">总次数</label><input class="inp num" id="c_t" type="number" min="1" required value="${keep?esc(keep.t):CARD_TYPES[0].total}"></div>
-    <div class="field"><label for="c_d">有效天数（留空 = 不限期）</label><input class="inp num" id="c_d" type="number" min="1" value="${keep?esc(keep.d):''}"></div></div>
+    <div class="field"><label for="c_ty">卡种</label><select class="inp" id="c_ty">${cardTypes().map((t,i)=>`<option value="${i}">${esc(t.n)}（${t.mode==='daily'?'不限次 · 每次核准':t.mode==='unl'?'不限次':t.total+' 次'}${t.days?' · '+t.days+' 天':''}）</option>`).join('')}<option value="x">自定义</option></select></div>
+    <div class="field"><label for="c_n">卡名称</label><input class="inp" id="c_n" required value="${esc(keep?keep.n:cardTypes()[0].n)}"></div>
+    <div class="row2"><div class="field"><label for="c_t">总次数</label><input class="inp num" id="c_t" type="number" min="1" required value="${keep?esc(keep.t):(cardTypes()[0].total||1)}"></div>
+    <div class="field"><label for="c_d">有效天数（留空 = 不限期）</label><input class="inp num" id="c_d" type="number" min="1" value="${keep?esc(keep.d):(cardTypes()[0].days||'')}"></div></div>
     <div class="field"><label for="c_pay">付款</label><select class="inp" id="c_pay"><option value="0">还没付款（之后再确认）</option><option value="1">今天已付款</option></select></div>
     <div class="field"><label for="c_s">开始日期</label><input class="inp" id="c_s" type="date" required value="${keep?esc(keep.s):today()}"></div>
     <button class="btn block" type="submit">开卡</button></form>`);
   reSheet=()=>ncpSheet(phone);
-  document.getElementById('c_ty').onchange=e=>{const t=CARD_TYPES[+e.target.value]; if(!t) return; document.getElementById('c_n').value=t.n; document.getElementById('c_t').value=t.total; document.getElementById('cf').dataset.kind=t.kind;};
+  document.getElementById('c_ty').onchange=e=>{const t=cardTypes()[+e.target.value]; if(!t) return; document.getElementById('c_n').value=t.n; document.getElementById('c_t').value=t.total||1; document.getElementById('c_d').value=t.days||''; document.getElementById('cf').dataset.kind=t.kind;};
 }
 let pendingPhoto=null;
 function rewardForm(r){
@@ -123,7 +123,7 @@ function memberForm(m){
    <div class="field"><label for="m_n">名字</label><input class="inp" id="m_n" required value="${esc(m.name||'')}"></div>
    <div class="field"><label for="m_p">手机号码（会员用这个号码登入）</label><input class="inp" id="m_p" inputmode="tel" required ${m.id?'readonly':''} value="${esc(m.phone||'')}"></div>
    ${m.id?`<div class="field"><label>登入密码</label><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="sub">${m.hasPin?'会员已经设定密码':'会员还没设定密码（第一次登入时自己设定）'}</span>${m.hasPin?`<button type="button" class="btn sm ghost" data-act="resetPin" data-id="${esc(m.id)}">重设密码</button>`:''}</div></div>`:''}
-   ${m.id?(t=>`<div class="card" style="margin-bottom:12px;padding:12px 14px"><b>目前等级：${t.tier}</b><div class="sub">10+1 卡 ${t.n10} 张 · 30 天卡 ${t.n30} 张（App 里开过的卡 + 以前买的；30 天卡 1 张 = 10+1 卡 3 张，合计 ${t.score}）${t.next&&!t.manual?'<br>'+tierProgress(m):''}</div></div>`)(tierInfo(m)):''}
+   ${m.id?(t=>`<div class="card" style="margin-bottom:12px;padding:12px 14px"><b>目前等级：${t.tier}</b><div class="sub">等级分 ${t.score}（App 里开过的卡 + 以前买的；以前的 10+1 卡 1 张 = 1 分，30 天卡 1 张 = 3 分）${t.next&&!t.manual?'<br>'+tierProgress(m):''}</div></div>`)(tierInfo(m)):''}
    <div class="row2"><div class="field"><label for="m_p10">以前买过的 10+1 卡</label><input class="inp num" id="m_p10" type="number" min="0" value="${+m.prior10||0}"></div>
    <div class="field"><label for="m_p30">以前买过的 30 天卡</label><input class="inp num" id="m_p30" type="number" min="0" value="${+m.prior30||0}"></div></div>
    <p class="sub" style="margin:-6px 0 12px">用 App 之前买过的卡填在这里，会一起算进等级。</p>

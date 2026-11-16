@@ -6,16 +6,17 @@ async function setCourseOpen(s, m, open) {
 async function doCheckin(s, card, force, by) {
   const ins = (await s.where('checkins', 'cardId', card.id)).sort((a, b) => a.ts - b.ts);
   // Daily Pass is given once and never runs out; each self check-in waits for the shop's approval before points are added.
-  const daily = kindOf(card) === 'daily';
-  const total = +card.total || 0, left = daily ? null : total - ins.length;
-  if (!daily && left <= 0) return fail('这张卡已经用完了，请申请续卡', 'used_up');
+  const daily = kindOf(card) === 'daily', unl = unlimited(card);
+  const total = +card.total || 0, left = unl ? null : total - ins.length;
+  if (!unl && left <= 0) return fail('这张卡已经用完了，请申请续卡', 'used_up');
   const t = parseD(today()), st = parseD(card.start);
   if (t < st) return fail(`这张卡 ${card.start} 才开始`, 'not_started');
   if ((+card.days || 0) > 0 && t > st + (card.days - 1) * DAY) return fail('这张卡已经过期了', 'expired');
   const last = ins[ins.length - 1];
   if (!force && last && Date.now() - last.ts < RECENT_MS) return json({ recent: true, left });
   const m = await s.get('members', card.phone);
-  const points = DAILY_PTS[await tierOf(s, m)] || 10;
+  const rule = (await branchCtx(s)).rule(bOf(m));
+  const points = rule.pts[await tierOf(s, m, rule)] ?? 10;
   const cid = `${card.id}_${today()}_${uid()}`;
   if (daily && by !== 'staff') {
     await s.put('checkins', cid, { cardId: card.id, phone: card.phone, date: today(), ts: Date.now(), by, points: 0, due: points, pend: true });
@@ -24,7 +25,7 @@ async function doCheckin(s, card, force, by) {
     return json({ ok: true, pending: true, points, left: null });
   }
   await s.put('checkins', cid, { cardId: card.id, phone: card.phone, date: today(), ts: Date.now(), by, points });
-  if (daily) return json({ ok: true, points, left: null });
+  if (unl) return json({ ok: true, points, left: null });
   const nowLeft = left - 1;
   if (nowLeft === 2 || nowLeft === 0) {
     const lab = { zh: cardLabel(card, 'zh'), en: cardLabel(card, 'en'), ms: cardLabel(card, 'ms') };
