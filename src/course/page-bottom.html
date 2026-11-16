@@ -503,29 +503,82 @@ function ttsClean(s){
     .replace(/(\d)\s*g\b/g,"$1克").replace(/→|＋|\+/g,"，").replace(/[「」“”《》（）()·•]/g," ").replace(/\s+/g," ").trim();
 }
 function ttsSplit(s){ const out=[]; String(s).split(/(?<=[。！？；!?;]|\.\s)/).forEach(x=>{ x=x.trim(); while(x.length>(LANG==="zh"?140:220)){ let k = LANG==="zh"?140:x.lastIndexOf(" ",220); if(k<60) k=220; out.push(x.slice(0,k)); x=x.slice(k).trim(); } if(x) out.push(x); }); return out; }
+/* Each spoken piece remembers where it sits on the page (sel) and its original words (raw),
+   so the sentence being read can be highlighted and kept on screen. */
 function ttsScript(n){
   const d = DAYS[n-1], q = QS[n-1], parts = [];
-  const add = (text, pi) => ttsSplit(ttsClean(text)).forEach(s=>parts.push({s, pi}));
   const zh = LANG==="zh", P = zh?"。":". ", end = x => /[。！？.!?:：]$/.test(String(x).trim()) ? x : x+P;
-  add(DN(n).replace(/ /g, zh?"":" ")+(zh?"，":". ")+end(d.t)); if(d.lead) add(d.lead); if(d.intro) add(d.intro);
-  if(q && q.q) add(T("先想一想：")+q.q+T(" 想好了，可以在页面上选出你的答案。"));
-  if(d.points){ add(end(T("今天要知道的 {0} 件事", d.points.length).replace(/ /g, zh?"":" "))); d.points.forEach((p,i)=>{ add(T("第{0}点，", i+1)+end(p.h), i); add(p.p, i); (p.list||[]).forEach(x=>add(end(x), i)); if(p.after) add(p.after, i); }); }
-  if(d.fact) add(T("关键数字：")+d.fact.num+(d.fact.unit||"")+P+d.fact.text);
-  if(d.myth) add(T("常见误区：")+d.myth.m+T(" 真相是：")+d.myth.f);
-  if(d.tips && d.tips.length) add(T("实用小技巧：")+d.tips.join(zh?"；":"; ")+P);
-  if(d.share) add(T("想一想：")+d.share);
-  if(d.task) add(T("今日小任务：")+d.task);
-  add(T("今天的讲解到这里，记得完成今日小任务。"));
+  const add = (text, sel, pi, pre) => ttsSplit(String(text||"")).forEach((raw,i)=>{ const s = ttsClean((i===0&&pre?pre:"")+raw); if(s) parts.push({s, raw, sel, pi, off: Math.max(0, s.length - ttsClean(raw).length)}); });
+  const say = (text, sel, pi) => { const s = ttsClean(text); if(s) parts.push({s, raw:null, sel, pi}); };
+  say(DN(n).replace(/ /g, zh?"":" ")+(zh?"，":". "), ".lesson-head .daytag .d"); add(end(d.t), ".lesson-head h2");
+  if(d.lead) add(d.lead, d.leadHL ? ".lead-hl p" : "p.lead"); if(d.intro) add(d.intro, "p.intro");
+  if(q && q.q){ add(q.q, ".hook .q", undefined, T("先想一想：")); say(T(" 想好了，可以在页面上选出你的答案。"), ".hook .opts"); }
+  if(d.points){ say(end(T("今天要知道的 {0} 件事", d.points.length).replace(/ /g, zh?"":" ")), ".points");
+    d.points.forEach((p,i)=>{ const li = '.points>li[data-pi="'+i+'"]';
+      add(end(p.h), li+" b", i, T("第{0}点，", i+1)); add(p.p, li+" .pt:not(.pt-after)", i);
+      (p.list||[]).forEach((x,j)=>add(end(x), li+" ul.sub>li:nth-child("+(j+1)+")", i)); if(p.after) add(p.after, li+" .pt-after", i); }); }
+  if(d.fact){ say(T("关键数字：")+d.fact.num+(d.fact.unit||"")+P, ".fact .num"); add(d.fact.text, ".fact p"); }
+  if(d.myth){ add(d.myth.m, ".myth .m p", undefined, T("常见误区：")); add(d.myth.f, ".myth .f p", undefined, T(" 真相是：")); }
+  if(d.tips && d.tips.length){ say(T("实用小技巧："), ".tips"); d.tips.forEach((t,j)=>add(end(t), ".tips>li:nth-child("+(j+1)+")")); }
+  if(d.share) add(d.share, ".share .sq", undefined, T("想一想："));
+  if(d.task) add(d.task, ".task > p", undefined, T("今日小任务："));
+  say(T("今天的讲解到这里，记得完成今日小任务。"), ".task");
   return parts;
 }
-function ttsMark(pi){ document.querySelectorAll(".points>li.reading").forEach(x=>x.classList.remove("reading")); if(pi!==undefined){ const li = document.querySelector('.points>li[data-pi="'+pi+'"]'); if(li) li.classList.add("reading"); } }
+/* Highlight: the block being read gets a soft background; the sentence itself a stronger one
+   (CSS Custom Highlight where the browser has it, otherwise the whole block). */
+const HL_OK = typeof CSS!=="undefined" && CSS.highlights && typeof Highlight!=="undefined";
+let ttsEl = null;
+function ttsRange(el, raw){
+  if(!raw) return null;
+  const txt = el.textContent, r0 = String(raw).trim();
+  let at = txt.indexOf(r0), len = r0.length;
+  if(at<0){ const r1 = r0.replace(/[。.！!？?；;：:，,\s]+$/,""); at = txt.indexOf(r1); len = r1.length; }
+  if(at<0 || !len) return null;
+  const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let pos = 0, node, rg = document.createRange(), started = false;
+  while((node = w.nextNode())){ const L = node.nodeValue.length;
+    if(!started && at < pos+L){ rg.setStart(node, at-pos); started = true; }
+    if(started && at+len <= pos+L){ rg.setEnd(node, at+len-pos); return rg; }
+    pos += L; }
+  return null;
+}
+function ttsMark(c){
+  if(ttsEl){ ttsEl.classList.remove("tts-cur"); ttsEl = null; }
+  if(HL_OK){ CSS.highlights.delete("tts-sent"); CSS.highlights.delete("tts-word"); }
+  document.querySelectorAll(".points>li.reading").forEach(x=>x.classList.remove("reading"));
+  if(!c) return;
+  if(c.pi!==undefined){ const li = document.querySelector('.points>li[data-pi="'+c.pi+'"]'); if(li) li.classList.add("reading"); }
+  const el = c.sel && document.querySelector("#lesson "+c.sel); if(!el) return;
+  const rg = HL_OK && ttsRange(el, c.raw);
+  if(rg) CSS.highlights.set("tts-sent", new Highlight(rg)); else { el.classList.add("tts-cur"); ttsEl = el; }
+  c.range = rg || null;
+  const b = (rg || el).getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
+  if(b.top < 70 || b.bottom > vh - 40) el.scrollIntoView({block:"center", behavior:"smooth"});
+}
+/* While a sentence is spoken, also mark the word the voice is on (only where the voice reports it). */
+function ttsWord(c, e){
+  if(!HL_OK || !c.range || typeof e.charIndex!=="number") return;
+  try{ const off = c.off || 0; if(e.charIndex < off) return; const tot = (c.s.length - off) || 1, rl = c.range.toString().length, k = Math.min(rl-1, Math.round((e.charIndex - off) * rl / tot)),
+      n = Math.max(1, Math.round((e.charLength || (LANG==="zh"?2:5)) * rl / tot));
+    const w = document.createRange(), sc = c.range.startContainer, so = c.range.startOffset;
+    const walk = (off)=>{ const tw = document.createTreeWalker(c.range.commonAncestorContainer.nodeType===3 ? c.range.commonAncestorContainer.parentNode : c.range.commonAncestorContainer, NodeFilter.SHOW_TEXT);
+      let node, started = false, left = off;
+      while((node = tw.nextNode())){ let L = node.nodeValue.length, from = 0;
+        if(!started){ if(node!==sc) continue; started = true; from = so; }
+        if(left <= L-from) return [node, from+left]; left -= (L-from); }
+      return null; };
+    const a = walk(k), z = walk(Math.min(rl, k+n)); if(!a || !z) return;
+    w.setStart(a[0], a[1]); w.setEnd(z[0], z[1]); CSS.highlights.set("tts-word", new Highlight(w));
+  }catch(err){}
+}
 function ttsUI(){ const a=document.getElementById("ttsPlay"), b=document.getElementById("ttsStop"); if(!a) return; a.textContent = TTS.on ? (speechSynthesis.paused ? T("▶ 继续") : T("❚❚ 暂停")) : T("▶ 听讲解"); b.hidden = !TTS.on; }
 function ttsStop(){ TTS.on = false; TTS.queue = []; try{ speechSynthesis.cancel(); }catch(e){} ttsMark(); ttsUI(); }
 function ttsNext(){
   if(!TTS.on) return;
   if(TTS.idx >= TTS.queue.length){ ttsStop(); const m=document.getElementById("ttsMsg"); if(m) m.textContent = T("讲解完毕"); return; }
-  const c = TTS.queue[TTS.idx++]; ttsMark(c.pi);
+  const c = TTS.queue[TTS.idx++]; ttsMark(c);
   const u = new SpeechSynthesisUtterance(c.s); u.lang = (TTS.voice && TTS.voice.lang) || ({zh:"zh-CN",en:"en-GB",ms:"ms-MY"})[LANG]; if(TTS.voice) u.voice = TTS.voice; u.rate = TTS.rate;
+  u.onboundary = e=>ttsWord(c, e);
   u.onend = ()=>ttsNext(); u.onerror = e=>{ if(e.error!=="interrupted" && e.error!=="canceled") ttsNext(); };
   speechSynthesis.speak(u);
 }
