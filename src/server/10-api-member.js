@@ -34,6 +34,9 @@ async function handleApi(req, env, path, ctx) {
       // Every branch's name, so a manager can move a member to any branch.
       if (me_.role === 'manager') data.allBranches = list.map(b => ({ id: b.id, name: branchName(b.id, stOf(b.id)) }));
       data.chart = await branchChart(s, bc);
+      // The shop of a join / check-in link opened on this phone (shown on the member-facing pages).
+      const vh = req.headers.get('x-visit');
+      if (okBranchId(vh) && list.some(b => b.id === vh)) { const { qrKey: _q, ...ps } = stOf(vh); data.visit = { branch: vh, settings: ps }; }
       let me = null;
       if (who.phone) { me = who.phone; const mm = await s.get('members', who.phone); data.myNotices = await noticesFor(s, who.phone, bOf(mm)); }
       return json({ data, admin: true, me, ver: APP_VER, staff: me_, view: { branch: vb, own: vb === me_.branch }, tree, staffList: staff });

@@ -99,7 +99,7 @@ const nt=x=>`<span translate="no">${esc(x)}</span>`;
 const nameOf=x=>LANG==='zh'?x.name:(x.en||x.name);
 const subOf=x=>LANG==='zh'?(x.en||''):(x.en?x.name:'');
 const heroOf=(st,f)=>(LANG!=='zh'&&st[f+'_'+LANG])||st[f]||'';
-const brand=()=>{const st=S.settings||{}; return {name:st.brandName||BRAND.name, sub:st.brandSub||BRAND.sub, short:st.brandShort||BRAND.short};};
+const brand=()=>{const st=(visiting()?S.visit.settings:S.settings)||{}; return {name:st.brandName||BRAND.name, sub:st.brandSub||BRAND.sub, short:st.brandShort||BRAND.short};};
 const fileTag=()=>(brand().short||'Club').replace(/[\\/:*?"<>|\s]+/g,'');
 const imgSrc=o=>o&&o.photo?('/img/'+o.photo):null;
 async function shrink(file,max=900){

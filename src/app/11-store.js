@@ -10,6 +10,7 @@ let STAFF=null, VIEW={branch:'hq',own:true}, TREE=[], STAFFS=[], adminView=ls.ge
 async function api(path,body){
   const h={'content-type':'application/json'}; if(token) h['x-token']=token; if(adminToken) h['x-admin']=adminToken;
   const vb=adminToken?adminView:ls.get('vw_branch'); if(vb) h['x-branch']=vb;
+  if(adminToken&&!token&&ls.get('vw_branch')) h['x-visit']=ls.get('vw_branch');
   let r; try{ r=await fetch('/api/'+path,{method:body?'POST':'GET',headers:h,body:body?JSON.stringify(body):undefined}); }catch(e){ throw new Error('网络不稳定，请再试一次'); }
   const j=await r.json().catch(()=>({error:'系统暂时没有回应，请稍后再试'}));
   if(!r.ok||j.error){ const e=new Error(j.error||'请稍后再试'); e.code=j.code; throw e; }
@@ -37,7 +38,10 @@ function courseCookies(){ try{
   set('vw_t', token&&m&&!m.pending?token:''); set('vw_a', isAdmin?adminToken:'');
 }catch(e){} }
 // Which branch's name and logo the screen shows: the one being managed, or the member's own shop.
-const curBranch=()=>isAdmin?VIEW.branch:(S.branch||'hq');
+// A shop's join / check-in link opened on a phone signed in to the back office (but not as a member):
+// the member-facing pages show the linked shop, not the shop being managed.
+const visiting=()=>!!(S.visit&&!me()&&view!=='admin');
+const curBranch=()=>visiting()?S.visit.branch:isAdmin?VIEW.branch:(S.branch||'hq');
 const isRO=()=>isAdmin&&view==='admin'&&!VIEW.own;
 const isOperator=()=>isAdmin&&STAFF&&STAFF.role==='operator';
 const logoUrl=(sz=192)=>`/icon-${sz}.png?${curBranch()!=='hq'?'b='+curBranch()+'&':''}v=${encodeURIComponent((S.settings&&S.settings.logo)||'d')}`;
