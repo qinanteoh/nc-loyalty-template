@@ -307,6 +307,8 @@ table.wf{border-collapse:collapse;font-size:15px;min-width:100%}
 /* Back-office tab bar: dark band so it stands out from the page */
 .seg{background:#6B1A33;padding:5px;scrollbar-width:none}.seg::-webkit-scrollbar{display:none}
 .seg button{color:#fff;font-weight:600}.seg button.on{background:#fff;color:#6B1A33;font-weight:800}
+/* All tabs visible at once: they wrap onto two or three rows instead of scrolling sideways */
+.seg{flex-wrap:wrap;overflow:visible;row-gap:4px}.seg button{flex:1 0 auto;padding:7px 12px}
 .arow{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
 .arow.mem{flex-wrap:wrap}.arow.mem .tx{flex-basis:100%}.arow.mem .tx b{white-space:normal}.arow.mem .btnrow{width:100%;justify-content:flex-start}
 .arow .ph{width:52px;height:52px;flex:none;border-radius:10px}
